@@ -54,43 +54,121 @@ Before we begin, let us analyze the products of prime numbers a bit more closely
                                 &\vdots &           &\vdots
 \end{align*}
 It seems like when the number \(1\) is added to any product of primes, the resulting number is prime.
-A natural seeming approach is to then make the contrapositive assumption that if \(p_i, p_n\in\Pset\),
-a \emph{natural number}
-\begin{equation}
-b = 2\mult 3 \mult 5 \mult \cdots \mult p_i\mult\cdots \mult p_n \mult p_n + 1 = p_i\mult c \notin\Pset
-\end{equation}
-for some \(c\in\Nset\), then
-\begin{equation*}
-    \frac b {p_i} = c = \frac{2 \mult 3 \mult 5 \mult \cdots \mult p_n + 1}{p_i} \notin\Nset\,.
+We might also ask ourselves, whether the product of primes
+\begin{equation*}\tag{hypothesis}
+    \prod = 2 \mult 3 \mult 5 \mult\cdots\mult p_n \mult p_n+1 \in\Pset \,.
 \end{equation*}
-This is in contradiction with our assumptions, which proves that there are infinitely many primes.
+for all \(n\in\Nset\).
 
+To prove this hypothesis, a natural seeming approach is to then make the \emph{contrapositive assumption},
+that if \(p_i, p_n\in\Pset\), then
+\begin{equation}
+    \prod = 2\mult 3 \mult 5 \mult \cdots \mult p_i\mult\cdots \mult p_n \mult p_n + 1 = p_i\mult c \notin\Pset
+\end{equation}
+for some \(c\in\Nset\). But if this were the case, then
+\begin{equation*}
+    \frac\prod {p_i} = c = \frac{2 \mult 3 \mult 5 \mult \cdots \mult p_n + 1}{p_i} \notin\Nset\,.
+\end{equation*}
+This is in contradiction with our assumptions, which proves that there are infinitely many primes
+(as the hypothessis provides us with a way of constructing them indefinitely).
 
-\section{The language of classical logic}
+\begin{example}[The derivative of a quadratic polynomial]
+    See \url{https://www.youtube.com/watch?v=OhmexZXPVkE}.
+\end{example}
 
-\section{Sequents, inferences and proofs in LK}
+\begin{example}[There exist non-rational real numbers]
+    A rational number \(q\in\Qset\) is a real number,
+    such that \(q = m\div n\) for some \(m,n\in\Zset\), where \(n\neq 0\).
+    Real numbers \(r\in\Rset\) that are not rational are irrational,
+    which can be stated bluntly as
+    \begin{equation*}
+        \nexists m, n \in \Zset, n\neq 0 : r = \frac m n : r \in \Rset - \Qset\,.
+    \end{equation*}
+    For example \(\sqrt 2\notin\Qset\).
+\end{example}
+
+\begin{theorem}
+    There are \(a,b\notin\Qset\), so that \(a^b\in\Qset\).
+    \label{the:a to b in Q}
+\end{theorem}
+
+\begin{proof}
+    Let \(a, b = \sqrt 2\). If \(\sqrt 2 ^{\sqrt 2} \in\Qset\), then we are done.
+    If this is not the case, let \(a = \sqrt2^{\sqrt 2}\) and \(b = \sqrt 2\).
+    Then
+    \begin{equation*}
+        a^b = \arcs*{\sqrt2^{\sqrt 2}}^{\sqrt 2} = \sqrt 2 ^ 2 = 2 \in\Qset\,.
+    \end{equation*}
+    This concludes the proof.
+\end{proof}
+
+The proof of Theorem~\ref{the:a to b in Q} is an example of a \emph{non-constructive proof},
+which are not allowed in \emph{non-intuitionistic} or \emph{constructive logic} \IK.
+
+Classical logic \LK{} only concerns itself with the notions of ''true'' and ''false''.
+In other words, classical logic functions based on the following principle:
+\begin{quote}
+    ''Any well-formed mathematical object \(A\) is either true or false;
+    if \(A\) is false, then not-\(A\) is true.''
+\end{quote}
+\emph{Tertium non datur}, ''\(A\) or not \(A\)'' is alwaus true.
+In intuitionistic logic \IK, this is not the case.
+It imposes the additional constraint that for an object \(A\)
+to exist in the first place, one has to be able to \emph{construct}
+such an \(A\).
+
+All of logic is based on an abstract language, that we now study.
+
+\section{The language of classical logic \LK}
+
+To be able to talk about any language, we must first define the set of symbols we are allowed to use.
+This set is know as the \emph{alphabet}.
+
+\begin{definition}[The alphabet of classical logic]
+    In the (formal) language of logic, valid strings consist of the following symbols:
+    \begin{enumerate}
+        \item Constants:
+            \begin{enumerate}
+                \item Individual constants: \(\set{k_j}, j\in\Nset\).
+                \item Function constants with \(i\) argument places: \(\set{f_j^i}, i,j\in\Nset\).
+                \item Predicate constants with \(i\) arguent places: \(\set{R_j^i}, i, j\in\Nset\)
+            \end{enumerate}
+        \item Variables:
+            \begin{enumerate}
+                \item Free variables \(\set{a_j}, j\in\Nset\),
+                \item Bound variables \(\set{x_j}, j\in\Nset\)
+            \end{enumerate}
+        \item The logical symbols \(\lnot\) (not), \(\land\) (and), \(\lor\), \(\limplies\) (implies),
+            \(\forall\) (for all) and \(\exists\). The first four are called \emph{propositional connectives}
+            and the last two are so-called \emph{quantifiers}.
+        \item Auxiliary symbols: parentheses \((\) and \()\), and the comma \(,\).
+    \end{enumerate}
+    \label{def:the alphabet of classical logic}
+\end{definition}
+
+\section{Sequents, inferences and proofs in \LK}
 
 \section{Metalanguage versus object langauge}
 
-\section{Examples of proofs in LK}
+\section{Examples of proofs in \LK}
 
-\section{Intuitionistic logic or LI, proofs in LI}
+\section{Intuitionistic logic or \IK, proofs in \IK}
 
-\section{The relation between LK and LI}
+\section{The relation between \LK{} and \IK}
 
 \section{Axiom systems}
 
-\section{The Cut-elimination theorems of LK}
+\section{The Cut-elimination theorems of \LK}
 
-\section{Consequences of Cut-elimination -- Consistency of LK an LJ}
+\section{Consequences of Cut-elimination -- Consistency of \LK{} an \IK}
 
-\section{Completeness of LK}
+\section{Completeness of \LK}
 
 \subsection{Structures, assignments, interpretations and validity}
 
-\subsection{Soundness of LK}
+\subsection{Soundness of \LK}
 
-\subsection{Reduction trees, completeness of LK}
+\subsection{Reduction trees, completeness of \LK}
 
 \section{Predicate calculus with equality}
 
