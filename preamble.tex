@@ -14,7 +14,10 @@
 \usepackage{mathtools}
 % Paperikokoasetuksia
 \usepackage{geometry}
+% Matematiikkasymboleita
 \usepackage{amssymb}
+% Vähemmän hienoja lauseympäristöjä
+\usepackage{amsthm}
 % Ei sisennettyjä kappaleita
 \usepackage{parskip}
 % Robustimpi komentosyntaksi
@@ -52,3 +55,7 @@
 \NewDocumentCommand{\Cset}{}{\mathbb{C}}
 \NewDocumentCommand{\Pset}{}{\mathbb{P}}
 
+% ----- Ympäristöjä -----
+\theoremstyle{definition}
+\newtheorem{example}{Example}[section]
+\newtheorem{theorem}[example]{Theorem}
