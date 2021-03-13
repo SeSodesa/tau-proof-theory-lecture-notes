@@ -1,0 +1,10 @@
+# Ignore everything
+*
+
+# Allow specific files
+!.gitignore
+!README.md
+
+# Allow files with certain suffixes
+!*.tex
+!*.bib

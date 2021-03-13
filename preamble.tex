@@ -1,0 +1,54 @@
+% Fonttiasetuksia
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+% Document metadata
+\begin{filecontents}[overwrite]{\jobname.xmpdata}
+\Title{\mycourse\ \mytitle, \implementation}
+\Author{\myauthor}
+\Publisher{\myschool}
+\Subject{A lecture diary for the Tampere Universiry course ''Proof Theory''.}
+\end{filecontents}
+% Tavutuksia
+\usepackage[finnish, main=english]{babel}
+% Parnneltu matikkapaketti
+\usepackage{mathtools}
+% Paperikokoasetuksia
+\usepackage{geometry}
+\usepackage{amssymb}
+% Ei sisennettyjä kappaleita
+\usepackage{parskip}
+% Robustimpi komentosyntaksi
+\usepackage{xparse}
+% Kuvia
+\usepackage{tikz}
+\usetikzlibrary{arrows, automata}
+% Taulukoita
+\usepackage{tabularx}
+\usepackage{booktabs}
+% Fontteja
+% Aktivoidaan itse harjoituspohjan aluksi
+% komennolla \fontfamily{put}\selectfont
+\usepackage{fourier}
+\usepackage{fontspec}
+\setmainfont{Heuristica}
+\setmonofont{DejaVu Sans Mono}
+% Kuva-, taulukko- sun muut tekstit
+\usepackage{caption}
+\captionsetup{labelfont=bf}
+\usepackage{csquotes}
+% Boldattua matematiikkaa
+\usepackage{bm}
+% Arkistomuotoinen PDF
+\usepackage[a-2b,mathxmp]{pdfx}
+  \hypersetup{hidelinks}
+\usepackage{url}
+
+% ----- Komentoja -----
+
+\NewDocumentCommand{\Nset}{}{\mathbb{N}}
+\NewDocumentCommand{\Zset}{}{\mathbb{Z}}
+\NewDocumentCommand{\Qset}{}{\mathbb{Q}}
+\NewDocumentCommand{\Rset}{}{\mathbb{R}}
+\NewDocumentCommand{\Cset}{}{\mathbb{C}}
+\NewDocumentCommand{\Pset}{}{\mathbb{P}}
+
