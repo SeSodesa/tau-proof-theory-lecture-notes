@@ -392,7 +392,7 @@ The following \emph{left} and \emph{right inference rules} are allowed in classi
                 \end{equation}
                 \begin{equation}
                     \tag{\(\limplies\):right}
-                    \label{eq:lor:right}
+                    \label{eq:limplies:right}
                     \begin{prooftree}
                         \hypo{C, \Gamma\seq\Delta, D}
                         \infer1{\Gamma\seq\Delta, C\limplies D}
@@ -542,11 +542,11 @@ i                       \(\arcs{a + b} \mult c\), \(t\), \(t_i\) \\
 \begin{equation*}
     \begin{prooftree}
         \hypo{A\seq A}
-        \infer1[lor:right]{\seq A, \lnot A}
-        \infer1[lor:right]{\seq A, A\lor\lnot A}
-        \infer1[exchange:right]{\seq A\lor\lnot A, A\lor\lnot A}
-        \infer1[lor:right]{\seq A\lor\lnot A, \lor\lnot A}
-        \infer1[contraction:right]{\seq A \lor\lnot A}
+        \infer1[\eqref{eq:lnot:right}]{\seq A, \lnot A}
+        \infer1[\eqref{eq:lor:right}]{\seq A, A\lor\lnot A}
+        \infer1[\eqref{eq:exchange:right}]{\seq A\lor\lnot A, A\lor\lnot A}
+        \infer1[\eqref{eq:lor:right}]{\seq A\lor\lnot A, \lor\lnot A}
+        \infer1[\eqref{eq:contraction:right}]{\seq A \lor\lnot A}
     \end{prooftree}
 \end{equation*}
 \end{example}
