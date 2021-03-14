@@ -423,8 +423,25 @@ The following \emph{left} and \emph{right inference rules} are allowed in classi
 \end{theorem}
 
 \begin{proof}
-
+    For any sequent \(T\seq\Lambda\), there exists a finite proof tree
+    \begin{center}
+    \begin{prooftree}
+        \hypo{A\seq A}
+        \infer1{\vdots}
+        \hypo{B\seq B}
+        \infer1{\vdots}
+        \infer2{T_1\seq\Lambda_1}
+        \hypo{C\seq C}
+        \infer1{\vdots}
+        \infer2{\vdots}
+        \infer1{T\seq\Lambda}
+    \end{prooftree}
+    \end{center}
 \end{proof}
+
+If there is a tree whose root is \(\seq A\), then \(A\) is \LK-provable.
+If a proof does not use the cut rule of definition~\ref{def:inference rules in LK}.\ref{it:cut},
+then a proof is deemed \emph{cut free}.
 
 \section{Metalanguage versus object langauge}
 
