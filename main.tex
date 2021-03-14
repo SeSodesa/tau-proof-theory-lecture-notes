@@ -183,14 +183,23 @@ This set is know as the \emph{alphabet}.
             Here \(A'\) refers to the expression obtained from \(A\),
             by replacing every occurrence of \(a\) with \(x\), wherever \(a\)
             occurs in \(A\).
-
             The outermost logical symbols of these formulae are \(\forall\) and \(\exists\), respectively.
         \item\label{it:formula 4}
-            Formulae are only theose expressions obtained by applying the items~\ref{it:formula 1}--\ref{it:formula 3}
+            Formulae are only those expressions obtained by applying the items~\ref{it:formula 1}--\ref{it:formula 3}
             of this definition.
     \end{enumerate}
     \label{def:formulae and outermost logical symbols}
 \end{definition}
+
+\begin{definition}[The alphabet of formulae]
+    The capital letters \(A_j, B_j, C_j, \ldots\) with or without the subindices \(j \in \Nset\cup\set0\) denote formulae.
+    The Greek capital letters \(T_j, \Delta_j, \Pi_j,\ldots\) with or without the subindices \(j\in\Nset\cup\set0\)
+    denote (finite) \emph{sequences} of formulae.
+    \label{def:alphabet of formulae}
+\end{definition}
+
+For example, \(T\corr A_1, A_2(a), \exists x A_3(x), \forall y A_4(y)\) is a finite sequence,
+as is \(\Delta \corr B_1, \exists x B_2(x)\).
 
 \section{Sequents, inferences and proofs in \LK}
 
