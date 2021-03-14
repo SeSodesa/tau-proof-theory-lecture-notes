@@ -165,6 +165,33 @@ This set is know as the \emph{alphabet}.
     \label{def:classical term}
 \end{definition}
 
+\begin{definition}[Formulae and their outermost logical symbols]
+    If \(R^i\) is a predicate constant with \(i\) argument places and \(t_1,\ldots,t_i\) are terms,
+    then \(R\arcs{t_1,\ldots,t_i}\) is an \emph{atomic formula}.
+    \emph{Formulae} and their \emph{outermost logical symbols} are defined recursively as follows:
+    \begin{enumerate}
+        \item\label{it:formula 1}
+            Every atomic formula is a formula. It has no outermost logical symbol.
+        \item\label{it:formula 2}
+            If \(A\) and \(B\) are fomulae, then \(\arcs{\lnot A}\), \(\arcs{A\land B}\),
+            \(\arcs{A\lor B}\) and \(\arcs{A\limplies B}\) are formulae.
+            Their outermost logical symbols are \(\lnot\), \(\land\), \(\lor\) and \(\limplies\),
+            respectively.
+        \item\label{it:formula 3}
+            If \(A\) is a formula, \(a\) is a free variable and \(x\) a bound variable not occurring in \(A\),
+            then \(\forall x A'\) and \(\exists x A'\) are formulae.
+            Here \(A'\) refers to the expression obtained from \(A\),
+            by replacing every occurrence of \(a\) with \(x\), wherever \(a\)
+            occurs in \(A\).
+
+            The outermost logical symbols of these formulae are \(\forall\) and \(\exists\), respectively.
+        \item\label{it:formula 4}
+            Formuale are only theose expressions obtained by applying the items~\ref{it:formula 1}--\ref{it:formula 3}
+            of this definition.
+    \end{enumerate}
+    \label{def:formulae and outermost logical symbols}
+\end{definition}
+
 \section{Sequents, inferences and proofs in \LK}
 
 \section{Metalanguage versus object langauge}
