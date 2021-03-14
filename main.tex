@@ -551,6 +551,21 @@ i                       \(\arcs{a + b} \mult c\), \(t\), \(t_i\) \\
 \end{equation*}
 \end{example}
 
+\begin{example}
+    Fully indicated \(F(a)\) simply means that we may apply quantifier rules.
+    To prove \(\seq\lnot\forall y\lnot F(y)\limplies\exists x F(x)\),
+    we reason as follows:
+\begin{equation*}
+    \begin{prooftree}
+        \hypo{F(a)\seq F(a)}
+        \infer1[\eqref{eq:exists:right}]{\lnot F(a)\seq\exists x F(x)}
+        \infer1[\eqref{eq:lnot:right}]{\seq\exists x F(x), \lnot F(a)}
+        \infer1[\eqref{eq:forall:right}]{\seq\exists x F(x), \forall y \lnot F(y)}
+        \infer1[\eqref{eq:lnot:left}]{\lnot\forall y\lnot F(y)\seq\exists x F(x)}
+        \infer1[]{\seq\lnot\forall y\lnot F(y)\limplies\exists x F(x)}
+    \end{prooftree}
+\end{equation*}
+\end{example}
 \section{Intuitionistic logic or \IK, proofs in \IK}
 
 \section{The relation between \LK{} and \IK}
