@@ -509,6 +509,20 @@ i                       \(\arcs{a + b} \mult c\), \(t\), \(t_i\) \\
 
 \section{Examples of proofs in \LK}
 
+\begin{example}
+    To prove \(\seq A \lor\lnot A\), we reason as follows:
+\begin{equation*}
+    \begin{prooftree}
+        \hypo{A\seq A}
+        \infer1[lor:right]{\seq A, \lnot A}
+        \infer1[lor:right]{\seq A, A\lor\lnot A}
+        \infer1[exchange:right]{\seq A\lor\lnot A, A\lor\lnot A}
+        \infer1[lor:right]{\seq A\lor\lnot A, \lor\lnot A}
+        \infer1[contraction:right]{\seq A \lor\lnot A}
+    \end{prooftree}
+\end{equation*}
+\end{example}
+
 \section{Intuitionistic logic or \IK, proofs in \IK}
 
 \section{The relation between \LK{} and \IK}
