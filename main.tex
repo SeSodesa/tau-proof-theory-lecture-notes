@@ -127,23 +127,42 @@ This set is know as the \emph{alphabet}.
 \begin{definition}[The alphabet of classical logic]
     In the (formal) language of logic, valid strings consist of the following symbols:
     \begin{enumerate}
-        \item Constants:
+        \item\label{it:classical constants} Constants:
             \begin{enumerate}
-                \item Individual constants: \(\set{k_j}, j\in\Nset\).
-                \item Function constants with \(i\) argument places: \(\set{f_j^i}, i,j\in\Nset\).
-                \item Predicate constants with \(i\) arguent places: \(\set{R_j^i}, i, j\in\Nset\)
+                \item\label{it:classical constants individual}
+                    Individual constants: \(k_j, j\in\Nset\cup\set 0\).
+                \item\label{it:classical constants function}
+                    Function constants with \(i\) argument places: \(f_j^i : i\in\Nset,j\in\Nset\cup\set0\).
+                \item\label{it:classical constants predicates}
+                    Predicate constants with \(i\) arguent places: \(R_j^i : i, j\in\Nset\)
             \end{enumerate}
-        \item Variables:
+        \item\label{it:classical variables} Variables:
             \begin{enumerate}
-                \item Free variables \(\set{a_j}, j\in\Nset\),
-                \item Bound variables \(\set{x_j}, j\in\Nset\)
+                \item\label{it:classical variables free} Free variables \(a_j, j\in\Nset\cup\set0\),
+                \item\label{it:classical variables bound} Bound variables \(x_j, j\in\Nset\cup\set0\)
             \end{enumerate}
-        \item The logical symbols \(\lnot\) (not), \(\land\) (and), \(\lor\), \(\limplies\) (implies),
+        \item\label{it:classical logical symbols} The logical symbols \(\lnot\) (not), \(\land\) (and), \(\lor\) (or), \(\limplies\) (implies),
             \(\forall\) (for all) and \(\exists\). The first four are called \emph{propositional connectives}
             and the last two are so-called \emph{quantifiers}.
-        \item Auxiliary symbols: parentheses \((\) and \()\), and the comma \(,\).
+        \item\label{it:classical auciliary symbols} Auxiliary symbols: parentheses \((\) and \()\), and the comma \(,\).
     \end{enumerate}
-    \label{def:the alphabet of classical logic}
+    \label{def:classical alphabet}
+\end{definition}
+
+\begin{definition}[Term]
+    The \emph{terms} of the language of classical logic are defined recursively or inductively as follows:
+    \begin{enumerate}
+        \item\label{it:classical term 1}
+            Every individual constant \(k_j\) is a term.
+        \item\label{it:classical term 2}
+            Every free variable \(a_j\) is a term.
+        \item\label{it:classical term 3}
+            If \(f^i\) is a function constant with \(i\) argument places and \(t_1,\ldots,t_i\) are terms,
+            then \(f\arcs{t_1,\ldots,t_i}\) is a term.
+        \item\label{it:classical term4}
+            Terms are defined only by the items~\ref{it:classical term 1}--\ref{it:classical term 3} of this definition.
+    \end{enumerate}
+    \label{def:classical term}
 \end{definition}
 
 \section{Sequents, inferences and proofs in \LK}
