@@ -201,6 +201,32 @@ This set is know as the \emph{alphabet}.
 For example, \(T\corr A_1, A_2(a), \exists x A_3(x), \forall y A_4(y)\) is a finite sequence,
 as is \(\Delta \corr B_1, \exists x B_2(x)\).
 
+\begin{definition}[Sequents, antecedents and succedents]
+    If \(T\) and \(\Delta\) are sequences of formulae,
+    then the expression \(T\seq\Delta\) is the \emph{sequent} of the two sequences.
+    Here \(T\) is the \emph{antecedent} and \(\Delta\) the \emph{succedent}
+    of the sequent.
+    \label{def:sequent}
+\end{definition}
+
+The natural meaning of \(A_1, \ldots,A_m\seq B_1,\ldots,B_n\) is that
+\begin{center}
+''If \(A_1\) and \(\cdots\) and \(A_m\), then \(B_1\) or \(\cdots\) or \(B_n\)''.
+\end{center}
+Note that the symbol \(\seq\) does not correspond to \(\limplies\).
+
+\begin{definition}[Contradiction and tautology]
+    A sequent without a succedent such as \(A_1, \ldots,A_m\seq\)
+    is used to denote that \(A_1, \ldots,A_m\) yields a \emph{contradiction}.
+    A sequent without an antecedent such as \(\seq B_1,\ldots,B_m\) means that
+    \(B_1,\ldots,B_m\) is a \emph{tautology}, or that \(B_1,\ldots,B_m\) holds.
+    A sequent with neither an antecedent or a succedent, as in \(\seq\),
+    means that \emph{There is a contradiction}.
+
+    \label{def:contradiction and tautology}
+\end{definition}
+
+
 \section{Sequents, inferences and proofs in \LK}
 
 \section{Metalanguage versus object langauge}
