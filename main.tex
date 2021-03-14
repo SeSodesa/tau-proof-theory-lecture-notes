@@ -257,9 +257,9 @@ we can infer \(S\) from them.
 \label{def:inference rules in LK}
 The following \emph{left} and \emph{right inference rules} are allowed in classical logic.
 \begin{enumerate}
-    \item Structural rules:
+    \item\label{it:structural rules} Structural rules:
         \begin{enumerate}
-            \item Weakening:
+            \item\label{it:weakening} Weakening:
                 \begin{center}
                     left:
                     \begin{prooftree}
@@ -274,7 +274,7 @@ The following \emph{left} and \emph{right inference rules} are allowed in classi
                     \end{prooftree}
                 \end{center}
                 Here \(D\) is called the \emph{weakening formula}.
-            \item Contraction:
+            \item\label{it:contraction} Contraction:
                 \begin{center}
                     left:
                     \begin{prooftree}
@@ -288,7 +288,7 @@ The following \emph{left} and \emph{right inference rules} are allowed in classi
                         \infer1{\Gamma\seq\Delta, D}
                     \end{prooftree}
                 \end{center}
-            \item Exchange:
+            \item\label{it:exchange} Exchange:
                 \begin{center}
                     left:
                     \begin{prooftree}
@@ -302,7 +302,7 @@ The following \emph{left} and \emph{right inference rules} are allowed in classi
                         \infer1{\Gamma\seq\Delta, D, C, \Lambda}
                     \end{prooftree}
                 \end{center}
-            \item Cut:
+            \item\label{it:cut} Cut:
                 \begin{center}
                     left:
                     \begin{prooftree}
@@ -312,9 +312,9 @@ The following \emph{left} and \emph{right inference rules} are allowed in classi
                     \end{prooftree}
                 \end{center}
         \end{enumerate}
-    \item Logical rules:
+    \item\label{it:logical rules} Logical rules:
         \begin{enumerate}
-            \item Negation:
+            \item\label{it:negation} Negation:
                 \begin{center}
                     \(\lnot\):left:
                     \begin{prooftree}
@@ -330,7 +330,7 @@ The following \emph{left} and \emph{right inference rules} are allowed in classi
                 \end{center}
                 Here \(D\) and \(\lnot D\) are the \emph{auxiliary} and \emph{principal} formulae
                 of this inference, respectively.
-            \item Conjugation:
+            \item\label{it:conjugation} Conjugation:
                 \begin{center}
                     \(\land\):left:
                     \begin{prooftree}
@@ -346,7 +346,7 @@ The following \emph{left} and \emph{right inference rules} are allowed in classi
                 \end{center}
                 Here \(C\) and \(D\) are the \emph{auxiliary} formulae and \(C\land D\) the \emph{principal} formula
                 of this inference.
-            \item Disjunction:
+            \item\label{it:disjunction} Disjunction:
                 \begin{center}
                     \(\lor\):left:
                     \begin{prooftree}
@@ -362,7 +362,7 @@ The following \emph{left} and \emph{right inference rules} are allowed in classi
                 \end{center}
                 Here \(C\) and \(D\) are the \emph{auxiliary} formulae and \(C\lor D\) the \emph{principal} formula
                 of this inference.
-            \item Implication:
+            \item\label{implication} Implication:
                 \begin{center}
                     \(\limplies\):left:
                     \begin{prooftree}
@@ -378,7 +378,7 @@ The following \emph{left} and \emph{right inference rules} are allowed in classi
                 \end{center}
                 Here \(C\) and \(D\) are the \emph{auxiliary} formulae and \(C\limplies D\) the \emph{principal} formula
                 of this inference.
-            \item Universality:
+            \item\label{it:universality} Universality:
                 \begin{center}
                     \(\forall\):left:
                     \begin{prooftree}
@@ -395,7 +395,7 @@ The following \emph{left} and \emph{right inference rules} are allowed in classi
                 Here \(t\) is an arbitrary term and \(a\) does not occur in the lower sequent.
                 \(F(t)\) and \(F(a)\) are the \emph{auxiliary formulae}, whereas \(\forall xF(x)\)
                 is the \emph{principal formula} of this inference.
-            \item Existence:
+            \item\label{it:existence} Existence:
                 \begin{center}
                     \(\exists\):left:
                     \begin{prooftree}
@@ -416,6 +416,15 @@ The following \emph{left} and \emph{right inference rules} are allowed in classi
         \end{enumerate}
 \end{enumerate}
 \end{definition}
+
+\begin{theorem}[Uniqueness of the axiom]%
+    \label{the:uniqueness of the axiom}
+    The sequent \(A\seq A\) is the only axiom.
+\end{theorem}
+
+\begin{proof}
+
+\end{proof}
 
 \section{Metalanguage versus object langauge}
 
