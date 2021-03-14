@@ -260,155 +260,183 @@ The following \emph{left} and \emph{right inference rules} are allowed in classi
     \item\label{it:structural rules} Structural rules:
         \begin{enumerate}
             \item\label{it:weakening} Weakening:
-                \begin{center}
-                    left:
+                \begin{equation}
+                    \tag{weakening:left}
+                    \label{eq:weakening:left}
                     \begin{prooftree}
                         \hypo{\Gamma\seq\Delta}
                         \infer1{D, \Gamma\seq\Delta}
                     \end{prooftree}
-                    \quad
-                    right:
+                \end{equation}
+                \begin{equation}
+                    \tag{weakening:right}
+                    \label{eq:weakening:right}
                     \begin{prooftree}
                         \hypo{\Gamma\seq\Delta}
                         \infer1{\Gamma\seq\Delta, D}
                     \end{prooftree}
-                \end{center}
+                \end{equation}
                 Here \(D\) is called the \emph{weakening formula}.
             \item\label{it:contraction} Contraction:
-                \begin{center}
-                    left:
+                \begin{equation}
+                    \tag{contraction:left}
+                    \label{eq:contraction:left}
                     \begin{prooftree}
                         \hypo{D, D, \Gamma\seq\Delta}
                         \infer1{D, \Gamma\seq\Delta}
                     \end{prooftree}
-                    \quad
-                    right:
+                \end{equation}
+                \begin{equation}
+                    \tag{contraction:right}
+                    \label{eq:contraction:right}
                     \begin{prooftree}
                         \hypo{\Gamma\seq\Delta, D, D}
                         \infer1{\Gamma\seq\Delta, D}
                     \end{prooftree}
-                \end{center}
+                \end{equation}
             \item\label{it:exchange} Exchange:
-                \begin{center}
-                    left:
+                \begin{equation}
+                    \tag{exchange:left}
+                    \label{eq:exchange:left}
                     \begin{prooftree}
                         \hypo{\Gamma,C, D, \Pi\seq\Delta}
                         \infer1{\Gamma, D, C, \Pi\seq\Delta}
                     \end{prooftree}
-                    \quad
-                    right:
+                \end{equation}
+                \begin{equation}
+                    \tag{exchange:right}%
+                    \label{eq:exchange:right}
                     \begin{prooftree}
                         \hypo{\Gamma\seq\Delta, C, D, \Lambda}
                         \infer1{\Gamma\seq\Delta, D, C, \Lambda}
                     \end{prooftree}
-                \end{center}
+                \end{equation}
             \item\label{it:cut} Cut:
-                \begin{center}
-                    left:
+                \begin{equation}
+                    \tag{cut}
+                    \label{eq:cut}
                     \begin{prooftree}
                         \hypo{\Gamma\seq\Delta, D}
                         \hypo{D, \Pi\seq\lambda}
                         \infer2{\Gamma, \Pi\seq\Delta, \Lambda}
                     \end{prooftree}
-                \end{center}
+                \end{equation}
         \end{enumerate}
     \item\label{it:logical rules} Logical rules:
         \begin{enumerate}
             \item\label{it:negation} Negation:
-                \begin{center}
-                    \(\lnot\):left:
+                \begin{equation}
+                    \tag{\(\lnot\):left}
+                    \label{eq:lnot:left}
                     \begin{prooftree}
                         \hypo{\Gamma\seq\Delta, D}
                         \infer1{\lnot D, \Gamma\seq\Delta}
                     \end{prooftree}
-                    \qquad
-                    \(\lnot\):right:
+                \end{equation}
+                \begin{equation}
+                    \tag{\(\lnot\):right}
+                    \label{eq:lnot:right}
                     \begin{prooftree}
                         \hypo{D, \Gamma\seq\Delta}
                         \infer1{\Gamma\seq\Delta, \lnot D}
                     \end{prooftree}
-                \end{center}
+                \end{equation}
                 Here \(D\) and \(\lnot D\) are the \emph{auxiliary} and \emph{principal} formulae
                 of this inference, respectively.
             \item\label{it:conjugation} Conjugation:
-                \begin{center}
-                    \(\land\):left:
+                \begin{equation}
+                    \tag{\(\land\):left}
+                    \label{eq:land:left}
                     \begin{prooftree}
                         \hypo{C, \Gamma\seq\Delta}
                         \infer1{C\land D, \Gamma\seq\Delta}
                     \end{prooftree}
-                    \qquad
-                    \(\land\):right:
+                \end{equation}
+                \begin{equation}
+                    \tag{\(\land\):right}
+                    \label{eq:land:right}
                     \begin{prooftree}
                         \hypo{D, \Gamma\seq\Delta}
                         \infer1{C\land D\Gamma\seq\Delta}
                     \end{prooftree}
-                \end{center}
+                \end{equation}
                 Here \(C\) and \(D\) are the \emph{auxiliary} formulae and \(C\land D\) the \emph{principal} formula
                 of this inference.
             \item\label{it:disjunction} Disjunction:
-                \begin{center}
-                    \(\lor\):left:
+                \begin{equation}
+                    \tag{\(\lor\):left}
+                    \label{eq:lor:left}
                     \begin{prooftree}
                         \hypo{\Gamma\seq\Delta, C}
                         \infer1{\Gamma\seq\Delta, C\land D}
                     \end{prooftree}
-                    \qquad
-                    \(\lor\):right:
+                \end{equation}
+                \begin{equation}
+                    \tag{\(\lor\):right}
+                    \label{eq:lor:right}
                     \begin{prooftree}
                         \hypo{\Gamma\seq\Delta, D}
                         \infer1{\Gamma\seq\Delta, C\land D}
                     \end{prooftree}
-                \end{center}
+                \end{equation}
                 Here \(C\) and \(D\) are the \emph{auxiliary} formulae and \(C\lor D\) the \emph{principal} formula
                 of this inference.
             \item\label{implication} Implication:
-                \begin{center}
-                    \(\limplies\):left:
+                \begin{equation}
+                    \tag{\(\limplies\):left}
+                    \label{eq:limplies:left}
                     \begin{prooftree}
                         \hypo{\Gamma\seq\Delta, C, D, \Pi\seq\Lambda}
                         \infer1{C\limplies D, \Gamma, \Pi\limplies\Delta, \Lambda}
                     \end{prooftree}
-                    \qquad
-                    \(\limplies\):right:
+                \end{equation}
+                \begin{equation}
+                    \tag{\(\limplies\):right}
+                    \label{eq:lor:right}
                     \begin{prooftree}
                         \hypo{C, \Gamma\seq\Delta, D}
                         \infer1{\Gamma\seq\Delta, C\limplies D}
                     \end{prooftree}
-                \end{center}
+                \end{equation}
                 Here \(C\) and \(D\) are the \emph{auxiliary} formulae and \(C\limplies D\) the \emph{principal} formula
                 of this inference.
             \item\label{it:universality} Universality:
-                \begin{center}
-                    \(\forall\):left:
+                \begin{equation}
+                    \tag{\(\forall\):left}
+                    \label{eq:forall:left}
                     \begin{prooftree}
                         \hypo{F(t), \Gamma\seq\Delta}
                         \infer1{\forall x F(x), \Gamma\seq\Delta}
                     \end{prooftree}
-                    \qquad
-                    \(\forall\):right:
+                \end{equation}
+                \begin{equation}
+                    \tag{\(\forall\):right}
+                    \label{eq:forall:right}
                     \begin{prooftree}
                         \hypo{\Gamma\seq\Delta, F(a)}
                         \infer1{\Gamma\seq\Delta, \forall xF(x)}
                     \end{prooftree}
-                \end{center}
+                \end{equation}
                 Here \(t\) is an arbitrary term and \(a\) does not occur in the lower sequent.
                 \(F(t)\) and \(F(a)\) are the \emph{auxiliary formulae}, whereas \(\forall xF(x)\)
                 is the \emph{principal formula} of this inference.
             \item\label{it:existence} Existence:
-                \begin{center}
-                    \(\exists\):left:
+                \begin{equation}
+                    \tag{\(\exists\):left}
+                    \label{eq:exists:left}
                     \begin{prooftree}
                         \hypo{F(a), \Gamma\seq\Delta}
                         \infer1{\exists{}x F(x), \Gamma\seq\Delta}
                     \end{prooftree}
-                    \qquad
-                    \(\exists\):right:
+                \end{equation}
+                \begin{equation}
+                    \tag{\(\exists\):right}
+                    \label{eq:exists:right}
                     \begin{prooftree}
                         \hypo{\Gamma\seq\Delta, F(t)}
                         \infer1{\Gamma\seq\Delta, \exists{}xF(x)}
                     \end{prooftree}
-                \end{center}
+                \end{equation}
                 Again, here \(a\) does not occur in the lower sequent and \(t\) is an arbitrary term.
                 \(F(t)\) and \(F(a)\) are the \emph{auxiliary formulae}, whereas \(\forall xF(x)\)
                 is the \emph{principal formula} of this inference.
