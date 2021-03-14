@@ -226,6 +226,25 @@ Note that the symbol \(\seq\) does not correspond to \(\limplies\).
     \label{def:contradiction and tautology}
 \end{definition}
 
+\begin{definition}[Inferences, lower and upper sequents]
+    An \emph{inference} is an expression
+    \begin{center}
+    \begin{prooftree}
+        \hypo{S_1}\infer1{S}
+    \end{prooftree}
+    \quad
+    or
+    \quad
+    \begin{prooftree}
+        \hypo{S_1}\hypo{S_2}\infer2{S}
+    \end{prooftree}
+    \end{center}
+    where \(S_1\) and \(S_2\) are \emph{upper sequents} and \(S\) is a \emph{lower sequent}.
+    \label{def:inference}
+\end{definition}
+
+The meaning of this notation is that if \(S_1\) and/or \(S_2\) are given,
+we can infer \(S\) from them.
 
 \section{Sequents, inferences and proofs in \LK}
 
