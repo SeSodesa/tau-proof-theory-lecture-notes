@@ -250,8 +250,65 @@ we can infer \(S\) from them.
 
 \begin{definition}[Inference rules in \LK]%
 \label{def:inference rules in LK}
-
-\end{definition}<++>
+The following \emph{left} and \emph{right inference rules} are allowed in classical logic.
+\begin{enumerate}
+    \item Structural rules:
+        \begin{enumerate}
+            \item Weakening:
+                \begin{center}
+                    left:
+                    \begin{prooftree}
+                        \hypo{\Gamma\seq\Delta}
+                        \infer1{D, \Gamma\seq\Delta}
+                    \end{prooftree}
+                    \quad
+                    right:
+                    \begin{prooftree}
+                        \hypo{\Gamma\seq\Delta}
+                        \infer1{\Gamma\seq\Delta, D}
+                    \end{prooftree}
+                \end{center}
+                Here \(D\) is called the \emph{weakening formula}.
+            \item Contraction:
+                \begin{center}
+                    left:
+                    \begin{prooftree}
+                        \hypo{D, D, \Gamma\seq\Delta}
+                        \infer1{D, \Gamma\seq\Delta}
+                    \end{prooftree}
+                    \quad
+                    right:
+                    \begin{prooftree}
+                        \hypo{\Gamma\seq\Delta, D, D}
+                        \infer1{\Gamma\seq\Delta, D}
+                    \end{prooftree}
+                \end{center}
+            \item Exchange:
+                \begin{center}
+                    left:
+                    \begin{prooftree}
+                        \hypo{\Gamma,C, D, \Pi\seq\Delta}
+                        \infer1{\Gamma, D, C, \Pi\seq\Delta}
+                    \end{prooftree}
+                    \quad
+                    right:
+                    \begin{prooftree}
+                        \hypo{\Gamma\seq\Delta, C, D, \Lambda}
+                        \infer1{\Gamma\seq\Delta, D, C, \Lambda}
+                    \end{prooftree}
+                \end{center}
+            \item Cut:
+                \begin{center}
+                    left:
+                    \begin{prooftree}
+                        \hypo{\Gamma\seq\Delta, D}
+                        \hypo{D, \Pi\seq\lambda}
+                        \infer2{\Gamma, \Pi\seq\Delta, \Lambda}
+                    \end{prooftree}
+                \end{center}
+        \end{enumerate}
+\end{enumerate}
+\end{definition}
 
 \section{Metalanguage versus object langauge}
 
