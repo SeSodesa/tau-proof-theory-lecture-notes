@@ -450,11 +450,11 @@ that we use every day, whereas an object language consists of certain strings fo
 a certain alphabet, with a specific goal of describing a certain set of objects.
 In this course, the object language is used to describe mathematical logic and
 is formed from the definitions~\ref{def:classical alphabet}--\ref{def:inference}.
-We need to differentiate between the two languages and for that purpose, a hierarchical description is given in table
-\ref{tab:language hierarchy}.
+A hierarchical description of it is given in table~\ref{tab:language hierarchy}.
 
 \begin{tabenv}{Object language hierarchy.}%
 \label{tab:language hierarchy}
+\small
 \begin{tabular}{c|l|p{0.6\textwidth}}
     \toprule
     Object level& Object name & Examples\\
@@ -467,7 +467,7 @@ We need to differentiate between the two languages and for that purpose, a hiera
             \infer1{\vdots}
             \infer2{T\seq\Delta}
         \end{prooftree}
-        \qquad
+        \qquad\qquad
         \begin{prooftree}
             \hypo{S_1}
             \infer1{\vdots}
@@ -495,14 +495,14 @@ We need to differentiate between the two languages and for that purpose, a hiera
     \midrule
     4.  & Sequents  &   \(A_1,\ldots, A_m\seq B_1,\ldots,B_n\), \(T\seq\Delta\), \(\Pi\seq\Gamma\)\\
     \midrule
-    3.  & Formulae  &   \(A, B, C,\ldots\), \(R\arcs{t_1,\ldots,t_n}\), \(a = b\), \(a + b = c\), \(0\mult a  = b \mult c\), \(a' = 0\),\newline
+    3.  & Formulae  &   \(A, B, C,\ldots\), \(R\arcs{t_1,\ldots,t_n}\), \(a = b\), \(a + b = c\), \(0\mult a  = b \mult c\), \(a' = 0\),
                         \(\forall x\arcs{x + b = c}\), \(\exists x\arcs{x = a} \lor \lnot\exists z\arcs{z = b}\)\\
     \midrule
     2.  & Terms     &   \(0, \ldots\), \(a, b, c, \ldots\), \(0 + a\), \(a\mult b\), \(0'\),
 i                       \(\arcs{a + b} \mult c\), \(t\), \(t_i\) \\
     \midrule
     1.  & Alphabet  &   \(0, \ldots\), \(a, b, c, \ldots\), \(x, y, z, \ldots\), \(+, \mult, ', \ldots\),
-                        \(\lnot, \land,\lor, \limplies, \forall, \exists, = \), \(R\arcs{,\ldots,}\)\\
+    \(\lnot, \land,\lor, \limplies, \forall, \exists, = \), \(R\arcs{,\ldots,}\), \((\), \()\)\\
     \bottomrule
 \end{tabular}
 \end{tabenv}
