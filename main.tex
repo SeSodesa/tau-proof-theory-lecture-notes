@@ -124,7 +124,8 @@ All of logic is based on an abstract language, that we now study.
 To be able to talk about any language, we must first define the set of symbols we are allowed to use.
 This set is know as the \emph{alphabet}.
 
-\begin{definition}[The alphabet of classical logic]
+\begin{definition}[The alphabet of classical logic]%
+    \label{def:classical alphabet}
     In the (formal) language of logic, valid strings consist of the following symbols:
     \begin{enumerate}
         \item\label{it:classical constants} Constants:
@@ -146,10 +147,10 @@ This set is know as the \emph{alphabet}.
             and the last two are so-called \emph{quantifiers}.
         \item\label{it:classical auciliary symbols} Auxiliary symbols: parentheses \((\) and \()\), and the comma \(,\).
     \end{enumerate}
-    \label{def:classical alphabet}
 \end{definition}
 
-\begin{definition}[Term]
+\begin{definition}[Term]%
+    \label{def:classical term}
     The \emph{terms} of the language of classical logic are defined recursively or inductively as follows:
     \begin{enumerate}
         \item\label{it:classical term 1}
@@ -162,10 +163,10 @@ This set is know as the \emph{alphabet}.
         \item\label{it:classical term4}
             Terms are defined only by the items~\ref{it:classical term 1}--\ref{it:classical term 3} of this definition.
     \end{enumerate}
-    \label{def:classical term}
 \end{definition}
 
-\begin{definition}[Formulae and their outermost logical symbols]
+\begin{definition}[Formulae and their outermost logical symbols]%
+    \label{def:formulae and outermost logical symbols}
     If \(R^i\) is a predicate constant with \(i\) argument places and \(t_1,\ldots,t_i\) are terms,
     then \(R\arcs{t_1,\ldots,t_i}\) is an \emph{atomic formula}.
     \emph{Formulae} and their \emph{outermost logical symbols} are defined recursively as follows:
@@ -188,7 +189,6 @@ This set is know as the \emph{alphabet}.
             Formulae are only those expressions obtained by applying the items~\ref{it:formula 1}--\ref{it:formula 3}
             of this definition.
     \end{enumerate}
-    \label{def:formulae and outermost logical symbols}
 \end{definition}
 
 \begin{definition}[The alphabet of formulae]
@@ -204,12 +204,12 @@ as is \(\Delta \corr B_1, \exists x B_2(x)\).
 
 \section{Sequents, inferences and proofs in \LK}
 
-\begin{definition}[Sequents, antecedents and succedents]
+\begin{definition}[Sequents, antecedents and succedents]%
+    \label{def:sequent}
     If \(T\) and \(\Delta\) are sequences of formulae,
     then the expression \(T\seq\Delta\) is the \emph{sequent} of the two sequences.
     Here \(T\) is the \emph{antecedent} and \(\Delta\) the \emph{succedent}
     of the sequent.
-    \label{def:sequent}
 \end{definition}
 
 The natural meaning of \(A_1, \ldots,A_m\seq B_1,\ldots,B_n\) is that
@@ -218,18 +218,18 @@ The natural meaning of \(A_1, \ldots,A_m\seq B_1,\ldots,B_n\) is that
 \end{center}
 Note that the symbol \(\seq\) does not correspond to \(\limplies\).
 
-\begin{definition}[Contradiction and tautology]
+\begin{definition}[Contradiction and tautology]%
+    \label{def:contradiction and tautology}
     A sequent without a succedent such as \(A_1, \ldots,A_m\seq\)
     is used to denote that \(A_1, \ldots,A_m\) yields a \emph{contradiction}.
     A sequent without an antecedent such as \(\seq B_1,\ldots,B_m\) means that
     \(B_1,\ldots,B_m\) is a \emph{tautology}, or that \(B_1,\ldots,B_m\) holds.
     A sequent with neither an antecedent or a succedent, as in \(\seq\),
     means that \emph{There is a contradiction}.
-
-    \label{def:contradiction and tautology}
 \end{definition}
 
-\begin{definition}[Inferences, lower and upper sequents]
+\begin{definition}[Inferences, lower and upper sequents]%
+    \label{def:inference}
     An \emph{inference} is an expression
     \begin{center}
     \begin{prooftree}
@@ -243,11 +243,15 @@ Note that the symbol \(\seq\) does not correspond to \(\limplies\).
     \end{prooftree}
     \end{center}
     where \(S_1\) and \(S_2\) are \emph{upper sequents} and \(S\) is a \emph{lower sequent}.
-    \label{def:inference}
 \end{definition}
 
 The meaning of this notation is that if \(S_1\) and/or \(S_2\) are given,
 we can infer \(S\) from them.
+
+\begin{definition}[Inference rules in \LK]%
+\label{def:inference rules in LK}
+
+\end{definition}<++>
 
 \section{Metalanguage versus object langauge}
 
