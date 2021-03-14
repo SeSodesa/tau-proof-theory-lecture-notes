@@ -566,6 +566,19 @@ i                       \(\arcs{a + b} \mult c\), \(t\), \(t_i\) \\
     \end{prooftree}
 \end{equation*}
 \end{example}
+
+\paragraph{Note:}
+Proof manipulation always happens ''at the ends'' of sequences:
+The first formula on the left of \(\seq\) and the last formula on the right of \(\seq\).
+
+\paragraph{Note:}
+The expression \(A\equiv B\) means that
+\begin{prooftree}
+    \hypo{\seq A\limplies B}
+    \hypo{\seq B\limplies A}
+    \infer2[\eqref{eq:land:right}]{\seq\arcs{A\limplies B}\land\arcs{B\limplies B}}
+\end{prooftree}\,.
+
 \section{Intuitionistic logic or \IK, proofs in \IK}
 
 \section{The relation between \LK{} and \IK}
