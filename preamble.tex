@@ -41,6 +41,8 @@
 \usepackage{csquotes}
 % Boldattua matematiikkaa
 \usepackage{bm}
+% symboleita symboleiden päälle
+\usepackage{scalerel, stackengine}
 % Arkistomuotoinen PDF
 \usepackage[a-2b,mathxmp]{pdfx}
   \hypersetup{hidelinks}
@@ -58,6 +60,18 @@
 \NewDocumentCommand{\LK}{}{LK}
 \NewDocumentCommand{\IK}{}{IK}
 \NewDocumentCommand{\limplies}{}{\supset}
+\NewDocumentCommand{\corr}{}{%
+    \mathrel{%
+        \stackon[1.5pt]{=}{%
+            \stretchto{%
+                \scalerel*[\widthof{=}]{\wedge}{\rule{1ex}{3ex}}%
+            }{0.5ex}%
+        }%
+    }%
+}
+\NewDocumentCommand{\seq}{}{\longrightarrow}
+
+
 
 % ----- Rajoittimia -----
 \DeclarePairedDelimiter{\set}{\{}{\}}
