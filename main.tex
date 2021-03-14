@@ -453,7 +453,7 @@ is formed from the definitions~\ref{def:classical alphabet}--\ref{def:inference}
 We need to differentiate between the two languages and for that purpose, a hierarchical description is given in table
 \ref{tab:language hierarchy}.
 
-\begin{tabenv}{Language hierarchy.}%
+\begin{tabenv}{Object language hierarchy.}%
 \label{tab:language hierarchy}
 \begin{tabular}{c|l|p{0.6\textwidth}}
     \toprule
@@ -467,7 +467,18 @@ We need to differentiate between the two languages and for that purpose, a hiera
             \infer1{\vdots}
             \infer2{T\seq\Delta}
         \end{prooftree}
-    }\\[2em]
+        \qquad
+        \begin{prooftree}
+            \hypo{S_1}
+            \infer1{\vdots}
+            \hypo{S_2}
+            \infer1{\vdots}
+            \infer2{S_4}
+            \hypo{S_3}
+            \infer1{\vdots}
+            \infer2{S}
+        \end{prooftree}
+    }\\
     \midrule
     5.  & Inferences & {
         \begin{prooftree}
