@@ -352,13 +352,19 @@ The following \emph{left} and \emph{right inference rules} are allowed in classi
                         \hypo{C, \Gamma\seq\Delta}
                         \infer1{C\land D, \Gamma\seq\Delta}
                     \end{prooftree}
+                    \quad\text{and}\quad
+                    \begin{prooftree}
+                        \hypo{D,\Gamma\seq\Delta}
+                        \infer1{C\land D, \Gamma\seq\Delta}
+                    \end{prooftree}
                 \end{equation}
                 \begin{equation}
                     \tag{\(\land\):right}
                     \label{eq:land:right}
                     \begin{prooftree}
-                        \hypo{D, \Gamma\seq\Delta}
-                        \infer1{C\land D\Gamma\seq\Delta}
+                        \hypo{\Gamma\seq\Delta, C}
+                        \hypo{\Gamma\seq\Delta, D}
+                        \infer2{\Gamma\seq\Delta, C\land D}
                     \end{prooftree}
                 \end{equation}
                 Here \(C\) and \(D\) are the \emph{auxiliary} formulae and \(C\land D\) the \emph{principal} formula
@@ -369,15 +375,21 @@ The following \emph{left} and \emph{right inference rules} are allowed in classi
                     \label{eq:lor:left}
                     \begin{prooftree}
                         \hypo{\Gamma\seq\Delta, C}
-                        \infer1{\Gamma\seq\Delta, C\land D}
+                        \hypo{\Gamma\seq\Delta, D}
+                        \infer2{C\lor D, \Gamma\seq\Delta}
                     \end{prooftree}
                 \end{equation}
                 \begin{equation}
                     \tag{\(\lor\):right}
                     \label{eq:lor:right}
                     \begin{prooftree}
+                        \hypo{\Gamma\seq\Delta, C}
+                        \infer1{\Gamma\seq\Delta, C\lor D}
+                    \end{prooftree}
+                    \quad\text{and}\quad
+                    \begin{prooftree}
                         \hypo{\Gamma\seq\Delta, D}
-                        \infer1{\Gamma\seq\Delta, C\land D}
+                        \infer1{\Gamma\seq\Delta, C\lor D}
                     \end{prooftree}
                 \end{equation}
                 Here \(C\) and \(D\) are the \emph{auxiliary} formulae and \(C\lor D\) the \emph{principal} formula
