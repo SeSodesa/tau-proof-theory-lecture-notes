@@ -769,6 +769,22 @@ We also accept the inferences
 
 \section{Intuitionistic logic or \IK, proofs in \IK}
 
+Intuitionistic logic \IK{} is very similar to classical logic \LK,
+except that in its inference rules, the succedents \(\Delta\) of upper sequents \(T\seq\Delta\)
+may only contain \emph{at most} a single formula. For example, the inferences
+\begin{equation*}
+    \begin{prooftree}
+        \hypo{T\seq D, D}
+        \infer1[\eqref{eq:contraction:right}]{T\seq D}
+    \end{prooftree}
+    \quad\text{and}\quad
+    \begin{prooftree}
+        \hypo{T\seq C, D}
+        \infer1[\eqref{eq:exchange:right}]{T\seq D, C}
+    \end{prooftree}
+\end{equation*}
+are not allowed in \IK.
+
 \section{The relation between \LK{} and \IK}
 
 \section{Axiom systems}
