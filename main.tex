@@ -665,6 +665,24 @@ could be constructed, the claim holds. \qed
     In light of proofs~\eqref{exe:2.5.4:eq:1} and \eqref{exe:2.5.4:eq:2}, the claim holds.
 \end{example}
 
+\begin{example}[Double negation in \LK]\label{exa:double negation in LK}
+    We prove the law of double negation in \LK{} as follows:
+\begin{equation*}
+    \begin{prooftree}
+        \hypo{A\seq A}
+        \infer1[\eqref{eq:lnot:left}]{\lnot A, A\seq}
+        \infer1[\eqref{eq:lnot:right}]{A\seq\lnot\lnot A}
+        \infer1[\eqref{eq:limplies:right}]{\seq A\limplies\lnot\lnot A}
+        \hypo{A\seq A}
+        \infer1[\eqref{eq:lnot:right}]{\seq A, \lnot A}
+        \infer1[\eqref{eq:lnot:left}]{\lnot\lnot A\seq A}
+        \infer1[\eqref{eq:limplies:right}]{\seq\lnot\lnot A\limplies A}
+        \infer2[\eqref{eq:land:right}]{\seq\arcs{A\limplies\lnot\lnot A}\land\arcs{\lnot\lnot A\limplies A}}
+    \end{prooftree}
+\end{equation*}
+    Note that this is not possible in \IK.
+\end{example}
+
 \subsection{Exercises}
 
 \begin{exercise}[Exercise 2.5.2]\label{exe:2.5.2}
