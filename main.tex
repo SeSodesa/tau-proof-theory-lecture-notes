@@ -734,6 +734,21 @@ We also accept the inferences
     Omitted. See Takeuti's book~\cite[14-17]{Takeuti-1987} for the details.
 \end{proof}
 
+\begin{definition}[Alphabetical variants]\label{def:alphabetical variants}
+    The formulae \(A\) and \(B\) are \emph{alphabetical variants}
+    if they differ only in the names of their bound variables.
+    This is denoted with \(A\varof{B}\). This is an equivalence relation.
+\end{definition}
+
+For example, it should be easily seen that
+\begin{equation*}
+    \exists x\arcs{f(x) = g(x)} \varof\exists y\arcs{f(y) = g(y)}\,.
+\end{equation*}
+It can be shown that if \(A\sim B\), then \(\seq\arcs{A\limplies B}\land\arcs{B\limplies A}\).
+In other words, if \(A\varof B\) then \(A\equiv B\).
+
+
+
 \subsection{Exercises}
 
 \begin{exercise}[Exercise 2.5.2]\label{exe:2.5.2}
