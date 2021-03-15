@@ -250,8 +250,9 @@ Note that the symbol \(\seq\) does not correspond to \(\limplies\).
     where \(S_1\) and \(S_2\) are \emph{upper sequents} and \(S\) is a \emph{lower sequent}.
 \end{definition}
 
-The meaning of this notation is that if \(S_1\) and/or \(S_2\) are given,
-we can infer \(S\) from them.
+The meaning of this notation is that if \(S_1\) and \(S_2\) are given,
+we can inferred \(S\) from them. This inference could consist of multiple
+individual inferences in sequence.
 
 \begin{definition}[Inference rules in \LK]%
 \label{def:inference rules in LK}
@@ -386,8 +387,9 @@ The following \emph{left} and \emph{right inference rules} are allowed in classi
                     \tag{\(\limplies\):left}
                     \label{eq:limplies:left}
                     \begin{prooftree}
-                        \hypo{\Gamma\seq\Delta, C, D, \Pi\seq\Lambda}
-                        \infer1{C\limplies D, \Gamma, \Pi\limplies\Delta, \Lambda}
+                        \hypo{\Gamma\seq\Delta, C}
+                        \hypo{D, \Pi\seq\Lambda}
+                        \infer2{C\limplies D, \Gamma, \Pi\limplies\Delta, \Lambda}
                     \end{prooftree}
                 \end{equation}
                 \begin{equation}
@@ -578,7 +580,7 @@ The expression \(A\equiv B\) means that
 \begin{prooftree}
     \hypo{\seq A\limplies B}
     \hypo{\seq B\limplies A}
-    \infer2[\eqref{eq:land:right}]{\seq\arcs{A\limplies B}\land\arcs{B\limplies B}}
+    \infer2[\eqref{eq:land:right}]{\seq\arcs{A\limplies B}\land\arcs{B\limplies A}}
 \end{prooftree}\,.
 
 \begin{example}[Exercise 2.5.1]\label{exa:2.5.1}
