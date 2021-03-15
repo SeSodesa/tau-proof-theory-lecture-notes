@@ -579,7 +579,7 @@ The expression \(A\equiv B\) means that
     \infer2[\eqref{eq:land:right}]{\seq\arcs{A\limplies B}\land\arcs{B\limplies B}}
 \end{prooftree}\,.
 
-\begin{exercise}
+\begin{example}[Exercise 2.5.1]\label{exa:2.5.1}
     To prove \(A\lor B\equiv \lnot\arcs{\lnot A\land\lnot B}\) we need to prove two things,
     according to the above note. First we show that
     \(\seq A\lor B\limplies\lnot\arcs{\lnot A\land\lnot B}\):
@@ -622,8 +622,46 @@ Then we prove the statement \(\seq\lnot\arcs{\lnot A \land\lnot B} \limplies A\l
 
 As the valid proofs~\ref{eq:equivalence example part 1} and \ref{eq:equivalence example part 2}
 could be constructed, the claim holds. \qed
+\end{example}
 
-\end{exercise}
+\begin{example}[Exercise 2.5.4]\label{exa:2.5.4}
+    We wish to show that \(\lnot\forall y F(y)\equiv\exists x\lnot F(x)\).
+    As per usual with equivalences, we need to do the proof in two parts.
+    First we show that \(\seq\lnot\forall y F(y)\limplies\exists x\lnot F(x)\):
+
+\begin{proof}
+    \begin{equation}\label{exe:2.5.4:eq:1}
+        \begin{prooftree}
+            \hypo{F(a)\seq F(a)}
+            \infer1[\eqref{eq:lnot:right}]{\seq F(a), \lnot F(a)}
+            \infer1[\eqref{eq:exists:right}]{\seq F(a), \exists x\lnot F(x)}
+            \infer1[\eqref{eq:exchange:right}]{\seq \exists x\lnot F(x), F(a)}
+            \infer1[\eqref{eq:forall:right}]{\seq \exists x\lnot F(x), \forall y F(y)}
+            \infer1[\eqref{eq:lnot:left}]{\forall y F(y)\seq \exists x\lnot F(x)}
+            \infer1[\eqref{eq:limplies:right}]{\seq\lnot\forall y F(y)\limplies\exists x\lnot F(x)}
+        \end{prooftree}
+    \end{equation}
+\end{proof}
+
+    Then we prove the statement in the opposite direction,
+    as in \(\seq\exists x\lnot F(x)\limplies\lnot\forall y F(y)\):
+
+    \begin{proof}
+        \begin{equation}\label{exe:2.5.4:eq:2}
+            \begin{prooftree}
+                \hypo{F(a)\seq F(a)}
+                \infer1[\eqref{eq:forall:left}]{\forall y F(y)\seq F(a)}
+                \infer1[\eqref{eq:lnot:right}]{\seq F(a), \lnot\forall y F(y)}
+                \infer1[\eqref{eq:exchange:right}]{\seq\lnot\forall y F(y), F(a)}
+                \infer1[\eqref{eq:lnot:left}]{\lnot F(a)\seq\lnot\forall yF(y)}
+                \infer1[\eqref{eq:exists:left}]{\exists x\lnot F(x)\seq\lnot\forall yF(y)}
+                \infer1[\eqref{eq:limplies:right}]{\seq\exists x\lnot F(x)\limplies\lnot\forall y F(y)}
+            \end{prooftree}
+        \end{equation}
+    \end{proof}
+
+    In light of proofs~\eqref{exe:2.5.4:eq:1} and \eqref{exe:2.5.4:eq:2}, the claim holds.
+\end{example}
 
 \section{Intuitionistic logic or \IK, proofs in \IK}
 
