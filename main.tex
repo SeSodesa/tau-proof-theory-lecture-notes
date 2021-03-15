@@ -537,6 +537,8 @@ i                       \(\arcs{a + b} \mult c\), \(t\), \(t_i\) \\
 
 \section{Examples of proofs in \LK}
 
+\subsection{Examples}
+
 \begin{example}
     To prove \(\seq A \lor\lnot A\), we reason as follows:
 \begin{equation*}
@@ -662,6 +664,39 @@ could be constructed, the claim holds. \qed
 
     In light of proofs~\eqref{exe:2.5.4:eq:1} and \eqref{exe:2.5.4:eq:2}, the claim holds.
 \end{example}
+
+\subsection{Exercises}
+
+\begin{exercise}[Exercise 2.5.2]\label{exe:2.5.2}
+    Prove \(A\limplies B \equiv \lnot A\lor B\).
+\end{exercise}
+
+\begin{exercise}[Exercise 2.5.3]\label{exe:2.5.3}
+    Prove \(\exists x F(x) \equiv\lnot\forall y\lnot F(y)\).
+\end{exercise}
+\begin{exercise}[Exercise 2.5.4]\label{exe:2.5.4}
+    Prove \(\lnot\forall yF(y) \equiv\exists x\lnot F(x)\).
+\end{exercise}
+\begin{exercise}[Exercise 2.5.5]\label{exe:2.5.5}
+    Prove \(\lnot\arcs{A\land B} \equiv \lnot A\lor\lnot B\).
+\end{exercise}
+\begin{exercise}[Exercise 2.6.1]\label{exe:2.6.1}
+    Prove \(\exists x\arcs{A\limplies B(x)}\equiv\forall xA(x)\limplies\exists xB(x)\).
+\end{exercise}
+\begin{exercise}[Exercise 2.6.2]\label{exe:2.6.2}
+    Prove \(\exists x\arcs{A(x)\limplies B}\equiv\forall xA(x)\limplies\exists xB\),
+    where \(B\) does not contain \(x\).
+\end{exercise}
+\begin{exercise}[Exercise 2.6.3]\label{exe:2.6.3}
+    Prove \(\exists x\arcs{A(x)\limplies B(x)}\equiv\forall xA(x)\limplies\exists xB(x)\).
+\end{exercise}
+\begin{exercise}[Exercise 2.6.4]\label{exe:2.6.4}
+    Prove \(\lnot A\limplies B\seq\lnot B\limplies A\)
+\end{exercise}
+\begin{exercise}[Exercise 2.6.5]\label{exe:2.6.5}
+    Prove \(\lnot A\limplies\lnot B\seq B\limplies A\)
+\end{exercise}
+
 
 \section{Intuitionistic logic or \IK, proofs in \IK}
 
