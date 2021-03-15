@@ -584,44 +584,46 @@ The expression \(A\equiv B\) means that
     according to the above note. First we show that
     \(\seq A\lor B\limplies\lnot\arcs{\lnot A\land\lnot B}\):
 
-\begin{equation*}
+\begin{equation}\label{eq:equivalence example part 1}
     \begin{prooftree}
         % left branch
         \hypo{A\seq A}
-        \infer1{\lnot A, A\seq}
-        \infer1{\lnot A\land\lnot B, A\seq}
-        \infer1{A, \lnot A\land\lnot B}
+        \infer1[\eqref{eq:lnot:left}]{\lnot A, A\seq}
+        \infer1[\eqref{eq:land:left}]{\lnot A\land\lnot B, A\seq}
+        \infer1[\eqref{eq:exchange:left}]{A, \lnot A\land\lnot B}
         % right branch
         \hypo{B\seq B}
-        \infer1{\lnot B, B\seq}
-        \infer1{\lnot A\land\lnot B, B\seq}
-        \infer1{B, \lnot A\land\lnot B}
+        \infer1[\eqref{eq:lnot:left}]{\lnot B, B\seq}
+        \infer1[\eqref{eq:land:left}]{\lnot A\land\lnot B, B\seq}
+        \infer1[\eqref{eq:exchange:left}]{B, \lnot A\land\lnot B}
         % Trunk
-        \infer2{A\lor B, \lnot A \land\lnot B\seq}
-        \infer1{\lnot A \land\lnot B, A\lor B\seq}
-        \infer1{A\lor B \seq\lnot\arcs{\lnot A \land\lnot B}}
-        \infer1{\seq A\lor B\limplies\lnot\arcs{\lnot A\land\lnot B}}
+        \infer2[\eqref{eq:lor:left}]{A\lor B, \lnot A \land\lnot B\seq}
+        \infer1[\eqref{eq:exchange:left}]{\lnot A \land\lnot B, A\lor B\seq}
+        \infer1[\eqref{eq:lnot:right}]{A\lor B \seq\lnot\arcs{\lnot A \land\lnot B}}
+        \infer1[\eqref{eq:limplies:right}]{\seq A\lor B\limplies\lnot\arcs{\lnot A\land\lnot B}}
     \end{prooftree}
-\end{equation*}
+\end{equation}
 
 Then we prove the statement \(\seq\lnot\arcs{\lnot A \land\lnot B} \limplies A\lor B\):
 
-\begin{equation*}
+\begin{equation}\label{eq:equivalence example part 2}
     \begin{prooftree}
-
         \hypo{A\seq A}
-        \infer1{A\seq A\lor B}
-        \infer1{\seq A\lor B, \lnot A}
+        \infer1[\eqref{eq:lor:right}]{A\seq A\lor B}
+        \infer1[\eqref{eq:lnot:right}]{\seq A\lor B, \lnot A}
         \hypo{B\seq B}
-        \infer1{B\seq A\lor B}
-        \infer1{\seq A\lor B, \lnot B}
-        \infer2{\seq A\lor B, \lnot A\land\lnot B}
-        \infer1{\lnot\arcs{\lnot A \land\lnot B}\seq A\lor B}
-        \infer1{\seq\lnot\arcs{\lnot A \land\lnot B}\limplies A\lor B}
-    \end{prooftree}<++>
-\end{equation*}<++>
+        \infer1[\eqref{eq:lor:right}]{B\seq A\lor B}
+        \infer1[\eqref{eq:lnot:right}]{\seq A\lor B, \lnot B}
+        \infer2[\eqref{eq:land:right}]{\seq A\lor B, \lnot A\land\lnot B}
+        \infer1[\eqref{eq:lnot:left}]{\lnot\arcs{\lnot A \land\lnot B}\seq A\lor B}
+        \infer1[\eqref{eq:limplies:right}]{\seq\lnot\arcs{\lnot A \land\lnot B}\limplies A\lor B}
+    \end{prooftree}
+\end{equation}
 
-\end{exercise}<++>
+As the valid proofs~\ref{eq:equivalence example part 1} and \ref{eq:equivalence example part 2}
+could be constructed, the claim holds. \qed
+
+\end{exercise}
 
 \section{Intuitionistic logic or \IK, proofs in \IK}
 
