@@ -689,22 +689,22 @@ could be constructed, the claim holds. \qed
     \begin{equation*}
         \begin{prooftree}
             \hypo{A(a)\seq A(a)}
-            \infer1{A(a)\seq A(a), \forall x A(x)}
+            \infer1[\eqref{eq:weakening:right}]{A(a)\seq A(a), \forall x A(x)}
             \hypo{B\seq B}
-            \infer2{A(a), \forall xA(x)\limplies B\seq, A(a), B}
-            \infer1{\forall xA(x)\limplies B, A(a)\seq, A(a), B}
-            \infer1{\forall xA(x)\limplies B\seq A(a), A(a)\limplies B}
-            \infer1{\forall xA(x)\limplies B\seq A(a), \exists x\arcs{A(x)\limplies B}}
-            \infer1{\forall xA(x)\limplies B\seq\exists x\arcs{A(x)\limplies B}, A(a)}
-            \infer1{\forall xA(x)\limplies B\seq\exists x\arcs{A(x)\limplies B}, \forall x A(x)}
+            \infer2[\eqref{eq:limplies:left}]{A(a), \forall xA(x)\limplies B\seq, A(a), B}
+            \infer1[\eqref{eq:exchange:left}]{\forall xA(x)\limplies B, A(a)\seq, A(a), B}
+            \infer1[\eqref{eq:limplies:right}]{\forall xA(x)\limplies B\seq A(a), A(a)\limplies B}
+            \infer1[\eqref{eq:exists:right}]{\forall xA(x)\limplies B\seq A(a), \exists x\arcs{A(x)\limplies B}}
+            \infer1[\eqref{eq:exchange:right}]{\forall xA(x)\limplies B\seq\exists x\arcs{A(x)\limplies B}, A(a)}
+            \infer1[\eqref{eq:forall:right}]{\forall xA(x)\limplies B\seq\exists x\arcs{A(x)\limplies B}, \forall x A(x)}
             \hypo{B\seq B}
-            \infer1{A(a), B\seq B}
-            \infer1{B\seq A(a)\limplies B}
-            \infer1{B\seq\exists x\arcs{A(x)\limplies B}}
-            \infer2{\forall x A(x)\limplies B, \forall x A(x)\limplies B \seq \exists x \arcs{A(x)\limplies B}, \exists x \arcs{A(x)\limplies B}}
-            \infer1{\forall x A(x)\limplies B \seq \exists x \arcs{A(x)\limplies B}, \exists x \arcs{A(x)\limplies B}}
-            \infer1{\forall x A(x)\limplies B \seq \exists x \arcs{A(x)\limplies B}}
-            \infer1{\seq\arcs{\forall x A(x)\limplies B}\limplies\arcs{\exists x \arcs{A(x)\limplies B}}}
+            \infer1[\eqref{eq:weakening:left}]{A(a), B\seq B}
+            \infer1[\eqref{eq:limplies:right}]{B\seq A(a)\limplies B}
+            \infer1[\eqref{eq:exists:right}]{B\seq\exists x\arcs{A(x)\limplies B}}
+            \infer2[\eqref{eq:limplies:left}]{\forall x A(x)\limplies B, \forall x A(x)\limplies B \seq \exists x \arcs{A(x)\limplies B}, \exists x \arcs{A(x)\limplies B}}
+            \infer1[\eqref{eq:contraction:left}]{\forall x A(x)\limplies B \seq \exists x \arcs{A(x)\limplies B}, \exists x \arcs{A(x)\limplies B}}
+            \infer1[\eqref{eq:contraction:right}]{\forall x A(x)\limplies B \seq \exists x \arcs{A(x)\limplies B}}
+            \infer1[\qed]{\seq\arcs{\forall x A(x)\limplies B}\limplies\arcs{\exists x \arcs{A(x)\limplies B}}}
         \end{prooftree}
     \end{equation*}
 \end{example}
