@@ -710,6 +710,20 @@ could be constructed, the claim holds. \qed
     \end{equation*}
 \end{example}
 
+\paragraph{Note:}
+We also accept the inferences
+\begin{equation*}
+    \begin{prooftree}
+        \hypo{T\seq \Delta}
+        \infer1[\eqref{eq:land:left}]{A\lor  B, T\seq \Delta}
+    \end{prooftree}
+    \quad\text{and}\quad
+    \begin{prooftree}
+        \hypo{T\seq \Delta, A}
+        \infer1[\eqref{eq:lor:right}]{T\seq\Delta, \arcs{B\land C}\lor A}
+    \end{prooftree}
+\end{equation*}
+
 \subsection{Exercises}
 
 \begin{exercise}[Exercise 2.5.2]\label{exe:2.5.2}
