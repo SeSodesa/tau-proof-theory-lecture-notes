@@ -374,8 +374,8 @@ The following \emph{left} and \emph{right inference rules} are allowed in classi
                     \tag{\(\lor\):left}
                     \label{eq:lor:left}
                     \begin{prooftree}
-                        \hypo{\Gamma\seq\Delta, C}
-                        \hypo{\Gamma\seq\Delta, D}
+                        \hypo{C, \Gamma\seq\Delta}
+                        \hypo{D, \Gamma\seq\Delta}
                         \infer2{C\lor D, \Gamma\seq\Delta}
                     \end{prooftree}
                 \end{equation}
