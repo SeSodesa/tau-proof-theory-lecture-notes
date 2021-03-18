@@ -846,6 +846,8 @@ may only contain \emph{at most} a single formula. For example, the inferences
 are \emph{not} allowed in \LJ. This of course means, that \LJ{} is a true subset of \LK:
 some proofs~\(P\) that are both in \LK{} and \LJ{} are not in \(\LK\).
 
+\subsection{Examples}
+
 \begin{example}[A proof in \LJ]\label{exa:a proof in LJ}
     \begin{equation*}
         \begin{prooftree}
@@ -872,6 +874,59 @@ some proofs~\(P\) that are both in \LK{} and \LJ{} are not in \(\LK\).
             \infer1[\eqref{eq:limplies:right}]{&\seq \lnot\exists xF(x)\limplies\forall x\lnot F(x)}
         \end{prooftree}
     \end{equation*}
+\end{example}
+
+\subsection{Exercises}
+
+\begin{exercise}[3.9.1]\label{exe:3.9.1}
+    Prove in \LJ{:} \(\lnot A\lor B\seq A\limplies B\).
+\end{exercise}
+\begin{exercise}[3.9.2]\label{exe:3.9.2}
+    Prove in \LJ{:} \(\exists xF(x)\seq\lnot\forall yF(y)\).
+\end{exercise}
+\begin{exercise}[3.9.3]\label{exe:3.9.3}
+    Prove in \LJ{:} \(A\land B\seq A\).
+\end{exercise}
+\begin{exercise}[3.9.4]\label{exe:3.9.4}
+    Prove in \LJ{:} \(A\seq A\lor B\).
+\end{exercise}
+\begin{exercise}[3.9.5]\label{exe:3.9.5}
+    Prove in \LJ{:} \(\lnot A\lor\lnot B\seq \lnot\arcs{A\land B}\).
+\end{exercise}
+\begin{exercise}[3.9.6]\label{exe:3.9.6}
+    Prove in \LJ{:} \(\lnot\arcs{A\lor B}\equiv\lnot A\land\lnot B\).
+\end{exercise}
+\begin{exercise}[3.9.7]\label{exe:3.9.7}
+    Prove in \LJ{:} \(\arcs{A\lor C}\land\arcs{B\lor C} \equiv \arcs{A\land B}\lor C\).
+\end{exercise}
+\begin{exercise}[3.9.8]\label{exe:3.9.8}
+    Prove in \LJ{:} \(\exists x\lnot F(x)\seq\lnot\forall xF(x)\).
+\end{exercise}
+\begin{exercise}[3.9.9]\label{exe:3.9.9}
+    Prove in \LJ{:} \(\forall x\arcs{F(x)\land G(x)}\equiv\forall xF(x)\land\forall xG(x)\).
+\end{exercise}
+\begin{exercise}[3.9.10]\label{exe:3.9.10}
+    Prove in \LJ{:} \(A\limplies\lnot B\seq B\limplies\lnot A\).
+\end{exercise}
+\begin{exercise}[3.9.11]\label{exe:3.9.11}
+    Prove in \LJ{:} \(\exists x\arcs{A\limplies B(x)}\seq A\limplies\exists xB(x)\).
+\end{exercise}
+\begin{exercise}[3.9.12]\label{exe:3.9.12}
+    Prove in \LJ{:} \(\exists x\arcs{A(x)\limplies B}\seq\forall xA(x)\limplies B\).
+\end{exercise}
+\begin{exercise}[3.9.13]\label{exe:3.9.13}
+    Prove in \LJ{:} \(\exists x\arcs{A(x)\limplies B(x)}\seq\forall xA(x)\limplies\exists xB(x)\).
+\end{exercise}
+\begin{exercise}[3.10.1]\label{exe:3.10.1}
+    Prove in \LJ{:} \(\lnot\lnot\arcs{A\limplies B}, A\seq\lnot\lnot B\).
+\end{exercise}
+\begin{exercise}[3.10.2]\label{exe:3.10.2}
+    Prove in \LJ{:} \(\lnot\lnot B\limplies B, \lnot\lnot\arcs{A\limplies B}\seq A\limplies B\).
+\end{exercise}
+\begin{exercise}[3.10.3]\label{exe:3.10.3}
+    Prove in \LJ{:} \(\lnot\lnot\lnot A\equiv\lnot A\).
+\end{exercise}
+\begin{example}[3.11]\label{exa:3.11}
 \end{example}
 
 \section{The relation between \LK{} and \LJ}
