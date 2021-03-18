@@ -843,8 +843,36 @@ may only contain \emph{at most} a single formula. For example, the inferences
         \infer1[\eqref{eq:exchange:right}]{T\seq D, C}
     \end{prooftree}
 \end{equation*}
-are \emph{not} allowed in \LJ. This of course means, that \(\LJ\subset\LK\):
-some proofs \(P\) that are both in \LK{} and \LJ{} are not in \(\LK\).
+are \emph{not} allowed in \LJ. This of course means, that \LJ{} is a true subset of \LK:
+some proofs~\(P\) that are both in \LK{} and \LJ{} are not in \(\LK\).
+
+\begin{example}[A proof in \LJ]\label{exa:a proof in LJ}
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{A\seq A}
+            \infer1[\eqref{eq:land:left}]{A\land\lnot A&\seq A}
+            \infer1[\eqref{eq:lnot:left}]{\lnot A, A\land\lnot A&\seq}
+            \infer1[\eqref{eq:land:left}]{A\land\lnot A, A\land\lnot A&\seq}
+            \infer1[\eqref{eq:contraction:left}]{A\land\lnot A&\seq}
+            \infer1[\eqref{eq:lnot:right}]{&\seq \lnot\arcs{A\land\lnot A}}
+        \end{prooftree}
+    \end{equation*}
+\end{example}
+
+\begin{example}[Another proof in \LJ]\label{exa:another proof in LJ}
+    Prove that \(\lnot\exists xF(x)\seq\forall yF(y)\).
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{F(a)&\seq F(a)}
+            \infer1[\eqref{eq:exists:right}]{F(a)&\seq\exists xF(x)}
+            \infer1[\eqref{eq:lnot:left}]{\lnot\exists xF(x), F(a)&\seq}
+            \infer1[\eqref{eq:exchange:left}]{F(a), \lnot\exists xF(x)&\seq}
+            \infer1[\eqref{eq:lnot:right}]{\lnot\exists xF(x)&\seq \lnot F(a)}
+            \infer1[\eqref{eq:forall:right}]{\lnot\exists xF(x)&\seq \forall x\lnot F(x)}
+            \infer1[\eqref{eq:limplies:right}]{&\seq \lnot\exists xF(x)\limplies\forall x\lnot F(x)}
+        \end{prooftree}
+    \end{equation*}
+\end{example}
 
 \section{The relation between \LK{} and \LJ}
 
