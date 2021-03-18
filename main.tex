@@ -1015,6 +1015,67 @@ some proofs~\(P\) that are both in \LK{} and \LJ{} are not in \(\LK\).
 
 \section{The relation between \LK{} and \LJ}
 
+Our last goal in discussinga what the specific connection between \LK{} and \LJ{} is.
+For this purpose we declare the notational definitions in definition~\ref{def:starred formulae in LK}.
+
+\begin{definition}[Starred formula variants in \LK]\label{def:starred formulae in LK}
+    Table~\ref{tab:starred variants in LK} defines a mapping,
+    between formulae \(A\) and their starred variants \(A^\ast\).
+
+    \begin{tabenv}{Mapping between fomulae \(A\) and their starred transformations \(A^\ast\).}\label{tab:starred variants in LK}
+        \begin{tabular}{C|C}
+            \toprule
+            \text{Formula } A & \text{Starred formula } A^\ast \\
+            \midrule
+            \text{atomic } A & \lnot\lnot A \\
+            \lnot B & \lnot\arcs{B^\ast} \\
+            B\land C & B^\ast\land C^\ast \\
+            B\lor C & \lnot\arcs{\lnot B\land\lnot C} \\
+            \forall xB(x) & \forall xB^\ast(x) \\
+            \exists xB(x) & \lnot\forall xB^\ast(x) \\
+            B\limplies C & B^\ast\limplies C^\ast \\
+            \bottomrule
+        \end{tabular}
+    \end{tabenv}
+\end{definition}
+
+With definition~\ref{def:starred formulae in LK} in place, we can proceed to make the propositions that follow.
+
+\begin{proposition}\label{prop:claim 1 in LK vs LJ}
+    \(A\equiv A^\ast\) for all \(A\) in \LK.
+\end{proposition}
+
+\begin{proof}
+    Just like with example~\ref{exa:3.11}, the proof can be achieved via induction over the number of logical symbols in \(A\).
+\end{proof}
+
+\begin{proposition}\label{prop:claim 2 in LK vs LJ}
+    If \(S\) is the sequent \(A_1,\ldots,A_m\seq B_1,\ldots,B_n\),
+    then we may define the sequence formula \(S'\coloneqq A_1^\ast,\ldots,A_m^\ast,\lnot B_1^\ast,\ldots,\lnot B^\ast_n\).
+    Now \(S\) is \LK-provable, if and only if \(S'\) is \LK-provable.
+\end{proposition}
+
+\begin{proof}
+    Just like with example~\ref{exa:3.11}, the proof can be achieved via induction over the number of logical symbols in \(A\).
+\end{proof}
+
+\begin{proposition}\label{prop:claim 3 in LK vs LJ}
+    \(A^\ast\equiv\lnot\lnot A^\ast\) in \LJ.
+\end{proposition}
+
+\begin{proof}
+    See example~\ref{exa:3.11}.
+\end{proof}
+
+\begin{proposition}\label{prop:claim 4 in LK vs LJ}
+    If the sequent \(S\) of proposition~\ref{prop:claim 2 in LK vs LJ} is provable in \LK,
+    then the sequence formula \(S'\) defined in the same proposition is provable in \LJ.
+\end{proposition}
+
+\begin{proof}
+    By induction over the number of inferences in \(S\).
+\end{proof}
+
 \section{Axiom systems}
 
 \section{The Cut-elimination theorems of \LK}
