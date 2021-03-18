@@ -926,7 +926,74 @@ some proofs~\(P\) that are both in \LK{} and \LJ{} are not in \(\LK\).
 \begin{exercise}[3.10.3]\label{exe:3.10.3}
     Prove in \LJ{:} \(\lnot\lnot\lnot A\equiv\lnot A\).
 \end{exercise}
+
+
 \begin{example}[3.11]\label{exa:3.11}
+    Let \(R\) be an atomic formula, and let \(J'\) be obtained from \LJ{} by adding the sequent~\(\lnot\lnot R\seq R\) as an axiom.
+    Also let \(A\) be a formula which does not contain the symbols \(\lor\) or \(\exists\).
+    Then \(\lnot\lnot A\seq A\) is \(J'\)-provable.
+
+    \begin{proof}
+        Let \(n\) be the number of logical symbols in \(A\).
+        We prove the claim by structurally inducing on \(n\):
+        \begin{enumerate}
+            \item
+                If \(n = 0\), then \(A = R\), as \(R\) is an atomic formula.
+                By assumption \(\lnot\lnot R \seq R\), so the claim holds for the base case.
+            \item
+                Now assume that the inductive hypothesis \(\lnot\lnot A\seq A, \lnot\lnot B\seq B \in J''\) holds for the formulae \(A\) and \(B\),
+                with at most \(n = k\) logical symbols. We add one additional allowed connective to these formulae one at at time to close the induction:
+                \begin{description}
+                    \item[\(\lnot\)]
+                        By exercise~\ref{exe:3.10.3} \(\lnot\lnot\arcs{\lnot A}\seq\lnot A\) can be proven.
+                    \item[\(\limplies\)]
+                        We show that the claim \(\lnot\lnot\arcs{A\limplies B} \seq A\limplies B\) can be proven:
+                        \begin{equation*}
+                            \begin{prooftree}
+                                \hypo{\lnot\lnot B\seq\limplies B}
+                                \infer1[(inductive hypothesis)]{\seq\lnot\lnot B\limplies B}
+                                \hypo{A\seq A}
+                                \hypo{B\seq B}
+                                \infer2{}
+                                \ellipsis{(Exercise~\ref{exe:3.10.2})}{\lnot\lnot\arcs{A\limplies B} \seq A\limplies B}
+                                \infer2[\eqref{eq:cut}]{\lnot\lnot\arcs{A\limplies B} \seq A\limplies B}
+                            \end{prooftree}
+                        \end{equation*}
+                    \item[\(\land\)]
+                        Again, we show that the claim \(\lnot\lnot\arcs{A\land B} \seq A\land B\) can be proven:
+                        \tiny
+                        \begin{equation*}
+                            \begin{prooftree}
+                                \hypo{A\seq A}
+                                \infer1[\eqref{eq:land:left}]{A\land B\seq A}
+                                \infer1[\eqref{eq:lnot:left}]{\lnot A, A\land B\seq}
+                                \infer1[\eqref{eq:exchange:left}]{A\land B,\lnot A\seq}
+                                \infer1[\eqref{eq:lnot:right}]{\lnot A\seq\lnot\arcs{ A\land B}}
+                                \infer1[\eqref{eq:lnot:left}]{\lnot\lnot\arcs{A\land B}, \lnot A\seq}
+                                \infer1[\eqref{eq:exchange:left}]{\lnot A, \lnot\lnot\arcs{A\land B}\seq}
+                                \infer1[\eqref{eq:lnot:right}]{\lnot\lnot\arcs{A\land B}\seq\lnot\lnot A}
+                                \hypo{\lnot\lnot A\seq A}
+                                \infer2[\eqref{eq:cut}]{\lnot\lnot\arcs{A\land B}\seq A}
+                                \hypo{B\seq B}
+                                \infer1[\eqref{eq:land:left}]{A\land B\seq B}
+                                \infer1[\eqref{eq:lnot:left}]{\lnot B, A\land B\seq}
+                                \infer1[\eqref{eq:exchange:left}]{A\land B,\lnot B\seq}
+                                \infer1[\eqref{eq:lnot:right}]{\lnot B\seq\lnot\arcs{ A\land B}}
+                                \infer1[\eqref{eq:lnot:left}]{\lnot\lnot\arcs{A\land B}, \lnot B\seq}
+                                \infer1[\eqref{eq:exchange:left}]{\lnot B, \lnot\lnot\arcs{A\land B}\seq}
+                                \infer1[\eqref{eq:lnot:right}]{\lnot\lnot\arcs{A\land B}\seq\lnot\lnot B}
+                                \hypo{\lnot\lnot B\seq B}
+                                \infer2[\eqref{eq:cut}]{\lnot\lnot\arcs{A\land B}\seq B}
+                                \infer2[\eqref{eq:land:right}]{\lnot\lnot\arcs{A\land B} \seq A\land B}
+                            \end{prooftree}
+                        \end{equation*}
+                        \normalsize
+                    \item[\(\forall\)]
+                        Lastly, w show that the claim \(\lnot\lnot\forall xA(x) \seq \forall xA(x)\) is a theorem:
+                \end{description}
+        \end{enumerate}
+        By the inductive principle, we are then done.
+    \end{proof}
 \end{example}
 
 \section{The relation between \LK{} and \LJ}
