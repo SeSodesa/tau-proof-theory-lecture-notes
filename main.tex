@@ -247,12 +247,34 @@ Note that the symbol \(\seq\) does not correspond to \(\limplies\).
         \hypo{S_1}\hypo{S_2}\infer2{S}
     \end{prooftree}
     \end{center}
-    where \(S_1\) and \(S_2\) are \emph{upper sequents} and \(S\) is a \emph{lower sequent}.
+    where \(S_1\) and \(S_2\) are \emph{upper sequents} or \emph{predecessors} and \(S\)
+    is a \emph{lower sequent} or \emph{successor}.
 \end{definition}
 
 The meaning of this notation is that if \(S_1\) and \(S_2\) are given,
-we can inferred \(S\) from them. This inference could consist of multiple
+\(S\) can be inferred from them. This inference could consist of multiple
 individual inferences in sequence.
+
+\begin{definition}[Proof in \LK]\label{def:proof in LK}
+    In classical logic \LK, a \emph{proof} \(P\)
+    is a \emph{tree} of sequents, where
+    \begin{enumerate}
+        \item
+            the leaves are axioms \(A\seq A\),
+        \item
+            the root of \(P\) has no lower sequents (or successors) and
+        \item
+            for every other sequent \(T_i\seq\Delta_i\in P\)
+            there exists a sequent \(T_j\seq\Delta_j\in P\), so that
+            \begin{equation*}
+            \begin{prooftree}
+                \hypo{T_i\seq\Delta_i}
+                \infer1{T_j\seq\Delta_j}
+            \end{prooftree}\,.
+            \end{equation*}
+           .
+    \end{enumerate}
+\end{definition}
 
 \begin{definition}[Inference rules in \LK]%
 \label{def:inference rules in LK}
@@ -458,6 +480,12 @@ The following \emph{left} and \emph{right inference rules} are allowed in classi
 \end{enumerate}
 \end{definition}
 
+
+
+\paragraph{Note:}
+Proof manipulation suing inference rules always happens ''at the ends'' of sequents:
+the first formula on the left of \(\seq\) and the last formula on the right of \(\seq\).
+
 \begin{theorem}[Uniqueness of the axiom]%
     \label{the:uniqueness of the axiom}
     The sequent \(A\seq A\) is the only axiom.
@@ -483,6 +511,19 @@ The following \emph{left} and \emph{right inference rules} are allowed in classi
 If there is a tree whose root is \(\seq A\), then \(A\) is \LK-provable.
 If a proof does not use the cut rule of definition~\ref{def:inference rules in LK}.\ref{it:cut},
 then a proof is deemed \emph{cut free}.
+
+\begin{definition}[Equivalence]\label{def:equivalence}
+Two formulae \(A\) and \(B\) are \emph{equivalent},
+if and only if
+\begin{equation*}
+\begin{prooftree}
+    \hypo{\seq A\limplies B}
+    \hypo{\seq B\limplies A}
+    \infer2[\eqref{eq:land:right}]{\seq\arcs{A\limplies B}\land\arcs{B\limplies A}}
+\end{prooftree}\,.
+\end{equation*}
+This is denoted with \(A\equiv B\).
+\end{definition}
 
 \section{Metalanguage versus object language}
 
@@ -583,17 +624,7 @@ i                       \(\arcs{a + b} \mult c\), \(t\), \(t_i\) \\
 \end{equation*}
 \end{example}
 
-\paragraph{Note:}
-Proof manipulation always happens ''at the ends'' of sequents:
-The first formula on the left of \(\seq\) and the last formula on the right of \(\seq\).
 
-\paragraph{Note:}
-The expression \(A\equiv B\) means that
-\begin{prooftree}
-    \hypo{\seq A\limplies B}
-    \hypo{\seq B\limplies A}
-    \infer2[\eqref{eq:land:right}]{\seq\arcs{A\limplies B}\land\arcs{B\limplies A}}
-\end{prooftree}\,.
 
 \begin{example}[Exercise 2.5.1]\label{exa:2.5.1}
     To prove \(A\lor B\equiv \lnot\arcs{\lnot A\land\lnot B}\) we need to prove two things,
