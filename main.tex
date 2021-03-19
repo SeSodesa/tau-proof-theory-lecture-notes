@@ -1019,7 +1019,7 @@ Our last goal in discussinga what the specific connection between \LK{} and \LJ{
 For this purpose we declare the notational definitions in definition~\ref{def:starred formulae in LK}.
 
 \begin{definition}[Starred formula variants in \LK]\label{def:starred formulae in LK}
-    Table~\ref{tab:starred variants in LK} defines a mapping,
+    Table~\ref{tab:starred variants in LK} defines a recursive mapping,
     between formulae \(A\) and their starred variants \(A^\ast\).
 
     \begin{tabenv}{Mapping between fomulae \(A\) and their starred transformations \(A^\ast\).}\label{tab:starred variants in LK}
@@ -1064,7 +1064,7 @@ With definition~\ref{def:starred formulae in LK} in place, we can proceed to mak
 \end{proposition}
 
 \begin{proof}
-    See example~\ref{exa:3.11}.
+    Use the results of example~\ref{exa:3.11} and exercise~\ref{exe:3.10.3}.
 \end{proof}
 
 \begin{proposition}\label{prop:claim 4 in LK vs LJ}
@@ -1075,6 +1075,12 @@ With definition~\ref{def:starred formulae in LK} in place, we can proceed to mak
 \begin{proof}
     By induction over the number of inferences in \(S\).
 \end{proof}
+
+Lastly, we cover the most important fact related to this section.
+
+\begin{theorem}[Connection between \LK{} and \LJ]\label{the:connection between LK and LJ}
+    For all formulae \(A\), \(\seq A\) in \LK{}, if and only if \(\seq A^\ast\) in \LJ{}.
+\end{theorem}
 
 \section{Axiom systems}
 
