@@ -952,7 +952,7 @@ some proofs~\(P\) that are both in \LK{} and \LJ{} are not in \(\LK\).
                         \begin{equation*}
                             \begin{prooftree}
                                 \hypo{B\seq B}
-                                \ellipsis{IH}{\lnot\lnot B\seq\limplies B}
+                                \ellipsis{\IH}{\lnot\lnot B\seq\limplies B}
                                 \infer1[\eqref{eq:limplies:right}]{\seq\lnot\lnot B\limplies B}
                                 \hypo{A\seq A}
                                 \hypo{B\seq B}
@@ -976,7 +976,7 @@ some proofs~\(P\) that are both in \LK{} and \LJ{} are not in \(\LK\).
                                 \infer1[\eqref{eq:exchange:left}]{\lnot A, \lnot\lnot\arcs{A\land B}&\seq}
                                 \infer1[\eqref{eq:lnot:right}]{\lnot\lnot\arcs{A\land B}&\seq\lnot\lnot A}
                                 \hypo{A\seq A}
-                                \ellipsis{IH}{\lnot\lnot A\seq A}
+                                \ellipsis{\IH}{\lnot\lnot A\seq A}
                                 \infer2[\eqref{eq:cut}]{\lnot\lnot\arcs{A\land B}\seq A}
                                 \hypo{B&\seq B}
                                 \infer1[\eqref{eq:land:left}]{A\land B&\seq B}
@@ -987,7 +987,7 @@ some proofs~\(P\) that are both in \LK{} and \LJ{} are not in \(\LK\).
                                 \infer1[\eqref{eq:exchange:left}]{\lnot B, \lnot\lnot\arcs{A\land B}&\seq}
                                 \infer1[\eqref{eq:lnot:right}]{\lnot\lnot\arcs{A\land B}&\seq\lnot\lnot B}
                                 \hypo{B\seq B}
-                                \ellipsis{IH}{\lnot\lnot B\seq B}
+                                \ellipsis{\IH}{\lnot\lnot B\seq B}
                                 \infer2[\eqref{eq:cut}]{\lnot\lnot\arcs{A\land B}\seq B}
                                 \infer2[\eqref{eq:land:right}]{\lnot\lnot\arcs{A\land B} \seq A\land B}
                             \end{prooftree}
@@ -1007,7 +1007,7 @@ some proofs~\(P\) that are both in \LK{} and \LJ{} are not in \(\LK\).
                                 \infer1[\eqref{eq:exchange:left}]{\lnot A(a), \lnot\lnot\forall xA(x)&\seq}
                                 \infer1[\eqref{eq:lnot:right}]{\lnot\lnot\forall xA(x)&\seq \lnot\lnot A(a)}
                                 \hypo{A(a)\seq A(a)}
-                                \ellipsis{IH}{\lnot\lnot A(a)\seq A(a)}
+                                \ellipsis{\IH}{\lnot\lnot A(a)\seq A(a)}
                                 \infer2[\eqref{eq:cut}]{\lnot\lnot\forall xA(x) \seq A(a)}
                                 \infer1[\eqref{eq:forall:right}]{\lnot\lnot\forall xA(x) \seq \forall xA(x)}
                             \end{prooftree}
