@@ -948,11 +948,11 @@ some proofs~\(P\) that are both in \LK{} and \LJ{} are not in \(\LK\).
                         By exercise~\ref{exe:3.10.3}, \(\lnot\lnot\arcs{\lnot A}\seq\lnot A\) can be proven.
                     \item[\(\limplies\)]
                         We show that the claim \(\lnot\lnot\arcs{A\limplies B} \seq A\limplies B\) can be proven.
-                        In the proof, IH refers to the inductive hypothesis
+                        In the proof, IH refers to the inductive hypothesis:
                         \begin{equation*}
                             \begin{prooftree}
                                 \hypo{B\seq B}
-                                \ellipsis{\IH}{\lnot\lnot B\seq\limplies B}
+                                \ellipsis{\IH}{\lnot\lnot B\seq B}
                                 \infer1[\eqref{eq:limplies:right}]{\seq\lnot\lnot B\limplies B}
                                 \hypo{A\seq A}
                                 \hypo{B\seq B}
