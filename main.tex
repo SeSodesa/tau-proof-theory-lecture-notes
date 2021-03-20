@@ -1151,7 +1151,22 @@ With definition~\ref{def:starred formulae in LK} in place, we can proceed to mak
 \end{proposition}
 
 \begin{proof}
-    Use the results of example~\ref{exa:3.11} and exercise~\ref{exe:3.10.3}.
+    In \LJ{}, the proof
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{A\seq A}
+            \infer1{\lnot A, A\seq}
+            \infer1{A\seq\lnot\lnot A}
+        \end{prooftree}
+    \end{equation*}
+    is valid for all formulae \(A\). This means it must also be true for \(A^\ast\seq\lnot\lnot A^\ast\) as well.
+
+    By example~\ref{exa:3.11}, \(\lnot\lnot A\seq A\) in \LJ{'}.
+    Also, by exercise~\ref{exe:3.10.3} we have \(\lnot\lnot\lnot\arcs{\lnot R}\equiv\lnot\lnot R\) in \LJ{},
+    for all atomic formula \(R\).
+    As the formula \(A^\ast\) does not contain the symbols \(\lor\) or \(\exists\) by assumption,
+    we can conlcude that \(\lnot\lnot A^\ast\seq A\).
+    Therefore \(A^\ast\equiv \lnot\lnot A^\ast\) for all \(A\) in \LJ{}.
 \end{proof}
 
 \begin{proposition}\label{prop:claim 4 in LK vs LJ}
