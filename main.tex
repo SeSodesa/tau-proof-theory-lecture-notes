@@ -1053,6 +1053,87 @@ With definition~\ref{def:starred formulae in LK} in place, we can proceed to mak
 
 \begin{proof}
     Just like with example~\ref{exa:3.11}, the proof can be achieved via induction over the number of logical symbols in \(A\).
+    \begin{enumerate}
+        \item
+            For the base case, we observe that by the double negation law proved in example~\ref{exa:double negation in LK},
+            \(A\equiv\lnot\lnot A = A^\ast\).
+        \item
+            For the induction hypothesis \IH, we assume that for the formulae \(B\) and \(C\),
+            \(B\equiv B^\ast\) and \(C\equiv C^\ast\). To close the hypothesis,
+            we add one allowed logical symbol at a time to \(A\) formed from \(B\) and/or \(C\),
+            as necessary:
+            \begin{description}
+                \item[\lnot]
+                    If \(A = \lnot B\), then \(A^\ast = \lnot\lnot\lnot B\),
+                    and \(A\equiv A^\ast\) by exercise~\ref{exe:3.10.3}.
+                \item[\land]
+                    If \(A = B\land C\), then \(A^\ast = B^\ast\land C^\ast\) and we argue as follows:
+                    \begin{equation*}
+                        \begin{prooftree}
+                            \hypo{B\seq B}
+                            \ellipsis{\IH}{B\seq B^\ast}
+                            \infer1{B\land C\seq B^\ast}
+                            \hypo{C\seq C}
+                            \ellipsis{\IH}{C\seq C^\ast}
+                            \infer1{B\land C\seq C^\ast}
+                            \infer2{B\land C \seq B^\ast\land C^\ast}
+                            \hypo{B\seq B}
+                            \ellipsis{\IH}{B^\ast\seq B}
+                            \infer1{B^\ast\land C^\ast\seq B}
+                            \hypo{C\seq C}
+                            \ellipsis{\IH}{C^\ast\seq C}
+                            \infer1{B^\ast\land C^\ast\seq C}
+                            \infer2{B^\ast\land C^\ast \seq B\land C}
+                            \infer2{B\land C \equiv B^\ast\land C^\ast}
+                        \end{prooftree}
+                    \end{equation*}
+                \item[\lor]
+                    \begin{exercise}[3.12.1]\label{exe:3.12.1}
+                        This is left as an exercise. Show that \(A = A^\ast\), when \(A=A\lor B\).
+                    \end{exercise}
+                \item[\forall]
+                    If \(A = \forall xB(x)\), then \(A^\ast = \forall xB^\ast(x)\).
+                    Now we can argue as follows:
+                    \begin{equation*}
+                        \begin{prooftree}
+                            \hypo{B(a\seq B(a))}
+                            \ellipsis{\IH}{B(a)\seq B^\ast(a)}
+                            \infer1[\eqref{eq:forall:left}]{\forall xB(x)\seq B^\ast(a)}
+                            \infer1[\eqref{eq:forall:right}]{\forall xB(x)\seq\forall xB^\ast(x)}
+                            \hypo{B(a\seq B(a))}
+                            \ellipsis{identical to left branch}{\forall xB(x)\seq\forall xB^\ast(x)}
+                            \infer2{\forall xB^\ast(x)\equiv\forall xB(x)}
+                        \end{prooftree}
+                    \end{equation*}
+                \item[\limplies]
+                    If \(A = B\limplies C\), then \(A^\ast = B^\ast\limplies C^\ast\).
+                    The argument is then
+                    \begin{equation*}
+                        \begin{prooftree}
+                            \hypo{B\seq B}
+                            \ellipsis{\IH}{B^\ast\seq B}
+                            \hypo{C\seq C}
+                            \ellipsis{\IH}{C\seq C^\ast}
+                            \infer[left label=\eqref{eq:limplies:left}]2{B\limplies C, B^\ast\seq C^\ast}
+                            \infer[left label=\eqref{eq:exchange:left}]1{B^\ast, B\limplies C\seq C^\ast}
+                            \infer[left label=\eqref{eq:limplies:right}]1{B\limplies C\seq B^\ast\limplies C^\ast}
+                            \hypo{B\seq B}
+                            \ellipsis{\IH}{B\seq B^\ast}
+                            \hypo{C\seq C}
+                            \ellipsis{\IH}{C^\ast\seq C}
+                            \infer[left label=\eqref{eq:limplies:left}]2{B^\ast\limplies C^\ast, B\seq C}
+                            \infer[left label=\eqref{eq:exchange:left}]1{B, B^\ast\limplies C^\ast\seq C}
+                            \infer[left label=\eqref{eq:limplies:right}]1{B^\ast\limplies C^\ast\seq B\limplies C}
+                            \infer2{B^\ast\limplies C^\ast\equiv B\limplies C}
+                        \end{prooftree}
+                    \end{equation*}
+                \item[\exists]
+                    \begin{exercise}[3.12.2]\label{exe:3.12.2}
+                        This is left as an exercise. Show that if \(A = \exists xB(x)\), then \(A\equiv B^\ast\).
+                    \end{exercise}
+            \end{description}
+    \end{enumerate}
+    By the inductive principle, we are then done.
 \end{proof}
 
 \begin{proposition}\label{prop:claim 2 in LK vs LJ}
@@ -1087,6 +1168,7 @@ Lastly, we cover the most important fact related to this section.
 \begin{theorem}[Connection between \LK{} and \LJ]\label{the:connection between LK and LJ}
     For all formulae \(A\), \(\seq A\) in \LK{}, if and only if \(\seq A^\ast\) in \LJ{}.
 \end{theorem}
+
 
 \section{Axiom systems}
 
