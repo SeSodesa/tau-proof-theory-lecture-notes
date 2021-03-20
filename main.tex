@@ -1143,9 +1143,13 @@ With definition~\ref{def:starred formulae in LK} in place, we can proceed to mak
 \end{proposition}
 
 \begin{proof}[Sketch of proof]
-    If the proof\tiny
+    We start by proving that if \(S\) is provable (meaning we can use it as a premise of a proof),
+    then \(S'\) is also provable:
+    \tiny
+
     \begin{equation*}
         \begin{prooftree}
+            \hypo{A_2^\ast\seq\lnot\lnot A_2^\ast}
             \hypo{A_1^\ast\seq\lnot\lnot A_1^\ast}
             % Tallest branch
             \hypo{\overbrace{A_1,\ldots,A_m\seq B_1,\ldots,B_n}^{S}}
@@ -1158,15 +1162,17 @@ With definition~\ref{def:starred formulae in LK} in place, we can proceed to mak
             \infer[double]1[\eqref{eq:lnot:left}s and \eqref{eq:exchange:left}s]{A_1,\ldots,A_m, \lnot B_n^\ast,\ldots,\lnot B_1^\ast\seq}
             \infer[double]1[\eqref{eq:lnot:right}s and \eqref{eq:exchange:right}s]{\lnot B_n^\ast,\ldots,\lnot B_1^\ast\seq\lnot A_m,\ldots,\lnot A_1}
             \hypo{\lnot A_1\seq \lnot A^\ast_1}
-            \infer2[\eqref{eq:cut} and \eqref{eq:exchange:right}]{\lnot B_n^\ast,\ldots,\lnot B_1^\ast\seq\lnot A_m,\ldots,\lnot A_1^\ast,\lnot A_2}
+            \infer[left label=\eqref{eq:cut} and \eqref{eq:exchange:right}]2{\lnot B_n^\ast,\ldots,\lnot B_1^\ast\seq\lnot A_m,\ldots,\lnot A_1^\ast,\lnot A_2}
             \hypo{\lnot A_2\seq\lnot A_2^\ast}
             \infer[double,left label=\eqref{eq:cut}s and \eqref{eq:exchange:right}s]2{\lnot B_n^\ast,\ldots,\lnot B_1^\ast\seq\lnot A_1^\ast,\ldots,\lnot A_m^\ast}
             \infer[double,left label=\eqref{eq:lnot:right}s and \eqref{eq:exchange:left}s]1{\lnot\lnot A_1^\ast,\ldots,\lnot\lnot A_m^\ast, \lnot B_n^\ast,\ldots,\lnot B_1^\ast\seq}
-            \infer2[\eqref{eq:cut}]{\lnot\lnot A_1^\ast,\ldots,\lnot\lnot A_m^\ast, \lnot B_n^\ast,\ldots,\lnot B_1^\ast\seq}
+            \infer2[\eqref{eq:cut}]{\lnot\lnot A_2^\ast,\ldots,\lnot\lnot A_m^\ast, \lnot B_n^\ast,\ldots,\lnot B_1^\ast\seq}
+            \infer[double]2[multiple \eqref{eq:cut}s]{A_1^\ast,\ldots,A_m^\ast, \lnot B_n^\ast,\ldots,\lnot B_1^\ast\seq}
         \end{prooftree}
     \end{equation*}
     \normalsize
-    is valid, then
+    On the last line, \(A_1^\ast,\ldots,A_m^\ast, \lnot B_n^\ast,\ldots,\lnot B_1^\ast = S'\).
+    The proof in the other direction is performed in a similar manner.
     \begin{equation*}
         \begin{prooftree}
             \hypo{}
