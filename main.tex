@@ -1047,7 +1047,7 @@ For this purpose we declare the notational definitions in definition~\ref{def:st
 
 With definition~\ref{def:starred formulae in LK} in place, we can proceed to make the propositions that follow.
 
-\begin{proposition}\label{prop:claim 1 in LK vs LJ}
+\begin{proposition}[Claim 1]\label{prop:claim 1 in LK vs LJ}
     \(A\equiv A^\ast\) for all \(A\) in \LK.
 \end{proposition}
 
@@ -1136,17 +1136,30 @@ With definition~\ref{def:starred formulae in LK} in place, we can proceed to mak
     By the inductive principle, we are then done.
 \end{proof}
 
-\begin{proposition}\label{prop:claim 2 in LK vs LJ}
+\begin{proposition}[Claim 2]\label{prop:claim 2 in LK vs LJ}
     If \(S\) is the sequent \(A_1,\ldots,A_m\seq B_1,\ldots,B_n\),
     then we may define the sequence formula \(S'\coloneqq A_1^\ast,\ldots,A_m^\ast,\lnot B_1^\ast,\ldots,\lnot B^\ast_n\).
     Now \(S\) is \LK-provable, if and only if \(S'\) is \LK-provable.
 \end{proposition}
 
-\begin{proof}
-    Just like with example~\ref{exa:3.11}, the proof can be achieved via induction over the number of logical symbols in \(A\).
+\begin{proof}[Sketch of proof]
+    If the proof
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{}
+            \infer1{}
+        \end{prooftree}
+    \end{equation*}
+    is valid, then
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{}
+            \infer1{}
+        \end{prooftree}
+    \end{equation*}
 \end{proof}
 
-\begin{proposition}\label{prop:claim 3 in LK vs LJ}
+\begin{proposition}[Claim 3]\label{prop:claim 3 in LK vs LJ}
     \(A^\ast\equiv\lnot\lnot A^\ast\) in \LJ.
 \end{proposition}
 
@@ -1169,7 +1182,7 @@ With definition~\ref{def:starred formulae in LK} in place, we can proceed to mak
     Therefore \(A^\ast\equiv \lnot\lnot A^\ast\) for all \(A\) in \LJ{}.
 \end{proof}
 
-\begin{proposition}\label{prop:claim 4 in LK vs LJ}
+\begin{proposition}[Claim 4]\label{prop:claim 4 in LK vs LJ}
     If the sequent \(S\) of proposition~\ref{prop:claim 2 in LK vs LJ} is provable in \LK,
     then the sequence formula \(S'\) defined in the same proposition is provable in \LJ.
 \end{proposition}
