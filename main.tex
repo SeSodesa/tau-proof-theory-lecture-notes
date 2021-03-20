@@ -1146,6 +1146,8 @@ With definition~\ref{def:starred formulae in LK} in place, we can proceed to mak
     If the proof\tiny
     \begin{equation*}
         \begin{prooftree}
+            \hypo{A_1^\ast\seq\lnot\lnot A_1^\ast}
+            % Tallest branch
             \hypo{\overbrace{A_1,\ldots,A_m\seq B_1,\ldots,B_n}^{S}}
             \hypo{B_n\seq B_n^\ast}
             \infer2[\eqref{eq:cut}]{A_1,\ldots,A_m\seq B_1,\ldots,B_{n-1}, B_n^\ast}
@@ -1160,6 +1162,7 @@ With definition~\ref{def:starred formulae in LK} in place, we can proceed to mak
             \hypo{\lnot A_2\seq\lnot A_2^\ast}
             \infer[double,left label=\eqref{eq:cut}s and \eqref{eq:exchange:right}s]2{\lnot B_n^\ast,\ldots,\lnot B_1^\ast\seq\lnot A_1^\ast,\ldots,\lnot A_m^\ast}
             \infer[double,left label=\eqref{eq:lnot:right}s and \eqref{eq:exchange:left}s]1{\lnot\lnot A_1^\ast,\ldots,\lnot\lnot A_m^\ast, \lnot B_n^\ast,\ldots,\lnot B_1^\ast\seq}
+            \infer2[\eqref{eq:cut}]{\lnot\lnot A_1^\ast,\ldots,\lnot\lnot A_m^\ast, \lnot B_n^\ast,\ldots,\lnot B_1^\ast\seq}
         \end{prooftree}
     \end{equation*}
     \normalsize
