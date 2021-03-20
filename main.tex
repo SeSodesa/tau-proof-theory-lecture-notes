@@ -1086,8 +1086,8 @@ With definition~\ref{def:starred formulae in LK} in place, we can proceed to mak
                         \end{prooftree}
                     \end{equation*}
                 \item[\lor]
-                    \begin{exercise}[3.12.1]\label{exe:3.12.1}
-                        This is left as an exercise. Show that \(A = A^\ast\), when \(A=A\lor B\).
+                    \begin{exercise}[3.12.1 part iii]\label{exe:3.12.1.iii}
+                        This is left as an exercise. Show that \(A \equiv A^\ast\), when \(A=A\lor B\).
                     \end{exercise}
                 \item[\forall]
                     If \(A = \forall xB(x)\), then \(A^\ast = \forall xB^\ast(x)\).
@@ -1126,7 +1126,7 @@ With definition~\ref{def:starred formulae in LK} in place, we can proceed to mak
                         \end{prooftree}
                     \end{equation*}
                 \item[\exists]
-                    \begin{exercise}[3.12.2]\label{exe:3.12.2}
+                    \begin{exercise}[3.12.1 part vi]\label{exe:3.12.1.vi}
                         This is left as an exercise. Show that if \(A = \exists xB(x)\), then \(A\equiv A^\ast\).
                     \end{exercise}
             \end{description}
@@ -1171,12 +1171,6 @@ With definition~\ref{def:starred formulae in LK} in place, we can proceed to mak
     \normalsize
     On the last line, \(A_1^\ast,\ldots,A_m^\ast, \lnot B_n^\ast,\ldots,\lnot B_1^\ast\seq = S'\).
     The proof in the other direction is performed in a similar manner.
-    \begin{equation*}
-        \begin{prooftree}
-            \hypo{}
-            \infer1{}
-        \end{prooftree}
-    \end{equation*}
 \end{proof}
 
 \begin{proposition}[Claim 3]\label{prop:claim 3 in LK vs LJ}
@@ -1207,10 +1201,97 @@ With definition~\ref{def:starred formulae in LK} in place, we can proceed to mak
     then the sequence formula \(S'\) defined in the same proposition is provable in \LJ.
 \end{proposition}
 
-\begin{proof}
-    By induction over the number of inferences in \(S\).
+\begin{proof}[A sketch of a proof]
+    Let \(n\) refer to the length of a proof, as in the number of inferences of a proof in \LK{}.
+    We induce on this \(n\):
+    \begin{enumerate}
+        \item
+            For the base case \(n=0\), all proofs \(P = A\seq A\) in \LK{}.
+            The in \LJ{} we have \(A^\ast\seq A^\ast\) and
+            \begin{equation*}
+                \begin{prooftree}
+                    \hypo{A^\ast\seq A^\ast}
+                    \infer1[\eqref{eq:lnot:left}]{\lnot A^\ast, A^\ast\seq}
+                    \infer1[\eqref{eq:exchange:left}]{A^\ast, \lnot A^\ast\seq}
+                \end{prooftree}
+            \end{equation*}
+        \item
+            For the inductive hypothesis \IH, let the claim in \LK{} hold for a proof of length \(n \leq k\).
+            Note that based on the number of inference rules in definition~\ref{def:inference rules in LK},
+            the number of \emph{subcases} of \(n = k+1\) is \(21\). Let us cover some of them:
+            \begin{enumerate}
+                \item
+                    In \LK{} we have
+                    \begin{equation*}
+                        \begin{prooftree}
+                            \hypo{A_1,\ldots,A_m\seq B_1,\ldots,B_n}
+                            \infer1[\eqref{eq:weakening:left}]{A, A_1,\ldots,A_m\seq B_1,\ldots B_1,\ldots,B_n}
+                        \end{prooftree}
+                    \end{equation*}
+                    whereas in \LJ{} this means that
+                    \begin{equation*}
+                        \begin{prooftree}
+                            \hypo{A_1^\ast,\ldots, A_m^\ast, \lnot B_1^\ast,\ldots,\lnot B_n^\ast\seq}
+                            \infer1[\eqref{eq:weakening:left}]{A^\ast, A_1,\ldots,A_m, \lnot B_1^\ast,\ldots,\lnot B_n^\ast\seq}
+                        \end{prooftree}
+                    \end{equation*}
+                    by the inductive hypothesis.
+                \item
+                    In \LK{} we have
+                    \begin{equation*}
+                        \begin{prooftree}
+                            \hypo{A_1,\ldots, A_i,A_j,\ldots,A_m\seq B_1,\ldots,B_n}
+                            \infer1[\eqref{eq:exchange:left}]{A_1,\ldots, A_j,A_i,\ldots,A_m\seq B_1,\ldots,B_n}
+                        \end{prooftree}
+                    \end{equation*}
+                    whereas in \LJ{} this means that
+                    \begin{equation*}
+                        \begin{prooftree}
+                            \hypo{A_1^\ast,\ldots, A_i^\ast,A_j^\ast,\ldots,A_m^\ast, \lnot B_1^\ast,\ldots,\lnot B_n^\ast\seq}
+                            \infer1[\eqref{eq:exchange:left}]{A_1^\ast,\ldots, A_j^\ast,A_i^\ast,\ldots,A_m^\ast, \lnot B_1^\ast,\ldots,\lnot B_n^\ast\seq},
+                        \end{prooftree}\,,
+                    \end{equation*}
+                    again by the inductive hypothesis.
+                \item
+                    In \LK{}, by the rule \eqref{eq:cut} (the \(k+1\)st inference):
+                    \begin{equation*}
+                        \begin{prooftree}
+                            \hypo{A_1,\ldots,A_i\seq B_1,\ldots,B_j, D}
+                            \hypo{D, A_{i+1},\ldots,A_m\seq B_{j+1},\ldots,B_n, D}
+                            \infer2{A_1,\ldots,A_m\seq B_1,\ldots,B_n}
+                        \end{prooftree}
+                    \end{equation*}
+                    Then by the inductive hypothesis the inference
+                    \tiny
+                    \begin{equation*}
+                        \begin{prooftree}
+                            \hypo{A_1^\ast,\ldots,A_i^\ast, \lnot B_1^\ast,\ldots,\lnot B_j^\ast,\lnot D^\ast\seq}
+                            \infer[double]1[multiple \eqref{eq:exchange:left}]{\lnot D^\ast, A_1^\ast,\ldots,A_i^\ast, \lnot B_1^\ast,\ldots,\lnot B_j^\ast,\lnot D^\ast\seq}
+                            \infer1[\eqref{eq:lnot:right}]{A_1^\ast,\ldots,A_i^\ast, \lnot B_1^\ast,\ldots,\lnot B_j^\ast,\lnot D^\ast\seq\lnot\lnot D^\ast}
+                            \hypo{\text{proposition}~\ref{prop:claim 3 in LK vs LJ}}
+                            \ellipsis{}{\lnot\lnot D^\ast\seq D^\ast}
+                            \infer2[\eqref{eq:cut}]{A_1^\ast,\ldots,A_i^\ast, \lnot B_1^\ast,\ldots,\lnot B_j^\ast,\lnot D^\ast\seq D^\ast}
+                            \hypo{\IH}
+                            \ellipsis{}{D^\ast, A_{i+1}^\ast,\ldots,A_m^\ast, \lnot B_{j+1}^\ast,\ldots,\lnot B_n^\ast\seq}
+                            \infer2[\eqref{eq:cut}]{A_1^\ast,\ldots,A_i^\ast, \lnot B_1^\ast,\ldots,\lnot B_j^\ast,\lnot D^\ast\seq D^\ast}
+                            \infer1[\eqref{eq:cut}]{A_1^\ast,\ldots,A_i^\ast, \lnot B_1^\ast,\ldots,\lnot B_j^\ast,\lnot D^\ast\seq D^\ast}
+                        \end{prooftree}
+                    \end{equation*}
+                    \normalsize
+                \item
+                    \begin{exercise}[3.12.4 part vii]\label{exe:3.12.4.vii}
+                    This is left as an exercise.
+                    The \(\arcs{k+1}\)st inference is by \eqref{eq:lnot:right} in \LK{}.
+                    \end{exercise}
+            \end{enumerate}
+    \end{enumerate}
+    By the inductive principle, we can now conclude that if
+    \(A_1,\ldots,A_m\seq B_1,\ldots,B_n\) is in \LK{},
+    then \(A_1^\ast,\ldots,A_m^\ast, \lnot B_1^\ast,\ldots,\lnot B_n^\ast\seq\) is in \LJ{}.
 \end{proof}
 
+The converse of proposition~\ref{prop:claim 4 in LK vs LJ} also holds,
+but the proof is very long.
 Lastly, we cover the most important fact related to this section.
 
 \begin{theorem}[Connection between \LK{} and \LJ]\label{the:connection between LK and LJ}
@@ -1218,7 +1299,7 @@ Lastly, we cover the most important fact related to this section.
 \end{theorem}
 
 \begin{proof}
-    A particular instance of exercise~\ref{exe:3.12.4} is the following:
+    A particular instance of exercise~\ref{exe:3.12.4.vii} is the following:
     if \(\seq A\) in \LJ{}, then \(\lnot A^\ast\seq\) in LJ{}.
     Therefore
     \begin{equation*}
