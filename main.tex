@@ -255,14 +255,14 @@ The meaning of this notation is that if \(S_1\) and \(S_2\) are given,
 \(S\) can be inferred from them. This inference could consist of multiple
 individual inferences in sequence.
 
-\begin{definition}[Proof in \LK]\label{def:proof in LK}
+\begin{definition}[Proofs in \LK]\label{def:proof in LK}
     In classical logic \LK, a \emph{proof} \(P\)
     is a \emph{tree} of sequents, where
     \begin{enumerate}
         \item
-            the leaves are axioms \(A\seq A\),
+            the leaves or \emph{premises} are axioms \(A\seq A\),
         \item
-            the root of \(P\) has no lower sequents (or successors) and
+            the root or \emph{conclusion} of \(P\) has no lower sequents (or successors) and
         \item
             for every other sequent \(T_i\seq\Delta_i\in P\)
             there exists a sequent \(T_j\seq\Delta_j\in P\), so that
@@ -479,8 +479,6 @@ The following \emph{left} and \emph{right inference rules} are allowed in classi
         \end{enumerate}
 \end{enumerate}
 \end{definition}
-
-
 
 \paragraph{Note:}
 Proof manipulation using inference rules always happens ''at the ends'' of sequents:
@@ -1218,6 +1216,33 @@ Lastly, we cover the most important fact related to this section.
 \begin{theorem}[Connection between \LK{} and \LJ]\label{the:connection between LK and LJ}
     For all formulae \(A\), \(\seq A\) in \LK{}, if and only if \(\seq A^\ast\) in \LJ{}.
 \end{theorem}
+
+\begin{proof}
+    A particular instance of exercise~\ref{exe:3.12.4} is the following:
+    if \(\seq A\) in \LJ{}, then \(\lnot A^\ast\seq\) in LJ{}.
+    Therefore
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{\seq\lnot A^\ast}
+            \infer1{\seq\lnot\lnot A^\ast}
+            \hypo{A\seq A}
+            \ellipsis{Proposition~\ref{prop:claim 3 in LK vs LJ}}{A^\ast\seq A}
+            \infer2[\eqref{eq:cut}]{\seq A^\ast}
+        \end{prooftree}
+    \end{equation*}
+
+    Conversely, if \(\seq A^\ast\) in \LJ{} and by proposition~\ref{prop:claim 1 in LK vs LJ} we know that \(A\equiv A^\ast\) in \LK{},
+    we also have \(A^\ast\seq A\) in \LK{}. Thus
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{\seq A^\ast}
+            \hypo{A^\ast\seq A}
+            \infer2[\eqref{eq:cut}]{\seq A}
+        \end{prooftree}\,.
+        \qedhere
+    \end{equation*}
+\end{proof}
+
 
 
 \section{Axiom systems}
