@@ -1034,7 +1034,7 @@ For this purpose we declare the notational definitions in definition~\ref{def:st
             \text{atomic } A & \lnot\lnot A \\
             \lnot B & \lnot\arcs{B^\ast} \\
             B\land C & B^\ast\land C^\ast \\
-            B\lor C & \lnot\arcs{\lnot B\land\lnot C} \\
+            B\lor C & \lnot\arcs{\lnot B^\ast\land\lnot C^\ast} \\
             \forall xB(x) & \forall xB^\ast(x) \\
             \exists xB(x) & \lnot\forall xB^\ast(x) \\
             B\limplies C & B^\ast\limplies C^\ast \\
