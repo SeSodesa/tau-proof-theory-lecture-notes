@@ -1137,7 +1137,8 @@ With definition~\ref{def:starred formulae in LK} in place, we can proceed to mak
 
 \begin{proposition}[Claim 2]\label{prop:claim 2 in LK vs LJ}
     If \(S\) is the sequent \(A_1,\ldots,A_m\seq B_1,\ldots,B_n\),
-    then we may define the sequent \(S'\coloneqq A_1^\ast,\ldots,A_m^\ast,\lnot B_1^\ast,\ldots,\lnot B^\ast_n\seq\).
+    then we may define the sequent
+    \(S'\coloneqq A_1^\ast,\ldots,A_m^\ast,\lnot B_1^\ast,\ldots,\lnot B^\ast_n\seq\).
     Now \(S\) is \LK-provable, if and only if \(S'\) is \LK-provable.
 \end{proposition}
 
@@ -1282,7 +1283,14 @@ With definition~\ref{def:starred formulae in LK} in place, we can proceed to mak
                 \item
                     \begin{exercise}[3.12.4 part vii]\label{exe:3.12.4.vii}
                     This is left as an exercise.
-                    The \(\arcs{k+1}\)st inference is by~\eqref{eq:lnot:right} in \LK{}.
+                    If \(S\) is the sequent \(A_1,\ldots,A_m\seq B_1,\ldots,B_n\),
+                    then we may define the sequent
+                    \(S'\coloneqq A_1^\ast, \ldots, A_m^\ast,\linebreak
+                    \lnot B_1^\ast, \ldots, \lnot B^\ast_n\seq\).
+                    Show that if the sequent \(S\) is provable in \LK,
+                    then the sequent \(S'\) is provable in \LJ{}
+                    for the case, where the \(\arcs{k+1}\)st inference is
+                    by~\eqref{eq:lnot:right} in \LK{}.
                     \end{exercise}
             \end{enumerate}
     \end{enumerate}
