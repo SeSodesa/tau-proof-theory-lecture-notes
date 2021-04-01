@@ -1338,7 +1338,64 @@ Lastly, we cover the most important fact related to this section.
 
 
 
-\section{Axiom systems}
+\section{Axiom systems based on \LK}
+
+Let \(\sset A = \set{A_1,\ldots,A_n}\) or \(\sset A = \set{A_1,A_2,\ldots}\)
+be respectively finite or infinite sets of formulae.
+An \emph{axiom system} in classical logic \LK, denoted \(\LKsys[\sset A]\),
+is the set of theorems provable from the axioms formed from the formulae in \(\sset A\),
+using the inference rules of definition~\ref{def:inference rules in LK}.
+Such an axiom is either a sequent \mbox{\(A\seq A\)},
+or a single formula \(A_i\), for all formulae \(A,A_i\in\sset A\).
+
+\begin{definition}[Consistency]\label{def:consistency}
+    An axiom system \(\LKsys\) is \emph{consistent}, if the empty sequent \(\seq\)
+    is \emph{not} provable in \(\LKsys\). The system \(\LKsys\) is \emph{inconsistent}
+    if the empty sequent \emph{can} be derived in it.
+\end{definition}
+
+In other words, consistent axiom systems cannot produce contradictions,
+as per definition~\ref{def:contradiction and tautology}.
+The following proposition concerns equivalencies in inconsistent systems.
+
+\begin{proposition}[Equivalencies in inconsistent systems]%
+\label{prop:equivalencies in inconsistent systems}
+The following are equivalent statements:
+\begin{enumerate}[label={(\alph*)}]
+    \item\label{it:equivalencies in inconsistent systems 1}
+        \(\LKsys\) is inconsistent,
+    \item\label{it:equivalencies in inconsistent systems 2}
+        \(\seq A\) is provable for all formulae \(A\) and
+    \item\label{it:equivalencies in inconsistent systems 3}
+        for some \(A\), both \(\seq A\) and \(\seq \lnot A\) are provable in \(\LKsys\).
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\item[\ref{it:equivalencies in inconsistent systems 1}\(\implies\)\ref{it:equivalencies in inconsistent systems 2}]
+    If the empty sequent \(\seq\) is provable, then it can be used as a leaf of a proof.
+    Therefore the following argument can be made:
+    \begin{prooftree}
+        \hypo{\seq}
+        \infer1[\eqref{eq:weakening:right}]{\seq A}
+    \end{prooftree}\,.
+\item[\ref{it:equivalencies in inconsistent systems 2}\(\implies\)\ref{it:equivalencies in inconsistent systems 3}]
+    If \(\seq A\) is provable for all \(A\),
+    we can set \(A = B\) and \(A = \lnot C\) for some \(B\) and \(C\),
+    so that \(\seq B\) and \(\seq\lnot C\) are provable.
+\item[\ref{it:equivalencies in inconsistent systems 3}\(\implies\)\ref{it:equivalencies in inconsistent systems 1}]
+    By assumption, there exists an \(A\), so that
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{\seq\lnot A}
+            \hypo{\seq A}
+            \infer1[\eqref{eq:lnot:left}]{\lnot A\seq}
+            \infer2[\eqref{eq:cut}]{\seq}
+        \end{prooftree}
+    \end{equation*}
+    Therefore the system \(\LKsys\) in which this proof was made is inconsistent
+    by definition~\ref{def:consistency}.
+\end{proof}
 
 \section{The Cut-elimination theorems of \LK}
 
