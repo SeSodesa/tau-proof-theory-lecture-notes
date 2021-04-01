@@ -1406,7 +1406,7 @@ We need multiple assisting results,
 before this can be proven,
 and some of the details will be omitted for brevity.
 
-\begin{lemma}[The mix rule]\label{lem:mix rule}
+\begin{lemma}[The mix rule, Lemma 5.2]\label{lem:mix rule}
     Let \(T\), \(\Delta\), \(\Delta^\ast\), \(\Pi\), \(\Pi^\ast\) and \(\Lambda\) be sequence formulae
     and \(A\) a single formula, such that \(\Delta = \Delta(A)\), \(\Pi = \Pi(A)\),
     \(\Delta^\ast\neq\Delta(A)\) and \(\Pi^\ast\neq\Pi(A)\). Then the rule~\eqref{eq:cut}
@@ -1468,6 +1468,36 @@ and some of the details will be omitted for brevity.
         \end{prooftree}\,.
     \end{equation*}
     Therefore the rules \eqref{eq:cut} and \eqref{eq:mix} are equivalent in \LK.
+\end{proof}
+
+\begin{lemma}[Lemma 5.4]\label{lem:5.4}
+Assume that the set of proofs \(\LK^\ast\) is obtained from
+the set \LK{} by replacing the \eqref{eq:cut} rule by
+the \eqref{eq:mix} rule. Assume that \(S\) is a sequent,
+whose proof~\(P\in\LK^\ast\), such that the last inference rule of \(P\)
+is the only instance of \eqref{eq:mix} in \(P\).
+Then \(P\in\LK\).
+\end{lemma}
+
+\begin{proof}
+    By double induction. TODO.
+\end{proof}
+
+\begin{theorem}[Theorem 5.3]\label{the:5.3}
+    If a sequent \(S\) is provable by using the \eqref{eq:mix} rule,
+    then it is also provable without it.
+\end{theorem}
+
+\begin{proof}[An idea of the proof]
+    Let \(P\) be a proof of \(S\).
+    Now investigate some branch of \(P\),
+    where and instance of the \eqref{eq:mix} rule appears.
+    By lemma~\ref{lem:5.4}, this branch can be replaced by
+    a \eqref{eq:mix}-free proof \(Q\), ending in \(S\).
+    We continue applying this procedure to all
+    \eqref{eq:mix}-containing branches of \(P\),
+    until no branches with instances of the \eqref{eq:mix} rule
+    exist in \(P\). This concludes the proof.
 \end{proof}
 
 \section{Consequences of Cut-elimination -- Consistency of \LK{} an \LJ}
