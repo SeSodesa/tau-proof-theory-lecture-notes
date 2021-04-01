@@ -1573,8 +1573,15 @@ Now we can establish the following central result.
     all formulae are subformulae of \(T\) and \(\Delta\).
 \end{theorem}
 
-\begin{proof}
-    By induction on the number of inferences in \(P\).
+\begin{proof}[A sketch of a proof]
+    By induction on the number of inferences in \(P\),
+    denoted by \(n\). In the base case, \(n=0\)
+    and we only have axioms \(A\seq A\) and the claim holds.
+
+    As the inductive hypothesis, we assume that the claim holds
+    for \(n=k\) inferences. In the inductive step, we simply
+    add the known inference rules one at a time and check that
+    the claim still holds.
 \end{proof}
 
 \begin{definition}[Structure of language]\label{def:structure of language}
