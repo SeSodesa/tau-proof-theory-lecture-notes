@@ -1655,6 +1655,17 @@ Now we can establish the following central result.
     it is valid in every structure.
 \end{definition}
 
+\begin{definition}[Satisfied and valid sequents]%
+\label{def:satisfied and valid sequents}
+A sequent \(\Gamma\seq\Delta\) is \emph{satisfied in} the structure
+\(\tuple{D,\phi}\) \emph{by} an interpretation \(\interp\),
+if and only if either some formula in \(\Gamma\) is \emph{not}
+satisfied by \(\interp\), or some formula in \(\Delta\) \emph{is}
+satisfied by \(\interp\). A sequent is \emph{valid}, if and only if
+it is satisfied in every interpretation.
+
+\end{definition}
+
 \section{Completeness of \LK}
 
 \subsection{Structures, assignments, interpretations and validity}
