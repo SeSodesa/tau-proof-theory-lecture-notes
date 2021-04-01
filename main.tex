@@ -1538,11 +1538,35 @@ If we think of the inferences
 we notice that the upper sequents are always composed of subformulae
 of the lower sequents, but conversely. We then have the following result.
 
-\begin{theorem}[Subformula property]\label{the:subdormula property}
+\begin{theorem}[Subformula property]\label{the:subformula property}
     If \(P\) is a proof of the sequent \(T\seq\Delta\),
     then \(P\) contains only formulae that are subformulae of
-    the sequence formulae \(T\) and \(\Delta\).
+    the sequence formulae \(T\) and \(\Delta\), but not conversely.
 \end{theorem}
+
+\begin{proof}
+    Omitted.
+\end{proof}
+
+Now we can establish the following central result.
+
+\begin{theorem}\label{eq:consistency of LK and LJ}
+    The sets \LK{} and \LJ{} are consistent,
+    as per definition~\ref{def:consistency}.
+\end{theorem}
+
+\begin{proof}
+    We proceed by the contrapositive principle and
+    assume to the contrary, so that the empty sequent \(\seq\)
+    is provable in \LK{} or \LJ{}. Then by the previous results
+    it can be proven without the \eqref{eq:cut} rule,
+    and therefore the supposed proof can only contain empty sequents
+    because of theorem~\ref{the:subformula property}.
+    But for a proof to be a proof, it has to start with an
+    axiom, which is of the form \(A\seq A\),
+    which is not an empty sequent. This is a contradiction,
+    so the claim must be true.
+\end{proof}
 
 \section{Completeness of \LK}
 
