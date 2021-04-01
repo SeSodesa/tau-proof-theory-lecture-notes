@@ -1264,19 +1264,19 @@ With definition~\ref{def:starred formulae in LK} in place, we can proceed to mak
                         \end{prooftree}
                     \end{equation*}
                     Then by the inductive hypothesis the inference
-                    \tiny
+                    \scriptsize
                     \begin{equation*}
                         \begin{prooftree}
                             \hypo{A_1^\ast,\ldots,A_i^\ast, \lnot B_1^\ast,\ldots,\lnot B_j^\ast,\lnot D^\ast\seq}
-                            \infer[double]1[multiple \eqref{eq:exchange:left}]{\lnot D^\ast, A_1^\ast,\ldots,A_i^\ast, \lnot B_1^\ast,\ldots,\lnot B_j^\ast,\lnot D^\ast\seq}
-                            \infer1[\eqref{eq:lnot:right}]{A_1^\ast,\ldots,A_i^\ast, \lnot B_1^\ast,\ldots,\lnot B_j^\ast,\lnot D^\ast\seq\lnot\lnot D^\ast}
+                            \infer[double]1[\eqref{eq:exchange:left}]{\lnot D^\ast, A_1^\ast,\ldots,A_i^\ast, \lnot B_1^\ast,\ldots,\lnot B_j^\ast\seq}
+                            \infer1[\eqref{eq:lnot:right}]{A_1^\ast,\ldots,A_i^\ast, \lnot B_1^\ast,\ldots,\lnot B_j^\ast\seq\lnot\lnot D^\ast}
                             \hypo{\text{proposition}~\ref{prop:claim 3 in LK vs LJ}}
                             \ellipsis{}{\lnot\lnot D^\ast\seq D^\ast}
-                            \infer2[\eqref{eq:cut}]{A_1^\ast,\ldots,A_i^\ast, \lnot B_1^\ast,\ldots,\lnot B_j^\ast,\lnot D^\ast\seq D^\ast}
+                            \infer2[\eqref{eq:cut}]{A_1^\ast,\ldots,A_i^\ast, \lnot B_1^\ast,\ldots,\lnot B_j^\ast\seq D^\ast}
                             \hypo{\IH}
                             \ellipsis{}{D^\ast, A_{i+1}^\ast,\ldots,A_m^\ast, \lnot B_{j+1}^\ast,\ldots,\lnot B_n^\ast\seq}
-                            \infer2[\eqref{eq:cut}]{A_1^\ast,\ldots,A_i^\ast, \lnot B_1^\ast,\ldots,\lnot B_j^\ast,\lnot D^\ast\seq D^\ast}
-                            \infer1[\eqref{eq:cut}]{A_1^\ast,\ldots,A_i^\ast, \lnot B_1^\ast,\ldots,\lnot B_j^\ast,\lnot D^\ast\seq D^\ast}
+                            \infer[left label=\eqref{eq:cut}]2{A_1^\ast,\ldots,A_i^\ast, \lnot B_1^\ast,\ldots,\lnot B_j^\ast,A_{i+1}^\ast,\ldots,A_m^\ast, \lnot B_{j+1}^\ast,\ldots,\lnot B_n^\ast\seq}
+                            \infer[rule style=double]1[\eqref{eq:exchange:left}]{A_1^\ast,\ldots,A_m^\ast, \lnot B_1^\ast,\ldots,\lnot B_n^\ast\seq}
                         \end{prooftree}
                     \end{equation*}
                     \normalsize
