@@ -1397,7 +1397,78 @@ The following are equivalent statements:
     by definition~\ref{def:consistency}.
 \end{proof}
 
-\section{The Cut-elimination theorems of \LK}
+\section{The Cut-elimination theorem in \LK}
+
+This theorem is also known as \emph{Gentzen's Haubsatz}.
+In short, the theorem goes as follows: If a theorem is provable,
+then it is provable without~\eqref{eq:cut}.
+We need multiple assisting results,
+before this can be proven,
+and some of the details will be omitted for brevity.
+
+\begin{lemma}[The mix rule]\label{lem:mix rule}
+    Let \(T\), \(\Delta\), \(\Delta^\ast\), \(\Pi\), \(\Pi^\ast\) and \(\Lambda\) be sequence formulae
+    and \(A\) a single formula, such that \(\Delta = \Delta(A)\), \(\Pi = \Pi(A)\),
+    \(\Delta^\ast\neq\Delta(A)\) and \(\Pi^\ast\neq\Pi(A)\). Then the rule~\eqref{eq:cut}
+    can be replaced by the rule
+    \begin{equation}\label{eq:mix}\tag{mix}
+        \begin{prooftree}
+            \hypo{T\seq\Delta}
+            \hypo{\Pi\seq\Lambda}
+            \infer2[\(\eqref{eq:mix}:A\)]{T,\Pi^\ast\seq\Delta^\ast\Lambda}
+        \end{prooftree}\,.
+    \end{equation}
+\end{lemma}
+
+\begin{proof}
+    Let the number of instances of \(A\) in the sequence
+    formulae \(\Delta\) and \(\Pi\) be \(k\) and \(l\),
+    respectively. Also assume that the rule~\eqref{eq:cut}
+    is usable in the following manner:
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{T\seq\Delta, A}
+            \hypo{A, \Pi\seq\Lambda}
+            \infer2[\eqref{eq:cut}]{T,\Pi\seq\Delta,\Lambda}
+        \end{prooftree}
+    \end{equation*}
+    The same result can be obtained by applying the \eqref{eq:mix} rule with respect to \(A\):
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{T\seq\Delta, A}
+            \hypo{A, \Pi\seq\Lambda}
+            \infer2[\(\eqref{eq:mix}:A\)]{T,\Pi^\ast\seq\Delta^\ast,\Lambda}
+            \infer[rule style=double]1[\(l\times\eqref{eq:weakening:left}\) and \eqref{eq:exchange:left}]{
+                T,\Pi\seq\Delta^\ast,\Lambda
+            }
+            \infer[rule style=double]1[\(k\times\eqref{eq:weakening:right}\) and \eqref{eq:exchange:right}]{
+                T,\Pi\seq\Delta,\Lambda
+            }
+        \end{prooftree}
+    \end{equation*}
+
+    Then assume that the \eqref{eq:mix} rule with respect to \(A\) can be used in the proof
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{T\seq\Delta}
+            \hypo{\Pi\seq\Lambda}
+            \infer2[\(\eqref{eq:mix}:A\)]{T,\Pi^\ast\seq\Delta^\ast,\Lambda}
+        \end{prooftree} \,.
+    \end{equation*}
+    If we now assume that \(l\geq k\), the \eqref{eq:cut} rule can be used to prove the same theorem:
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{T\seq\Delta}
+            \infer[rule style=double]1[\eqref{eq:exchange:right}]{T\seq\Delta^\ast, A,\ldots, A}
+            \infer[rule style=double]1[\eqref{eq:contraction:right}]{T\seq\Delta^\ast, A}
+            \hypo{\Pi\seq\Lambda}
+            \infer[rule style=double,left label=\eqref{eq:exchange:left}]1{A,\ldots,A,\Pi^\ast\seq\Lambda}
+            \infer[rule style=double,left label=\eqref{eq:contraction:left}]1{A,\Pi^\ast\seq\Lambda}
+            \infer2[\eqref{eq:cut}]{T,\Pi^\ast\seq\Delta^\ast,\Lambda}
+        \end{prooftree}\,.
+    \end{equation*}
+    Therefore the rules \eqref{eq:cut} and \eqref{eq:mix} are equivalent in \LK.
+\end{proof}
 
 \section{Consequences of Cut-elimination -- Consistency of \LK{} an \LJ}
 
