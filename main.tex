@@ -1579,7 +1579,7 @@ Now we can establish the following central result.
 
 \begin{definition}[Structure of language]\label{def:structure of language}
     Let \(L\) be a language as described in definition~\ref{def:classical alphabet}.
-    The \emph{structure} of such a language is an ordered pair \(\struct{D,\phi}\),
+    The \emph{structure} of such a language is an ordered pair \(\tuple{D,\phi}\),
     where \(D\) is a non-empty set and \(\phi\) a map from the constants of \(L\)
     such that
     \begin{enumerate}
@@ -1592,6 +1592,13 @@ Now we can establish the following central result.
             if \(R\) is a predicate constant of \(n\) arguments,
             then \(\phi{R}\subseteq D^n\).
     \end{enumerate}
+\end{definition}
+
+\begin{definition}[Interpretation of language]\label{def:interpretation of language}
+    An \emph{interpretation} \(\interp\) of a language \(L\) is an ordered pair \(\tuple{S,\phi_0}\),
+    where \(S\) is a structure \(\tuple{D,\phi}\) and \(\phi_0\)
+    is a mapping from the variables of \(L\) to \(D\).
+    The map \(\phi_0\) is called an \emph{assignment} from \(D\).
 \end{definition}
 
 \section{Completeness of \LK}
