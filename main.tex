@@ -1218,23 +1218,23 @@ With definition~\ref{def:starred formulae in LK} in place, we can proceed to mak
                 \end{prooftree}
             \end{equation*}
         \item
-            For the inductive hypothesis \IH, let the claim in \LK{} hold for a proof of length \(n \leq k\).
+            For the inductive hypothesis \IH, let the claim in \LK{} hold for a proof of length \(n \leq p\).
             Note that based on the number of inference rules in definition~\ref{def:inference rules in LK},
-            the number of \emph{subcases} of \(n = k+1\) is \(21\). Let us cover some of them:
+            the number of \emph{subcases} of \(n = p+1\) is \(21\). Let us cover some of them:
             \begin{enumerate}
                 \item
                     In \LK{} we have
                     \begin{equation*}
                         \begin{prooftree}
-                            \hypo{A_1,\ldots,A_m\seq B_1,\ldots,B_n}
-                            \infer1[\eqref{eq:weakening:left}]{A, A_1,\ldots,A_m\seq B_1,\ldots B_1,\ldots,B_n}
+                            \hypo{A_1,\ldots,A_k\seq B_1,\ldots,B_l}
+                            \infer1[\eqref{eq:weakening:left}]{A, A_1,\ldots,A_k\seq B_1,\ldots B_1,\ldots,B_l}
                         \end{prooftree}
                     \end{equation*}
                     whereas in \LJ{} this means that
                     \begin{equation*}
                         \begin{prooftree}
-                            \hypo{A_1^\ast,\ldots, A_m^\ast, \lnot B_1^\ast,\ldots,\lnot B_n^\ast\seq}
-                            \infer1[\eqref{eq:weakening:left}]{A^\ast, A_1,\ldots,A_m, \lnot B_1^\ast,\ldots,\lnot B_n^\ast\seq}
+                            \hypo{A_1^\ast,\ldots, A_k^\ast, \lnot B_1^\ast,\ldots,\lnot B_l^\ast\seq}
+                            \infer1[\eqref{eq:weakening:left}]{A^\ast, A_1,\ldots,A_k, \lnot B_1^\ast,\ldots,\lnot B_l^\ast\seq}
                         \end{prooftree}
                     \end{equation*}
                     by the inductive hypothesis.
@@ -1242,25 +1242,25 @@ With definition~\ref{def:starred formulae in LK} in place, we can proceed to mak
                     In \LK{} we have
                     \begin{equation*}
                         \begin{prooftree}
-                            \hypo{A_1,\ldots, A_i,A_j,\ldots,A_m\seq B_1,\ldots,B_n}
-                            \infer1[\eqref{eq:exchange:left}]{A_1,\ldots, A_j,A_i,\ldots,A_m\seq B_1,\ldots,B_n}
+                            \hypo{A_1,\ldots, A_i,A_j,\ldots,A_k\seq B_1,\ldots,B_l}
+                            \infer1[\eqref{eq:exchange:left}]{A_1,\ldots, A_j,A_i,\ldots,A_k\seq B_1,\ldots,B_l}
                         \end{prooftree}
                     \end{equation*}
                     whereas in \LJ{} this means that
                     \begin{equation*}
                         \begin{prooftree}
-                            \hypo{A_1^\ast,\ldots, A_i^\ast,A_j^\ast,\ldots,A_m^\ast, \lnot B_1^\ast,\ldots,\lnot B_n^\ast\seq}
-                            \infer1[\eqref{eq:exchange:left}]{A_1^\ast,\ldots, A_j^\ast,A_i^\ast,\ldots,A_m^\ast, \lnot B_1^\ast,\ldots,\lnot B_n^\ast\seq},
+                            \hypo{A_1^\ast,\ldots, A_i^\ast,A_j^\ast,\ldots,A_k^\ast, \lnot B_1^\ast,\ldots,\lnot B_l^\ast\seq}
+                            \infer1[\eqref{eq:exchange:left}]{A_1^\ast,\ldots, A_j^\ast,A_i^\ast,\ldots,A_k^\ast, \lnot B_1^\ast,\ldots,\lnot B_l^\ast\seq},
                         \end{prooftree}\,,
                     \end{equation*}
                     again by the inductive hypothesis.
                 \item
-                    In \LK{}, by the rule \eqref{eq:cut} (the \(k+1\)st inference):
+                    In \LK{}, by the rule~\eqref{eq:cut} (the \(p+1\)st inference):
                     \begin{equation*}
                         \begin{prooftree}
                             \hypo{A_1,\ldots,A_i\seq B_1,\ldots,B_j, D}
-                            \hypo{D, A_{i+1},\ldots,A_m\seq B_{j+1},\ldots,B_n, D}
-                            \infer2{A_1,\ldots,A_m\seq B_1,\ldots,B_n}
+                            \hypo{D, A_{i+1},\ldots,A_k\seq B_{j+1},\ldots,B_l, D}
+                            \infer2{A_1,\ldots,A_k\seq B_1,\ldots,B_l}
                         \end{prooftree}
                     \end{equation*}
                     Then by the inductive hypothesis the inference
@@ -1274,29 +1274,29 @@ With definition~\ref{def:starred formulae in LK} in place, we can proceed to mak
                             \ellipsis{}{\lnot\lnot D^\ast\seq D^\ast}
                             \infer2[\eqref{eq:cut}]{A_1^\ast,\ldots,A_i^\ast, \lnot B_1^\ast,\ldots,\lnot B_j^\ast\seq D^\ast}
                             \hypo{\IH}
-                            \ellipsis{}{D^\ast, A_{i+1}^\ast,\ldots,A_m^\ast, \lnot B_{j+1}^\ast,\ldots,\lnot B_n^\ast\seq}
-                            \infer[left label=\eqref{eq:cut}]2{A_1^\ast,\ldots,A_i^\ast, \lnot B_1^\ast,\ldots,\lnot B_j^\ast,A_{i+1}^\ast,\ldots,A_m^\ast, \lnot B_{j+1}^\ast,\ldots,\lnot B_n^\ast\seq}
-                            \infer[rule style=double]1[\eqref{eq:exchange:left}]{A_1^\ast,\ldots,A_m^\ast, \lnot B_1^\ast,\ldots,\lnot B_n^\ast\seq}
+                            \ellipsis{}{D^\ast, A_{i+1}^\ast,\ldots,A_k^\ast, \lnot B_{j+1}^\ast,\ldots,\lnot B_l^\ast\seq}
+                            \infer[left label=\eqref{eq:cut}]2{A_1^\ast,\ldots,A_i^\ast, \lnot B_1^\ast,\ldots,\lnot B_j^\ast,A_{i+1}^\ast,\ldots,A_k^\ast, \lnot B_{j+1}^\ast,\ldots,\lnot B_l^\ast\seq}
+                            \infer[rule style=double]1[\eqref{eq:exchange:left}]{A_1^\ast,\ldots,A_k^\ast, \lnot B_1^\ast,\ldots,\lnot B_l^\ast\seq}
                         \end{prooftree}
                     \end{equation*}
                     \normalsize
                 \item
                     \begin{exercise}[3.12.4 part vii]\label{exe:3.12.4.vii}
                     This is left as an exercise.
-                    If \(S\) is the sequent \(A_1,\ldots,A_m\seq B_1,\ldots,B_n\),
+                    If \(S\) is the sequent \(A_1,\ldots,A_k\seq B_1,\ldots,B_l\),
                     then we may define the sequent
-                    \(S'\coloneqq A_1^\ast, \ldots, A_m^\ast,\linebreak
-                    \lnot B_1^\ast, \ldots, \lnot B^\ast_n\seq\).
+                    \(S'\coloneqq A_1^\ast, \ldots, A_k^\ast,\linebreak
+                    \lnot B_1^\ast, \ldots, \lnot B^\ast_l\seq\).
                     Show that if the sequent \(S\) is provable in \LK,
                     then the sequent \(S'\) is provable in \LJ{}
-                    for the case, where the \(\arcs{k+1}\)st inference is
+                    for the case, where the \(\arcs{p+1}\)st inference is
                     by~\eqref{eq:lnot:right} in \LK{}.
                     \end{exercise}
             \end{enumerate}
     \end{enumerate}
     By the inductive principle, we can now conclude that if
-    \(A_1,\ldots,A_m\seq B_1,\ldots,B_n\) is in \LK{},
-    then \(A_1^\ast,\ldots,A_m^\ast, \lnot B_1^\ast,\ldots,\lnot B_n^\ast\seq\) is in \LJ{}.
+    \(A_1,\ldots,A_k\seq B_1,\ldots,B_l\) is in \LK{},
+    then \(A_1^\ast,\ldots,A_k^\ast, \lnot B_1^\ast,\ldots,\lnot B_l^\ast\seq\) is in \LJ{}.
 \end{proof}
 
 The converse of proposition~\ref{prop:claim 4 in LK vs LJ} also holds,
