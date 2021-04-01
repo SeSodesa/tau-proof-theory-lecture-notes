@@ -1509,6 +1509,41 @@ Theorem~\ref{the:5.3} proves Gentzen's Haubsatz.
 
 \section{Consequences of Cut-elimination -- Consistency of \LK{} an \LJ}
 
+To begin discussion on this topic, we need to have an idea
+of what the word \emph{subformula} means. Thankfully,
+the idea is not very difficult and is illustrated by
+the following examples:
+\begin{itemize}
+    \item
+        The subformulae of \(\exists xF(x)\) are the formula itself,
+        \(F(a)\), and the subformulae of \(F(a)\).
+    \item
+        The subformulae of \(C\land D\) are \(C\land D\), \(C\) and \(D\),
+        and the subformulae of \(C\) and \(D\).
+\end{itemize}
+
+If we think of the inferences
+\begin{equation*}
+    \begin{prooftree}
+        \hypo{T'\seq\Delta'}
+        \hypo{T''\seq\Delta''}
+        \infer2{T\seq\Delta}
+    \end{prooftree}
+    \quad\text{and}\quad
+    \begin{prooftree}
+        \hypo{T'\seq\Delta'}
+        \infer1{T\seq\Delta}
+    \end{prooftree}\,,
+\end{equation*}
+we notice that the upper sequents are always composed of subformulae
+of the lower sequents, but conversely. We then have the following result.
+
+\begin{theorem}[Subformula property]\label{the:subdormula property}
+    If \(P\) is a proof of the sequent \(T\seq\Delta\),
+    then \(P\) contains only formulae that are subformulae of
+    the sequence formulae \(T\) and \(\Delta\).
+\end{theorem}
+
 \section{Completeness of \LK}
 
 \subsection{Structures, assignments, interpretations and validity}
