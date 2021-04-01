@@ -1663,7 +1663,14 @@ if and only if either some formula in \(\Gamma\) is \emph{not}
 satisfied by \(\interp\), or some formula in \(\Delta\) \emph{is}
 satisfied by \(\interp\). A sequent is \emph{valid}, if and only if
 it is satisfied in every interpretation.
+\end{definition}
 
+\begin{definition}[Model and Counter-Model]%
+\label{def:model and counter-model}
+A structure \(S\) is called a \emph{model} of an axiom system
+\(\Gamma\), if every sentence of \(\Gamma\) is valid in \(S\).
+On the other hand, \(S\) is a \emph{counter-model} of \(\Gamma\),
+if there is a sentence of \(\Gamma\) that is not valid in \(S\).
 \end{definition}
 
 \section{Completeness of \LK}
