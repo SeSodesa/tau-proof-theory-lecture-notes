@@ -1584,7 +1584,6 @@ Now we can establish the following central result.
     the claim still holds.
 \end{proof}
 
-
 \section{Completeness of \LK}
 
 We would like to show the following in \LK:
@@ -1689,6 +1688,111 @@ A structure \(S\) is called a \emph{model} of an axiom system
 On the other hand, \(S\) is a \emph{counter-model} of \(\Gamma\),
 if there is a sentence of \(\Gamma\) that is not valid in \(S\).
 \end{definition}
+
+The definitions needed in proving the wanted results
+are now in place. We start with the following theorem.
+
+\begin{theorem}\label{the:8.2}
+    A formula \(A\) is valid,
+    if and only if it is provable without \eqref{eq:cut} in \LK.
+    The same holds for any sequent \(\Gamma\seq\Delta\).
+\end{theorem}
+
+\begin{proof}
+    The simple part of this proof is showing that a sequent is sound.
+    If \(\Gamma\seq\Delta\) is provable, it is also valid.
+    The proof is by induction on the number inferences in the proof of \(\Gamma\seq\Delta\),
+    denoted by \(n\).
+
+    If \(n=0\) a proof only consists of axioms of the form \(A\seq A\),
+    where the antecedent \(A\) is never satisfied in the interpretation
+    \(\interp\), whereas the succedent \(A\) always is. Therefore the
+    sequent \(A\seq A\) is always satisfied in all \(\interp\) and is then valid.
+
+    We now make the induction hypothesis \IH, that if the number of inferences
+    \(n\leq k\) in the proofs of the sequents \(\Gamma\seq\Delta\) and \(\Pi\seq\Lambda\),
+    then both of them are valid. In the inductive step, we add each of the inference
+    rules in definition \ref{def:inference rules in LK} to the proof one at a time
+    (except \eqref{eq:cut}), and check that validity is preserved.
+
+    \paragraph{Structural rules.}
+    These follow directly from the definition of validity.
+    In the inferences
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{\Gamma\seq\Delta}
+            \infer1[\eqref{eq:weakening:left}]{A, \Gamma\seq\Delta}
+        \end{prooftree}
+        \quad\text{and}\quad
+        \begin{prooftree}
+            \hypo{\Gamma\seq\Delta}
+            \infer1[\eqref{eq:weakening:right}]{\Gamma\seq\Delta, A}
+        \end{prooftree}\,,
+    \end{equation*}
+    the sequence \(\Gamma\) contains at least one \emph{invalid} formula \(B\),
+    whereas \(\Delta\) contains at least one \emph{valid} formula \(B\) by the inductive hypothesis.
+    The other two types of non-\eqref{eq:cut} structural inferences
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{A,A,\Gamma\seq\Delta}
+            \infer1[\eqref{eq:contraction:left}]{A, \Gamma\seq\Delta}
+        \end{prooftree}
+        \quad\text{and}\quad
+        \begin{prooftree}
+            \hypo{\Gamma\seq\Delta,A,A}
+            \infer1[\eqref{eq:contraction:right}]{\Gamma\seq\Delta, A}
+        \end{prooftree}\,,
+    \end{equation*}
+    and
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{C,D,\Gamma\seq\Delta}
+            \infer1[\eqref{eq:exchange:left}]{D,C,\Gamma\seq\Delta}
+        \end{prooftree}
+        \quad\text{and}\quad
+        \begin{prooftree}
+            \hypo{\Gamma\seq\Delta,C,D}
+            \infer1[\eqref{eq:exchange:right}]{\Gamma\seq\Delta, D,C}
+        \end{prooftree}\,,
+    \end{equation*}
+    also preserve validity by the same logic.
+
+    \paragraph{Logical rules.}
+    We start with the rules
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{\Gamma\seq\Delta,A}
+            \infer1[\eqref{eq:lnot:left}]{\lnot A, \Gamma\seq\Delta}
+        \end{prooftree}
+        \quad\text{and}\quad
+        \begin{prooftree}
+            \hypo{A, \Gamma\seq\Delta}
+            \infer1[\eqref{eq:lnot:right}]{\Gamma\seq\Delta, \lnot A}
+        \end{prooftree}\,.
+    \end{equation*}
+    Given an interpretation \(\interp\),
+    if the satisfied formula is in \(\Delta\) or the unsatisfied
+    one in \(\Gamma\), then there is nothing to prove.
+    Otherwise, if \(A\) is the satisfied formula,
+    then \(\lnot A\) is not satisfied by definition,
+    meaning \(\lnot A\) must contain a formula \(C\) that is not satisfied.
+    This implies that the sequent \(\lnot A,\Gamma\seq\Delta\) is satisfied by definition.
+    The proof of the sequent \(\Gamma\seq\Delta,\lnot A\) being satisfied
+    in the inference \eqref{eq:lnot:right} is entirely symmetrical to this.
+
+    \begin{exercise}[Exercise 8.2.1]\label{exe:8.2.1}
+        Prove the inductive step in the inferences~\eqref{eq:land:left},
+        \eqref{eq:land:right}, \eqref{eq:lor:left}, \eqref{eq:lor:right},
+        \eqref{eq:limplies:left} and \eqref{eq:limplies:right}.
+    \end{exercise}
+
+    \begin{exercise}[Exercise 8.2.2]\label{exe:8.2.2}
+        Prove the inductive step in the inferences~\eqref{eq:forall:left},
+        \eqref{eq:forall:right}, \eqref{eq:exists:left} and \eqref{eq:exists:right}.
+    \end{exercise}
+
+    With all of the inference rules covered, the proof is now complete.
+\end{proof}
 
 \subsection{Structures, assignments, interpretations and validity}
 
