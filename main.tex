@@ -1667,19 +1667,20 @@ To establish what these concepts mean, we give the following
         \item
             The interpretation \(\interp = \tuple{\tuple{D,\phi},\phi_0}\)
             satisfies \(\forall xB\arcs{x}\), if and only if for \emph{every} \(\phi_0'\)
-            such that \(\phi_0'(x) = \phi_0(x)\) but \(\phi_0'(a)\neq\phi_0(a)\)
-            at least for some \(a\), the interpretation
-            \(\interp'=\tuple{\tuple{D,\phi},\phi_0'}\) satisfies \(B\).
+            such that \(\phi_0'(x) = \phi_0(x)\) almost everywhere,
+            the interpretation \(\interp'=\tuple{\tuple{D,\phi},\phi_0'}\) satisfies \(B\).
         \item
             The interpretation \(\interp = \tuple{\tuple{D,\phi},\phi_0}\)
             satisfies \(\exists xB\arcs{x}\), if and only if for \emph{some} \(\phi_0'\)
-            such that \(\phi_0'(x) = \phi_0(x)\) but \(\phi_0'(a)\neq\phi_0(a)\)
-            at least for some \(a\), the interpretation
-            \(\interp'=\tuple{\tuple{D,\phi},\phi_0'}\) satisfies \(B\).
+            such that \(\phi_0'(x) = \phi_0(x)\) almost everywhere,
+            the interpretation \(\interp'=\tuple{\tuple{D,\phi},\phi_0'}\) satisfies \(B\).
     \end{enumerate}
     If \(\interp = \tuple{\tuple{D,\phi},\phi_0}\) satisfies a formula \(A\),
     \(A\) is said to be satisfied in \(\tuple{D,\phi}\) by the assignment \(\phi_0\).
 \end{definition}
+
+Note that in the above definition, \emph{almost everywhere} means that there might
+exist some \(a\) for which \(\phi_0'(a)\neq\phi_0(a)\).
 
 \begin{definition}[Valid formula]\label{def:valid formula}
     A formula \(A\) is said to be \emph{valid in} the structure \(\tuple{D,\phi}\),
