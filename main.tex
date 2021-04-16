@@ -1898,7 +1898,7 @@ of \emph{reduction trees}.
                                 \begin{prooftree}
                                     \tag{reduction:\(\lor\):left}
                                     \label{eq:reduction:lor:left}
-                                    \hypo{\Pi\seq\Lambda,C_1,\ldots,C_n}
+                                    \hypo{C_1,\ldots,C_n,\Pi\seq\Lambda}
                                     \infer1{\Pi\seq\Lambda}
                                 \end{prooftree}
                             \end{equation}
@@ -1908,9 +1908,9 @@ of \emph{reduction trees}.
                             Then the following push operation can be performed:
                             \begin{equation}
                                 \begin{prooftree}
-                                    \tag{reduction:\(\lor\):left}
-                                    \label{eq:reduction:lor:left}
-                                    \hypo{A_1, B_1,\ldots,A_n, B_n,\Pi\seq\Lambda}
+                                    \tag{reduction:\(\lor\):right}
+                                    \label{eq:reduction:lor:right}
+                                    \hypo{\Pi\seq\Lambda,A_1, B_1,\ldots,A_n, B_n}
                                     \infer1{\Pi\seq\Lambda}
                                 \end{prooftree}
                             \end{equation}
@@ -1974,7 +1974,7 @@ of \emph{reduction trees}.
                                 \begin{prooftree}
                                     \tag{reduction:\(\exists\):left}
                                     \label{eq:reduction:left:left}
-                                    \hypo{,A_1(a_1),\ldots,A_n(a_n),\Pi\seq\Lambda}
+                                    \hypo{A_1(a_1),\ldots,A_n(a_n),\Pi\seq\Lambda}
                                     \infer1{\Pi\seq\Lambda}
                                 \end{prooftree}
                             \end{equation}
@@ -1994,8 +1994,8 @@ of \emph{reduction trees}.
                                 \end{prooftree}
                             \end{equation}
                         \item\label{it:reduction tree else}
-                            If \(\Pi\) or \(\Lambda\) have \emph{any} formulae in common,
-                            do nothing. If the sequences \(\Pi\) or \(\Lambda\) have \emph{nothing}
+                            If \(\Pi\) and \(\Lambda\) have \emph{any} formulae in common,
+                            do nothing. If the sequences \(\Pi\) and \(\Lambda\) have \emph{nothing}
                             in common, perform the following push operation:
                             \begin{equation}
                                 \begin{prooftree}
