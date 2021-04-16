@@ -1822,8 +1822,8 @@ of \emph{reduction trees}.
 
 \begin{definition}[Reduction tree]\label{def:reduction tree}
     Let \(\Gamma\seq\Delta\) be a sequent.
-    The reduction tree for this sequent is constructed
-    conditionally as follows:
+    The \emph{reduction tree} for this sequent is constructed
+    programmatically as follows:
     \begin{enumerate}
         \item\label{it:reduction tree init}
             Place the sequent \(\Gamma\seq\Delta\) at the root of the tree.
@@ -1917,16 +1917,24 @@ of \emph{reduction trees}.
                         \item\label{it:reduction tree exists right}
                             This is defined like option \ref{it:reduction tree forall left},
                             with the symbol replacement \(\forall\to\exists\).
-                        \item\label{it:reduction tree branch finished}
+                        \item\label{it:reduction tree else}
                             If \(\Pi\) or \(\Lambda\) have \emph{any} formulae in common,
                             do nothing. If the sequences \(\Pi\) or \(\Lambda\) have \emph{nothing}
-                            in common, rewrite \(\Pi\seq\Lambda\) as a new leaf of this branch.
+                            in common, push \(\Pi\seq\Lambda\) as a new leaf on top of this branch.
                             If there are unhandled leaves still left in this iteration loop
                             continue, else jump to~\ref{it:reduction tree loop}.
                     \end{enumerate}
             \end{enumerate}
     \end{enumerate}
 \end{definition}
+
+Note that in the construction of a reduction tree,
+the case~\ref{it:reduction tree else} provides a possibility
+for the formation of an infinite loop. If this happens and
+some branch simply keeps growing indefinitely,
+as new sequents \(\Pi\seq\Lambda\) keep getting pushed on top of it,
+the sequent \(\Gamma\seq\Delta\) at the root of the tree
+is not provable.
 
 \subsection{Structures, assignments, interpretations and validity}
 
