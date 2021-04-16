@@ -1602,13 +1602,13 @@ To establish what these concepts mean, we give the following
     such that
     \begin{enumerate}
         \item
-            if \(k\) is an individual constant, then \(\phi{k}\in D\),
+            if \(k\) is an individual constant, then \(\phi(k)\in D\),
         \item
             if \(f\) is a function constant of \(n\) arguments,
-            then \(\phi{f}\) is a mapping from \(D^n\to D\) and
+            then \(\phi(f): D^n\to D\) and
         \item
             if \(R\) is a predicate constant of \(n\) arguments,
-            then \(\phi{R}\subseteq D^n\).
+            then \(\phi(R)\subseteq D^n\).
     \end{enumerate}
 \end{definition}
 
@@ -1616,7 +1616,14 @@ To establish what these concepts mean, we give the following
     An \emph{interpretation} \(\interp\) of a language \(L\) is an ordered pair \(\tuple{S,\phi_0}\),
     where \(S\) is a structure \(\tuple{D,\phi}\) and \(\phi_0\)
     is a mapping from the variables of \(L\) to \(D\).
-    The map \(\phi_0\) is called an \emph{assignment} from \(D\).
+    The map \(\phi_0\) is called an \emph{assignment} from \(D\)
+    and is defined as follows:
+    \begin{enumerate}
+        \item
+            \(\phi_0\arcs{a}\in D\) for all free variables \(a\) and
+        \item
+            \(\phi_0\arcs{x}\in D\) for all bound variables \(x\).
+    \end{enumerate}
 \end{definition}
 
 \begin{definition}[Formula-satisfying interpretation]\label{def:formula satisfying interpretation}
