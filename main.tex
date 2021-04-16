@@ -1318,8 +1318,8 @@ Lastly, we cover the most important fact related to this section.
     Therefore
     \begin{equation*}
         \begin{prooftree}
-            \hypo{\seq\lnot A^\ast}
-            \infer1{\seq\lnot\lnot A^\ast}
+            \hypo{\lnot A^\ast\seq}
+            \infer1[\eqref{eq:lnot:right}]{\seq\lnot\lnot A^\ast}
             \hypo{A\seq A}
             \ellipsis{Proposition~\ref{prop:claim 3 in LK vs LJ}}{A^\ast\seq A}
             \infer2[\eqref{eq:cut}]{\seq A^\ast}
