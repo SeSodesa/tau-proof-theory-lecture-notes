@@ -1852,7 +1852,12 @@ of \emph{reduction trees}.
                         \item[\forall:right]\label{it:reduction tree forall right}
                         \item[\exists:left]\label{it:reduction tree exists left}
                         \item[\exists:right]\label{it:reduction tree exists right}
-                        \item[branch finished]\label{it:reduction tree branch finished}
+                        \item[else]\label{it:reduction tree branch finished}
+                            If \(\Pi\) or \(\Lambda\) have \emph{any} formulae in common,
+                            do nothing and jump to \ref{it:reduction tree unfinished}.
+                            If the sequences \(\Pi\) or \(\Lambda\) have \emph{nothing}
+                            in common, rewrite \(\Pi\seq\Lambda\) as a new leaf of this
+                            branch and jump to \ref{it:reduction tree unfinished}.
                     \end{description}
             \end{enumerate}
     \end{enumerate}
