@@ -1626,16 +1626,25 @@ To establish what these concepts mean, we give the following
     \end{enumerate}
 \end{definition}
 
+\begin{definition}[Extension of \(\phi\)]\label{def:extension of structure map}
+    We define \(\phi\arcs{t}\) in a structure \(S = \tuple{D,\phi}\)
+    for every \emph{semi-term} \(t\) inductively
+    as follows:
+    \begin{enumerate}
+    \item
+        \(\phi\arcs{a} = \phi_0\arcs{a}\) and \(\phi\arcs{x} = \phi_0\arcs{x}\)
+        for all free variables \(a\) and bound variables \(x\).
+    \item
+        In addition,
+        if \(f\) is a function constant and \(t\) is a semi-term for which \(\phi\)
+        is already defined, then \(\phi\arcs{f\arcs{t}} = \arcs{\phi f}\arcs{\phi t}\).
+    \end{enumerate}
+\end{definition}
+
 \begin{definition}[Formula-satisfying interpretation]\label{def:formula satisfying interpretation}
     An interpretation \(\interp = \tuple{S,\phi_0} = \tuple{\tuple{D,\phi},\phi_0}\)
     \emph{satisfies} a formula \(A\), if the following are true:
     \begin{enumerate}
-        \item
-            We define \(\phi\arcs{t}\) for every \emph{semi-term} \(t\) inductively
-            as follows: \(\phi\arcs{a} = \phi_0\arcs{a}\) and \(\phi\arcs{x} = \phi_0\arcs{x}\)
-            for all free variables \(a\) and bound variables \(x\). In addition,
-            if \(f\) is a function constant and \(t\) is a semi-term for which \(\phi\)
-            is already defined, then \(\phi\arcs{f\arcs{t}} = \arcs{\phi f}\arcs{\phi t}\).
         \item
             If \(R\) is a predicate constant of \(n\) arguments
             and \(t_1,\ldots,t_n\) are semi-terms, then \(\interp\)
@@ -1657,16 +1666,16 @@ To establish what these concepts mean, we give the following
             or \(B\) is satisfied.
         \item
             The interpretation \(\interp = \tuple{\tuple{D,\phi},\phi_0}\)
-            satisfies \(\forall xB\arcs{x}\), if and only if for every \(\phi_0'\)
-            such that \(\phi_0'\) and \(\phi_0\) agree,
-            the interpretation \(\interp' = \tuple{\tuple{D,\phi},\phi_0'}\)
-            satisfies \(B\).
+            satisfies \(\forall xB\arcs{x}\), if and only if for \emph{every} \(\phi_0'\)
+            such that \(\phi_0'(x) = \phi_0(x)\) but \(\phi_0'(a)\neq\phi_0(a)\)
+            at least for some \(a\), the interpretation
+            \(\interp'=\tuple{\tuple{D,\phi},\phi_0'}\) satisfies \(B\).
         \item
             The interpretation \(\interp = \tuple{\tuple{D,\phi},\phi_0}\)
-            satisfies \(\exists xB\arcs{x}\), if and only if for some \(\phi_0'\)
-            such that \(\phi_0'\) and \(\phi_0\) agree,
-            the interpretation \(\interp' = \tuple{\tuple{D,\phi},\phi_0'}\)
-            satisfies \(B\).
+            satisfies \(\exists xB\arcs{x}\), if and only if for \emph{some} \(\phi_0'\)
+            such that \(\phi_0'(x) = \phi_0(x)\) but \(\phi_0'(a)\neq\phi_0(a)\)
+            at least for some \(a\), the interpretation
+            \(\interp'=\tuple{\tuple{D,\phi},\phi_0'}\) satisfies \(B\).
     \end{enumerate}
     If \(\interp = \tuple{\tuple{D,\phi},\phi_0}\) satisfies a formula \(A\),
     \(A\) is said to be satisfied in \(\tuple{D,\phi}\) by the assignment \(\phi_0\).
