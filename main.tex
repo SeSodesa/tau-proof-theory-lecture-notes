@@ -1818,27 +1818,41 @@ are now in place. We start with the following theorem.
 
 To prove the converse, that the validity of the sequent \(\seq A\)
 implies the provability of \(\seq A\), we will need the concept
-of \emph{reduction trees}
+of \emph{reduction trees}.
 
 \begin{definition}[Reduction tree]\label{def:reduction tree}
     Let \(\Gamma\seq\Delta\) be a sequent.
     The reduction tree for this sequent is constructed
     conditionally as follows:
     \begin{enumerate}
-        \item
+        \item\label{it:reduction tree init}
             Place the sequent \(\Gamma\seq\Delta\) at the root of the tree.
-        \item
-            The branches of the tree are defined by cases:
+        \item\label{it:reduction tree loop}
+            The branches of the tree are defined by looping cases:
             \begin{enumerate}
-                \item
+                \item\label{it:reduction tree finished}
                     If every topmost sequent contains a same formula
                     in both its antecedent and succedent,
                     then terminate the algorithm.
-                \item
-                    Else handle each possible logical symbol separately,
-                    in the way described in the following listing:
+                \item\label{it:reduction tree unfinished}
+                    Else iterate over the tops of the current branches
+                    and perform one of the following additions, depending on which
+                    logical symbols are the outermost symbols in \(\Pi\) or \(\Lambda\),
+                    when \(\Pi\seq\Lambda\) is the sequent in each leaf during each iteration:
                     \begin{description}
-                        \item[\lnot]
+                        \item[\lnot:left]
+                        \item[\lnot:right]
+                        \item[\land:left]
+                        \item[\land:right]
+                        \item[\lor:left]
+                        \item[\lor:right]
+                        \item[\limplies:left]
+                        \item[\limplies:right]
+                        \item[\forall:left]
+                        \item[\forall:right]
+                        \item[\exists:left]
+                        \item[\exists:right]
+                        \item[branch finished]
                     \end{description}
             \end{enumerate}
     \end{enumerate}
