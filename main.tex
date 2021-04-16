@@ -207,7 +207,7 @@ as is \(\Delta \corr B_1, \exists x B_2(x)\).
 \begin{definition}[Sequents, antecedents and succedents]%
     \label{def:sequent}
     If \(T\) and \(\Delta\) are sequences of formulae,
-    then the expression \(T\seq\Delta\) is the \emph{sequent} of the two sequences.
+    then the expression \(\Gamma\seq\Delta\) is the \emph{sequent} of the two sequences.
     Here \(T\) is the \emph{antecedent} and \(\Delta\) the \emph{succedent}
     of the sequent.
 \end{definition}
@@ -264,12 +264,12 @@ individual inferences in sequence.
         \item
             the root or \emph{conclusion} of \(P\) has no lower sequents (or successors) and
         \item
-            for every other sequent \(T_i\seq\Delta_i\in P\)
-            there exists a sequent \(T_j\seq\Delta_j\in P\), so that
+            for every other sequent \(\Gamma_i\seq\Delta_i\in P\)
+            there exists a sequent \(\Gamma_j\seq\Delta_j\in P\), so that
             \begin{equation*}
             \begin{prooftree}
-                \hypo{T_i\seq\Delta_i}
-                \infer1{T_j\seq\Delta_j}
+                \hypo{\Gamma_i\seq\Delta_i}
+                \infer1{\Gamma_j\seq\Delta_j}
             \end{prooftree}\,.
             \end{equation*}
            .
@@ -546,7 +546,7 @@ A hierarchical description of it is given in table~\ref{tab:language hierarchy}.
             \infer1{\vdots}
             \hypo{B\seq{}B}
             \infer1{\vdots}
-            \infer2{T\seq\Delta}
+            \infer2{\Gamma\seq\Delta}
         \end{prooftree}
         \qquad\qquad
         \begin{prooftree}
@@ -574,7 +574,7 @@ A hierarchical description of it is given in table~\ref{tab:language hierarchy}.
         \end{prooftree}
     }\\
     \midrule
-    4.  & Sequents  &   \(A_1,\ldots, A_m\seq B_1,\ldots,B_n\), \(T\seq\Delta\), \(\Pi\seq\Gamma\)\\
+    4.  & Sequents  &   \(A_1,\ldots, A_m\seq B_1,\ldots,B_n\), \(\Gamma\seq\Delta\), \(\Pi\seq\Gamma\)\\
     \midrule
     3.  & Formulae  &   \(A, B, C,\ldots\), \(R\arcs{t_1,\ldots,t_n}\), \(a = b\), \(a + b = c\), \(0\mult a  = b \mult c\), \(a' = 0\),
                         \(\forall x\arcs{x + b = c}\), \(\exists x\arcs{x = a} \lor \lnot\exists z\arcs{z = b}\)\\
@@ -763,12 +763,12 @@ We also accept the inferences
     \quad\text{and}\quad
     \begin{prooftree}
         \hypo{T\seq \Delta, A}
-        \infer1[\eqref{eq:lor:right}]{T\seq\Delta, \arcs{B\land C}\lor A}
+        \infer1[\eqref{eq:lor:right}]{\Gamma\seq\Delta, \arcs{B\land C}\lor A}
     \end{prooftree}
 \end{equation*}
 
 \begin{proposition}\label{prop:if provable, then atomic}
-    If \(T\seq\Delta\) is provable without~\eqref{eq:cut},
+    If \(\Gamma\seq\Delta\) is provable without~\eqref{eq:cut},
     then we may assume that all of the related axioms are atomic,
     and that the proof is without cut.
 \end{proposition}
@@ -828,7 +828,7 @@ In other words, if \(A\varof B\) then \(A\equiv B\).
 \section{Intuitionistic predicate calculus \LJ}
 
 Intuitionistic logic \LJ{} is very similar to classical logic \LK,
-except that in its inference rules, the succedents \(\Delta\) of upper sequents \(T\seq\Delta\)
+except that in its inference rules, the succedents \(\Delta\) of upper sequents \(\Gamma\seq\Delta\)
 may only contain \emph{at most} a single formula. For example, the inferences
 \begin{equation*}
     \begin{prooftree}
@@ -1415,7 +1415,7 @@ and some of the details will be omitted for brevity.
     can be replaced by the rule
     \begin{equation}\label{eq:mix}\tag{mix}
         \begin{prooftree}
-            \hypo{T\seq\Delta}
+            \hypo{\Gamma\seq\Delta}
             \hypo{\Pi\seq\Lambda}
             \infer2[\(\eqref{eq:mix}:A\)]{T,\Pi^\ast\seq\Delta^\ast\Lambda}
         \end{prooftree}\,.
@@ -1429,7 +1429,7 @@ and some of the details will be omitted for brevity.
     is usable in the following manner:
     \begin{equation*}
         \begin{prooftree}
-            \hypo{T\seq\Delta, A}
+            \hypo{\Gamma\seq\Delta, A}
             \hypo{A, \Pi\seq\Lambda}
             \infer2[\eqref{eq:cut}]{T,\Pi\seq\Delta,\Lambda}
         \end{prooftree}\,.
@@ -1437,7 +1437,7 @@ and some of the details will be omitted for brevity.
     The same result can be obtained by applying the \eqref{eq:mix} rule with respect to \(A\):
     \begin{equation*}
         \begin{prooftree}
-            \hypo{T\seq\Delta, A}
+            \hypo{\Gamma\seq\Delta, A}
             \hypo{A, \Pi\seq\Lambda}
             \infer2[\(\eqref{eq:mix}:A\)]{T,\Pi^\ast\seq\Delta^\ast,\Lambda}
             \infer[rule style=double]1[\(l\times\eqref{eq:weakening:left}\) and \eqref{eq:exchange:left}]{
@@ -1452,7 +1452,7 @@ and some of the details will be omitted for brevity.
     Then assume that the \eqref{eq:mix} rule with respect to \(A\) can be used in the proof
     \begin{equation*}
         \begin{prooftree}
-            \hypo{T\seq\Delta}
+            \hypo{\Gamma\seq\Delta}
             \hypo{\Pi\seq\Lambda}
             \infer2[\(\eqref{eq:mix}:A\)]{T,\Pi^\ast\seq\Delta^\ast,\Lambda}
         \end{prooftree} \,.
@@ -1460,9 +1460,9 @@ and some of the details will be omitted for brevity.
     If we now assume that \(l\geq k\), the \eqref{eq:cut} rule can be used to prove the same theorem:
     \begin{equation*}
         \begin{prooftree}
-            \hypo{T\seq\Delta}
-            \infer[rule style=double]1[\eqref{eq:exchange:right}]{T\seq\Delta^\ast, A,\ldots, A}
-            \infer[rule style=double]1[\eqref{eq:contraction:right}]{T\seq\Delta^\ast, A}
+            \hypo{\Gamma\seq\Delta}
+            \infer[rule style=double]1[\eqref{eq:exchange:right}]{\Gamma\seq\Delta^\ast, A,\ldots, A}
+            \infer[rule style=double]1[\eqref{eq:contraction:right}]{\Gamma\seq\Delta^\ast, A}
             \hypo{\Pi\seq\Lambda}
             \infer[rule style=double,left label=\eqref{eq:exchange:left}]1{A,\ldots,A,\Pi^\ast\seq\Lambda}
             \infer[rule style=double,left label=\eqref{eq:contraction:left}]1{A,\Pi^\ast\seq\Lambda}
@@ -1529,19 +1529,19 @@ If we think of the inferences
     \begin{prooftree}
         \hypo{T'\seq\Delta'}
         \hypo{T''\seq\Delta''}
-        \infer2{T\seq\Delta}
+        \infer2{\Gamma\seq\Delta}
     \end{prooftree}
     \quad\text{and}\quad
     \begin{prooftree}
         \hypo{T'\seq\Delta'}
-        \infer1{T\seq\Delta}
+        \infer1{\Gamma\seq\Delta}
     \end{prooftree}\,,
 \end{equation*}
 we notice that the upper sequents are always composed of subformulae
 of the lower sequents, but conversely. We then have the following result.
 
 \begin{theorem}[Subformula property]\label{the:subformula property}
-    If \(P\) is a proof of the sequent \(T\seq\Delta\),
+    If \(P\) is a proof of the sequent \(\Gamma\seq\Delta\),
     then \(P\) contains only formulae that are subformulae of
     the sequence formulae \(T\) and \(\Delta\), but not conversely.
 \end{theorem}
@@ -1571,7 +1571,7 @@ Now we can establish the following central result.
 \end{proof}
 
 \begin{theorem}\label{the:6.3}
-    In a \eqref{eq:cut}-free proof \(P\) of \(T\seq\Delta\),
+    In a \eqref{eq:cut}-free proof \(P\) of \(\Gamma\seq\Delta\),
     all formulae are subformulae of \(T\) and \(\Delta\).
 \end{theorem}
 
@@ -1696,7 +1696,7 @@ are now in place. We start with the following theorem.
 
 \begin{theorem}\label{the:8.2}
     A formula \(A\) is valid,
-    if and only if it is provable without \eqref{eq:cut} in \LK.
+    if and only if it is provable without~\eqref{eq:cut} in \LK{}.
     The same holds for any sequent \(\Gamma\seq\Delta\).
 \end{theorem}
 
