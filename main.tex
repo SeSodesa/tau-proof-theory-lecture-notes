@@ -1523,6 +1523,8 @@ the following examples:
         The subformulae of \(C\land D\) are \(C\land D\), \(C\) and \(D\),
         and the subformulae of \(C\) and \(D\).
 \end{itemize}
+In other words, subformulae of a formula \(A\) are the formulae that are used
+to construct \(A\), including \(A\) itself.
 
 If we think of the inferences
 \begin{equation*}
@@ -1810,8 +1812,17 @@ are now in place. We start with the following theorem.
         \eqref{eq:forall:right}, \eqref{eq:exists:left} and \eqref{eq:exists:right}.
     \end{exercise}
 
-    With all of the inference rules covered, the proof is now complete.
+    With all of the inference rules covered,
+    the induction is closed and the proof is now complete.
 \end{proof}
+
+To prove the converse, that the validity of the sequent \(\seq A\)
+implies the provability of \(\seq A\), we will need the concept
+of \emph{reduction trees}
+
+\begin{definition}[Reduction tree]\label{def:reduction tree}
+
+\end{definition}
 
 \subsection{Structures, assignments, interpretations and validity}
 
