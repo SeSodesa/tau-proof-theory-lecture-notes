@@ -1821,7 +1821,27 @@ implies the provability of \(\seq A\), we will need the concept
 of \emph{reduction trees}
 
 \begin{definition}[Reduction tree]\label{def:reduction tree}
-
+    Let \(\Gamma\seq\Delta\) be a sequent.
+    The reduction tree for this sequent is constructed
+    recursively as follows:
+    \begin{enumerate}
+        \item
+            Place the sequent \(\Gamma\seq\Delta\) at the root of the tree.
+        \item
+            The branches of the tree a defined by cases:
+            \begin{enumerate}
+                \item
+                    If every topmost sequent contains a same formula
+                    in both its antecedent and succedent,
+                    then terminate the algorithm.
+                \item
+                    Else handle each possible logical symbol separately,
+                    in the way described in the following listing:
+                    \begin{description}
+                        \item[\lnot]
+                    \end{description}
+            \end{enumerate}
+    \end{enumerate}
 \end{definition}
 
 \subsection{Structures, assignments, interpretations and validity}
