@@ -1834,7 +1834,7 @@ of \emph{reduction trees}.
                 \item\label{it:reduction tree finished}
                     If every topmost sequent contains a same formula
                     in both its antecedent and succedent,
-                    then terminate the program.
+                    then halt the program.
                 \item\label{it:reduction tree unfinished}
                     Else iterate over the tops of the current branches
                     and perform one of the following \emph{reductions} or additions,
@@ -1935,6 +1935,19 @@ some branch simply keeps growing indefinitely,
 as new sequents \(\Pi\seq\Lambda\) keep getting pushed on top of it,
 the sequent \(\Gamma\seq\Delta\) at the root of the tree
 is not provable.
+
+\begin{example}\label{exa:reduction tree}
+    We construct a reduction tree for the sequent
+    \(A\limplies B\seq\lnot A\lor B\).
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{}
+            \infer1{}
+        \end{prooftree}
+    \end{equation*}
+    As both of the branches of the tree halt,
+    the sequent is provable.
+\end{example}
 
 \subsection{Structures, assignments, interpretations and validity}
 
