@@ -1828,7 +1828,8 @@ of \emph{reduction trees}.
         \item\label{it:reduction tree init}
             Place the sequent \(\Gamma\seq\Delta\) at the root of the tree.
         \item\label{it:reduction tree loop}
-            The branches of the tree are defined by looping cases:
+            The branches of the tree are defined by looping over the currently
+            outermost leaves:
             \begin{enumerate}
                 \item\label{it:reduction tree finished}
                     If every topmost sequent contains a same formula
@@ -1841,23 +1842,86 @@ of \emph{reduction trees}.
                     when \(\Pi\seq\Lambda\) is the sequent in each leaf during each iteration:
                     \begin{description}
                         \item[\(\lnot:\Pi\)]\label{it:reduction tree lnot left}
+                            Let \(\lnot A_1,\ldots,\lnot A_n\) be the formulae
+                            in \(\Pi\) with \(\lnot\) as the outermost logical symbol.
+                            Write \(\Pi\seq\Lambda, A_1,\ldots,A_n\) above
+                            this node as a new leaf of this branch.
+                            If are leaves still left in this iteration loop
+                            continue, else jump to~\ref{it:reduction tree loop}.
                         \item[\(\lnot:\Lambda\)]\label{it:reduction tree lnot right}
+                            Let \(\lnot A_1,\ldots,\lnot A_n\) be the formulae
+                            in \(\Lambda\) with \(\lnot\) as the outermost logical symbol.
+                            Write \(A_1,\ldots,A_n,\Pi\seq\Lambda\) above
+                            this node as a new leaf of this branch.
+                            If there are still unhadled leaves left in this iteration loop
+                            continue, else jump to~\ref{it:reduction tree loop}.
                         \item[\(\land:\Pi\)]\label{it:reduction tree land left}
+                            Let \(A_1\land B_1,\ldots,A_n\land B_n\) be the formulae
+                            in \(\Pi\) with \(\land\) as the outermost logical symbol.
+                            Write \(A_1, B_1,\ldots,A_n, B_n,\Pi\seq\Lambda\) above
+                            this node as a new leaf of this branch,
+                            where each \(C_i\in\set{A_i, B_i}\).
+                            If there are still unhandled leaves left in this iteration loop
+                            continue, else jump to~\ref{it:reduction tree loop}.
                         \item[\(\land:\Lambda\)]\label{it:reduction tree land right}
+                            Let \(A_1\land B_1,\ldots,A_n\land B_n\) be the formulae
+                            in \(\Lambda\) with \(\land\) as the outermost logical symbol.
+                            Write \(\Pi\seq\Lambda,C_1,\ldots,C_n\) above
+                            this node as a new leaf of this branch,
+                            where each \(C_i\in\set{A_i, B_i}\).
+                            If there are still unhandled leaves still left in this iteration loop
+                            continue, else jump to~\ref{it:reduction tree loop}.
                         \item[\(\lor:\Pi\)]\label{it:reduction tree lor left}
+                            This is defined symmetrically with~\ref{it:reduction tree land right}
+                            with the symbol replacement \(\land\to\lor\).
                         \item[\(\lor:\Lambda\)]\label{it:reduction tree lor right}
+                            This is defined symmetrically with~\ref{it:reduction tree land left},
+                            with the symbol replacement \(\land\to\lor\).
                         \item[\(\limplies:\Pi\)]\label{it:reduction tree limplies lef}
+                            Let \(A_1\limplies B_1,\ldots,A_n\limplies B_n\) be the formulae
+                            in \(\Lambda\) with \(\limplies\) as the outermost logical symbol.
+                            Write \(B_1,\ldots,B_n,\Pi\seq\Lambda, A_1, \ldots, A_n\) above
+                            this node as a new leaf of this branch.
+                            If there are still unhandled leaves still left in this iteration loop
+                            continue, else jump to~\ref{it:reduction tree loop}.
                         \item[\(\limplies:\Lambda\)]\label{it:reduction tree limplies right}
+                            Let \(A_1\limplies B_1,\ldots,A_n\limplies B_n\) be the formulae
+                            in \(\Lambda\) with \(\limplies\) as the outermost logical symbol.
+                            Write \(A_1,\ldots,A_n,\Pi\seq\Lambda, B_1, \ldots, B_n\) above
+                            this node as a new leaf of this branch.
+                            If there are still unhandled leaves still left in this iteration loop
+                            continue, else jump to~\ref{it:reduction tree loop}.
                         \item[\(\forall:\Pi\)]\label{it:reduction tree forall left}
+                            Let \(\forall x_1A_1(x_1),\ldots,\forall x_nA_n(x_n)\) be the formulae
+                            in \(\Pi\) with \(\forall\) as the outermost logical symbol,
+                            and let \(a_i\) be an independent variable that has not been used in
+                            reductions of \(\forall x_iA_i(x_i) : i \in\set{1,\ldots,n}\)
+                            at this branch height.
+                            Write \[A_1(a_1),\ldots,A_n(a_n),\Pi\seq\Lambda\] above
+                            this node as a new leaf of this branch.
+                            If there are still unhandled leaves still left in this iteration loop
+                            continue, else jump to~\ref{it:reduction tree loop}.
                         \item[\(\forall:\Lambda\)]\label{it:reduction tree forall right}
+                            Let \(\forall x_1A_1(x_1),\ldots,\forall x_nA_n(x_n)\) be the formulae
+                            in \(\Pi\) with \(\forall\) as the outermost logical symbol,
+                            and let \(a_1,\ldots,a_n\) be the first \(n\) independent variables not available
+                            at this branch height.
+                            Write \[\Pi\seq\Lambda,A_1(a_1),\ldots,A_n(a_n)\] above
+                            this node as a new leaf of this branch.
+                            If there are still unhandled leaves still left in this iteration loop
+                            continue, else jump to~\ref{it:reduction tree loop}.
                         \item[\(\exists:\Pi\)]\label{it:reduction tree exists left}
+                            This is defined like option \ref{it:reduction tree forall right},
+                            with the symbol replacement \(\forall\to\exists\).
                         \item[\(\exists:\Lambda\)]\label{it:reduction tree exists right}
+                            This is defined like option \ref{it:reduction tree forall left},
+                            with the symbol replacement \(\forall\to\exists\).
                         \item[else]\label{it:reduction tree branch finished}
                             If \(\Pi\) or \(\Lambda\) have \emph{any} formulae in common,
-                            do nothing and jump to \ref{it:reduction tree unfinished}.
-                            If the sequences \(\Pi\) or \(\Lambda\) have \emph{nothing}
-                            in common, rewrite \(\Pi\seq\Lambda\) as a new leaf of this
-                            branch and jump to \ref{it:reduction tree unfinished}.
+                            do nothing. If the sequences \(\Pi\) or \(\Lambda\) have \emph{nothing}
+                            in common, rewrite \(\Pi\seq\Lambda\) as a new leaf of this branch.
+                            If there are unhandled leaves still left in this iteration loop
+                            continue, else jump to~\ref{it:reduction tree loop}.
                     \end{description}
             \end{enumerate}
     \end{enumerate}
