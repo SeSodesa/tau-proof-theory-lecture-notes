@@ -1842,85 +1842,169 @@ of \emph{reduction trees}.
                     when \(\Pi\seq\Lambda\) is the sequent in each leaf during each iteration:
                     \begin{enumerate}
                         \item\label{it:reduction tree lnot left}
-                            \(\mathbf{\lnot:\text{right}}\):
-                            Let \(\lnot A_1,\ldots,\lnot A_n\) be the formulae
-                            in \(\Pi\) with \(\lnot\) as the outermost logical symbol.
-                            Push \(\Pi\seq\Lambda, A_1,\ldots,A_n\) above
-                            this node as a new leaf of this branch.
-                            If are leaves still left in this iteration loop
-                            continue, else jump to~\ref{it:reduction tree loop}.
+                            Let \(\lnot A_1,\ldots,\lnot A_n\in\Pi\) with
+                            \(\lnot\) as the outermost logical symbol.
+                            Then the following push operation can be performed:
+                            \begin{equation}
+                                \begin{prooftree}
+                                    \tag{reduction:\(\lnot\):left}
+                                    \label{eq:reduction:lnot:left}
+                                    \hypo{\Pi\seq\Lambda, A_1,\ldots,A_n}
+                                    \infer1{\Pi\seq\Lambda}
+                                \end{prooftree}
+                            \end{equation}
                         \item\label{it:reduction tree lnot right}
-                            Let \(\lnot A_1,\ldots,\lnot A_n\) be the formulae
-                            in \(\Lambda\) with \(\lnot\) as the outermost logical symbol.
-                            Push \(A_1,\ldots,A_n,\Pi\seq\Lambda\) above
-                            this node as a new leaf of this branch.
-                            If there are still unhadled leaves left in this iteration loop
-                            continue, else jump to~\ref{it:reduction tree loop}.
+                            Let \(\lnot A_1,\ldots,\lnot A_n\in\Lambda\) with
+                            \(\lnot\) as the outermost logical symbol.
+                            Then the following push operation can be performed:
+                            \begin{equation}
+                                \begin{prooftree}
+                                    \tag{reduction:\(\lnot\):right}
+                                    \label{eq:reduction:lnot:right}
+                                    \hypo{A_1,\ldots,A_n,\Pi\seq\Lambda}
+                                    \infer1{\Pi\seq\Lambda}
+                                \end{prooftree}
+                            \end{equation}
                         \item\label{it:reduction tree land left}
-                            Let \(A_1\land B_1,\ldots,A_n\land B_n\) be the formulae
-                            in \(\Pi\) with \(\land\) as the outermost logical symbol.
-                            Push \(A_1, B_1,\ldots,A_n, B_n,\Pi\seq\Lambda\) above
-                            this node as a new leaf of this branch,
-                            where each \(C_i\in\set{A_i, B_i}\).
-                            If there are still unhandled leaves left in this iteration loop
-                            continue, else jump to~\ref{it:reduction tree loop}.
+                            Let \(A_1\land B_1,\ldots,A_n\land B_n\in\Pi\) with
+                            \(\land\) as the outermost logical symbol.
+                            Then the following push operation can be performed:
+                            \begin{equation}
+                                \begin{prooftree}
+                                    \tag{reduction:\(\land\):left}
+                                    \label{eq:reduction:land:left}
+                                    \hypo{A_1, B_1,\ldots,A_n, B_n,\Pi\seq\Lambda}
+                                    \infer1{\Pi\seq\Lambda}
+                                \end{prooftree}
+                            \end{equation}
                         \item\label{it:reduction tree land right}
-                            Let \(A_1\land B_1,\ldots,A_n\land B_n\) be the formulae
-                            in \(\Lambda\) with \(\land\) as the outermost logical symbol.
-                            Push \(\Pi\seq\Lambda,C_1,\ldots,C_n\) above
-                            this node as a new leaf of this branch,
+                            Let \(A_1\land B_1,\ldots,A_n\land B_n\in\Lambda\) with
+                            \(\land\) as the outermost logical symbol.
+                            Then the following push operation can be performed:
+                            \begin{equation}
+                                \begin{prooftree}
+                                    \tag{reduction:\(\land\):right}
+                                    \label{eq:reduction:land:right}
+                                    \hypo{\Pi\seq\Lambda,C_1,\ldots,C_n}
+                                    \infer1{\Pi\seq\Lambda}
+                                \end{prooftree}
+                            \end{equation}
                             where each \(C_i\in\set{A_i, B_i}\).
-                            If there are still unhandled leaves still left in this iteration loop
-                            continue, else jump to~\ref{it:reduction tree loop}.
                         \item\label{it:reduction tree lor left}
-                            This is defined symmetrically with~\ref{it:reduction tree land right}
-                            with the symbol replacement \(\land\to\lor\).
+                            Let \(A_1\lor B_1,\ldots,A_n\lor B_n\in\Pi\) with
+                            \(\lor\) as the outermost logical symbol.
+                            Then the following push operation can be performed:
+                            \begin{equation}
+                                \begin{prooftree}
+                                    \tag{reduction:\(\lor\):left}
+                                    \label{eq:reduction:lor:left}
+                                    \hypo{\Pi\seq\Lambda,C_1,\ldots,C_n}
+                                    \infer1{\Pi\seq\Lambda}
+                                \end{prooftree}
+                            \end{equation}
+                            where each \(C_i\in\set{A_i, B_i}\).
                         \item\label{it:reduction tree lor right}
-                            This is defined symmetrically with~\ref{it:reduction tree land left},
-                            with the symbol replacement \(\land\to\lor\).
-                        \item\label{it:reduction tree limplies lef}
-                            Let \(A_1\limplies B_1,\ldots,A_n\limplies B_n\) be the formulae
-                            in \(\Lambda\) with \(\limplies\) as the outermost logical symbol.
-                            Push \(B_1,\ldots,B_n,\Pi\seq\Lambda, A_1, \ldots, A_n\) above
-                            this node as a new leaf of this branch.
-                            If there are still unhandled leaves still left in this iteration loop
-                            continue, else jump to~\ref{it:reduction tree loop}.
+                            Let \(A_1\lor B_1,\ldots,A_n\lor B_n\in\Lambda\) with \(\lor\) as the outermost logical symbol.
+                            Then the following push operation can be performed:
+                            \begin{equation}
+                                \begin{prooftree}
+                                    \tag{reduction:\(\lor\):left}
+                                    \label{eq:reduction:lor:left}
+                                    \hypo{A_1, B_1,\ldots,A_n, B_n,\Pi\seq\Lambda}
+                                    \infer1{\Pi\seq\Lambda}
+                                \end{prooftree}
+                            \end{equation}
+                        \item\label{it:reduction tree limplies left}
+                            Let \(A_1\limplies B_1,\ldots,A_n\limplies B_n\in\Pi\) with
+                            \(\limplies\) as the outermost logical symbol.
+                            Then the following push operation can be performed:
+                            \begin{equation}
+                                \begin{prooftree}
+                                    \tag{reduction:\(\limplies\):left}
+                                    \label{eq:reduction:limplies:left}
+                                    \hypo{B_1,\ldots,B_n,\Pi\seq\Lambda, A_1, \ldots, A_n}
+                                    \infer1{\Pi\seq\Lambda}
+                                \end{prooftree}
+                            \end{equation}
                         \item\label{it:reduction tree limplies right}
-                            Let \(A_1\limplies B_1,\ldots,A_n\limplies B_n\) be the formulae
-                            in \(\Lambda\) with \(\limplies\) as the outermost logical symbol.
-                            Push \(A_1,\ldots,A_n,\Pi\seq\Lambda, B_1, \ldots, B_n\) above
-                            this node as a new leaf of this branch.
-                            If there are still unhandled leaves still left in this iteration loop
-                            continue, else jump to~\ref{it:reduction tree loop}.
+                            Let \(A_1\limplies B_1,\ldots,A_n\limplies B_n\in\Lambda\) with
+                            \(\limplies\) as the outermost logical symbol.
+                            Then the following push operation can be performed:
+                            \begin{equation}
+                                \begin{prooftree}
+                                    \tag{reduction:\(\limplies\):right}
+                                    \label{eq:reduction:limplies:right}
+                                    \hypo{A_1,\ldots,A_n,\Pi\seq\Lambda, B_1, \ldots, B_n}
+                                    \infer1{\Pi\seq\Lambda}
+                                \end{prooftree}
+                            \end{equation}
                         \item\label{it:reduction tree forall left}
-                            Let \(\forall x_1A_1(x_1),\ldots,\forall x_nA_n(x_n)\) be the formulae
-                            in \(\Pi\) with \(\forall\) as the outermost logical symbol,
+                            Let \(\forall x_1A_1(x_1),\ldots,\forall x_nA_n(x_n)\in\Pi\)
+                            with \(\forall\) as the outermost logical symbol,
                             and let \(a_i\) be an independent variable that has not been used in
                             reductions of \(\forall x_iA_i(x_i) : i \in\set{1,\ldots,n}\)
                             at this branch height.
-                            Push \[A_1(a_1),\ldots,A_n(a_n),\Pi\seq\Lambda\] above
-                            this node as a new leaf of this branch.
-                            If there are still unhandled leaves still left in this iteration loop
-                            continue, else jump to~\ref{it:reduction tree loop}.
+                            \begin{equation}
+                                \begin{prooftree}
+                                    \tag{reduction:\(\forall\):left}
+                                    \label{eq:reduction:forall:left}
+                                    \hypo{A_1(a_1),\ldots,A_n(a_n),\Pi\seq\Lambda}
+                                    \infer1{\Pi\seq\Lambda}
+                                \end{prooftree}
+                            \end{equation}
                         \item\label{it:reduction tree forall right}
-                            Let \(\forall x_1A_1(x_1),\ldots,\forall x_nA_n(x_n)\) be the formulae
-                            in \(\Pi\) with \(\forall\) as the outermost logical symbol,
-                            and let \(a_1,\ldots,a_n\) be the first \(n\) independent variables not available
-                            at this branch height.
-                            Push \[\Pi\seq\Lambda,A_1(a_1),\ldots,A_n(a_n)\] above
-                            this node as a new leaf of this branch.
-                            If there are still unhandled leaves still left in this iteration loop
-                            continue, else jump to~\ref{it:reduction tree loop}.
+                            Let \(\forall x_1A_1(x_1),\ldots,\forall x_nA_n(x_n)\in\Lambda\)
+                            with \(\forall\) as the outermost logical symbol,
+                            and let \(a_1,\ldots,a_n\) be the first \(n\) independent
+                            variables not available at this branch height.
+                            \begin{equation}
+                                \begin{prooftree}
+                                    \tag{reduction:\(\forall\):right}
+                                    \label{eq:reduction:forall:right}
+                                    \hypo{\Pi\seq\Lambda,A_1(a_1),\ldots,A_n(a_n)}
+                                    \infer1{\Pi\seq\Lambda}
+                                \end{prooftree}
+                            \end{equation}
                         \item\label{it:reduction tree exists left}
-                            This is defined like option \ref{it:reduction tree forall right},
-                            with the symbol replacement \(\forall\to\exists\).
+                            Let \(\exists x_1A_1(x_1),\ldots,\exists x_nA_n(x_n)\in\Pi\)
+                            with \(\exists\) as the outermost logical symbol,
+                            and let \(a_1,\ldots,a_n\) be the first \(n\) independent
+                            variables not available at this branch height.
+                            \begin{equation}
+                                \begin{prooftree}
+                                    \tag{reduction:\(\exists\):left}
+                                    \label{eq:reduction:left:left}
+                                    \hypo{,A_1(a_1),\ldots,A_n(a_n),\Pi\seq\Lambda}
+                                    \infer1{\Pi\seq\Lambda}
+                                \end{prooftree}
+                            \end{equation}
                         \item\label{it:reduction tree exists right}
-                            This is defined like option \ref{it:reduction tree forall left},
-                            with the symbol replacement \(\forall\to\exists\).
+                            Let \(\exists x_1A_1(x_1),\ldots,\exists x_nA_n(x_n)\in\Lambda\)
+                            with \(\exists\) as the outermost logical symbol,
+                            and let \(a_i\) be the first independent variable that has not
+                            been used in reductions of
+                            \(\exists x_iA_i(x_i) : i \in\set{1,\ldots,n}\)
+                            at this branch height.
+                            \begin{equation}
+                                \begin{prooftree}
+                                    \tag{reduction:\(\exists\):right}
+                                    \label{eq:reduction:exists:right}
+                                    \hypo{\Pi\seq\Lambda,A_1(a_1),\ldots,A_n(a_n)}
+                                    \infer1{\Pi\seq\Lambda}
+                                \end{prooftree}
+                            \end{equation}
                         \item\label{it:reduction tree else}
                             If \(\Pi\) or \(\Lambda\) have \emph{any} formulae in common,
                             do nothing. If the sequences \(\Pi\) or \(\Lambda\) have \emph{nothing}
-                            in common, push \(\Pi\seq\Lambda\) as a new leaf on top of this branch.
+                            in common, perform the following push operation:
+                            \begin{equation}
+                                \begin{prooftree}
+                                    \tag{reduction:else}
+                                    \label{eq:reduction:else}
+                                    \hypo{\Pi\seq\Lambda}
+                                    \infer1{\Pi\seq\Lambda}
+                                \end{prooftree}
+                            \end{equation}
                             If there are unhandled leaves still left in this iteration loop
                             continue, else jump to~\ref{it:reduction tree loop}.
                     \end{enumerate}
@@ -1929,7 +2013,7 @@ of \emph{reduction trees}.
 \end{definition}
 
 Note that in the construction of a reduction tree,
-the case~\ref{it:reduction tree else} provides a possibility
+the case~\eqref{eq:reduction:else} provides a possibility
 for the formation of an infinite loop. If this happens and
 some branch simply keeps growing indefinitely,
 as new sequents \(\Pi\seq\Lambda\) keep getting pushed on top of it,
