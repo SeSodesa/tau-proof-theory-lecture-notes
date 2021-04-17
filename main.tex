@@ -2104,7 +2104,7 @@ Equipped with this new tool, we may now show that validity implies provability.
     \begin{equation*}
         R\arcs{a_1,\ldots,a_n}\in \cup\Gamma\cap\cup\Delta,
     \end{equation*}
-    as the sets \(\cup\Gamma\) and \(\cup\Lambda\) are separate.
+    as the sets \(\cup\Gamma\) and \(\cup\Delta\) are separate.
 
     For simplicity, we assume that there are no individual
     function constants \(f\) in our language \(L\), so the only
@@ -2122,24 +2122,24 @@ Equipped with this new tool, we may now show that validity implies provability.
         \right.\,.
     \end{equation*}
     Notice that if \(\arcs{a_1,\ldots,a_n}\in\phi(R)\),
-    then \( R(a_1,\ldots,a_n)\notin\cup\Lambda\).
-    Also, if \(R(a_1,\ldots,a_n)\in\cup\Lambda\),
+    then \( R(a_1,\ldots,a_n)\notin\cup\Delta\).
+    Also, if \(R(a_1,\ldots,a_n)\in\cup\Delta\),
     then \( R(a_1,\ldots,a_n)\notin\cup\Gamma\) and
     \(\arcs{a_1,\ldots,a_n}\notin\phi(R)\).
 
     We now induce on the number of logical symbols \(n\) in a formula \(A\),
     and show that the intrepretation \(\interp\) defined above
     satisfies all formulae in \(\cup\Gamma\),
-    but none in \(\cup\Lambda\). In the base case \(n=0\),
+    but none in \(\cup\Delta\). In the base case \(n=0\),
     so \(A\) is a predicate constant \(R\). By definition,
     any predicate constant \(R\arcs{a_1,\ldots,a_n}\) is
     in \(\cup\Gamma\) and satisfied by \(\interp\),
-    whereas any \(R\arcs{a_1,\ldots,a_n}\in\cup\Lambda\)
+    whereas any \(R\arcs{a_1,\ldots,a_n}\in\cup\Delta\)
     is not satisfied. The claim then holds for \(n=0\).
 
     We then make the inductive hypothesis \IH{} that the interpretation
     \(\interp\) satisfies all logical formulae \(A\in\cup\Gamma\) with \(n\leq k\)
-    logical symbols, whereas it does not satisfy any formulae \(B\in\cup\Lambda\)
+    logical symbols, whereas it does not satisfy any formulae \(B\in\cup\Delta\)
     with the same constraint on \(n\). In the inductive step,
     we once again add one logical symbol at a time, and show
     that satisfiability is preserved.
@@ -2149,11 +2149,11 @@ Equipped with this new tool, we may now show that validity implies provability.
     However, it will never appear on the right in \(\cup\lambda\),
     because by definition, the reduction tree would then \halt{},
     which contradicts our assumptions.
-    We now produce the formula \(C\in\cup\Lambda\)
+    We now produce the formula \(C\in\cup\Delta\)
     by applying \eqref{eq:reduction:lnot:left}.
-    According to \IH{}, \(\interp\) does not satisfy \(C\in\cup\Lambda\),
+    According to \IH{}, \(\interp\) does not satisfy \(C\in\cup\Delta\),
     meaning \(\lnot C\in\cup\Gamma\) is satisfied.
-    The case where \(A = \lnot C\in\cup\Lambda\)
+    The case where \(A = \lnot C\in\cup\Delta\)
     is entirely symmetric to this proof, so induction is closed
     on the symbol \(\lnot\).
 
@@ -2165,11 +2165,11 @@ Equipped with this new tool, we may now show that validity implies provability.
     and \(D\) are satisfied by \(\interp\), meaning that
     \(C\land D\) is satisfied by definition.
 
-    If \(A = C\land D\in\cup\Lambda\), it will appear on the right
+    If \(A = C\land D\in\cup\Delta\), it will appear on the right
     side of the reduction tree after some build step \(i\),
     and we can use \eqref{eq:reduction:land:right} to produce \(C\) and \(D\).
     According to \IH{}, \(\interp\) satisfies neither \(C\) nor \(D\).
-    Again, this leads to \(C\land D\in\cup\Lambda\) \emph{not} being satisfied
+    Again, this leads to \(C\land D\in\cup\Delta\) \emph{not} being satisfied
     by definition, closing the induction on the symbol \(\land\).
 
     \begin{exercise}[8.3.3]\label{exe:8.3.3}
@@ -2178,7 +2178,7 @@ Equipped with this new tool, we may now show that validity implies provability.
         for the symbol \(\lor\).
     \end{exercise}
 
-    If \(A = C\limplies D\in\cup\Lambda\), then by the inductive hypothesis
+    If \(A = C\limplies D\in\cup\Delta\), then by the inductive hypothesis
     \(\interp\) does not satisfy \(D\), but satisfies \(C\).
     Therefore \(C\limplies D\) is not satisfied in \(\interp\).
     A more complex case is when \(A = C\limplies D\in\cup\Gamma\),
@@ -2186,7 +2186,7 @@ Equipped with this new tool, we may now show that validity implies provability.
     \begin{enumerate}
         \item
             If the tree does not \halt{} on the right,
-            then \(C\in\cup\Lambda\) is not satisfied in \(\interp\),
+            then \(C\in\cup\Delta\) is not satisfied in \(\interp\),
             and \(C\limplies D\in\cup\Gamma\) must be satisfied.
         \item
             If the tree does not \halt{} on the left,
