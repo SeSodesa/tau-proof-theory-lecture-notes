@@ -1886,8 +1886,10 @@ of \emph{reduction trees}.
                                 \begin{prooftree}
                                     \tag{reduction:\(\land\):right}
                                     \label{eq:reduction:land:right}
-                                    \hypo{\Pi\seq\Lambda,C_1,\ldots,C_n}
-                                    \infer1{\Pi\seq\Lambda}
+                                    \hypo{\Pi\seq\Lambda,C_1}
+                                    \hypo{\ldots}
+                                    \hypo{\Pi\seq\Lambda,C_n}
+                                    \infer3{\Pi\seq\Lambda}
                                 \end{prooftree}
                             \end{equation}
                             where each \(C_i\in\set{A_i, B_i}\).
@@ -1899,8 +1901,10 @@ of \emph{reduction trees}.
                                 \begin{prooftree}
                                     \tag{reduction:\(\lor\):left}
                                     \label{eq:reduction:lor:left}
-                                    \hypo{C_1,\ldots,C_n,\Pi\seq\Lambda}
-                                    \infer1{\Pi\seq\Lambda}
+                                    \hypo{C_1,\Pi\seq\Lambda}
+                                    \hypo{\ldots}
+                                    \hypo{C_n,\Pi\seq\Lambda}
+                                    \infer3{\Pi\seq\Lambda}
                                 \end{prooftree}
                             \end{equation}
                             where each \(C_i\in\set{A_i, B_i}\).
@@ -1923,8 +1927,10 @@ of \emph{reduction trees}.
                                 \begin{prooftree}
                                     \tag{reduction:\(\limplies\):left}
                                     \label{eq:reduction:limplies:left}
-                                    \hypo{B_1,\ldots,B_n,\Pi\seq\Lambda, A_1, \ldots, A_n}
-                                    \infer1{\Pi\seq\Lambda}
+                                    \hypo{B_1,\Pi\seq\Lambda,A_1}
+                                    \hypo{\ldots}
+                                    \hypo{B_n,\Pi\seq\Lambda, A_n}
+                                    \infer3{\Pi\seq\Lambda}
                                 \end{prooftree}
                             \end{equation}
                         \item\label{it:reduction tree limplies right}
@@ -2027,8 +2033,13 @@ is not provable.
     \(A\limplies B\seq\lnot A\lor B\).
     \begin{equation*}
         \begin{prooftree}
-            \hypo{}
-            \infer1{}
+            \hypo{B\seq B, halt}
+            \infer1{B, A\limplies B\seq\lnot A\lor B, \lnot A, B}
+            \hypo{A\seq A, halt}
+            \infer1{A, A\limplies B\seq\lnot A\lor B, \lnot A, B, A}
+            \infer1{A\limplies B\seq\lnot A\lor B, \lnot A, B, A}
+            \infer2[\eqref{eq:reduction:limplies:left}]{A\limplies B\seq\lnot A\lor B, \lnot A, B}
+            \infer1[\eqref{eq:reduction:lor:right}]{A\limplies B\seq\lnot A\lor B}
         \end{prooftree}
     \end{equation*}
     As both of the branches of the tree halt,
