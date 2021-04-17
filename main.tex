@@ -2303,7 +2303,23 @@ The statements~\eqref{eq:ax:1}--\eqref{eq:ax:3} form the equality axioms.
             \infer1{s_1 = t_1, \ldots,s_n=t_n, \lnot A(\bar s) \seq \lnot A(\bar t)}
         \end{prooftree}
     \end{equation*}
-
+    If \(A = B\land C\), we proceed as follows:
+    \small
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{\IH}
+            \ellipsis{}{s_1 = t_1, \ldots,s_n=t_n, B(\bar s) \seq B(\bar t)}
+            \infer1{n\times\eqref{eq:exchange:left}~\&~\eqref{eq:land:left}~\&~n\times\eqref{eq:exchange:left}}
+            \infer1{s_1 = t_1, \ldots,s_n=t_n, B(\bar s)\land C(\bar s) \seq B(\bar t)}
+            \hypo{\IH}
+            \ellipsis{}{s_1 = t_1, \ldots,s_n=t_n, C(\bar s) \seq C(\bar t)}
+            \infer1{n\times\eqref{eq:exchange:left}~\&~\eqref{eq:land:left}~\&~n\times\eqref{eq:exchange:left}}
+            \infer1{s_1 = t_1, \ldots,s_n=t_n, B(\bar s)\land C(\bar s) \seq C(\bar t)}
+            \infer2[\eqref{eq:land:right}]{s_1 = t_1, \ldots,s_n=t_n, B(\bar s)\land C(\bar s) \seq B(\bar t)\land C(\bar t)}
+        \end{prooftree}
+    \end{equation*}
+    \normalsize
+    The case \(A = B\lor C\) goes almost identically, and is left as an optional exercise.
 \end{proof}
 
 \section{Peano arithmetic or PA}
