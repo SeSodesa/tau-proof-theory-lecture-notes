@@ -2218,11 +2218,12 @@ Here we add one additional symbol \(=\) to the alphabet of \LK{},
 and use it to form a set of binary predicates with the following set
 of axioms concerning the terms \(s\), \(s_i\), \(t_i\),
 function symbols \(f\) and predicate symbols \(R\):
-\begin{align}\tag{eq:ax:1}\label{eq:ax:1}
+\begin{align}
+\tag{=:ax:1}\label{eq:ax:1}
     &\seq s = s, \\
-\tag{eq:ax:2}\label{eq:ax:2}
+\tag{=:ax:2}\label{eq:ax:2}
     s_1 = t_1,\ldots,s_n = t_n &\seq f(s_1,\ldots,s_n) = f(t_1,\ldots,t_n) \\
-\tag{eq:ax:3}\label{eq:ax:3}
+\tag{=:ax:3}\label{eq:ax:3}
     s_1 = t_1,\ldots,s_n = t_n &\seq R(s_1,\ldots,s_n)\seq R(s_1,\ldots,s_n)
 \end{align}
 The statements~\eqref{eq:ax:1}--\eqref{eq:ax:3} form the equality axioms.
@@ -2234,14 +2235,32 @@ The statements~\eqref{eq:ax:1}--\eqref{eq:ax:3} form the equality axioms.
         s_1 = t_1,\ldots,s_n=t_n,A(s_1,\ldots,s_n)\seq A(t_1,\ldots,t_n)
     \end{equation}
     is \LK-provable. In particular:
-    \begin{align}\tag{eq:symmetry}\label{eq:symmetry}
-        s=t&\seq t=s\,,\\
-    \tag{eq:transitivity}\label{eq:transitivity}
-        s=t,t=v&\seq s=v\quad\text{and} \\
-    \tag{eq:sequential symmetry}\label{eq:sequential symmetry}
-        s_1 = t_1,\ldots,s_n = t_n&\seq t_1 = s_1, \ldots, t_n = s_n\,.
+    \begin{align}
+        \tag{=:symmetry}\label{eq:symmetry}
+            s=t&\seq t=s\,,\\
+        \tag{=:transitivity}\label{eq:transitivity}
+            s=t,t=v&\seq s=v\quad\text{and} \\
+        \tag{=:sequential symmetry}\label{eq:sequential symmetry}
+            s_1 = t_1,\ldots,s_n = t_n&\seq t_1 = s_1, \ldots, t_n = s_n\,.
     \end{align}
 \end{proposition}
+
+\begin{proof}
+    We start with~\eqref{eq:symmetry}.
+    According to the axioms~\eqref{eq:ax:1} and \eqref{eq:ax:3},
+    we may write
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{\eqref{eq:ax:1}}
+            \ellipsis{}{\seq s=s}
+            \hypo{s_1 = t_1, s_2 = t_2, R(s_1,s_2) \seq R(t_1,t_2)}
+            \infer1[\eqref{eq:ax:3}]{s=t, s=s, s=s\seq t=s}
+            \infer[double]1[\eqref{eq:exchange:left}]{s=s, s=s, s=t \seq t=s}
+            \infer1[\eqref{eq:contraction:left}]{s=s, s=t \seq t=s}
+            \infer2[\eqref{eq:cut}]{s = t\seq t = s}
+        \end{prooftree}
+    \end{equation*}
+\end{proof}
 
 \section{Peano arithmetic or PA}
 
