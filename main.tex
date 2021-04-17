@@ -2042,10 +2042,10 @@ is not provable.
     \(A\limplies B\seq\lnot A\lor B\).
     \begin{equation*}
         \begin{prooftree}
-            \hypo{B\seq B}
-            \infer1[halt]{B, A\limplies B\seq\lnot A\lor B, \lnot A, B}
-            \hypo{A\seq A}
-            \infer1[halt]{A, A\limplies B\seq\lnot A\lor B, \lnot A, B, A}
+            \hypo{\halt}
+            \infer1{B, A\limplies B\seq\lnot A\lor B, \lnot A, B}
+            \hypo{\halt}
+            \infer1{A, A\limplies B\seq\lnot A\lor B, \lnot A, B, A}
             \infer1[\eqref{eq:reduction:lnot:right}]{A\limplies B\seq\lnot A\lor B, \lnot A, B, A}
             \infer2[\eqref{eq:reduction:limplies:left}]{A\limplies B\seq\lnot A\lor B, \lnot A, B}
             \infer1[\eqref{eq:reduction:lor:right}]{A\limplies B\seq\lnot A\lor B}
