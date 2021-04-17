@@ -2260,6 +2260,22 @@ The statements~\eqref{eq:ax:1}--\eqref{eq:ax:3} form the equality axioms.
             \infer2[\eqref{eq:cut}]{s = t\seq t = s}
         \end{prooftree}
     \end{equation*}
+
+    As for~\eqref{eq:transitivity}, the proof
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{\eqref{eq:symmetry}}
+            \ellipsis{}{s = t\seq t = s}
+            \hypo{\eqref{eq:ax:1}}
+            \ellipsis{}{\seq t = t}
+            \hypo{s_1 = t_1, s_2 = t_2, R(s_1,s_2) \seq R(t_1,t_2)}
+            \infer1[\eqref{eq:ax:3}]{t=s, t=t ,t=v\seq s=v}
+            \infer[double]1[\eqref{eq:exchange:left}]{t=t, t=s, t=v \seq s=v}
+            \infer2[\eqref{eq:cut}]{t=s, s=v\seq s=v}
+            \infer2[\eqref{eq:cut}]{s = t, t = v\seq s = v}
+        \end{prooftree}
+    \end{equation*}
+    should suffice.
 \end{proof}
 
 \section{Peano arithmetic or PA}
