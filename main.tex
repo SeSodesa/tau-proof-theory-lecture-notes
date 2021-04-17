@@ -2198,8 +2198,9 @@ Equipped with this new tool, we may now show that validity implies provability.
     Assuming that \(A = \forall xC(x)\in\cup\Gamma\),
     at some point we may apply \eqref{eq:reduction:forall:left}
     to produce \(C(a)\in\cup\Gamma\). By the inductive hypothesis,
-    \(C(a)\) is satisfied by \(\interp\), and therefore
-    \(\forall xC(x)\in\cup\Gamma\) is satisfied in \(\interp\) by definition.
+    \(C(a)\) is satisfied by \(\interp\) for any assignment \(\phi_0\),
+    and therefore \(\forall xC(x)\in\cup\Gamma\) is satisfied in
+    \(\interp\) by definition.
 
     To save page space, the rest of the cases are omitted,
     as they are \emph{very} similar and based
