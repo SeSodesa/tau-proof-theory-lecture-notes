@@ -2069,19 +2069,17 @@ is not provable.
     Let us observe the sequent \(\forall x\exists yA(x,y)\seq\) and its reduction tree:
 \begin{equation*}
     \begin{prooftree}
-        \hypo{}
-        \infer1[\eqref{eq:reduction:exists:lef}]{A(a,b),\exists yA(a,y),\forall x\exists yA(x,y)\seq}
+        \hypo{\infty}
+        \ellipsis{\eqref{eq:reduction:else}}{A(a,b),\exists yA(a,y),\forall x\exists yA(x,y)\seq}
+        \infer1[\eqref{eq:reduction:else}]{A(a,b),\exists yA(a,y),\forall x\exists yA(x,y)\seq}
+        \infer1[\eqref{eq:reduction:else}]{A(a,b),\exists yA(a,y),\forall x\exists yA(x,y)\seq}
         \infer1[\eqref{eq:reduction:exists:left}]{\exists yA(a,y), \forall x\exists yA(x,y)\seq}
         \infer1[\eqref{eq:reduction:forall:left}]{\forall x\exists yA(x,y)\seq}
     \end{prooftree}
 \end{equation*}
+Therefore the contradiction at the root of the tree cannot be proven.
 \end{example}
 
-\subsection{Structures, assignments, interpretations and validity}
-
-\subsection{Soundness of \LK}
-
-\subsection{Reduction trees, completeness of \LK}
 
 \section{Predicate calculus with equality}
 
