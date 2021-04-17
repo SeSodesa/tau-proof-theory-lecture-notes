@@ -1980,7 +1980,7 @@ of \emph{reduction trees}.
                             \begin{equation}
                                 \begin{prooftree}
                                     \tag{reduction:\(\exists\):left}
-                                    \label{eq:reduction:left:left}
+                                    \label{eq:reduction:exists:left}
                                     \hypo{A_1(a_1),\ldots,A_n(a_n),\Pi\seq\Lambda}
                                     \infer1{\Pi\seq\Lambda}
                                 \end{prooftree}
@@ -2064,6 +2064,18 @@ is not provable.
     Construct a reduction tree for the sequent
     \(\exists x\arcs{A(x)\limplies B(x)}\seq \forall xA(x)\limplies\exists xB(x)\) in \LK{}.
 \end{exercise}
+
+\begin{example}[Infinite reduction tree]\label{exa:infinite reduction tree}
+    Let us observe the sequent \(\forall x\exists yA(x,y)\seq\) and its reduction tree:
+\begin{equation*}
+    \begin{prooftree}
+        \hypo{}
+        \infer1[\eqref{eq:reduction:exists:lef}]{A(a,b),\exists yA(a,y),\forall x\exists yA(x,y)\seq}
+        \infer1[\eqref{eq:reduction:exists:left}]{\exists yA(a,y), \forall x\exists yA(x,y)\seq}
+        \infer1[\eqref{eq:reduction:forall:left}]{\forall x\exists yA(x,y)\seq}
+    \end{prooftree}
+\end{equation*}
+\end{example}
 
 \subsection{Structures, assignments, interpretations and validity}
 
