@@ -1822,21 +1822,22 @@ of \emph{reduction trees}.
 
 \begin{definition}[Reduction tree]\label{def:reduction tree}
     Let \(\Gamma\seq\Delta\) be a sequent.
-    The \emph{reduction tree} for this sequent is constructed
+    The \emph{reduction tree} \(T\arcs{\Gamma\seq\Delta}\)
+    for this sequent is constructed
     programmatically as follows:
     \begin{enumerate}
         \item\label{it:reduction tree init}
             Place the sequent \(\Gamma\seq\Delta\) at the root of the tree.
         \item\label{it:reduction tree loop}
-            The branches of the tree are defined by looping over the currently
-            outermost leaves:
+            The branches of the tree are defined by looping over the current
+            leaves:
             \begin{enumerate}
                 \item\label{it:reduction tree finished}
                     If every topmost sequent contains a same formula
                     in both its antecedent and succedent,
                     then halt the program.
                 \item\label{it:reduction tree unfinished}
-                    Else iterate over the tops of the current branches
+                    Else iterate over the leaves of the current branches
                     and perform one of the following \emph{reductions} or additions,
                     depending on which logical symbols are the outermost symbols in \(\Pi\) or \(\Lambda\),
                     when \(\Pi\seq\Lambda\) is the sequent in each leaf during each iteration:
@@ -2005,10 +2006,11 @@ of \emph{reduction trees}.
                                     \infer1{\Pi\seq\Lambda}
                                 \end{prooftree}
                             \end{equation}
-                            If there are unhandled leaves still left in this iteration loop
-                            continue, else jump to~\ref{it:reduction tree loop}.
                     \end{enumerate}
             \end{enumerate}
+            If there are unhandled leaves still left in this iteration loop,
+            continue iterating over the unhanded leaves, else jump
+            to~\ref{it:reduction tree loop}.
     \end{enumerate}
 \end{definition}
 
