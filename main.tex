@@ -2276,7 +2276,12 @@ The statements~\eqref{eq:ax:1}--\eqref{eq:ax:3} form the equality axioms.
     \end{equation*}
     should suffice.
 
-    In the case of \eqref{eq:sequential symmetry},
+    Proving \eqref{eq:sequential symmetry} is very simple:
+    it is a special case of the following proof of
+    \eqref{eq:substitution}, with \(n=1\), and will therefore
+    be left as an optional exercise.
+
+    To prove the general case of \eqref{eq:substitution},
     we induce on the number of logical symbols \(n\) in \(A\).
     In the base case, \(n = 0\) and \(A\) is a predicate constant \(R\).
     The claim then holds by axiom \eqref{eq:ax:3}.
@@ -2320,6 +2325,25 @@ The statements~\eqref{eq:ax:1}--\eqref{eq:ax:3} form the equality axioms.
     \end{equation*}
     \normalsize
     The case \(A = B\lor C\) goes almost identically, and is left as an optional exercise.
+
+For the case \(A = B\limplies C\) we denote the sequence of equalities
+\(s_1=t_1,\ldots,s_n=t_n\) with \(S\simeq T\). We can then argue as follows:
+
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{\eqref{eq:sequential symmetry}}
+            \ellipsis{}{S\simeq T\seq T\simeq S}
+            \hypo{\IH}
+            \ellipsis{}{S\simeq T, B(\bar t)\seq B(\bar s)}
+            \infer2[\(n\times\)\eqref{eq:cut}]{S\simeq T,B(\bar t)\seq B(\bar s)}
+            \hypo{\IH}
+            \ellipsis{}{S\simeq T,C(\bar s)\seq C(\bar t)}
+            \infer[double]1[\eqref{eq:exchange:left}]{C(\bar s), S\simeq T\seq C(\bar t)}
+            \infer2[\eqref{eq:limplies:left}]{B(\bar s)\limplies C(\bar s), B(\bar t),S\simeq T\seq C(\bar t)}
+            \infer[double]1[\eqref{eq:exchange:left}]{B(\bar t),S\simeq T, B(\bar s)\limplies C(\bar s)\seq C(\bar t)}
+            \infer1[\eqref{eq:limplies:right}]{S\simeq T, B(\bar s)\limplies C(\bar s)\seq B(\bar t)\limplies C(\bar t)}
+        \end{prooftree}
+    \end{equation*}
 \end{proof}
 
 \section{Peano arithmetic or PA}
