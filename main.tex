@@ -2002,7 +2002,16 @@ of \emph{reduction trees}.
                             \end{equation}
                         \item\label{it:reduction tree else}
                             If \(\Pi\) and \(\Lambda\) have \emph{any} formulae in common,
-                            do nothing. If the sequences \(\Pi\) and \(\Lambda\) have \emph{nothing}
+                            push the \emph{halting symbol} \halt{} onto the branch:
+                            \begin{equation}
+                                \begin{prooftree}
+                                    \tag{reduction:halt}
+                                    \label{eq:reduction:halt}
+                                    \hypo{\halt}
+                                    \infer1{\Pi\seq\Lambda}
+                                \end{prooftree}
+                            \end{equation}
+                            If the sequences \(\Pi\) and \(\Lambda\) have \emph{nothing}
                             in common, perform the following push operation:
                             \begin{equation}
                                 \begin{prooftree}
@@ -2015,7 +2024,7 @@ of \emph{reduction trees}.
                     \end{enumerate}
             \end{enumerate}
             If there are unhandled leaves still left in this iteration loop,
-            continue iterating over the unhanded leaves, else jump
+            continue iterating over the unhandled leaves, else jump
             to~\ref{it:reduction tree loop}.
     \end{enumerate}
 \end{definition}
