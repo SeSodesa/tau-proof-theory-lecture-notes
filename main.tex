@@ -2260,7 +2260,6 @@ The statements~\eqref{eq:ax:1}--\eqref{eq:ax:3} form the equality axioms.
             \infer2[\eqref{eq:cut}]{s = t\seq t = s}
         \end{prooftree}
     \end{equation*}
-
     As for~\eqref{eq:transitivity}, the proof
     \begin{equation*}
         \begin{prooftree}
@@ -2276,6 +2275,35 @@ The statements~\eqref{eq:ax:1}--\eqref{eq:ax:3} form the equality axioms.
         \end{prooftree}
     \end{equation*}
     should suffice.
+
+    In the case of \eqref{eq:sequential symmetry},
+    we induce on the number of logical symbols \(n\) in \(A\).
+    In the base case, \(n = 0\) and \(A\) is a predicate constant \(R\).
+    The claim then holds by axiom \eqref{eq:ax:3}.
+    For the inductive hypothesis \IH{}, we assume that the claim holds
+    for \(n\leq k\) symbols in \(A\). We then add the known logical symbols
+    to \(A\) one at a time to close the induction.
+
+    If \(A = \lnot B\), denote \(\bar s = s_1,\ldots,s_n\) and
+    \(\bar t = t_1,\ldots,t_n\). Then
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{\eqref{eq:symmetry}}
+            \ellipsis{}{s_2 = t_2 \seq t_2 = s_2}
+            \hypo{\eqref{eq:symmetry}}
+            \ellipsis{}{s_1=t_1\seq t_1=s_1}
+            \hypo{\IH}
+            \ellipsis{}{t_1=s_1,\ldots,t_n=s_n,A(\bar t)\seq A(\bar s)}
+            \infer1[\eqref{eq:lnot:left}]{\lnot A(\bar s), t_1=s_1,\ldots,t_n=s_n,A(\bar t)\seq}
+            \infer[double]1[\eqref{eq:exchange:left}]{A(\bar t), t_1=s_1,\ldots,t_n=s_n,\lnot A(\bar s)\seq}
+            \infer1[\eqref{eq:lnot:right}]{t_1=s_1,\ldots,t_n=s_n,\lnot A(\bar s)\seq \lnot A(\bar t)}
+            \infer2[\eqref{eq:cut}]{s_1=t_1,t_2=s_2,\ldots,t_2=s_2,\lnot A(\bar s)\seq \lnot A(\bar t)}
+            \infer2[\eqref{eq:cut}]{}
+            \ellipsis{n×\eqref{eq:cut} and \eqref{eq:exchange:left}}{}
+            \infer1{s_1 = t_1, \ldots,s_n=t_n, \lnot A(\bar s) \seq \lnot A(\bar t)}
+        \end{prooftree}
+    \end{equation*}
+
 \end{proof}
 
 \section{Peano arithmetic or PA}
