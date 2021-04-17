@@ -2344,7 +2344,24 @@ For the case \(A = B\limplies C\) we denote the sequence of equalities
             \infer1[\eqref{eq:limplies:right}]{S\simeq T, B(\bar s)\limplies C(\bar s)\seq B(\bar t)\limplies C(\bar t)}
         \end{prooftree}
     \end{equation*}
+
+    In the case of \(A = \forall xB(x)\),
+    the additional symbol is actually an additional
+    independent variable \(a\). Hence we can argue as follows:
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{\IH}
+            \infer1[\eqref{eq:exchange:left}]{S\simeq T,B(a,\bar s)\seq B(a,\bar t)}
+            \infer[double]1[\eqref{eq:exchange:left}]{B(a,\bar s),S\simeq T\seq B(a,\bar t)}
+            \infer1[\eqref{eq:forall:left}]{\forall xB(x,\bar s),S\simeq T\seq B(a,\bar t)}
+            \infer1[\eqref{eq:forall:right}]{\forall xB(x,\bar s),S\simeq T\seq\forall xB(x,\bar t)}
+            \infer[double]1[\eqref{eq:exchange:left}]{S\simeq T, \forall xB(x,\bar s)\seq\forall xB(x,\bar t)}
+        \end{prooftree}
+    \end{equation*}
+    The case where \(A = \exists xB(x)\) is very similar to the case \(A = \forall xB(x)\),
+    and will therefore be left as an extra exercise,h closes the induction.
 \end{proof}
+
 
 \section{Peano arithmetic or PA}
 
