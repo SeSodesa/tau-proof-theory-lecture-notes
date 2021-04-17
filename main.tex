@@ -1710,21 +1710,20 @@ On the other hand, \(S\) is a \emph{counter-model} of \(\Gamma\),
 if there is a sentence of \(\Gamma\) that is not valid in \(S\).
 \end{definition}
 
-The definitions needed in proving the wanted results
-are now in place. We start with the following theorem.
+The definitions needed in proving the completeness of \LK{},
+namely theorems~\ref{the:provability implies validity}
+and \ref{the:validity implies provability},
+are now mostly in place. In essence, the completeness of \LK{}
+means that a formula \(A\) is provable,
+if and only if it is valid.
 
-\begin{theorem}\label{the:8.2}
-    A formula \(A\) is valid,
-    if and only if it is provable without~\eqref{eq:cut} in \LK{}.
-    The same holds for any sequent \(\Gamma\seq\Delta\).
+\begin{theorem}[Provability implies validity]\label{the:provability implies validity}
+    If a formula \(A\) is provable, the it is valid.
 \end{theorem}
 
 \begin{proof}
-    The simple part of this proof is showing that a sequent is sound.
-    If \(\Gamma\seq\Delta\) is provable, it is also valid.
     The proof is by structural induction on the number inferences
     in the proof of \(\Gamma\seq\Delta\), denoted by \(n\).
-
     If \(n=0\) a proof only consists of axioms of the form \(A\seq A\),
     where the antecedent \(A\) is never satisfied in the interpretation
     \(\interp\), whereas the succedent \(A\) always is. Therefore the
@@ -1817,8 +1816,8 @@ are now in place. We start with the following theorem.
 \end{proof}
 
 To prove the converse, that the validity of the sequent \(\seq A\)
-implies the provability of \(\seq A\), we will need the concept
-of \emph{reduction trees}.
+implies the provability of \(\seq A\), we will need on moredefinition:
+the concept of \emph{reduction trees}.
 
 \begin{definition}[Reduction tree]\label{def:reduction tree}
     Let \(\Gamma\seq\Delta\) be a sequent.
@@ -2080,6 +2079,136 @@ is not provable.
 Therefore the contradiction at the root of the tree cannot be proven.
 \end{example}
 
+Equipped with this new tool, we may now show that validity implies provability.
+
+\begin{theorem}[Validity implies provability]\label{the:validity implies provability}
+    If a formula \(A\) is valid, then it is provable.
+\end{theorem}
+
+\begin{proof}
+    Let \(\Gamma\seq\Delta\) be an \emph{unporvable} sequent in \LK{}.
+    We construct an interpretation \(\interp=\tuple{\tuple{D,\phi},\phi_0}\),
+    which does \emph{not} satisfy \(\Gamma\seq\Delta\).
+
+    By the first assumption, there is an infinite branch in
+    the reduction tree \(T\arcs{\Gamma\seq\Delta}\).
+    If \(\Gamma_i,\Delta_i\in T\arcs{\Gamma\seq\Delta}\) and we define
+    \begin{equation*}
+        \cup\Gamma = \set{A \mid A\in\Gamma_i}
+        \quad\text{and}\quad
+        \cup\Delta = \set{B \mid B\in\Delta_i}
+        \,,
+    \end{equation*}
+    then there can be no predicate constants \(R\arcs{\ldots}\) nor
+    free independent variables \(a_i\), so that
+    \begin{equation*}
+        R\arcs{a_1,\ldots,a_n}\in \cup\Gamma\cap\cup\Delta,
+    \end{equation*}
+    as the sets are separate.
+
+    For simplicity, we assume that there are no individual
+    function constants \(f\) in our language \(L\), so the only
+    free individual varables \(a\) are the only terms of \(L\).
+    We can then define our interpretation
+    \(\interp=\tuple{\tuple{D,\phi},\phi_0}\) as follows:
+    we let \(D = \set{a_0,a_1,\ldots}\) and define the relation
+    \begin{equation*}
+        \phi = \left\{
+            \begin{aligned}
+                &\arcs{a_1,\ldots,a_n}\in\phi(R) \iff R(a_1,\ldots,a_n)\in\cup\Gamma, \\
+                &\phi(a) = \phi_0(a) = a \\
+                &\phi(x) = \phi_0(x) = x \\
+            \end{aligned}
+        \right.\,.
+    \end{equation*}
+Notice that if \(\arcs{a_1,\ldots,a_n}\in\phi(R)\),
+then \( R(a_1,\ldots,a_n)\notin\cup\Lambda\).
+Also, if \(R(a_1,\ldots,a_n)\in\cup\Lambda\),
+then \( R(a_1,\ldots,a_n)\notin\cup\Gamma\) and
+\(\arcs{a_1,\ldots,a_n}\notin\phi(R)\).
+
+We now induce on the number of logical symbols \(n\) in a formula \(A\),
+and show that the intrepretation \(\interp\) defined above
+satisfies all formulae in \(\cup\Gamma\),
+but none in \(\cup\Lambda\). In the base case \(n=0\),
+so \(A\) is a predicate constant \(R\). By definition,
+any predicate constant \(R\arcs{a_1,\ldots,a_n}\) is
+in \(\cup\Gamma\) and satisfied by \(\interp\),
+whereas any \(R\arcs{a_1,\ldots,a_n}\in\cup\Lambda\)
+is not satisfied. The claim then holds for \(n=0\).
+
+We then make the inductive hypothesis \IH{} that the interpretation
+\(\interp\) satisfies all logical formulae \(A\in\cup\Gamma\) with \(n\leq k\)
+logical symbols, whereas it does not satisfy any formulae \(B\in\cup\Lambda\)
+with the same constraint on \(n\). In the inductive step,
+we once again add one logical symbol at a time, and show
+that satisfiability is preserved.
+
+If \(A = \lnot C\in\cup\Gamma\), then it appears in \(\Gamma_i\)
+during some build step \(i\), and will remain there from then on.
+However, it will never appear on the right in \(\cup\lambda\),
+because by definition, the reduction tree would then \halt{},
+which contradicts our assumptions.
+We now produce the formula \(C\in\cup\Lambda\)
+by applying \eqref{eq:reduction:lnot:left}.
+According to \IH{}, \(\interp\) does not satisfy \(C\in\cup\Lambda\),
+meaning \(\lnot C\in\cup\Gamma\) is satisfied.
+The case where \(A = \lnot C\in\cup\Lambda\)
+is entirely symmetric to this proof, so induction is closed
+on the symbol \(\lnot\).
+
+Now let \(A = C\land D\in\cup\Gamma\). This again means that
+after some build step \(i\) the formula \(C\land D\) appears
+in the reduction tree, and we can apply \eqref{eq:reduction:land:left}
+to produce the sequence \(C,D\).
+Now according to the \IH{}, the individual formulae \(C\)
+and \(D\) are satisfied by \(\interp\), meaning that
+\(C\land D\) is satisfied by definition.
+
+If \(A = C\land D\in\cup\Lambda\), it will appear on the right
+side of the reduction tree after some build step \(i\),
+and we can use \eqref{eq:reduction:land:right} to produce \(C\) and \(D\).
+According to \IH{}, \(\interp\) satisfies neither \(C\) nor \(D\).
+Again, this leads to \(C\land D\in\cup\Lambda\) \emph{not} being satisfied
+by definition, closing the induction on the symbol \(\land\).
+
+\begin{exercise}[8.3.3]\label{exe:8.3.3}
+    Show that the inductive step maintains
+    the satisfiability in  the interpretation \(\interp\)
+    for the symbol \(\lor\).
+\end{exercise}
+
+If \(A = C\limplies D\in\cup\Lambda\), then by the inductive hypothesis
+\(\interp\) does not satisfy \(D\), but satisfies \(C\).
+Therefore \(C\limplies D\) is not satisfied in \(\interp\).
+A more complex case is when \(A = C\limplies D\in\cup\Gamma\),
+as \eqref{eq:reduction:limplies:left} causes a split in the reduction tree:
+\begin{enumerate}
+    \item
+        If the tree does not \halt{} on the right,
+        then \(C\in\cup\Lambda\) is not satisfied in \(\interp\),
+        and \(C\limplies D\in\cup\Gamma\) must be satisfied.
+    \item
+        If the tree does not \halt{} on the left,
+        then \(D\in\cup\Gamma\) is satisfied and \(C\limplies D\in\cup\Gamma\)
+        must be satisfied by definition.
+\end{enumerate}
+This closes the induction on the symbol \(\limplies\).
+
+Assuming that \(A = \forall xC(x)\in\cup\Gamma\),
+at some point we may apply \eqref{eq:reduction:forall:left}
+to produce \(C(a)\in\cup\Gamma\). By the inductive hypothesis,
+\(C(a)\) is satisfied by \(\interp\), and therefore
+\(\forall xC(x)\in\cup\Gamma\) is satisfied in \(\interp\) by definition.
+
+To save page space, the rest of the cases are omitted,
+as they are \emph{very} similar and based
+entirely on the definitions. This closes the induction.
+\end{proof}
+
+Togehter with theorem~\ref{the:provability implies validity},
+theorem~\ref{the:validity implies provability}
+shows that \LK{} is complete.
 
 \section{Predicate calculus with equality}
 
