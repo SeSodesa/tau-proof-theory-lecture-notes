@@ -2214,24 +2214,37 @@ shows that \LK{} is complete.
 \section{Predicate calculus with equality}
 
 This is also known as the ''Theory of Equality'' and is denoted with \(\LK_=\).
-Here we add one additional symbol = to the alphabet of \LK{},
+Here we add one additional symbol \(=\) to the alphabet of \LK{},
 and use it to form a set of binary predicates with the following set
-of axioms concerning the terms \(s\), \(t\), \(s_i\), \(t_i\),
+of axioms concerning the terms \(s\), \(s_i\), \(t_i\),
 function symbols \(f\) and predicate symbols \(R\):
-\begin{enumerate}
-    \item\label{it:equality 1}
-        \(\seq s = s\),
-    \item\label{it:equality 2}
-        If \(s_i = t_i\) for all \(i\in\set{1,\ldots,n}\),
-        then \(f(s_1,\ldots,s_n) = f(t_1,\ldots,t_n)\).
-    \item\label{it:equality 3}
-        If \(s_i = t_i\) for all \(i\in\set{1,\ldots,n}\),
-        then the sequent \(R(s_1,\ldots,s_n)\seq R(s_1,\ldots,s_n)\)
-        is provable.
-    \item\label{it:equality 4}
-        The statements~\ref{it:equality 1}--\ref{it:equality 3}
-        are the equality axioms.
-\end{enumerate}
+\begin{equation}\tag{eq:ax:1}\label{eq:ax:1}
+    \seq s = s,
+\end{equation}
+\begin{equation}\tag{eq:ax:2}\label{eq:ax:2}
+    s_1 = t_1,\ldots,s_n = t_n \seq f(s_1,\ldots,s_n) = f(t_1,\ldots,t_n)
+\end{equation}
+\begin{equation}\tag{eq:ax:3}\label{eq:ax:3}
+    s_1 = t_1,\ldots,s_n = t_n \seq R(s_1,\ldots,s_n)\seq R(s_1,\ldots,s_n)
+\end{equation}
+The statements~\eqref{eq:ax:1}--\eqref{eq:ax:3} for the equality axioms.
+
+\begin{proposition}[7.2]\label{prop:7.2}
+    If \(A(a_1,\ldots,a_n)\) is a formula,
+    then the substitution formula
+    \begin{equation}\tag{substitution}\label{eq:substitution}
+        s_1 = t_1,\ldots,s_n=t_n,A(s_1,\ldots,s_n)\seq A(t_1,\ldots,t_n)
+    \end{equation}
+    is \LK-provable. In particular:
+    \begin{enumerate}
+        \item\label{it:substitution 1}
+            \(s=t\seq t=s\),
+        \item\label{it:substitution 2}
+            \(s=t,t=v\seq s=v\) and
+        \item\label{it:substitution 3}
+
+    \end{enumerate}
+\end{proposition}
 
 \section{Peano arithmetic or PA}
 
