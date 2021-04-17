@@ -2218,16 +2218,14 @@ Here we add one additional symbol \(=\) to the alphabet of \LK{},
 and use it to form a set of binary predicates with the following set
 of axioms concerning the terms \(s\), \(s_i\), \(t_i\),
 function symbols \(f\) and predicate symbols \(R\):
-\begin{equation}\tag{eq:ax:1}\label{eq:ax:1}
-    \seq s = s,
-\end{equation}
-\begin{equation}\tag{eq:ax:2}\label{eq:ax:2}
-    s_1 = t_1,\ldots,s_n = t_n \seq f(s_1,\ldots,s_n) = f(t_1,\ldots,t_n)
-\end{equation}
-\begin{equation}\tag{eq:ax:3}\label{eq:ax:3}
-    s_1 = t_1,\ldots,s_n = t_n \seq R(s_1,\ldots,s_n)\seq R(s_1,\ldots,s_n)
-\end{equation}
-The statements~\eqref{eq:ax:1}--\eqref{eq:ax:3} for the equality axioms.
+\begin{align}\tag{eq:ax:1}\label{eq:ax:1}
+    &\seq s = s, \\
+\tag{eq:ax:2}\label{eq:ax:2}
+    s_1 = t_1,\ldots,s_n = t_n &\seq f(s_1,\ldots,s_n) = f(t_1,\ldots,t_n) \\
+\tag{eq:ax:3}\label{eq:ax:3}
+    s_1 = t_1,\ldots,s_n = t_n &\seq R(s_1,\ldots,s_n)\seq R(s_1,\ldots,s_n)
+\end{align}
+The statements~\eqref{eq:ax:1}--\eqref{eq:ax:3} form the equality axioms.
 
 \begin{proposition}[7.2]\label{prop:7.2}
     If \(A(a_1,\ldots,a_n)\) is a formula,
@@ -2236,14 +2234,13 @@ The statements~\eqref{eq:ax:1}--\eqref{eq:ax:3} for the equality axioms.
         s_1 = t_1,\ldots,s_n=t_n,A(s_1,\ldots,s_n)\seq A(t_1,\ldots,t_n)
     \end{equation}
     is \LK-provable. In particular:
-    \begin{enumerate}
-        \item\label{it:substitution 1}
-            \(s=t\seq t=s\),
-        \item\label{it:substitution 2}
-            \(s=t,t=v\seq s=v\) and
-        \item\label{it:substitution 3}
-
-    \end{enumerate}
+    \begin{align}\tag{eq:symmetry}\label{eq:symmetry}
+        s=t&\seq t=s\,,\\
+    \tag{eq:transitivity}\label{eq:transitivity}
+        s=t,t=v&\seq s=v\quad\text{and} \\
+    \tag{eq:sequential symmetry}\label{eq:sequential symmetry}
+        s_1 = t_1,\ldots,s_n = t_n&\seq t_1 = s_1, \ldots, t_n = s_n\,.
+    \end{align}
 \end{proposition}
 
 \section{Peano arithmetic or PA}
