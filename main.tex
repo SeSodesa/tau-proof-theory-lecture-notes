@@ -2539,7 +2539,7 @@ are numerals, then
 
 \begin{proof}.
     Let \(k\) be the number of instances of the functions
-    \('\), \(+\) and \(\times\) in \(s\). We induce in this \(k\).
+    \('\), \(+\) and \(\times\) in \(s\). We induce on this \(k\).
 
     In the base case \(k=0\), we only have the single numeral \(\bar m\),
     for which the claim holds: axiomatically \(\seq s=s\), so \(\seq\bar m=\bar m\).
@@ -2582,15 +2582,31 @@ are numerals, then
     \end{equation*}
     \normalsize
     The induction is then closed on the sum \(+\).
-
     To prove the case of the product \(\times\), simply replace \(+\)
     with \(\times\) in the above inductive step. This is left as an optional exercise,
     which closes the induction when completed.
 
-    To prove the uniqueness of the numeral \(\bar b\),
+    To prove the uniqueness of the numeral \(\bar n\),
     make the contrapositive assumption, so that
     there are differing numerals \(\bar p\) and \(\bar q\),
-    so that
+    so that by proposition~\ref{prop:7.2}
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{\seq s = \bar p}
+            % ------------------------
+            \hypo{\seq s = \bar q}
+            % ------------------------
+            \hypo{s = \bar q\seq \bar q = s}
+            % ------------------------
+            \hypo{\bar q = s, s = \bar p\seq \bar q = \bar p}
+            \infer2[\eqref{eq:cut}]{s = \bar q, s = \bar p\seq \bar q = \bar p}
+            \infer2[\eqref{eq:cut}]{s = \bar p\seq \bar q = \bar p}
+            \infer2{\seq \bar q = \bar p}
+        \end{prooftree} \,.
+    \end{equation*}
+    Thus supposing that the numerals differ in the given manner
+    leads to them being the same numeral. We are then done with
+    the proof.
 \end{proof}
 \section{Primitive recursive functions PRF and primitive recursive relations PRR}
 
