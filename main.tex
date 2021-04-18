@@ -2515,6 +2515,72 @@ definition~\ref{def:inference rules in LK}.
     Prove that \(\bar2 + \bar1 = \bar3\).
 \end{exercise}
 
+It can be shown more generally, that if \(\bar m\) and \(\bar n\)
+are numerals, then
+\begin{equation*}
+    \seq\bar m + \bar n = \overline{m + n}
+    \quad\text{and}\quad
+    \seq\bar m \times \bar n = \overline{m \times n}\,.
+\end{equation*}
+
+\begin{proposition}[9.4]\label{prop:9.4}
+    \PA{} is consistent, as in the empty sequent \(\seq\)
+    is not provable in it.
+\end{proposition}
+
+\begin{proof}
+    Omitted. This is taken for granted.
+\end{proof}
+
+\begin{proposition}[9.6.1]\label{prop:9.6.1}
+    For any closed term \(s\), there is a unique numeral \(\bar n\),
+    so that the sequent \(\seq s = \bar n\) is provable.
+\end{proposition}
+
+\begin{proof}.
+    Let \(k\) be the number of instances of the functions
+    \('\), \(+\) and \(\times\) in \(s\). We induce in this \(k\).
+
+    In the base case \(k=0\), we only have the single numeral \(\bar0\),
+    for which the claim holds: axiomatically \(\seq s=s\), so \(\seq\bar0=\bar0\).
+    For the inductive hypothesis, we assume that the claims \(\seq s=\bar m\)
+    and \(\seq t=\bar n\) hold, each with \(k\leq p\) instances of the functions are provable.
+    In the inductive step we add one more instance of the functions to the proofs
+    and show that the cclaim still holds to close the induction.
+
+    In the case of the successor \(\prime\),
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{\seq s=\bar n}
+            \hypo{s=\bar n \seq s'=\bar n'}
+            \infer2[\eqref{eq:cut}]{\seq s'=\bar n'}
+        \end{prooftree}
+    \end{equation*}
+    Notice that \(\bar n'\) is \(\overline{n+1}\),
+    means that \(\seq s'=\overline{n+1}\), which closes the induction on
+    the successor \(\prime\).
+
+    For the sum \(+\),
+ \tiny   \begin{equation*}
+        \begin{prooftree}
+            \hypo{\seq \bar m+\bar n = \overline{m + n}}
+            % --------------------------------
+            \hypo{s+t = \bar m + \bar n, \bar n + \bar m = \overline{n + m}\seq s+t = \overline{m + n}}
+            % --------------------------------
+            \hypo{\seq t = \bar m}
+            % --------------------------------
+            \hypo{\seq s = \bar n}
+            % --------------------------------
+            \hypo{s = \bar n, t = \bar m \seq s + t = \bar m + \bar n}
+            \infer2[\eqref{eq:cut}]{t = \bar m \seq s + t = \bar m + \bar n}
+            \infer2[\eqref{eq:cut}]{\seq s+t = \bar m + \bar n}
+            \infer2[\eqref{eq:cut}]{\bar m+\bar n = \overline{m + n}\seq s+t = \overline{m + n}}
+            % --------------------------------
+            \infer2[\eqref{eq:cut}]{\seq s+t=\overline{m + n}}
+        \end{prooftree}
+    \end{equation*}
+
+\end{proof}
 \section{Primitive recursive functions PRF and primitive recursive relations PRR}
 
 \section{The relation between Peano arithmetic and natural numbers}
