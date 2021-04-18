@@ -2758,6 +2758,36 @@ There is also a concept strongly related to \PRF{s},
     \(R(a_1,\ldots,a_n)\) is true or \((a_1,\ldots,a_n)\in R\).
 \end{definition}
 
+\begin{example}[I]\label{exa:PRF successor}
+    By definition, the successor function \('\) is
+    a \PRF{}: \(0'=1, 1'=2, 2'=3,\ldots,n'=n+1,\ldots\).
+\end{example}
+
+\begin{example}[II]\label{exa:PRF sum}
+    The addition of natural numbers is a \PRF{}
+    of type \eqref{prf:compound recursion}:
+    \begin{itemize}
+        \item \(f(0,n) = p_2(0,n)\), where \(p_2\)
+            is a \PRF{} of type \eqref{prf:projection}.
+        \item
+            Set \(h = k\circ p_2\) and
+            \(k\circ p_2(m,f(m,n,n)) = k(f(m,n)) = f(m,n)'\).
+            Notice that \(h\) is of type \eqref{prf:compound}
+            and \(k\) of type \eqref{prf:successor}.
+    \end{itemize}
+    Now set \(f(m',n) = h(m, f(m,n),n) = f(m,n)'\).
+    Then \(m+n = f(m,n)\).
+\end{example}
+
+For further clarification of example \ref{exa:PRF sum}, consider
+\begin{align*}
+    f(5,9) &= h(4,f(4,9),9) = f(4,9)' = 14, \\
+    f(4,9) &= h(3,f(3,9),9) = f(3,9)' = 13, \\
+    f(3,9) &= h(2,f(2,9),9) = f(2,9)' = 12, \\
+    f(2,9) &= h(1,f(1,9),9) = f(1,9)' = 11, \\
+    f(1,9) &= h(0,f(0,9),9) = f(0,9)' = 10 \,.
+\end{align*}
+
 \section{The relation between Peano arithmetic and natural numbers}
 
 \section{Gödel numbering}
