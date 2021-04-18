@@ -2474,7 +2474,7 @@ things in \PA{}, we must first agree on our axioms, which are listed below.
     These axioms are also known as \emph{Peano's axioms}:
     \begin{align}
         \tag{\LN:m:ax:1}\label{LN:m:ax:1}
-        s'=t'&\seq s=t \\
+        s'=t'&\seq s=t, \\
         \tag{\LN:m:ax:2}\label{LN:m:ax:2}
         s' = 0 &\seq, \\
         \tag{\LN:m:ax:3}\label{LN:m:ax:3}
@@ -2489,12 +2489,28 @@ things in \PA{}, we must first agree on our axioms, which are listed below.
     \end{align}
 \end{axiom}
 
+Finally, the inductive principle can also be formalized.
+We will not be needing the formalization in this course,
+but it is shown here for completeness.
+
+\begin{axiom}[Inductive axiom]\label{axi:inductive axiom}
+    Induction is formalized as follows:
+    let \(\bar k\) and \(\bar n\) be closed terms. Then
+    \begin{equation}\tag{induction}\label{induction}
+        P(\bar0), P(\bar k)\limplies P(\bar k') \seq \forall\bar nP(\bar n)\,.
+    \end{equation}
+\end{axiom}
+
 \paragraph{Note:}
 Before we dive in further and start proving things,
 please remember that \(n\in\Nset\) is a natural number
 in our meta language, whereas the \emph{numerals} or
 \emph{closed terms} \(\bar n\) are the representations of
 these numbers in our \emph{object language}.
+
+\begin{exercise}[PA.1]\label{exe_PA.1}
+    Prove that \(\bar1 + \bar2 = \bar3\).
+\end{exercise}
 
 \section{Primitive recursive functions PRF and primitive recursive relations PRR}
 
