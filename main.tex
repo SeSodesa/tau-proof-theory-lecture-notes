@@ -2372,8 +2372,8 @@ For the case \(A = B\limplies C\) we denote the sequence of equalities
 
 \begin{theorem}[\eqref{eq:cut}-elimination in \(\LK_=\)]%
     \label{the:cut-elimination in LK=}
-    If a sequent \(\Gamma\seq\Delta\) is provable in \(\LK_=\),
-    then it is provable without an essential \eqref{eq:cut}.
+    If a sequent \(\Gamma\seq\Delta\) is provable in \(\LK_=\) with an essential
+    \eqref{eq:cut}, then it is also provable without an essential \eqref{eq:cut}.
 \end{theorem}
 
 \begin{proof}
@@ -2386,6 +2386,115 @@ For the case \(A = B\limplies C\) we denote the sequence of equalities
 \end{proof}
 
 \section{Peano arithmetic or PA}
+
+This is also called ''The Theory of natural numbers''.
+This is a special case of the general language of \LK{},
+where we restrict our alphabet and terms according to the following
+definitions. We use the notation \LN{} to refer to this language.
+
+\begin{definition}[Alphabet of \PA{}]\label{def:alphabet of peano arithmetic}
+    We have the following symbols at our disposal,
+    when talking in the language of Peano Arithmetic \PA:
+    \begin{itemize}
+        \item
+            There is only one individual constant \(\bar0\),
+            known in our meta language as ''zero''.
+        \item
+            The only three function constants are the unary left-associative
+            \emph{successor} \('\), and the binary operations
+            \emph{addition} \(+\) and \emph{product} \(\times\).
+        \item
+            The only binary predicate symbol is \(=\),
+            the equality defined in the previous chapter.
+    \end{itemize}
+\end{definition}
+
+\begin{definition}[Numerals]\label{def:numerals}
+    In order to simplify our notations,
+    we make the following bijective notational agreement:
+    \begin{equation*}
+        \bar0\mapsto\bar0,\quad
+        \bar1\mapsto\bar0',\quad
+        \bar2\mapsto\bar0'',\quad
+        \bar3\mapsto\bar0''',\quad
+        \ldots\quad,\quad
+        \bar{n}\mapsto\bar0^{\overbrace{\prime\cdots\prime}^{n\text{ times}}}\,.
+    \end{equation*}
+    In other words, \(\bar{n}\) refers to the natural number \(n\in\Nset\),
+    familiar to us from our meta language.
+\end{definition}
+
+\begin{definition}[Terms of \PA{}]\label{def:terms of peano arithmetic}
+    We define the words or \emph{terms} of \PA{} recursively as follows:
+    \begin{enumerate}
+        \item
+            Free variables and \(\bar0\) are terms.
+        \item
+            If \(s\) and \(t\) are terms, then so are \(s'\),
+            \(s+t\) and \(s\times t\).
+    \end{enumerate}
+\end{definition}
+\begin{definition}[Closed terms of \PA{}]\label{def:closed terms of peano arithmetic}
+    \emph{Closed terms} are composed of the numerals of definition~\ref{def:numerals}
+    and the function constants and equality of definition~\ref{def:alphabet of peano arithmetic}:
+    \begin{enumerate}
+        \item
+            Individual numerals are closed terms.
+        \item
+            If \(\bar m\) and \(\bar n\) are closed terms,
+            then \(\bar m '\), \(\bar m +\bar n\), \(\bar m\times\bar n\)
+            and \(\bar m = \bar n\) are closed terms as well.
+    \end{enumerate}
+\end{definition}
+
+Note that a statement like \(\bar2+\bar3=\bar5\) is something that needs to be
+proven in this language. We may not take it for granted. To be able to prove
+things in \PA{}, we must first agree on our axioms, which are listed below.
+
+\begin{axiom}[Logical axioms of \PA{}]\label{axi:logical axioms of PA}
+    There is only a single logical axiom: if \(A\) is a formula,
+    then \(A\seq A\) is this axiom.
+\end{axiom}
+\begin{axiom}[Equality axioms of \PA{}]\label{axi:equality axioms of PA}
+    The equality axioms of \PA{} are special instances of the axioms
+    of \LK=. These are
+    \begin{align}
+        \tag{\LN:eq:ax:1}\label{LN:eq:ax:1}
+        &\seq s=s \\
+        \tag{\LN:eq:ax:2}\label{LN:eq:ax:2}
+        s = t &\seq s'=t', \\
+        \tag{\LN:eq:ax:3}\label{LN:eq:ax:3}
+        s_1=t_1, s_2=t_2 &\seq s_1+s_2 =t_1+t_2,
+        \quad\text{and} \\
+        \tag{\LN:eq:ax:4}\label{LN:eq:ax:4}
+        s_1=t_1, s_2=t_2 &\seq s_1\times s_2 =t_1\times t_2,
+    \end{align}
+\end{axiom}
+\begin{axiom}[Mathematical axioms of \PA{}]\label{axi:mathematical axioms of PA}
+    These axioms are also known as \emph{Peano's axioms}:
+    \begin{align}
+        \tag{\LN:m:ax:1}\label{LN:m:ax:1}
+        s'=t'&\seq s=t \\
+        \tag{\LN:m:ax:2}\label{LN:m:ax:2}
+        s' = 0 &\seq, \\
+        \tag{\LN:m:ax:3}\label{LN:m:ax:3}
+        &\seq s + \bar0 = s, \\
+        \tag{\LN:m:ax:4}\label{LN:m:ax:4}
+        &\seq s + t' = (s+t)', \\
+        \tag{\LN:m:ax:5}\label{LN:m:ax:5}
+        &\seq s\times\bar0 = \bar0,
+        \quad\text{and} \\
+        \tag{\LN:m:ax:6}\label{LN:m:ax:6}
+        &\seq s\times t' = s \times t + s\,.
+    \end{align}
+\end{axiom}
+
+\paragraph{Note:}
+Before we dive in further and start proving things,
+please remember that \(n\in\Nset\) is a natural number
+in our meta language, whereas the \emph{numerals} or
+\emph{closed terms} \(\bar n\) are the representations of
+these numbers in our \emph{object language}.
 
 \section{Primitive recursive functions PRF and primitive recursive relations PRR}
 
