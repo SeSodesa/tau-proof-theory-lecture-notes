@@ -2852,6 +2852,37 @@ is seen below:
     Here \(p_1\) and \(p_2\) are of type \eqref{prf:projection}.
 \end{example}
 
+\begin{example}[VIII]\label{exa:PRF cut of subtraction}
+    A so calle \emph{cut of subtraction} \(CS\)
+    is of type \eqref{prf:compound recursive}.
+    It is generally defined as
+    \begin{equation*}
+        \CS(m,n) = \left\{
+            \begin{aligned}
+                0&,\quad m > n, \\
+                n-m&,\quad m\leq n
+            \end{aligned}\,.
+        \right.
+    \end{equation*}
+    It is defined \emph{recursively} for \(m,n\in\Nset\) by setting
+    \begin{align*}
+        \CS(0,n)  &= p_1(n) = n\\
+        \CS(m',n) &= \PRED(p_2(m,\CS(m,n),n)) = \PRED(\CS(m,n))\,,
+    \end{align*}
+    where \(p_1\) is of type \eqref{prf:projection} and \(\PRED\)
+    of type \eqref{prf:compound recursive}.
+\end{example}
+
+An example of the application of cut of subtraction goes as follows:
+\begin{align*}
+    \CS(1,n)    &= \PRED(\CS(0,n)) = n-1 \\
+    \CS(2,n)    &= \PRED(\CS(1,n)) = \PRED(n-1) = n-2 \\
+                &\vdots \\
+    \CS(n-1,n)  &= \PRED(n-(n-2)) = \PRED(2) = 1 \\
+    \CS(n,n)  &= \PRED(n-(n-1)) = \PRED(1) = 0 \,.
+\end{align*}
+Finally \(\CS(m,n) = 0\) for all \(m > n\).
+
 \section{The relation between Peano arithmetic and natural numbers}
 
 \section{Gödel numbering}
