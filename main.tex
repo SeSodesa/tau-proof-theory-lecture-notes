@@ -2825,8 +2825,8 @@ For further clarification of example \ref{exa:PRF sum}, consider
     \begin{enumerate}
         \item First define \(\SIGN(0) = v_0(0)  = 0\),
             where \(v_0\) is of type \eqref{prf:constant}.
-        \item The set \(\SIGN(n') = v_1\circ p_2(n,\SIGN(n))
-            = v_1(p_2(n,\SIGN(n))) = v_1(\SIGN(n)) = 1\).
+        \item Then set \[\SIGN(n') = v_1\circ p_2(n,\SIGN(n))
+            = v_1(p_2(n,\SIGN(n))) = v_1(\SIGN(n)) = 1\,.\]
             Note that \(v_1\) is of type \eqref{prf:constant},
             \(p_2\) of type \eqref{prf:projection}
             and \(v_1\circ p_2\) of type \eqref{prf:compound}.
@@ -2841,6 +2841,16 @@ is seen below:
              &\vdots \\
     \SIGN(n) &= 1, \quad n\in\Nset\setminus\set0\,.
 \end{align*}
+
+\begin{example}[VII]\label{exa:PRF permutation}
+    Given a \PRF{} \(f(m,n)\), the \emph{permutation} of
+    \(f\), \(\PERM(f(m,n)) = f(n,m)\), is of type
+    \eqref{prf:compound recursive}. It can be constructed by setting
+    \begin{equation*}
+        \PERM(f(m,n)) = f(p_2(m,n), p_1(m,n)) = f(n,m)\,.
+    \end{equation*}
+    Here \(p_1\) and \(p_2\) are of type \eqref{prf:projection}.
+\end{example}
 
 \section{The relation between Peano arithmetic and natural numbers}
 
