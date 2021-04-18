@@ -2217,7 +2217,8 @@ This is also known as the ''Theory of Equality'' and is denoted with \(\LK_=\).
 Here we add one additional symbol \(=\) to the alphabet of \LK{},
 and use it to form a set of binary predicates with the following set
 of axioms concerning the terms \(s\), \(s_i\), \(t_i\),
-function symbols \(f\) and predicate symbols \(R\):
+function symbols \(f\) and predicate symbols \(R\).
+\begin{axiom}[Axioms of equality]\label{axi:equality}
 \begin{align}
 \tag{=:ax:1}\label{eq:ax:1}
     &\seq s = s, \\
@@ -2226,6 +2227,7 @@ function symbols \(f\) and predicate symbols \(R\):
 \tag{=:ax:3}\label{eq:ax:3}
     s_1 = t_1,\ldots,s_n = t_n &\seq R(s_1,\ldots,s_n)\seq R(s_1,\ldots,s_n)
 \end{align}
+\end{axiom}
 The statements~\eqref{eq:ax:1}--\eqref{eq:ax:3} form the equality axioms.
 
 \begin{proposition}[7.2]\label{prop:7.2}
