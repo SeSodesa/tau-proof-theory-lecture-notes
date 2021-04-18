@@ -2735,10 +2735,10 @@ works on the metalanguage level.
         f(x_1,\ldots,x_n) &= g\arcs[\big]{
             h_1(x_1.\ldots,x_n),\ldots,h_m(x_1.\ldots,x_n)
         } \intertext{where \(g\) and \(h_1\)..\(h_m\) are \PRF{s},}
-        \tag{PRF:simple recursion}\label{prf:simple recursion}
+        \tag{PRF:simple recursion}\label{prf:simple recursive}
         f(0) &= k,\quad f(x') = g(x, f(x))
         \intertext{where \(k\in\Nset\) and \(g\) is a \PRF, and finally}
-        \tag{PRF:compound recursion}\label{prf:compound recursion}
+        \tag{PRF:compound recursion}\label{prf:compound recursive}
         f(0, x_2,\ldots,x_n) &=g(x_2,\ldots,x_n),\\
         \nonumber
         f(x', x_2,\ldots,x_n) &= h\arcs[\big]{x,f(x_2,\ldots,x_n),x_2,\ldots,x_n},
@@ -2765,7 +2765,7 @@ There is also a concept strongly related to \PRF{s},
 
 \begin{example}[II]\label{exa:PRF sum}
     The addition of natural numbers is a \PRF{}
-    of type \eqref{prf:compound recursion}:
+    of type \eqref{prf:compound recursive}:
     \begin{itemize}
         \item \(f(0,n) = p_2(0,n)\), where \(p_2\)
             is a \PRF{} of type \eqref{prf:projection}.
@@ -2787,6 +2787,38 @@ For further clarification of example \ref{exa:PRF sum}, consider
     f(2,9) &= h(1,f(1,9),9) = f(1,9)' = 11, \\
     f(1,9) &= h(0,f(0,9),9) = f(0,9)' = 10 \,.
 \end{align*}
+
+\begin{example}[III]\label{exa:PRF constant}
+    Constant functions \(v_0(n)\equiv 0\),
+    \(v_1(n)\equiv 1\), \(v_2(n)\equiv 2\) and so forth
+    are of type \eqref{prf:constant}.
+\end{example}
+
+\begin{exercise}[10.2.1]\label{exe:10.2.1}
+    Show that multiplication of natural numbers \(\times\)
+    is a primitive recursive function.
+\end{exercise}
+
+\begin{example}[V]\label{exa:PRF predecessor}
+    Predecessor or \emph{Vorgänger} functions
+    are of type \eqref{prf:simple recursive}:
+    \begin{enumerate}
+        \item First define \(\PRED(0) = v_0(0) = 0\),
+            where \(v_0\) is of type \eqref{prf:constant}.
+        \item Then set \(\PRED(n') = p_1(n,\PRED(n)) = n\),
+            where \(p_1\) is of type \eqref{prf:projection}.
+    \end{enumerate}
+    In other words,
+    \begin{equation*}
+        \PRED(n) =
+        \left\{
+            \begin{aligned}
+                0&, \quad n=0\\
+                n-1&,\quad n>0
+            \end{aligned}
+        \right.\,.
+    \end{equation*}
+\end{example}
 
 \section{The relation between Peano arithmetic and natural numbers}
 
