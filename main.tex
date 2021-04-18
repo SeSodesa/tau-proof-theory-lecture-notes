@@ -2716,8 +2716,8 @@ fulfills the following definition.
 In fact, we wish to show that any system \(S\) that contains
 Peano arithmetic (is its superset) ends up being incomplete because of it.
 To do this, we need several different definitions and results.
-The first one of these \emph{proimitive recursive functions}
-works on the meta language level.
+The first one of these, \emph{primitive recursive functions},
+works on the metalanguage level.
 
 \begin{definition}[Primitive recursive functions]\label{def:PRF}
     Primitive recursive functions or \PRF{s} is the smallest
@@ -2742,9 +2742,12 @@ works on the meta language level.
         f(0, x_2,\ldots,x_n) &=g(x_2,\ldots,x_n),\\
         \nonumber
         f(x', x_2,\ldots,x_n) &= h\arcs[\big]{x,f(x_2,\ldots,x_n),x_2,\ldots,x_n},
-        \intertext{where \(g\) and \(h\) and \PRF s.}\nonumber
     \end{align}
+    where \(g\) and \(h\) are \PRF{}s.
 \end{definition}
+
+The fact that \PRF{s} work on the metalanguage level means that
+they are actual functions in the usual sense, not just function symbols.
 
 \section{Primitive recursive functions PRF and primitive recursive relations PRR}
 
