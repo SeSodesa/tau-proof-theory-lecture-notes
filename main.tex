@@ -2820,6 +2820,28 @@ For further clarification of example \ref{exa:PRF sum}, consider
     \end{equation*}
 \end{example}
 
+\begin{example}[VI]\label{exa:PRF sign}
+    The \emph{signum} function is of type \eqref{prf:simple recursive}:
+    \begin{enumerate}
+        \item First define \(\SIGN(0) = v_0(0)  = 0\),
+            where \(v_0\) is of type \eqref{prf:constant}.
+        \item The set \(\SIGN(n') = v_1\circ p_2(n,\SIGN(n))
+            = v_1(p_2(n,\SIGN(n))) = v_1(\SIGN(n)) = 1\).
+            Note that \(v_1\) is of type \eqref{prf:constant},
+            \(p_2\) of type \eqref{prf:projection}
+            and \(v_1\circ p_2\) of type \eqref{prf:compound}.
+    \end{enumerate}
+\end{example}
+
+A concrete example of the application of the signum function
+is seen below:
+\begin{align*}
+    \SIGN(1) &= v_1(\SIGN(0)) = v_1(0) = 1 \\
+    \SIGN(2) &= v_1(\SIGN(1)) = v_1(1) = 1 \\
+             &\vdots \\
+    \SIGN(n) &= 1, \quad n\in\Nset\setminus\set0\,.
+\end{align*}
+
 \section{The relation between Peano arithmetic and natural numbers}
 
 \section{Gödel numbering}
