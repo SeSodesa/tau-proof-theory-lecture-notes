@@ -2608,6 +2608,101 @@ are numerals, then
     leads to them being the same numeral. We are then done with
     the proof.
 \end{proof}
+
+\begin{proposition}[9.6.2]\label{prop:9.6.2}
+    In \PA{}, if \(s\) and \(t\) are closed terms, then either
+    the sequent \(\seq s=t\) or \(s=t\seq\) holds. The terms
+    are either equal, or they are not.
+\end{proposition}
+
+\begin{proof}
+    As we have already proved proposition \ref{prop:9.6.1},
+    it is enough to show that if \(\bar m\) and \(\bar n\) are
+    numerals, then either \(\seq \bar m = \bar n\) or \(\bar m = \bar n\seq\) holds.
+    In other words, either the two numerals are equal, or they are not.
+    We induce on the number \(k\) of successors \(\prime\) in the numerals.
+
+    In the base case \(k=0\), so the numerals are both zeroes,
+    and \(\seq\bar0=\bar0\) holds according to the axioms of \PA{}.
+    The claim then holds for \(k=0\).
+
+    In the inductive hypothesis, we assume that the claim \(\seq\bar m=\bar n\)
+    holds for \(k = p\) successors in the numerals \(\bar m\) and \(n\).
+    We then add one more successor to either \(\bar m\) or \(\bar n\)
+    and demonstrate that the claim still holds after the mattter.
+
+    By the axioms of \PA{} and inductive hypotheses,
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{\seq\bar m=\bar n}
+            \hypo{m = n\seq\bar m'=\bar n'}
+            \infer2[\eqref{eq:cut}]{\seq\bar m'=\bar n'}
+        \end{prooftree}\,,
+    \end{equation*}
+    so if \(m\) and \(n\) are the same natural numbers,
+    then \(\seq\bar m=\bar n\).
+
+    Now, as by the axioms of \PA{}, zero cannot be the successor
+    of any numeral, as in
+    \begin{equation*}
+        \bar1'=0\seq,\quad
+        \bar2'=0\seq,\quad
+        \bar3'=0\seq,\quad
+        \ldots\,,
+    \end{equation*}
+    and the axioms also allow us to make the proof
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{\bar n''=\bar 0'\seq \bar n' = \bar0}
+            \hypo{\bar n'=0\seq}
+            \infer2{\bar n''=\bar 0'\seq}
+        \end{prooftree}\,,
+    \end{equation*}
+    we know that
+    \begin{equation*}
+        \bar2'=\bar1\seq,\quad
+        \bar3'=\bar1\seq,\quad
+        \bar4'=\bar1\seq,\quad
+        \ldots\,.
+    \end{equation*}
+    Similarly, but in a more concrete and examplary manner,
+    we can argue that
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{3 = 2 \seq 2 = 1}
+            \hypo{2 = 1 \seq}
+            \infer2{3\seq 2\seq}
+        \end{prooftree}\,,
+    \end{equation*}
+    where the numeral \(\bar3\) may be replaced with any numeral \(\bar n\), so
+    \begin{equation*}
+        \bar3'=\bar2\seq,\quad
+        \bar4'=\bar2\seq,\quad
+        \bar5'=\bar2\seq,\quad
+        \ldots\,.
+    \end{equation*}
+
+    Proceeding in the above manner ad infinitum,
+    we can produce all sequences \(\bar m=\bar n\seq\),
+    for the natural numbers \(m\) and \(n\), for which \(m > n\) holds.
+    To handle the case where \(m < n\), simply exchange the roles
+    of \(m\) and \(n\) in the proofs, which produces \(\bar n=\bar m\seq\).
+
+    We have now shown that, speaking in metalanguage,
+    either \(m=n\), \(m>n\) or \(m < n\) holds,
+    but none at the same time. Therefore
+    \begin{equation*}
+        \bar m = \bar n\seq,\quad
+        \seq\bar m=\bar n,
+        \quad\text{or}\quad
+        \bar n=\bar m\,.
+    \end{equation*}
+    It now remains to show that \(\bar m=\bar n\seq\),
+    if and only if \(\bar n=\bar m\seq\), which we omit.
+\end{proof}
+
+\section{The incompleteness of Peano arithmetic}
+
 \section{Primitive recursive functions PRF and primitive recursive relations PRR}
 
 \section{The relation between Peano arithmetic and natural numbers}
