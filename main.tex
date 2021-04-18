@@ -1409,9 +1409,9 @@ before this can be proven,
 and some of the details will be omitted for brevity.
 
 \begin{lemma}[The mix rule, Lemma 5.2]\label{lem:mix rule}
-    Let \(T\), \(\Delta\), \(\Delta^\ast\), \(\Pi\), \(\Pi^\ast\) and \(\Lambda\) be sequence formulae
-    and \(A\) a single formula, such that \(\Delta = \Delta(A)\), \(\Pi = \Pi(A)\),
-    \(\Delta^\ast\neq\Delta(A)\) and \(\Pi^\ast\neq\Pi(A)\). Then the rule~\eqref{eq:cut}
+    Let \(\Gamma\), \(\Delta\), \(\Delta^\ast\), \(\Pi\), \(\Pi^\ast\) and \(\Lambda\) be sequence formulae
+    and \(A\) a single formula, such that \(A\in\Delta\), \(A\in\Pi\),
+    \(A\notin\Delta^\ast\) and \(A\notin\Pi^\ast\). Then the rule~\eqref{eq:cut}
     can be replaced by the rule
     \begin{equation}\label{eq:mix}\tag{mix}
         \begin{prooftree}
@@ -2368,7 +2368,8 @@ For the case \(A = B\limplies C\) we denote the sequence of equalities
     Otherwise the formula is \emph{essential}.
 \end{definition}
 
-\begin{theorem}[7.6]\label{the:7.6}
+\begin{theorem}[\eqref{eq:cut}-elimination in \(\LK_=\)]%
+    \label{the:cut-elimination in LK=}
     If a sequent \(\Gamma\seq\Delta\) is provable in \(\LK_=\),
     then it is provable without an essential \eqref{eq:cut}.
 \end{theorem}
@@ -2378,7 +2379,7 @@ For the case \(A = B\limplies C\) we denote the sequence of equalities
         Left as an exercise. This is very similar to the general
         Gentzens Hauptsatz, with only two additional subcases:
         either \eqref{eq:cut}--\eqref{eq:mix} concerns an equality
-        axioms or it is obtained by weakening.
+        axiom or it is obtained by weakening.
     \end{exercise}
 \end{proof}
 
