@@ -3131,7 +3131,28 @@ Sequents \(\Gamma\seq\Delta\), inferences \(Q\) of definition~\ref{def:inference
 and proofs \(P\) of definition~\ref{def:proof in LK} can also be given
 their own unique Gödel numbers \(\G{\Gamma\seq\Delta}\),
 \(\G Q\) and \(\G P\), by converting them to suitable strings of symbols
-and applying the procedure above.
+and applying the procedure above. For example, for the proofs
+\begin{equation*}
+    P_1:
+    \begin{prooftree}
+        \hypo{\Gamma\seq\Delta}
+        \infer1{S}
+    \end{prooftree}
+    \quad\text{and}\quad
+    P_2:
+    \begin{prooftree}
+        \hypo{Q_1}
+        \hypo{Q_2}
+        \infer2{S}
+    \end{prooftree}
+\end{equation*}
+the Gödel numbers are
+\[
+\G{P_1} = 2^{\G\Gamma}\times3^{\G\seq}\times5^{\G\Delta}\times7^{\G-}\times11^{\G S}
+\] and
+\[\G{P_2} = 2^{\G Q_1}\times3^{\G Q_2}\times5^{\G-}\times7^{\G S}\]
+respectively. Note that \(\seq\) and \(-\) are the symbols for the sequent arrow
+and inference line, again respectively.
 
 \paragraph{Note:}
 The Gödel number \(\G{\bar n} \neq n\).
