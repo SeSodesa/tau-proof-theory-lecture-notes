@@ -3115,6 +3115,18 @@ because of technical limitations.
     the Gödel number of some formula?
 \end{exercise}
 
+Next we define the process of constructing Gödel numbers for
+sequences of formulae, such as \(\Gamma: A_1,A_2,A_3,\ldots,A_n\).
+Here we simply write
+\begin{equation*}
+    G(\Gamma) = \G\Gamma =
+    2^{\G{A_1}}\times3^{\G{A_2}}\times5^{\G{A_3}}\times\cdots\times p^{\G{A_n}} \,.
+\end{equation*}
+In other words, the prime numbers from \(2\) to \(p\),
+where \(p\) is the \(n\)th prime number,
+are raised to the Gödel numbers of the individual formulae \(A_i\),
+to produce the Gödel number for the sequence \(\Gamma\).
+
 \section{The relation between Peano arithmetic and natural numbers}
 
 \section{Gödel numbering}
