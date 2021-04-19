@@ -2898,7 +2898,7 @@ Finally, \(\CS(m,n) = 0\) for all \(m > n\).
 \end{example}
 
 We now proceed to show that equality \(=\) is a primitive recursive
-relation \(\PRR\). Define the function \(f(m,n) = \SIGN(\ADF(m,n))\),
+relation \(\PRR\) in \(\Nset^2\). Define the function \(f(m,n) = \SIGN(\ADF(m,n))\),
 which is of type~\eqref{prf:compound} and
 \begin{equation*}
     f(m,n) = \SIGN(\abs{m-n}) = \left\{
@@ -2917,6 +2917,10 @@ We say that \(m = n\) or \(m,n\in=\) (\(m\) and \(n\) are in an equality relatio
 if and only if the above \PRF{} \(f(m,n) = 0\).
 This is usually how equality is defined in computer algebra systems
 such as \emph{Maxima}. This is then of immediate practical use as well!
+
+\paragraph{Note 2:}
+The relation \(<\) is also a \PRR{} in \(\Nset^2\):
+\(m < n\), if and only if \(\CS(m,n) = 0\).
 
 \section{The relation between Peano arithmetic and natural numbers}
 
