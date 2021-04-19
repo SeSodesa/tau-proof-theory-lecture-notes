@@ -3015,6 +3015,42 @@ of \(R\), \(f_R\), so that
     \(\seq R_\delta(m_1,\ldots,m_n)\) in \PA{}.
 \end{proof}
 
+The converse also holds: by lemma \ref{lem:10.5} the consistency of \PA{}
+can be expressed by saying that \(\seq\bar0=\bar1\) is not provable in \PA{}.
+This we prove as follows.
+
+\begin{proof}
+    If the sequent \(\seq\bar R(\bar m_1,\ldots,\bar m_n)\)
+    is provable in \PA{}, then the relation \(R(m_1,\ldots,m_n)\)
+    holds in \(\Nset^n\), as in \(m_1,\ldots,m_n\in R\).
+    We make the contrapositie assumption that \(m_1,\ldots,m_n\notin R\).
+
+    Now the characteristic function \(f_R(m_1,\ldots,m_n) = 1\),
+    which when expressed in \PA{} means that
+    \(\bar f_R(\bar m_1,\ldots,\bar m_n) = \bar1\),
+    or simply \(\bar f_R = \bar1\).
+    Since \(\seq\bar R(\bar m_1,\ldots,\bar m_n)\) in \PA{},
+    \(\seq\bar f_R =\bar0\) must be provable. Now
+\begin{equation*}
+    \begin{prooftree}
+        \hypo{\seq\bar f_R=\bar1}
+        \hypo{\bar f_R=\bar1\seq\bar1=\bar f_R}
+        \infer2[\eqref{eq:cut}]{\seq\bar1=\bar f_R}
+    \end{prooftree}
+\end{equation*}
+and therefore
+\begin{equation*}
+    \begin{prooftree}
+        \hypo{\seq\bar f_R=\bar0}
+        \hypo{\seq\bar1=\bar f_R}
+        \hypo{\bar1=\bar f, \bar f=\bar0\seq\bar1=\bar0}
+        \infer2[\eqref{eq:cut}]{\bar f=\bar0\seq\bar1=\bar0}
+        \infer2[\eqref{eq:cut}]{\seq\bar1=\bar0}
+    \end{prooftree}
+\end{equation*}
+This makes \PA{} inconsistent, meaning \(R(m_1,\ldots,m_n)\) holds in \(N^n\).
+\end{proof}
+
 \section{The relation between Peano arithmetic and natural numbers}
 
 \section{Gödel numbering}
