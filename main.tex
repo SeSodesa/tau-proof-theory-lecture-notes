@@ -2897,6 +2897,27 @@ Finally, \(\CS(m,n) = 0\) for all \(m > n\).
     are \PRF{}s.
 \end{example}
 
+We now proceed to show that equality \(=\) is a primitive recursive
+relation \(\PRR\). Define the function \(f(m,n) = \SIGN(\ADF(m,n))\),
+which is of type~\eqref{prf:compound} and
+\begin{equation*}
+    f(m,n) = \SIGN(\abs{m-n}) = \left\{
+        \begin{aligned}
+            0&,\quad m = n, \\
+            1&,\quad m \neq n\,.
+        \end{aligned}
+    \right.
+\end{equation*}
+There then exists a (characteristic) \PRF{} for the relation \(=\),
+whose values are in the set \(\set{0,1}\). Therefore the
+relation \(=\) is a \PRR, as per definition~\ref{def:primitive recursive relation}.
+
+\paragraph{Note:}
+We say that \(m = n\) or \(m,n\in=\) (\(m\) and \(n\) are in an equality relation),
+if and only if the above \PRF{} \(f(m,n) = 0\).
+This is usually how equality is defined in computer algebra systems.
+This is then of practical use as well!
+
 \section{The relation between Peano arithmetic and natural numbers}
 
 \section{Gödel numbering}
