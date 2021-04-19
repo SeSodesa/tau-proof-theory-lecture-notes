@@ -2967,6 +2967,54 @@ of \(R\), \(f_R\), so that
     \end{tabenv}
 \end{proposition}
 
+\begin{proof}[A sketch of the proof]
+\item[1.] This should be clear by declaration.
+
+\item[2.]
+    In the set \(\Nset\) primitive recursive functions can be expressed
+    in terms of the successor \('\), addition \(+\) and multiplication \(\times\).
+    These correspond to the function symbols \(\bar'\), \(\bar+\) and \(\bar\times\)
+    in \(\LN\). In particular,
+    \begin{equation*}
+        f(m_1,\ldots,m_n)   = p\in\Nset,
+        \quad\text{if and only if}\quad
+        \bar f(m_1,\ldots,m_n) = \bar p \in\LN\,.
+    \end{equation*}
+\item[3.]
+    First notice that \(=\arcs{,\bar m}\) or \(=\bar m\)
+    can be seen as a right-associative unary predicate symbol
+    \(\bar R_{\bar m}\), and that \(\bar R_{\bar m}(t)\)
+    is an atomic formula in \PA{}. Moreover, either
+    \(\seq\bar R_{\bar m}(t)\) (\(\seq t=\bar m\)),
+    or \(\bar R_{\bar m}(t)\seq\) (\(t=\bar m\seq\))
+    is provable by proposition~\ref{prop:9.6.2},
+    as \(t\) is a closed term.
+
+    Then recall that \(m_1,\ldots,m_n\in\Nset\) either are in relation
+    \(R\subseteq\Nset^n\), or they are not, if and only if \(R(m_1,\ldots,m_n)\)
+    holds in \(\Nset^n\), if an only if
+    \begin{equation*}
+        f_R(m_1,\ldots,m_n) = \left\{
+            \begin{aligned}
+                0&,\quad m_1,\ldots,m_n \in R,\\
+                1&,\quad m_1,\ldots,m_n\notin R\,,
+            \end{aligned}
+        \right.
+    \end{equation*}
+    where \(f_R\) is the characteristic function of \(R\), a \PRF{}.
+    We then have the following: \(R(m_1,\ldots,m_n)\) holds in \(\Nset^n\),
+    if and only if \(f_R(m_1,\ldots,m_n) = 0\), if and only if
+    \begin{equation*}
+        \seq f_R(m_1,\ldots,m_n) = 0
+    \end{equation*}
+    is provable in \(\PA\) and its supersets.
+
+    We denote \(f_R(t_1,\ldots,t_n) = \bar0\) by a \emph{unary} predicate
+    \(R_\delta(t_1,\ldots,t_n)\). Then either \(\seq R_\delta(t_1,\ldots,t_n)\)
+    is provable is \PA{}, or it is not. In particular,
+    \(\seq R_\delta(m_1,\ldots,m_n)\) in \PA{}.
+\end{proof}
+
 \section{The relation between Peano arithmetic and natural numbers}
 
 \section{Gödel numbering}
