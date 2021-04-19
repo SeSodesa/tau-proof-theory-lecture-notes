@@ -3054,6 +3054,67 @@ This makes \PA{} inconsistent, meaning \(R(m_1,\ldots,m_n)\) holds in \(\Nset^n\
 
 \subsection{Gödel numbering}
 
+Recall the prime number factorization of natural numbers:
+any natural number \(n\geq 2\) can be expressed \emph{uniquely}
+as the finite product of primes:
+\begin{equation*}
+    n = 2^{p_1}\times 3^{p_2}\times 5^{p_3}\times\cdots\times p^{p_m},
+\end{equation*}
+where the numbers \(2\), \(3\), \(5\), \ldots, \(p\) are the first \(m\)
+prime numbers and \(p_1,p_2,p_3,\ldots,p_m \in\Nset\), with \(p_m\neq 0\).
+For example,
+\begin{alignat*}{4}
+    &2 = 2^1,           &&\quad3 = 2^0\times3^1,                 &&\quad4 = 2^2, &&\quad5 = 2^0\times 3^0\times 5^1, \\
+    &6 = 2^1\times 3^1, &&\quad7= 2^0\times3^0\times5^0\times7^1,&&\quad8 = 2^3, &&\quad9 = 2^0\times3^2,\ldots
+\end{alignat*}
+We now make the following definition based on this knowledge.
+
+\begin{definition}[Gödel numbering]\label{def:gödel numbering}
+    The formulae of \PA{} are composed of a finite set of symbols
+    \(\set{x,y,\limplies,\land,\lor\lnot,\exists,\ldots,\forall}\),
+    so they can be enumerated as follows:
+
+    \begin{tabenv}{Enumeration of symbols in \PA{}}
+        \label{tab:an enumeration of symbols in PA}
+        \begin{tabular}[]{c|C|C|C|C|C|C|C|C|C|C|C|C|C}
+            \toprule
+            \(\Nset\) & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10  & 11 & \cdots & n\\
+            \midrule
+            Symbol  & = & \bar0 & \exists & x & \prime & ( & ) & + & \seq & ,  & -- & \cdots & \forall\\
+            \bottomrule
+        \end{tabular}
+    \end{tabenv}
+
+    Based on this enumeration, \emph{which is not unique},
+    we can write the sentence ''\(\bar0\) has a successor'',
+    expressed in \PA{} as \(A:\exists x(x=0')\), as the sequence
+    \(34641257\), based on table~\ref{tab:an enumeration of symbols in PA}.
+    The unique (in enumeration~\ref{tab:an enumeration of symbols in PA})
+    \emph{Gödel number} of \(A\), \(G(A)\), is then
+    \begin{equation*}
+        G(A) = \G A = 2^3\times3^4\times5^6\times7^4\times11^1\times13^2\times17^5\times19^7 \,.
+    \end{equation*}
+\end{definition}
+
+In a given enumeration, each formula \(A\in\LN\) has a unique Gödel number \(\G A\).
+On the other hand, given a natural number \(n\in\Nset\), we could in principle
+find its prime factorization and hence discover, whether \(n\) is the
+Gödel number of \(A\) for some formula \(A\).
+For example
+\begin{equation*}
+    6 = 2^1\times 3^1\,,
+\end{equation*}
+meaning it corresponds to the string \(==\) in
+the enumeration~\ref{tab:an enumeration of symbols in PA}
+However, for most \(n\) this is not in any way practical,
+because of technical limitations.
+
+\begin{exercise}[Gödel 1]\label{exe:gödel 1}
+    What is the Gödel number \(\G A\) for the formula
+    \(A: \exists x(x+\bar0 = x)\)? Is the number \(4\,261\,409\,460\)
+    the Gödel number of some formula?
+\end{exercise}
+
 \section{The relation between Peano arithmetic and natural numbers}
 
 \section{Gödel numbering}
