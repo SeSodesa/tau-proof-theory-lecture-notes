@@ -203,7 +203,7 @@ For example, \(T\corr A_1, A_2(a), \exists x A_3(x), \forall y A_4(y)\) is a fin
 as is \(\Delta \corr B_1, \exists x B_2(x)\).
 
 
-\section{Sequents, inferences and proofs in \LK}
+\subsection{Sequents, inferences and proofs in \LK}
 
 \begin{definition}[Sequents, antecedents and succedents]%
     \label{def:sequent}
@@ -524,7 +524,7 @@ if and only if
 This is denoted with \(A\equiv B\).
 \end{definition}
 
-\section{Metalanguage versus object language}
+\subsection{Metalanguage versus object language}
 
 In order to be able to discuss mathematics (or any other set of objects), we need to separate the ideas of
 \emph{object language} and \emph{metalanguage}. Metalanguage is the natural language
@@ -589,9 +589,7 @@ i                       \(\arcs{a + b} \mult c\), \(t\), \(t_i\) \\
 \end{tabular}
 \end{tabenv}
 
-\section{Examples of proofs in \LK}
-
-\subsection{Examples}
+\subsection{Examples of proofs in \LK}
 
 \begin{example}
     To prove \(\seq A \lor\lnot A\), we reason as follows:
@@ -1018,7 +1016,7 @@ some proofs~\(P\) that are in \LK{} are not in \LJ{}.
     \end{proof}
 \end{example}
 
-\section{The relation between \LK{} and \LJ}
+\subsection{The relation between \LK{} and \LJ}
 
 Our last goal in discussing what the specific connection between \LK{} and \LJ{} is.
 For this purpose we declare the notational definitions in definition~\ref{def:starred formulae in LK}.
@@ -1541,12 +1539,12 @@ If we think of the inferences
     \end{prooftree}\,,
 \end{equation*}
 we notice that the upper sequents are always composed of subformulae
-of the lower sequents, but conversely. We then have the following result.
+of the lower sequents, but not conversely. We then have the following result.
 
 \begin{theorem}[Subformula property]\label{the:subformula property}
     If \(P\) is a proof of the sequent \(\Gamma\seq\Delta\),
     then \(P\) contains only formulae that are subformulae of
-    the sequence formulae \(T\) and \(\Delta\), but not conversely.
+    the sequence formulae \(\Gamma\) and \(\Delta\), but not conversely.
 \end{theorem}
 
 \begin{proof}
