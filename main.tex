@@ -2950,6 +2950,23 @@ of \(R\), \(f_R\), so that
     Omitted.
 \end{proof}
 
+\begin{proposition}[10.6.1]\label{prop:10.6.1}
+    Primitive recursive functions \PRF{} can be expressed
+    in \LN{}, the language of \PA{}. More generally:
+
+    \begin{tabenv}{Correspondence of \PRF{}s and \(\LN\).}
+        \begin{tabular}{c|c|c}
+            \toprule
+            \(\Nset\) &Metalevel \(\Nset\) & \(\LN\) of \PA{}\\
+            \midrule
+            1. &Natural numbers \(n\in\Nset\)   & Numerals \(\bar n\in\LN\)\\
+            2. &\PRF{s} \(f : \Nset\to\Nset\)   & \(n\)-ary function symbols \(f\) \\
+            3. &\PRR{s} \(R\subseteq \Nset^n\)  & \(n\)-ary atomic formulae or predicates \(\bar R\)\\
+            \bottomrule
+        \end{tabular}
+    \end{tabenv}
+\end{proposition}
+
 \section{The relation between Peano arithmetic and natural numbers}
 
 \section{Gödel numbering}
