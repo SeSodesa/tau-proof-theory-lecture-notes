@@ -2885,6 +2885,18 @@ An example of the application of cut of subtraction goes as follows:
 \end{align*}
 Finally, \(\CS(m,n) = 0\) for all \(m > n\).
 
+\begin{example}[IX]\label{exa:PRF absolute difference}
+    The \emph{absolute difference} \(\ADF\) function is a \PRF{}
+    of type \eqref{prf:compound}:
+    \begin{equation*}
+        \ADF(m,n) = \CS(m,n) + \CS(n,m) = \abs{m-n}\,.
+    \end{equation*}
+    Here \(\CS(m,n)\) is either \(n-m\) or \(0\),
+    and \(\CS(n,m)\) either \(m-n\) or \(0\).
+    As stated above, both \(\CS\) and \(+\)
+    are \PRF{}s.
+\end{example}
+
 \section{The relation between Peano arithmetic and natural numbers}
 
 \section{Gödel numbering}
