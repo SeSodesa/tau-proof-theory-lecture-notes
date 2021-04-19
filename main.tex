@@ -2922,6 +2922,34 @@ such as \emph{Maxima}. This is then of immediate practical use as well!
 The relation \(<\) is also a \PRR{} in \(\Nset^2\):
 \(m < n\), if and only if \(\CS(m,n) = 0\).
 
+\subsection{General primitive recursive relations}
+
+Assume \(R\) is a primitive recursive relation \PRR.
+Now either the variables \(x_1,\ldots,x_n\)
+are in \(R\), as in \(R(x_1,\ldots,x_n)\), or they are not.
+Because \(R\) is a \PRR, there exists a characteristic function
+of \(R\), \(f_R\), so that
+\begin{equation*}
+    f_R(x_1,\ldots,x_n) = \left\{
+        \begin{aligned}
+            0&,\quad (x_1,\ldots,x_n)\in R, \\
+            1&,\quad (x_1,\ldots,x_n)\notin R\,.
+        \end{aligned}
+    \right.
+\end{equation*}
+
+\begin{lemma}(Consistency of \PA)\label{lem:10.5}
+    Peano arithmetic \PA{} and all of its supersets are \emph{consistent},
+    if and only if the sequent \(\seq\bar0=\bar1\)
+    is not provable in \PA. In other words,
+    any formula \(A\) is provable, if \(\seq\bar0=\bar1\)
+    is provable in \PA{}.
+\end{lemma}
+
+\begin{proof}
+    Omitted.
+\end{proof}
+
 \section{The relation between Peano arithmetic and natural numbers}
 
 \section{Gödel numbering}
