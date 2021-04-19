@@ -224,12 +224,12 @@ Note that the symbol \(\seq\) does not correspond to \(\limplies\).
     Sequents of the form \(A\seq A\) are called \emph{initial sequents} or \emph{axioms}.
 \end{definition}
 
-\begin{definition}[Contradiction and tautology]%
-    \label{def:contradiction and tautology}
+\begin{definition}[Contradiction and provability]%
+    \label{def:contradiction and provability}
     A sequent without a succedent such as \(A_1, \ldots,A_m\seq\)
     is used to denote that \(A_1, \ldots,A_m\) yields a \emph{contradiction}.
     A sequent without an antecedent such as \(\seq B_1,\ldots,B_m\) means that
-    \(B_1,\ldots,B_m\) is a \emph{tautology}, or that \(B_1,\ldots,B_m\) holds.
+    \(B_1,\ldots,B_m\) is a \emph{provable}, or that \(B_1,\ldots,B_m\) holds.
     A sequent with neither an antecedent or a succedent, as in \(\seq\),
     means that \emph{There is a contradiction}.
 \end{definition}
@@ -1356,7 +1356,7 @@ or a single formula \(A_i\), for all formulae \(A,A_i\in\sset A\).
 \end{definition}
 
 In other words, consistent axiom systems cannot produce contradictions,
-as per definition~\ref{def:contradiction and tautology}.
+as per definition~\ref{def:contradiction and provability}.
 The following proposition concerns equivalencies in inconsistent systems.
 
 \begin{proposition}[Equivalencies in inconsistent systems]%
@@ -3159,6 +3159,8 @@ For example, \(\bar3 = \bar0'''\)
 and therefore in the enumeration of table~\ref{tab:an enumeration of symbols in PA},
 \(\G{\bar3} = 2^2\times3^5\times5^5\times7^5\neq3\).
 
+\subsection{Arithmetization of Peano Arithmetic}
+
 We have now given a procedure for \emph{arithmetizing} formulae,
 sequences of formulae, sequents and proofs. We now make this more
 formal via the following definition.
@@ -3218,15 +3220,12 @@ in the book of Takeuti. We therefore also skip the proof. {\Large\trollface}
     is provable in \PA{}.
 \end{lemma}
 
-\section{The relation between Peano arithmetic and natural numbers}
 
-\section{Gödel numbering}
 
-\section{Arithmetization in Peano arithmetic}
 
-\section{Tarski's theorem}
+\subsection{Tarski's theorem}
 
-\section{Gödel's incompleteness theorems}
+\subsection{Gödel's incompleteness theorems}
 
 {\raggedright%
 \printbibliography[heading=bibintoc]%
