@@ -7,6 +7,7 @@
 % Document class
 \documentclass[11pt,a4paper]{article}
 \input{preamble.tex}
+\input{trollface.tex}
 % Document start
 \begin{document}
 \pagenumbering{gobble}
@@ -3159,6 +3160,51 @@ The Gödel number \(\G{\bar n} \neq n\).
 For example, \(\bar3 = \bar0'''\)
 and therefore in the enumeration of table~\ref{tab:an enumeration of symbols in PA},
 \(\G{\bar3} = 2^2\times3^5\times5^5\times7^5\neq3\).
+
+We have now given a procedure for \emph{arithmetizing} formulae,
+sequences of formulae, sequents and proofs. We now make this more
+formal via the following definition.
+
+\begin{definition}[Arithmetization]\label{def:arithmetization}
+    If an object, action or operation \(\Phi\) has a Gödel number \(\G\Phi\),
+    then it has a unique \emph{arithmetization} which is equal to that number.
+\end{definition}
+
+In other words, all objects can be given a counterpart in the set
+of natural numbers \(\Nset\). For example, if \(\Phi\) is a predicate
+\(\bar R(\bar x_1,\ldots,\bar x_n)\) in \PA{},
+the sequent \(\seq\bar R(\bar x_1,\ldots,\bar x_n)\) is provable in \PA{},
+\emph{and} there is a \PRR{} \(R\subseteq \Nset^n\)
+such that \(R(\G{\bar x_1},\ldots,\G{\bar x_n})\)
+holds in \(\Nset^n\), then \(R\) is the arithmetization of \(\bar R\).
+
+Another example of an arithmetization goes as follows:
+let \(\Phi\) be an operation applied to objects
+\(\bar x_1,\ldots,\bar x_n \in\PA\),
+so that the resulting object \(\bar y\in\PA{}\).
+If there is a \PRF{} \(f\) in \(\Nset\) so that
+\(f(\G{\bar x_1},\ldots,\G{\bar x_n},)) = \G{\bar y}\),
+then \(f\) is the arithmetization of \(\Phi\).
+
+Notice that the converse is also true:
+if \(a_1,\ldots,a_n,b\in\Nset\) happen to be
+Gödel numbers, so that
+\begin{equation*}
+    a_1 = \G{\bar x_1},\ldots, a_n = \G{\bar x_n}, b = \G{\bar y}\,,
+\end{equation*}
+then there are unique corresponding numerals of definition~\ref{def:numerals},
+\begin{equation*}
+    \num{\G{\num x_1}},\ldots,\num{\G{\num x_n}} \in\PA\,.
+\end{equation*}
+If there also exists a mapping
+\(f(\G{\num x_1},\ldots,\G{\num x_n}) = \G{\num y} \in\Nset\),
+then there exists an operation \(\Phi\), that performs the mapping
+\(\arcs{\num{\G{\num x_1}},\ldots,\num{\G{\num x_n}}}\mapsto\num{\G{\num y}}\in\PA{}\).
+
+\paragraph{Note:}
+This converse relation is rather complex, and is not proven
+in the book of Takeuti. We therefore also skip the proof. {\Large\trollface}
+
 
 \section{The relation between Peano arithmetic and natural numbers}
 
