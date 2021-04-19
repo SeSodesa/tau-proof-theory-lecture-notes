@@ -3205,6 +3205,20 @@ then there exists an operation \(\Phi\), that performs the mapping
 This converse relation is rather complex, and is not proven
 in the book of Takeuti. We therefore also skip the proof. {\Large\trollface}
 
+\begin{lemma}[10.8.1]\label{lem:10.8.1}
+    The rule~\eqref{eq:substitution} can be arithmetized:
+    if \(\num x(a_0)\) is a fully indicated expression of \PA,
+    and \(\num x(\num y)\) is obtained from \(\num x(a_0)\)
+    by substituting all instances of \(a_0\) with \(\num y\)
+    in \(\num x\), then there is a unique \PRF{} \(\sub: \Nset^2\to\Nset\),
+    such that
+    \begin{equation*}
+        \sub\arcs*{\G{\num y}, \G{\num x(a_0)}} = \num{\G{\num x(\num y)}}\,,
+    \end{equation*}
+    and there is a unique function symbol \(\num{\sub{}}\) in \PA{},
+    such that \(\seq\sub\arcs*{\G{\num y}, \G{\num x(a_0)}} = \num{\G{\num x(\num y)}}\)
+    is provable in \PA{}.
+\end{lemma}
 
 \section{The relation between Peano arithmetic and natural numbers}
 
