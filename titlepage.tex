@@ -1,10 +1,19 @@
 \begin{titlepage}
+\begin{tikzpicture}[remember picture, overlay]
+\node[anchor=north west]
+    at ($(current page.north west) + (1.25cm, -1.23cm)$)
+    {\includegraphics[height=2.5cm]{tau-logo/tau-logo.pdf}};
+\end{tikzpicture}
 \centering
 \vspace*{0.1\textheight}
-\Huge\mycourse{}
 
-\huge\mytitle{}
+{\color{taupurple}
+\huge\textsc{\mycourse{}}
 
+\vspace{0.3cm}
+
+\huge\textsc{\mytitle{}}
+}
 \vspace{0.4\pageheight}
 
 \Large\myauthor\\\myschool{}\\\implementation{}
