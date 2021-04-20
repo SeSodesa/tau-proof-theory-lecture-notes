@@ -1,9 +1,13 @@
 # Ignore everything
 *
 
-# Allow specific files
+# Allow specific files and folders
 !.gitignore
 !README.md
+!tau-logo
+!tau-logo/LICENSE.md
+!tau-logo/README.md
+!tau-logo/tau-logo.pdf
 
 # Allow files with certain suffixes
 !*.tex
