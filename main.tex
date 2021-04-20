@@ -491,18 +491,18 @@ the first formula on the left of \(\seq\) and the last formula on the right of \
 \end{theorem}
 
 \begin{proof}
-    For any sequent \(T\seq\Lambda\), there exists a finite proof tree
+    For any sequent \(\Gamma\seq\Lambda\), there exists a finite proof tree
     \begin{center}
     \begin{prooftree}
         \hypo{A\seq A}
         \infer1{\vdots}
         \hypo{B\seq B}
         \infer1{\vdots}
-        \infer2{T_1\seq\Lambda_1}
+        \infer2{\Gamma_1\seq\Lambda_1}
         \hypo{C\seq C}
         \infer1{\vdots}
         \infer2{\vdots}
-        \infer1{T\seq\Lambda}
+        \infer1{\Gamma\seq\Lambda}
     \end{prooftree}
     \end{center}
 \end{proof}
@@ -756,12 +756,12 @@ could be constructed, the claim holds. \qed
 We also accept the inferences
 \begin{equation*}
     \begin{prooftree}
-        \hypo{T\seq \Delta}
-        \infer1[\(\set{\eqref{eq:land:left},\eqref{eq:lor:left},\eqref{eq:limplies:left}}\)]{A\set{\land,\lor,\limplies } B, T\seq \Delta}
+        \hypo{\Gamma\seq\Delta}
+        \infer1[\(\set{\eqref{eq:land:left},\eqref{eq:lor:left},\eqref{eq:limplies:left}}\)]{A\set{\land,\lor,\limplies } B, \Gamma\seq \Delta}
     \end{prooftree}
     \quad\text{and}\quad
     \begin{prooftree}
-        \hypo{T\seq \Delta, A}
+        \hypo{\Gamma\seq\Delta, A}
         \infer1[\eqref{eq:lor:right}]{\Gamma\seq\Delta, \arcs{B\land C}\lor A}
     \end{prooftree}
 \end{equation*}
@@ -831,13 +831,13 @@ except that in its inference rules, the succedents \(\Delta\) of upper sequents 
 may only contain \emph{at most} a single formula. For example, the inferences
 \begin{equation*}
     \begin{prooftree}
-        \hypo{T\seq D, D}
-        \infer1[\eqref{eq:contraction:right}]{T\seq D}
+        \hypo{\Gamma\seq D, D}
+        \infer1[\eqref{eq:contraction:right}]{\Gamma\seq D}
     \end{prooftree}
     \quad\text{and}\quad
     \begin{prooftree}
-        \hypo{T\seq C, D}
-        \infer1[\eqref{eq:exchange:right}]{T\seq D, C}
+        \hypo{\Gamma\seq C, D}
+        \infer1[\eqref{eq:exchange:right}]{\Gamma\seq D, C}
     \end{prooftree}
 \end{equation*}
 are \emph{not} allowed in \LJ{}. This of course means, that \LJ{} is a true subset of \LK:
@@ -1416,7 +1416,7 @@ and some of the details will be omitted for brevity.
         \begin{prooftree}
             \hypo{\Gamma\seq\Delta}
             \hypo{\Pi\seq\Lambda}
-            \infer2[\(\eqref{eq:mix}:A\)]{T,\Pi^\ast\seq\Delta^\ast\Lambda}
+            \infer2[\(\eqref{eq:mix}:A\)]{\Gamma,\Pi^\ast\seq\Delta^\ast\Lambda}
         \end{prooftree}\,.
     \end{equation}
 \end{lemma}
@@ -1430,7 +1430,7 @@ and some of the details will be omitted for brevity.
         \begin{prooftree}
             \hypo{\Gamma\seq\Delta, A}
             \hypo{A, \Pi\seq\Lambda}
-            \infer2[\eqref{eq:cut}]{T,\Pi\seq\Delta,\Lambda}
+            \infer2[\eqref{eq:cut}]{\Gamma,\Pi\seq\Delta,\Lambda}
         \end{prooftree}\,.
     \end{equation*}
     The same result can be obtained by applying the \eqref{eq:mix} rule with respect to \(A\):
@@ -1438,12 +1438,12 @@ and some of the details will be omitted for brevity.
         \begin{prooftree}
             \hypo{\Gamma\seq\Delta, A}
             \hypo{A, \Pi\seq\Lambda}
-            \infer2[\(\eqref{eq:mix}:A\)]{T,\Pi^\ast\seq\Delta^\ast,\Lambda}
+            \infer2[\(\eqref{eq:mix}:A\)]{\Gamma,\Pi^\ast\seq\Delta^\ast,\Lambda}
             \infer[rule style=double]1[\(l\times\eqref{eq:weakening:left}\) and \eqref{eq:exchange:left}]{
-                T,\Pi\seq\Delta^\ast,\Lambda
+                \Gamma,\Pi\seq\Delta^\ast,\Lambda
             }
             \infer[rule style=double]1[\(k\times\eqref{eq:weakening:right}\) and \eqref{eq:exchange:right}]{
-                T,\Pi\seq\Delta,\Lambda
+                \Gamma,\Pi\seq\Delta,\Lambda
             }
         \end{prooftree}
     \end{equation*}
@@ -1453,7 +1453,7 @@ and some of the details will be omitted for brevity.
         \begin{prooftree}
             \hypo{\Gamma\seq\Delta}
             \hypo{\Pi\seq\Lambda}
-            \infer2[\(\eqref{eq:mix}:A\)]{T,\Pi^\ast\seq\Delta^\ast,\Lambda}
+            \infer2[\(\eqref{eq:mix}:A\)]{\Gamma,\Pi^\ast\seq\Delta^\ast,\Lambda}
         \end{prooftree} \,.
     \end{equation*}
     If we now assume that \(l\geq k\), the \eqref{eq:cut} rule can be used to prove the same theorem:
@@ -1465,7 +1465,7 @@ and some of the details will be omitted for brevity.
             \hypo{\Pi\seq\Lambda}
             \infer[rule style=double,left label=\eqref{eq:exchange:left}]1{A,\ldots,A,\Pi^\ast\seq\Lambda}
             \infer[rule style=double,left label=\eqref{eq:contraction:left}]1{A,\Pi^\ast\seq\Lambda}
-            \infer2[\eqref{eq:cut}]{T,\Pi^\ast\seq\Delta^\ast,\Lambda}
+            \infer2[\eqref{eq:cut}]{\Gamma,\Pi^\ast\seq\Delta^\ast,\Lambda}
         \end{prooftree}\,.
     \end{equation*}
     Therefore the rules \eqref{eq:cut} and \eqref{eq:mix} are equivalent in \LK.
@@ -1573,7 +1573,7 @@ Now we can establish the following central result.
 
 \begin{theorem}\label{the:6.3}
     In a \eqref{eq:cut}-free proof \(P\) of \(\Gamma\seq\Delta\),
-    all formulae are subformulae of \(T\) and \(\Delta\).
+    all formulae are subformulae of \(\Gamma\) and \(\Delta\).
 \end{theorem}
 
 \begin{proof}[A sketch of a proof]
@@ -2333,14 +2333,14 @@ For the case \(A = B\limplies C\) we denote the sequence of equalities
     \begin{equation*}
         \begin{prooftree}
             \hypo{\eqref{eq:sequential symmetry}}
-            \ellipsis{}{S\simeq T\seq T\simeq S}
+            \ellipsis{}{S\simeq{}T\seq T\simeq S}
             \hypo{\IH}
             \ellipsis{}{S\simeq T, B(\bar t)\seq B(\bar s)}
             \infer2[\(n\times\)\eqref{eq:cut}]{S\simeq T,B(\bar t)\seq B(\bar s)}
             \hypo{\IH}
             \ellipsis{}{S\simeq T,C(\bar s)\seq C(\bar t)}
-            \infer[double]1[\eqref{eq:exchange:left}]{C(\bar s), S\simeq T\seq C(\bar t)}
-            \infer2[\eqref{eq:limplies:left}]{B(\bar s)\limplies C(\bar s), B(\bar t),S\simeq T\seq C(\bar t)}
+            \infer[double]1[\eqref{eq:exchange:left}]{C(\bar s), S\simeq{}T\seq C(\bar t)}
+            \infer2[\eqref{eq:limplies:left}]{B(\bar s)\limplies C(\bar s), B(\bar t),S\simeq{}T\seq C(\bar t)}
             \infer[double]1[\eqref{eq:exchange:left}]{B(\bar t),S\simeq T, B(\bar s)\limplies C(\bar s)\seq C(\bar t)}
             \infer1[\eqref{eq:limplies:right}]{S\simeq T, B(\bar s)\limplies C(\bar s)\seq B(\bar t)\limplies C(\bar t)}
         \end{prooftree}
@@ -2353,9 +2353,9 @@ For the case \(A = B\limplies C\) we denote the sequence of equalities
         \begin{prooftree}
             \hypo{\IH}
             \ellipsis{}{S\simeq T,B(a,\bar s)\seq B(a,\bar t)}
-            \infer[double]1[\eqref{eq:exchange:left}]{B(a,\bar s),S\simeq T\seq B(a,\bar t)}
-            \infer1[\eqref{eq:forall:left}]{\forall xB(x,\bar s),S\simeq T\seq B(a,\bar t)}
-            \infer1[\eqref{eq:forall:right}]{\forall xB(x,\bar s),S\simeq T\seq\forall xB(x,\bar t)}
+            \infer[double]1[\eqref{eq:exchange:left}]{B(a,\bar s),S\simeq{}T\seq B(a,\bar t)}
+            \infer1[\eqref{eq:forall:left}]{\forall xB(x,\bar s),S\simeq{}T\seq B(a,\bar t)}
+            \infer1[\eqref{eq:forall:right}]{\forall xB(x,\bar s),S\simeq{}T\seq\forall xB(x,\bar t)}
             \infer[double]1[\eqref{eq:exchange:left}]{S\simeq T, \forall xB(x,\bar s)\seq\forall xB(x,\bar t)}
         \end{prooftree}
     \end{equation*}
