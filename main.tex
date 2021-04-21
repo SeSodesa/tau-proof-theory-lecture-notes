@@ -1612,7 +1612,36 @@ Then \(P\in\LK\).
         \end{prooftree}
     \end{equation*}
     The case where the right upper sequent is the axiom
-    is entirely symmetrical. The claim is then true for the base case.
+    is entirely symmetrical.
+
+    Now what if the upper sequents \(\Gamma\seq\Delta\) and
+    \(\Pi\seq\Lambda\) in the \eqref{eq:mix} inference are not axioms?
+    Then they have to be obtained by at least one inference rule.
+    The only possible structural rule that can be applied to obtain
+    \(\Gamma\seq\Delta\) is \eqref{eq:weakening:right}
+    (assuming \(A\notin\Delta\)), because by assumption
+    \(\maxrank_{r,A}(P_l) \geq 2\). Then the last inference is
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{\Gamma\seq\Delta}
+            \infer1[\eqref{eq:weakening:right}, \(A\notin\Delta\)]{\Gamma\seq\Delta,A}
+            \hypo{\Pi\seq\Lambda}
+            \infer2{\Gamma,\Pi^*\seq\Delta,\Lambda}
+        \end{prooftree}\,.
+    \end{equation*}
+    This can be replaced with the \eqref{eq:mix} free proof
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{\Gamma\seq\Delta}
+            \infer[double]1[\eqref{eq:weakening:left}]{\Pi^*,\Gamma\seq\Delta}
+            \infer[double]1[\eqref{eq:weakening:right}]{\Pi^*,\Gamma\seq\Delta,\Lambda}
+            \infer[double]1[\eqref{eq:exchange:left}]{\Gamma,\Pi^*\seq\Delta,\Lambda}
+        \end{prooftree}\,.
+    \end{equation*}
+    The case where \(\Pi\seq\Lambda\) is obtained by structural rules,
+    the arguments are done similarly.
+
+    TODO
 \end{proof}
 
 \begin{theorem}[Theorem 5.3]\label{the:5.3}
