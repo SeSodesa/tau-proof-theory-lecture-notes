@@ -1560,7 +1560,15 @@ Here the lower limit \(2\) stems from the fact that
 an application of the mix rule requires that there
 be at least \(1\) instance of \(A\) in both \(P_l\) and \(P_r\).
 
+\begin{definition}[The grade of a proof]\label{def:grade of a proof}
+    The \emph{grade} of a proof \(P\) with an application of the \eqref{eq:mix}
+    rule is the number of logical symbols in the \eqref{eq:mix} formula \(A\).
+    In other words, we can set \(\grade(P) = \grade(A)\).
+\end{definition}
 
+With these definitions in place, we can now prove the following lemma.
+It is the second central result in proving the \eqref{eq:cut}-elimination theorem,
+and claims that proofs with \eqref{eq:mix} rules also work without them.
 
 \begin{lemma}[Lemma 5.4]\label{lem:5.4}
 Assume that the set of proofs \(\LK^\ast\) is obtained from
@@ -1572,7 +1580,39 @@ Then \(P\in\LK\).
 \end{lemma}
 
 \begin{proof}
-    By double induction. TODO.
+    By double induction on the rank of the proof \(P\),
+    denoted with \(n\). There are two cases:
+    either \(\rank_A(P) = 2\), or \(\rank_A(P) > 2\).
+
+    In the base case, let \(n=2\). Then by the above definitions,
+    we know that
+    \begin{equation*}
+    \maxrank_{r,A}(P_l) = 1 = \maxrank_{l,A}(P_r)\,.
+    \end{equation*}
+    But for this to be true, the last inference must go as follows:
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{A\seq A}
+            \hypo{\Pi(A)\seq\Lambda}
+            \infer2[\(\eqref{eq:mix}:A\)]{A,\Pi^*\seq,\Lambda}
+        \end{prooftree}
+        \quad\text{or}\quad
+        \begin{prooftree}
+            \hypo{\Gamma\seq\Delta(A)}
+            \hypo{A\seq A}
+            \infer2[\(\eqref{eq:mix}:A\)]{A,\Pi^*\seq,\Lambda}\,.
+        \end{prooftree}
+    \end{equation*}
+    This can be replaced with the following \eqref{eq:mix}-free proof:
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{\Pi\seq\Lambda}
+            \infer[double]1[\eqref{eq:exchange:left}]{A,\ldots,A,\Pi^*\seq\Lambda}
+            \infer[double]1[\eqref{eq:contraction:left}]{A,\Pi^*\seq\Lambda}
+        \end{prooftree}
+    \end{equation*}
+    The case where the right upper sequent is the axiom
+    is entirely symmetrical. The claim is then true for the base case.
 \end{proof}
 
 \begin{theorem}[Theorem 5.3]\label{the:5.3}
