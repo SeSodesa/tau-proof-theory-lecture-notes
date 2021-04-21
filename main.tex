@@ -1646,6 +1646,51 @@ Then \(P\in\LK\).
     We now induce on the \emph{grade} of the proof, the number
     of logical symbols in the \eqref{eq:mix} formula \(A\).
 
+    In the base case, \(\grade(P) = 0\), so there is nothing to prove.
+    For the inductive hypothesis, we assume the claim holds for
+    \(\grade(P) = k\), and in the inductive step we add logical symbols
+    one at a time and show that we can still come up with a \eqref{eq:mix}
+    free version of the proof, closing the induction.
+
+    We start with \(\lnot\). I this case,
+    \begin{equation*}
+        P:
+        \begin{prooftree}
+            \hypo{A,\Gamma\seq\Delta}
+            \infer1[\eqref{eq:lnot:right}]{\Gamma\seq\Delta,\lnot A}
+            \hypo{\Pi\seq\Lambda,A}
+            \infer1[\eqref{eq:lnot:left}]{\lnot A,\Pi\seq\Lambda}
+            \infer2[\eqref{eq:mix}\(:\lnot A\)]{\Gamma,\Pi^*\seq\Delta^*,\Lambda}
+        \end{prooftree}\,.
+    \end{equation*}
+    Because there is no \(\lnot A\) in \(\Pi\) or \(\Delta\),
+    \(\Pi^* = \Pi\) and \(\Delta^*=\Delta\).
+    The above proof can then be replaced by the following proof
+    with the mix formula being \(A\) and not \(\lnot A\):
+    \begin{equation*}
+        P':
+        \begin{prooftree}
+            \hypo{\Pi\seq\Lambda,A}
+            \hypo{A,\Gamma\seq\Delta}
+            \infer2[\eqref{eq:mix}\(:A\)]{\Pi,\Gamma^*\seq\Lambda^*,\Delta}
+        \end{prooftree}\,.
+    \end{equation*}
+    By the inductive hypothesis, this can be replaced by a \eqref{eq:mix} free proof \(P''\),
+    as \(\grade(A) < \grade(\lnot A)\) and \(P'\) contains only one use of \eqref{eq:mix}.
+    The missing formulae \(A\) can be obtained with \eqref{eq:weakening:left}
+    and \eqref{eq:weakening:right}, so
+    \begin{equation*}
+        P'':
+        \begin{prooftree}
+            \hypo{}
+            \ellipsis{}{}
+            \infer1{\Pi,\Gamma^*\seq\Lambda^*,\Delta}
+            \infer[double,left label=\eqref{eq:exchange:left}]1[\eqref{eq:exchange:right}]{\Gamma,\Pi^*\seq\Delta^*,\Lambda}
+        \end{prooftree}\,.
+    \end{equation*}
+
+
+
     TODO
 \end{proof}
 
