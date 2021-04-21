@@ -1471,6 +1471,97 @@ and some of the details will be omitted for brevity.
     Therefore the rules \eqref{eq:cut} and \eqref{eq:mix} are equivalent in \LK.
 \end{proof}
 
+\begin{definition}[Rank of a proof]\label{def:rank of a proof}
+    The \emph{rank} of a proof \(P\) is the supremum of the lengths
+    of \eqref{eq:cut} formulae in \(P\), the longest formula
+    removed from the proof by applying the~\eqref{eq:cut} rule
+    in some inference.
+\end{definition}
+
+\begin{minipage}{0.7\textwidth}
+The rank of a proof can also be formulated in another manner
+using the \eqref{eq:mix} rule. But first let us consider the \emph{linear}
+proof seen to the right of this paragraph. The \emph{left rank}
+of this proof with respect to the formula \(A\),
+\(\rank_{l,A}(P)\), is defined as the number of sequents
+\(\Gamma_i\seq\Delta_i\) with the formula \(A\in\Gamma_i\).
+Similarly, the \emph{left rank} with respect to the formula \(B\),
+\(\rank_{r,B}(P)\), is the number of sequents \(\Gamma_j\seq\Delta_j\)
+with \(B\in\Delta_j\). Here \(\rank_{l,A}(P) = \rank_{r,B}(P) = 3\).
+\end{minipage}
+\hfill
+\begin{minipage}{0.3\textwidth}
+\begin{equation*}
+    \begin{prooftree}
+        \hypo{\Gamma_1(A)\seq\Delta_1(B)}
+        \infer1{\Gamma_2\seq\Delta_2(B)}
+        \infer1{\Gamma_3(A)\seq\Delta_3}
+        \infer1{\Gamma_4\seq\Delta_4(B)}
+        \infer1{\Gamma_5(A)\seq\Delta_5}
+    \end{prooftree}
+\end{equation*}
+\end{minipage}
+
+Now let us look at a branching tree.
+We will define the left and right \emph{maximum ranks}
+of the tree with respect to the formula \(A\) as follows:
+\begin{equation*}
+    \maxrank_{l,A}(P) = \max(\rank_{l,A}(P_i)),
+    \qquad\text{and}\qquad
+    \maxrank_{l,A}(P) = \max(\rank_{l,A}(P_i)),
+\end{equation*}
+where each \(P_i\) is a linear path from the root
+to each leaf of the tree.
+
+Now let \(P\) be a proof of the sequent
+\(\Gamma,\Pi^*\seq\Delta^*,\Lambda\), whose last inference consists of
+using the~\eqref{eq:mix} rule to remove the formula \(A\), so that \(P\)
+has a left and a right branch \(P_l\) and \(P_r\) growing off the root,
+as is seen in the below proof sketch.
+
+\small
+\begin{equation*}
+    \begin{prooftree}
+        % Left branch
+        \hypo{\Gamma_1\seq\Delta_1(A)}
+        \infer1{}
+        \ellipsis{}{}
+        \hypo{\Gamma_2\seq\Delta_2(A)}
+        \hypo{\Gamma_4\seq\Delta_4(A)}
+        \ellipsis{}{}
+        \infer1{\Gamma_3\seq\Delta_3(A)}
+        \infer2{}
+        \ellipsis{}{}
+        \infer2{\Gamma\seq\Delta(A)}
+        \delims{P_l\left\{}{\right.}
+        % Right branch
+        \hypo{\Pi_4(A)\seq\Lambda_4}
+        \infer1{}
+        \ellipsis{}{}
+        \hypo{\Pi_3(A)\seq\Lambda_3}
+        \ellipsis{}{}
+        \infer1{\Pi_2(A)\seq\Lambda_2}
+        \hypo{\Pi_1(A)\seq\Lambda_1}
+        \infer2{}
+        \ellipsis{}{}
+        \infer2{\Pi(A)\seq\Lambda}
+        \delims{\left.}{\right\}P_r}
+        \infer2[\(\eqref{eq:mix}:A\)]{\Gamma,\Pi^*\seq\Delta^*,\Lambda}
+    \end{prooftree}
+\end{equation*}
+\normalsize
+
+The rank of the above proof tree with respect to the~\eqref{eq:mix} formula \(A\)
+is now defined as follows:
+\begin{equation*}
+    \rank_A(P) = \maxrank_{r,A}(P_l) + \maxrank_{l,A}(P_r) \geq 2 \,.
+\end{equation*}
+Here the lower limit \(2\) stems from the fact that
+an application of the mix rule requires that there
+be at least \(1\) instance of \(A\) in both \(P_l\) and \(P_r\).
+
+
+
 \begin{lemma}[Lemma 5.4]\label{lem:5.4}
 Assume that the set of proofs \(\LK^\ast\) is obtained from
 the set \LK{} by replacing the \eqref{eq:cut} rule by
