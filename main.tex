@@ -3445,6 +3445,9 @@ then there exists an operation \(\Phi\), that performs the mapping
 This converse relation is rather complex, and is not proven
 in the book of Takeuti. We therefore also skip the proof. {\Large\trollface}
 
+The proofs of tht following three lemmas are omitted.
+They are however stated here for completeness.
+
 \begin{lemma}[10.8.1]\label{lem:10.8.1}
     The rule~\eqref{eq:substitution} can be arithmetized:
     if \(\num x(a_0)\) is a fully indicated expression of \PA,
@@ -3459,9 +3462,14 @@ in the book of Takeuti. We therefore also skip the proof. {\Large\trollface}
     such that \(\seq\sub\arcs*{\G{\num y}, \G{\num x(a_0)}} = \num{\G{\num x(\num y)}}\)
     is provable in \PA{}.
 \end{lemma}
-
-
-
+\begin{lemma}[10.8.2]\label{lem:10.8.2}
+    There is a \PRF{} \(\nu:\Nset\to\Nset\),
+    such that \(v(m)=\G{\num m}\). There also exists
+    a unique \emph{function symbol} \(\num\nu\in\PA\),
+    such that the sequent \(\seq\num\nu(\num m) = \G{\num m}\).
+\end{lemma}
+\begin{lemma}[10.8.3]\label{lem:10.8.3}
+\end{lemma}
 
 \subsection{Tarski's theorem}
 
