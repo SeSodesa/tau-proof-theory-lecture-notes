@@ -1579,7 +1579,7 @@ is the only instance of \eqref{eq:mix} in \(P\).
 Then \(P\in\LK\).
 \end{lemma}
 
-\begin{proof}
+\begin{proof}[Sketch of the proof]
     By double induction on the rank of the proof \(P\),
     denoted with \(n\). There are two cases:
     either \(\rank_A(P) = 2\), or \(\rank_A(P) > 2\).
@@ -1652,7 +1652,8 @@ Then \(P\in\LK\).
     one at a time and show that we can still come up with a \eqref{eq:mix}
     free version of the proof, closing the induction.
 
-    We start with \(\lnot\). I this case,
+    We start with \(\lnot\). In this case \(\Gamma\seq\Delta\) and \(\Pi\seq\Lambda\)
+    can be obtained as follows:
     \begin{equation*}
         P:
         \begin{prooftree}
@@ -1675,23 +1676,52 @@ Then \(P\in\LK\).
             \infer2[\eqref{eq:mix}\(:A\)]{\Pi,\Gamma^*\seq\Lambda^*,\Delta}
         \end{prooftree}\,.
     \end{equation*}
-    By the inductive hypothesis, this can be replaced by a \eqref{eq:mix} free proof \(P''\),
+    By the inductive hypothesis \IH{}, this can be replaced by a \eqref{eq:mix} free proof \(P''\),
     as \(\grade(A) < \grade(\lnot A)\) and \(P'\) contains only one use of \eqref{eq:mix}.
     The missing formulae \(A\) can be obtained with \eqref{eq:weakening:left}
     and \eqref{eq:weakening:right}, so
     \begin{equation*}
         P'':
         \begin{prooftree}
-            \hypo{}
-            \ellipsis{}{}
+            \hypo{\IH}
             \infer1{\Pi,\Gamma^*\seq\Lambda^*,\Delta}
             \infer[double,left label=\eqref{eq:exchange:left}]1[\eqref{eq:exchange:right}]{\Gamma,\Pi^*\seq\Delta^*,\Lambda}
         \end{prooftree}\,.
     \end{equation*}
+    This closes induction on the symbol \(\lnot\).
 
+    If the \eqref{eq:mix} formula is \(C\limplies D\),
+    the proof \(P\) could end in the following manner:
+    \begin{equation*}
+        P:
+        \begin{prooftree}
+            \hypo{C,\Gamma\seq\Delta,D}
+            \infer1[\eqref{eq:limplies:right}]{\Gamma\seq\Delta,C\limplies D}
+            \hypo{\Pi\seq\Lambda}
+            \infer1[\eqref{eq:weakening:left}, \(C\limplies D\notin\Pi\)]{C\limplies D,\Pi\seq\Lambda}
+            \infer2[\eqref{eq:mix}\(:A\)]{\Pi,\Gamma^*\seq\Lambda^*,\Delta}
+        \end{prooftree}\,.
+    \end{equation*}
+    This can be replaced with the \eqref{eq:mix} free proof
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{\Pi\seq\Lambda}
+            \infer[double, left label={\eqref{eq:weakening:left}, \eqref{eq:exchange:left}}]1[\eqref{eq:weakening:right}, \eqref{eq:exchange:right}]{\Pi,\Gamma^*\seq\Lambda^*,\Delta}
+        \end{prooftree}\,.
+    \end{equation*}
+    There are also other ways that the sequents \(\Gamma\seq\Delta\) and
+    \(\Pi\seq\Lambda\) could be constructed via \(C\limplies D\),
+    but these are omitted. The rest of the logical connectives are also
+    omitted, as the manner in which the reader should proceed in
+    closing the induction in their case should be clear by now.
 
-
-    TODO
+    \paragraph{The case \(\rank_A(P) > 2\)}
+    We use induction as follows:
+    for any proof \(Q\) where \eqref{eq:mix} is used only once,
+    it is the last inference, \(\grade(Q) < \grade(P)\) or
+    \(\grade(Q) = \grade(P)\), \eqref{eq;mix} can be removed.
+    It is the shown that \eqref{eq:mix} can also be replaced in \(P\).
+    We also omit the details here, for brevity.
 \end{proof}
 
 \begin{theorem}[Theorem 5.3]\label{the:5.3}
