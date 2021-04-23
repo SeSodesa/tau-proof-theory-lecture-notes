@@ -3459,14 +3459,15 @@ They are however stated here for completeness.
         \sub\arcs*{\G{\num y}, \G{\num x(a_0)}} = \num{\G{\num x(\num y)}}\,,
     \end{equation*}
     and there is a unique function symbol \(\num{\sub{}}\) in \PA{},
-    such that \(\seq\sub\arcs*{\G{\num y}, \G{\num x(a_0)}} = \num{\G{\num x(\num y)}}\)
+    such that \(\seq\sub\arcs*{\G*{\num y}, \G*{\num x(a_0)}} = \num{\G*{\num x(\num y)}}\)
     is provable in \PA{}.
 \end{lemma}
 \begin{lemma}[10.8.2]\label{lem:10.8.2}
     There is a \PRF{} \(\nu:\Nset\to\Nset\),
-    such that \(v(m)=\G{\num m}\). There also exists
+    such that \(\nu(m)=\G*{\num m}\). There also exists
     a unique \emph{function symbol} \(\num\nu\in\PA\),
-    such that the sequent \(\seq\num\nu(\num m) = \G{\num m}\).
+    such that the sequent \(\seq\num\nu(\num m) = \num{\G*{\num m}}\)
+    is provable in \PA{}.
 \end{lemma}
 \begin{lemma}[10.8.3]\label{lem:10.8.3}
 \end{lemma}
