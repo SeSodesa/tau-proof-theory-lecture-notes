@@ -3478,7 +3478,162 @@ As for the function symbols, notice \(\seq\num\nu(\num0) = \num4\)
 and \(\seq\num\nu(\num1) = \num{972}\), and so forth.
 
 \begin{lemma}[10.8.3]\label{lem:10.8.3}
+    The proof \(P\) of a sequent \(\Gamma\seq\Delta\)
+    can be arithmetized. In other words, there exists a \PRR{}
+    \(\Prov\subseteq\Nset^2\), such that \(\Prov(P,a)\) holds
+    in \(\Nset^2\), if and only if \(P = \G P\) and \(a = \G{\Gamma\seq\Delta}\).
+    There also exists a binary \emph{predicate symbol} \(\num\Prov\in\PA\),
+    such that \(\seq\num\Prov(\num{\G P}, \num{\G A})\) is provable in \PA.
 \end{lemma}
+
+The lemmae~\ref{lem:10.8.1}--\ref{lem:10.8.3} together show,
+that a proof \(P\) can be arithmetized in a pri\-mi\-tive-re\-cur\-sive
+manner. Notice, that in the proof of lemma~\ref{lem:10.8.3}
+we must assume that \PA{} is axiomatizable, as in the number
+of axioms in the system is finite. This is of course the case,
+as per the axioms~\ref{axi:logical axioms of PA}--\ref{axi:inductive axiom}.
+
+The question now arises: What else can be arithmetized?
+Can \emph{everything} be arithmetized in \PA?
+
+\paragraph{Summary:}
+We can effectively go from the formal objects (strings)
+of \PA{} to their Gödel numbers in \(\Nset\) and back:
+to decide whether a given \(n\in\Nset\) is a Gödel number,
+and if it is, which string in \PA{} or its superset does it correspond to.
+In particular, we are justified in making the following claim.
+
+\begin{proposition}[10.9.1]\label{prop:10.9.1}
+    If \(\seq A\) is provable in \PA,
+    so is \(\seq\exists x\Prov(x,\num{\G A})\).
+\end{proposition}
+
+\begin{proof}
+    If \(P\) is a proof of \(A\), then \(\Prov(\G P, \G A)\)
+    holds in \(\Nset^2\) and therefore \(\num\Prov(\G P, \G A)\)
+    is provable in \PA. We then have the following proof:
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{}
+            \ellipsis{}{}
+            \infer1{\Prov(\num{\G P},\num{\G A})}
+            \infer1[\eqref{eq:exists:right}]{\seq\exists x\Prov(x,\num{\G A})}
+        \end{prooftree}
+    \end{equation*}
+\end{proof}
+
+Note that in the above application of \eqref{eq:exists:right},
+the term in the formula the inference is applied to can be any term,
+and \emph{numerals are terms}. The statement of proposition~\ref{prop:10.9.1},
+\(A\seq\exists x\Prov(x,\num{\G A})\),
+can be written more succinctly as follows:
+\begin{equation*}
+    \begin{prooftree}
+        \hypo{\seq A}
+        \hypo{A\seq\exists x\Prov(x,\num{\G A})}
+        \infer2[\eqref{eq:cut}]{\seq\exists x\Prov(x,\num{\G A})}
+    \end{prooftree}
+\end{equation*}
+
+\begin{proposition}[10.9.2]\label{prop:10.9.2}
+    If \(A\equiv B\), then \(\exists x\Prov(x,\num{\G A})\equiv\exists x\Prov(x,\num{\G B})\)
+\end{proposition}
+
+\begin{proof}
+    If \(A\equiv B\), then necessarily \(A\seq B\) is provable.
+    Now if \(\seq A\) is provable in \PA, then the following
+    proof \(T\) exists for \(\seq B\) as well:
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{}
+            \ellipsis{}{}
+            \hypo{}
+            \ellipsis{}{}
+            \infer2{\seq A}
+            \hypo{}
+            \ellipsis{}{}
+            \hypo{}
+            \ellipsis{}{}
+            \infer2{A\seq B}
+            \infer2[\eqref{eq:cut}]{\seq B}
+        \end{prooftree}
+    \end{equation*}
+    Therefore \(\Prov(\G T, \G B)\) holds in \(\Nset^2\),
+    and
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{\seq\Prov(\num{\G T}, \num{\G B})}
+            \infer1[\eqref{eq:exists:right}]{\seq\exists x\Prov(x, \num{\G B})}
+            \infer1[\eqref{eq:weakening:left}]{\exists x\Prov(x, \num{\G A})\seq\exists x\Prov(x, \num{\G B})}
+            \infer1[\eqref{eq:limplies:right}]{\seq\exists x\Prov(x, \num{\G A})\limplies\exists x\Prov(x, \num{\G B})}
+        \end{prooftree}
+    \end{equation*}
+    In a very similar manner, the claim
+    \begin{equation*}
+        \seq\exists x\Prov(x, \num{\G B})\limplies\exists x\Prov(x, \num{\G A})\,.
+    \end{equation*}
+    can be shown to hold in \PA{}. The wanted result then directly follows.
+\end{proof}
+
+We now make the following notational agreement,
+in order to make our lives easier:
+\begin{equation}\tag{vdash}\label{eq:vdash}
+    \vdash\num{\G{A}}
+    \quad\text{expands to}\quad
+    \exists x\Prov(x, \num{\G A}) \,.
+\end{equation}
+With this agreement in place, we can proceed to make the following proposition.
+
+\begin{proposition}[10.9.3]\label{prop:10.9.3}
+    If \(\seq A\) is provable in \PA{,}
+    then so is \(\vdash\num{\G A}\seq\arcs{\vdash\num{\G{\vdash\num{\G{A}}}}}\).
+\end{proposition}
+
+\begin{proof}
+    We reason as in the proof of proposition~\ref{prop:10.9.1}.
+    In the sequent \(B\seq\exists x\num\Prov(x,\num{\G B})\),
+    suppose \(B\) is \(\exists x\num\Prov(x,\num{\G A})\).
+    More precisely:
+    \begin{enumerate}
+        \item
+            If \(\seq A\) is provable via proof \(P\) in \PA,
+            then \(\Prov(x,\G A)\) holds in \(\Nset^2\).
+        \item
+            If \(\Prov(x,\num{\G A})\) holds in \(\Nset^2\),
+            then the following proof \(Q\) can be made in \PA:
+            \begin{equation*}
+                \begin{prooftree}
+                    \hypo{\seq\num\Prov(\num{\G P},\num{\G A})}
+                    \infer1[\eqref{eq:exists:right}]{\seq\exists x\Prov(x, \num{\G A})}
+                \end{prooftree}\,,
+            \end{equation*}
+            where the lower sequent is the same thing as
+            \(\vdash\num{\G{A}}\), as per \eqref{eq:vdash}.
+        \item
+            Because the above proof can be made,
+            then \(\Prov(\G Q, \G*{\vdash\num{\G{A}}})\)
+            holds in \(\Nset^2\), where \(Q\) is the proof above.
+        \item
+            If \(\Prov(\G Q, \G*{\vdash\num{\G{A}}})\) holds in \(\Nset^2\),
+            then the following proof can be made in \PA:
+            \begin{equation*}
+                \begin{prooftree}
+                    \hypo{\seq\Prov\arcs*{\G Q, \G*{\vdash\num{\G{A}}}}}
+                    \infer1[\eqref{eq:exists:right}]{\seq\exists y\Prov\arcs*{y, \G*{\vdash\num{\G{A}}}})}
+                \end{prooftree}\,,
+            \end{equation*}
+            where again the lower sequent is the same thing as
+            \(\G*{\vdash\num{\G{A}}}\), again as per \eqref{eq:vdash}.
+    \end{enumerate}
+    This concludes the proof, as we have been able to construct the sequent we wanted,
+    by jumping between the spaces \PA{} and \(\Nset^2\).
+\end{proof}
+
+\paragraph{Remark:}
+The consistency of \PA{} refers to the fact that for \emph{no}
+\(A\) in \LN, the statement \(A\equiv\lnot A\) holds.
+This can be even proved with the tools we hae learned
+this far, but the proof is omitted.
 
 \subsection{Tarski's theorem}
 
