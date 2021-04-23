@@ -3635,6 +3635,41 @@ The consistency of \PA{} refers to the fact that for \emph{no}
 This can even be proved with the tools we have learned
 thus far, but the proof is omitted.
 
+Recall that the function \(\nu(m) = \G{\num m}\) is a \PRF{} in \(\Nset\),
+and that a corresponding function constant \(\num\nu\) exists in \PA{},
+such that \(\seq\num\nu(m) = \num{\G{\num m}}\). We can also show that
+\eqref{eq:substitution} is arithmetizable: there exists a binary function
+\(\sub:\Nset^2\to\Nset\), such that
+\(\sub(\G{\num y},\G{\num x(a_0)})=\G{\num x(\num y)}\),
+and the corresponding function symbol \(\num\sub\) in \PA,
+such that \(\sub(m,\G{\nu(m)})=\G{\num m}\) and
+\(\seq\num\sub(\num m,\G{\num\nu(m)})=\num{\G{\num m}}\)
+is provable in \PA{}.
+
+Now assume that \PA{} contains the unary formula \(T(a_0)\),
+with \(a_0\) as the only free variable, such that
+\begin{equation}\tag{truth}\label{eq:truth}
+   T(\G{\num A})\equiv A
+\end{equation}
+for all sentences \(A\).
+In particular, consider the formula  \(\lnot T(\num\sub(\num a_0, \num\nu(\num a_0)))\).
+It is a valid string in \PA{} and therefore it must have a Gödel number \(p\in\Nset\):
+\begin{equation*}
+    \G*{\lnot T\arcs*{\num\sub\arcs*{\num a_0, \num\nu(\num a_0)}}} = p\in\Nset\,.
+\end{equation*}
+
+Now let \(A_T =\G*{\lnot T\arcs*{\num\sub\arcs*{\num p, \num\nu(\num p)}}} = \lnot T(\num{\G*{\num p}})\).
+Since \(A_T\) is obtained via \eqref{eq:substitution}, we have
+\(\G{A_T} = \G*{\num p}\). But now we know that \(A_T = \lnot T\arcs{\num{\G{A}}}\),
+and therefore \(\lnot A_T\equiv\lnot T\arcs{\num{\G{A}}}\equiv A_T\).
+This is impossible, as \PA{} is consistent.
+We have then proved the following theorem.
+
+\begin{theorem}[Tarski]\label{the:Tarski}
+    No consistent axiom system \(S\), where \(\PA\subseteq S\),
+    can contain a formula \(T\) such that \eqref{eq:truth} is satisfied.
+\end{theorem}
+
 \subsection{Tarski's theorem}
 
 \subsection{Gödel's incompleteness theorems}
