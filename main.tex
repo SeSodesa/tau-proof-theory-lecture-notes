@@ -3691,6 +3691,25 @@ Tarski's theorem has the following \(3\) implications:
     can be proved in \(S\).
 \end{definition}
 
+To show that such a formula exists in \LN,
+we introduce the \emph{Gödel trick} and \emph{Gödel sentences}.
+
+\begin{definition}[Gödel trick]\label{def:Gödel trick}
+    Assume \(R\) is a predicate symbol that does
+    \emph{not} belong to \LN, and therefore does
+    not have a Gödel number. Now assume that \(F(R)\)
+    is obtained by using \(R\) as an atomic formula,
+    \(F(R)\notin\LN\), so it has no Gödel number.
+    Then proceed as follows:
+    \begin{enumerate}
+        \item
+            Substitute \(R\) in \(F(R)\) with
+            \(\exists x\num\Prov(x, \num\sub(a_0, \num\nu(a_0)))\)
+            or \(\vdash\num\sub(a_0,\num\nu(a_0))\).
+    \end{enumerate}
+
+\end{definition}
+
 \subsection{Tarski's theorem}
 
 \subsection{Gödel's incompleteness theorems}
