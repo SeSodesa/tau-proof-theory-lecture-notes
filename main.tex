@@ -3706,9 +3706,29 @@ we introduce the \emph{Gödel trick} and \emph{Gödel sentences}.
             Substitute \(R\) in \(F(R)\) with
             \(\exists x\num\Prov(x, \num\sub(a_0, \num\nu(a_0)))\)
             or \(\vdash\num\sub(a_0,\num\nu(a_0))\).
+        \item
+            Now \(F(\vdash\num\sub(a_0,\num\nu(a_0)))\in\LN\),
+            so it must have a Gödel number, call it
+            \begin{equation*}
+                \G*{F(\vdash\num\sub(a_0,\num\nu(a_0)))} = p\in\Nset\,.
+            \end{equation*}
+        \item
+            Now define a sentence \(A_F\in\LN\) by
+            \begin{equation*}
+            A_F = \vdash\num\sub(\num p,\num\nu(\num p))) \,.
+            \end{equation*}
+            This has a Gödel number, and since \(A_F\) is again obtained
+            by substitution, \(\G{A_F} = \sub(p,\nu(p))\).
+            But then \(\num{\G{A_F}} = \num\sub(\num p,\num\nu(\num p))\),
+            and \(A_F\) must be \(F(\vdash\num{\G{A}})\).
     \end{enumerate}
-
 \end{definition}
+
+By applying Gödel's trick, we have obtained the following lemma.
+
+\begin{lemma}[10.15]\label{lem:10.15}
+    \(A_F = F(\vdash\num{\G{A}})\).
+\end{lemma}
 
 \subsection{Tarski's theorem}
 
