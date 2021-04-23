@@ -3465,10 +3465,18 @@ They are however stated here for completeness.
 \begin{lemma}[10.8.2]\label{lem:10.8.2}
     There is a \PRF{} \(\nu:\Nset\to\Nset\),
     such that \(\nu(m)=\G*{\num m}\). There also exists
-    a unique \emph{function symbol} \(\num\nu\in\PA\),
+    a unique \emph{function symbol} \(\num\nu\in\PA\) (or \(\num{\nu(a)}\)),
     such that the sequent \(\seq\num\nu(\num m) = \num{\G*{\num m}}\)
     is provable in \PA{}.
 \end{lemma}
+
+Again, notice the difference between numerals (symbols representing numbers)
+and numbers themselves. In lemma~\ref{lem:10.8.2}, \(\nu(m)\neq\num m\).
+For example, in the enumeration of table~\ref{tab:an enumeration of symbols in PA},
+\(\nu(0) = \G*{\num0} = 4 \neq \num0\) and \(\nu(1) = \G*{\num0'} = 2^2\times3^5 = 972\).
+As for the function symbols, notice \(\seq\num\nu(\num0) = \num4\)
+and \(\seq\num\nu(\num1) = \num{972}\), and so forth.
+
 \begin{lemma}[10.8.3]\label{lem:10.8.3}
 \end{lemma}
 
