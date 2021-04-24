@@ -3730,6 +3730,118 @@ By applying Gödel's trick, we have obtained the following lemma.
     \(A_F = F(\vdash\num{\G{A}})\).
 \end{lemma}
 
+\begin{definition}[\(\omega\)-consistency]\label{def:omega consistency}
+    An axiom system \(S\) with \PA{} as its subset is \emph{\(\omega\)-consistent},
+    if and only if the following holds for all \(A(a_0)\in S\):
+    if the sequent \(\seq\lnot A(\num n)\) is provable in \(S\) ,
+    then \(\seq\exists xA(x)\) is \emph{not} provable in \(S\).
+\end{definition}
+
+Notice that \(\omega\)-consistency implies consistency.
+If a system is \(\omega\)-consistent, the it is also consistent.
+We now make the following notational convention related to
+the implied sequent in the definition \ref{def:omega consistency}:
+\begin{equation*}
+    \vdash A
+    \quad\text{expands into}\quad
+    \vdash\G*{\num A}\,.
+\end{equation*}
+Armed with this new notation, we can proceed to prove
+Gödel's incompleteness theorems.
+
+\begin{theorem}[Gödel's first incompleteness theorem]%
+    \label{the:Gödel's first incompleteness theorem}
+    If an axiom system is \(\omega\)-consistent,
+    then it is incomplete. In particular, \PA{} is incomplete.
+\end{theorem}
+
+\begin{proof}
+    When applying the Gödel trick of definition~\ref{def:Gödel trick},
+    let \(F(R) = \lnot R\). It then defines what is called a \emph{Gödel sentence}
+    \(A_G\), and by lemma~\ref{lem:10.14}, \(A_G \equiv\lnot\vdash A_G\).
+    Whe then proceed as follows:
+    \begin{enumerate}
+        \item
+            Suppose \(\seq A_G\) is provable in our system.
+            Then by proposition~\ref{prop:10.9.1}, \(\seq\vdash A_G\)
+            is also provable in it. Since \(A_G \equiv\lnot\vdash A_G\),
+            we then also have \(\lnot A_G \equiv \lnot\lnot\vdash A_G \equiv\vdash A_G\).
+            But this means that \(\seq\lnot A_G\) is provable in our system,
+            which implies that \(\seq A_G\) is \emph{not} provable in it.
+        \item
+            Then suppose that \(\seq\lnot A_G\) is not provable in our system.
+            This means that for all \(n\in\Nset\) and by extension the corresponding
+            numerals \(\num n\in\LN\), that \(\seq\lnot\num\Prov(\num n, \num{\G{A_G}})\)
+            or \(\seq\vdash\num{\G{A_G}}\) is provable in the system.
+
+            Now by \(\omega\)-consistency,
+            \(\seq\lnot\num\Prov(\num n, \num{\G{A_G}})\)
+            or \(\seq\vdash\num{\G{A_G}}\) is \emph{not} provable in the system.
+            Therefore \(\seq\vdash A_G\) is also \emph{not} provable.
+
+            Since \(A_\equiv\lnot\vdash A_G\),
+            we have \(\lnot A_G\equiv\lnot\lnot\vdash A_G\equiv\vdash A_G\),
+            meaning \(\seq\lnot A_G\) is also not provable in our system.
+    \end{enumerate}
+\end{proof}
+
+\paragraph{Remark:}
+Gödel sentences \(A_G\) are not provable in the above axiom system.
+They themselves claim that they are not provable.
+In other words, Gödel sentences ''say'' an intuitively true statement,
+but the axioms system that contains them cannot prove this state of affairs.
+
+\paragraph{Remark 2:}
+From a semantic or validity point of view, either \(A_G\) or \(\lnot A_G\)
+is a valid formula. However, we cannot \emph{prove} \(\seq A_G\),
+nor can we prove \(\seq\lnot A_G\) in the axiom system,
+that contains \PA{}.
+
+\begin{definition}[Symbol for consistency]\label{def:symbol for consistency}
+    Let the symbol \(\consis\) denote the closed formula
+    \(\lnot\vdash\num0=\num1\), or \(\exists x\num\Prov(x,\num{\G{\num0=\num1}})\).
+    In other words, the symbol maps to the statement ''\(S\supseteq\PA\) is consistent.''.
+\end{definition}
+
+\begin{theorem}[Gödel's second incompeteness theorem]\label{the:Gödel's second incompleteness theorem}
+    If the axiom system \(S\) is consistent, then the sequent
+    \(\seq\exists x\num\Prov(x,\num{\G{\num0=\num1}})\) is \emph{not}
+    provable in \(S\). In particular, the consistency of \PA{}
+    cannot be proved in \PA.
+\end{theorem}
+
+\begin{proof}[Sketch of proof]
+    We show that \(\consis\equiv A_G\) for any Gödel sentence \(A_G\).
+    Since \(\seq A_G\) is \emph{not} provable in \(S\), the neither should
+    \(\seq\consis\) be.
+\end{proof}
+
+Together, Gödel's incompleteness theorems state that
+it is not possible to construct a formal axiom system
+\(S\) containing Peano arithmetic \PA{},
+in which we could always prove that either
+\(A\) or \(\lnot A\) is provable, but not both at the same time,
+for any well-formed sentence \(A\).
+This is especially shocking, as Peano arithmetic is such
+a simple system, with only a couple of axioms.
+
+This completely ruins the idea of Leibnitz's
+\emph{Calculus Reticinator} from 1685.
+It also nullifies Hilbert's ''theory of everything'',
+the second problem ''Ignorabimus'' he presented in Paris, 1900.
+
+When Gödel at the age of \(24\) ended his talk
+on these theorems in a 1930 seminar, someone exclaimed
+''It is all over now!''. He could have meant at least
+two of different things:
+\begin{enumerate}
+    \item either the seminar itself was about to end or
+    \item the end of Leibniz's program.
+\end{enumerate}
+Either way, it has come time for us to also state:
+''It is over.''.
+
+
 \subsection{Tarski's theorem}
 
 \subsection{Gödel's incompleteness theorems}
