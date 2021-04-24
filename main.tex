@@ -3635,6 +3635,9 @@ The consistency of \PA{} refers to the fact that for \emph{no}
 This can even be proved with the tools we have learned
 thus far, but the proof is omitted.
 
+
+\subsection{Tarski's theorem}
+
 Recall that the function \(\nu(m) = \G{\num m}\) is a \PRF{} in \(\Nset\),
 and that a corresponding function constant \(\num\nu\) exists in \PA{},
 such that \(\seq\num\nu(m) = \num{\G{\num m}}\). We can also show that
@@ -3683,6 +3686,9 @@ Tarski's theorem has the following \(3\) implications:
     \item
         Validity cannot be arithmetized.
 \end{enumerate}
+
+
+\subsection{Gödel's incompleteness theorems}
 
 \begin{definition}[Incompleteness]\label{def:incompleteness}
     An axiom system \(S\) is \emph{incomplete},
@@ -3759,7 +3765,7 @@ Gödel's incompleteness theorems.
     When applying the Gödel trick of definition~\ref{def:Gödel trick},
     let \(F(R) = \lnot R\). It then defines what is called a \emph{Gödel sentence}
     \(A_G\), and by lemma~\ref{lem:10.14}, \(A_G \equiv\lnot\vdash A_G\).
-    Whe then proceed as follows:
+    We then proceed as follows:
     \begin{enumerate}
         \item
             Suppose \(\seq A_G\) is provable in our system.
@@ -3842,9 +3848,6 @@ Either way, it has come time for us to also state:
 ''It is over.''.
 
 
-\subsection{Tarski's theorem}
-
-\subsection{Gödel's incompleteness theorems}
 
 {\raggedright%
 \printbibliography[heading=bibintoc]%
