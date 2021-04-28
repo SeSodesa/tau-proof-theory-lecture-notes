@@ -7,7 +7,7 @@ originally written by Esko Turunen based on Gaisi Takeuti's book "Proof Theory".
 
 It is adviced to use the compiler `lualatex` to compile the `main.tex` file:
 ```sh
-> lualatex main.tex && biber main && lualatex main.tex
+lualatex main.tex && biber main && lualatex main.tex
 ```
 The file `main.tex` contains the document in its entirety.
 The compiler `pdflatex` will most likely not work,
@@ -16,8 +16,8 @@ that relies on `lualatex` to function.
 
 ## License
 
-See the file LINCENSE.md, located in the same directory as this file.
-If this LICENSE.md file is missing, all rights are reserved.
+See the file `LINCENSE.md`, located in the same directory as this file.
+If this `LICENSE.md` file is missing, all rights are reserved.
 
 ## Contributing
 
