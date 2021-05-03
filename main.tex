@@ -3331,11 +3331,11 @@ We now make the following definition based on this knowledge.
     The unique (in enumeration~\ref{tab:an enumeration of symbols in PA})
     \emph{Gödel number} of \(A\), \(G(A)\), is then
     \begin{equation*}
-        G(A) = \G A = 2^3\times3^4\times5^6\times7^4\times11^1\times13^2\times17^5\times19^7 \,.
+        G(A) = \Gnum A = 2^3\times3^4\times5^6\times7^4\times11^1\times13^2\times17^5\times19^7 \,.
     \end{equation*}
 \end{definition}
 
-In a given enumeration, each formula \(A\in\LN\) has a unique Gödel number \(\G A\).
+In a given enumeration, each formula \(A\in\LN\) has a unique Gödel number \(\Gnum A\).
 On the other hand, given a natural number \(n\in\Nset\), we could in principle
 find its prime factorization and hence discover, whether \(n\) is the
 Gödel number of \(A\) for some formula \(A\).
@@ -3349,7 +3349,7 @@ However, for most \(n\) this is not in any way practical,
 because of technical limitations.
 
 \begin{exercise}[Gödel 1]\label{exe:gödel 1}
-    What is the Gödel number \(\G A\) for the formula
+    What is the Gödel number \(\Gnum A\) for the formula
     \(A: \exists x(x+\bar0 = x)\)? Is the number \(4\,261\,409\,460\)
     the Gödel number of some formula?
 \end{exercise}
@@ -3358,8 +3358,8 @@ Next we define the process of constructing Gödel numbers for
 sequences of formulae, such as \(\Gamma: A_1,A_2,A_3,\ldots,A_n\).
 Here we simply write
 \begin{equation*}
-    G(\Gamma) = \G\Gamma =
-    2^{\G{A_1}}\times3^{\G{A_2}}\times5^{\G{A_3}}\times\cdots\times p^{\G{A_n}} \,.
+    G(\Gamma) = \Gnum\Gamma =
+    2^{\Gnum{A_1}}\times3^{\Gnum{A_2}}\times5^{\Gnum{A_3}}\times\cdots\times p^{\Gnum{A_n}} \,.
 \end{equation*}
 In other words, the prime numbers from \(2\) to \(p\),
 where \(p\) is the \(n\)th prime number,
@@ -3368,8 +3368,8 @@ to produce the Gödel number for the sequence \(\Gamma\).
 
 Sequents \(\Gamma\seq\Delta\), inferences \(Q\) of definition~\ref{def:inference}
 and proofs \(P\) of definition~\ref{def:proof in LK} can also be given
-their own unique Gödel numbers \(\G{\Gamma\seq\Delta}\),
-\(\G Q\) and \(\G P\), by converting them to suitable strings of symbols
+their own unique Gödel numbers \(\Gnum{\Gamma\seq\Delta}\),
+\(\Gnum Q\) and \(\Gnum P\), by converting them to suitable strings of symbols
 and applying the procedure above. For example, for the proofs
 \begin{equation*}
     P_1:
@@ -3387,17 +3387,17 @@ and applying the procedure above. For example, for the proofs
 \end{equation*}
 the Gödel numbers are
 \[
-\G{P_1} = 2^{\G\Gamma}\times3^{\G\seq}\times5^{\G\Delta}\times7^{\G-}\times11^{\G S}
+\Gnum{P_1} = 2^{\Gnum\Gamma}\times3^{\Gnum\seq}\times5^{\Gnum\Delta}\times7^{\Gnum-}\times11^{\Gnum S}
 \] and
-\[\G{P_2} = 2^{\G Q_1}\times3^{\G Q_2}\times5^{\G-}\times7^{\G S}\]
+\[\Gnum{P_2} = 2^{\Gnum Q_1}\times3^{\Gnum Q_2}\times5^{\Gnum-}\times7^{\Gnum S}\]
 respectively. Note that \(\seq\) and \(-\) are the symbols for the sequent arrow
 and inference line, again respectively.
 
 \paragraph{Note:}
-The Gödel number \(\G{\bar n} \neq n\).
+The Gödel number \(\Gnum{\bar n} \neq n\).
 For example, \(\bar3 = \bar0'''\)
 and therefore in the enumeration of table~\ref{tab:an enumeration of symbols in PA},
-\(\G{\bar3} = 2^2\times3^5\times5^5\times7^5\neq3\).
+\(\Gnum{\bar3} = 2^2\times3^5\times5^5\times7^5\neq3\).
 
 \subsection{Arithmetization of Peano Arithmetic}
 
@@ -3406,7 +3406,7 @@ sequences of formulae, sequents and proofs. We now make this more
 formal via the following definition.
 
 \begin{definition}[Arithmetization]\label{def:arithmetization}
-    If an object, action or operation \(\Phi\) has a Gödel number \(\G\Phi\),
+    If an object, action or operation \(\Phi\) has a Gödel number \(\Gnum\Phi\),
     then it has a unique \emph{arithmetization} which is equal to that number.
 \end{definition}
 
@@ -3415,7 +3415,7 @@ of natural numbers \(\Nset\). For example, if \(\Phi\) is a predicate
 \(\bar R(\bar x_1,\ldots,\bar x_n)\) in \PA{},
 the sequent \(\seq\bar R(\bar x_1,\ldots,\bar x_n)\) is provable in \PA{},
 \emph{and} there is a \PRR{} \(R\subseteq \Nset^n\)
-such that \(R(\G{\bar x_1},\ldots,\G{\bar x_n})\)
+such that \(R(\Gnum{\bar x_1},\ldots,\Gnum{\bar x_n})\)
 holds in \(\Nset^n\), then \(R\) is the arithmetization of \(\bar R\).
 
 Another example of an arithmetization goes as follows:
@@ -3423,23 +3423,23 @@ let \(\Phi\) be an operation applied to objects
 \(\bar x_1,\ldots,\bar x_n \in\PA\),
 so that the resulting object \(\bar y\in\PA{}\).
 If there is a \PRF{} \(f\) in \(\Nset\) so that
-\(f(\G{\bar x_1},\ldots,\G{\bar x_n},)) = \G{\bar y}\),
+\(f(\Gnum{\bar x_1},\ldots,\Gnum{\bar x_n},)) = \Gnum{\bar y}\),
 then \(f\) is the arithmetization of \(\Phi\).
 
 Notice that the converse is also true:
 if \(a_1,\ldots,a_n,b\in\Nset\) happen to be
 Gödel numbers, so that
 \begin{equation*}
-    a_1 = \G{\bar x_1},\ldots, a_n = \G{\bar x_n}, b = \G{\bar y}\,,
+    a_1 = \Gnum{\bar x_1},\ldots, a_n = \Gnum{\bar x_n}, b = \Gnum{\bar y}\,,
 \end{equation*}
 then there are unique corresponding numerals of definition~\ref{def:numerals},
 \begin{equation*}
-    \num{\G{\num x_1}},\ldots,\num{\G{\num x_n}} \in\PA\,.
+    \num{\Gnum{\num x_1}},\ldots,\num{\Gnum{\num x_n}} \in\PA\,.
 \end{equation*}
 If there also exists a mapping
-\(f(\G{\num x_1},\ldots,\G{\num x_n}) = \G{\num y} \in\Nset\),
+\(f(\Gnum{\num x_1},\ldots,\Gnum{\num x_n}) = \Gnum{\num y} \in\Nset\),
 then there exists an operation \(\Phi\), that performs the mapping
-\(\arcs{\num{\G{\num x_1}},\ldots,\num{\G{\num x_n}}}\mapsto\num{\G{\num y}}\in\PA{}\).
+\(\arcs{\num{\Gnum{\num x_1}},\ldots,\num{\Gnum{\num x_n}}}\mapsto\num{\Gnum{\num y}}\in\PA{}\).
 
 \paragraph{Note:}
 This converse relation is rather complex, and is not proven
@@ -3456,24 +3456,24 @@ They are however stated here for completeness.
     in \(\num x\), then there is a unique \PRF{} \(\sub: \Nset^2\to\Nset\),
     such that
     \begin{equation*}
-        \sub\arcs*{\G{\num y}, \G{\num x(a_0)}} = \num{\G{\num x(\num y)}}\,,
+        \sub\arcs*{\Gnum{\num y}, \Gnum{\num x(a_0)}} = \num{\Gnum{\num x(\num y)}}\,,
     \end{equation*}
     and there is a unique function symbol \(\num{\sub{}}\) in \PA{},
-    such that \(\seq\sub\arcs*{\G*{\num y}, \G*{\num x(a_0)}} = \num{\G*{\num x(\num y)}}\)
+    such that \(\seq\sub\arcs*{\Gnum*{\num y}, \Gnum*{\num x(a_0)}} = \num{\Gnum*{\num x(\num y)}}\)
     is provable in \PA{}.
 \end{lemma}
 \begin{lemma}[10.8.2]\label{lem:10.8.2}
     There is a \PRF{} \(\nu:\Nset\to\Nset\),
-    such that \(\nu(m)=\G*{\num m}\). There also exists
+    such that \(\nu(m)=\Gnum*{\num m}\). There also exists
     a unique \emph{function symbol} \(\num\nu\in\PA\) (or \(\num{\nu(a)}\)),
-    such that the sequent \(\seq\num\nu(\num m) = \num{\G*{\num m}}\)
+    such that the sequent \(\seq\num\nu(\num m) = \num{\Gnum*{\num m}}\)
     is provable in \PA{}.
 \end{lemma}
 
 Again, notice the difference between numerals (symbols representing numbers)
 and numbers themselves. In lemma~\ref{lem:10.8.2}, \(\nu(m)\neq\num m\).
 For example, in the enumeration of table~\ref{tab:an enumeration of symbols in PA},
-\(\nu(0) = \G*{\num0} = 4 \neq \num0\) and \(\nu(1) = \G*{\num0'} = 2^2\times3^5 = 972\).
+\(\nu(0) = \Gnum*{\num0} = 4 \neq \num0\) and \(\nu(1) = \Gnum*{\num0'} = 2^2\times3^5 = 972\).
 As for the function symbols, notice \(\seq\num\nu(\num0) = \num4\)
 and \(\seq\num\nu(\num1) = \num{972}\), and so forth.
 
@@ -3481,9 +3481,9 @@ and \(\seq\num\nu(\num1) = \num{972}\), and so forth.
     The proof \(P\) of a sequent \(\Gamma\seq\Delta\)
     can be arithmetized. In other words, there exists a \PRR{}
     \(\Prov\subseteq\Nset^2\), such that \(\Prov(P,a)\) holds
-    in \(\Nset^2\), if and only if \(P = \G P\) and \(a = \G{\Gamma\seq\Delta}\).
+    in \(\Nset^2\), if and only if \(P = \Gnum P\) and \(a = \Gnum{\Gamma\seq\Delta}\).
     There also exists a binary \emph{predicate symbol} \(\num\Prov\in\PA\),
-    such that \(\seq\num\Prov(\num{\G P}, \num{\G A})\) is provable in \PA.
+    such that \(\seq\num\Prov(\num{\Gnum P}, \num{\Gnum A})\) is provable in \PA.
 \end{lemma}
 
 The lemmae~\ref{lem:10.8.1}--\ref{lem:10.8.3} together show,
@@ -3505,19 +3505,19 @@ In particular, we are justified in making the following claim.
 
 \begin{proposition}[10.9.1]\label{prop:10.9.1}
     If \(\seq A\) is provable in \PA,
-    so is \(\seq\exists x\Prov(x,\num{\G A})\).
+    so is \(\seq\exists x\Prov(x,\num{\Gnum A})\).
 \end{proposition}
 
 \begin{proof}
-    If \(P\) is a proof of \(A\), then \(\Prov(\G P, \G A)\)
-    holds in \(\Nset^2\) and therefore \(\num\Prov(\G P, \G A)\)
+    If \(P\) is a proof of \(A\), then \(\Prov(\Gnum P, \Gnum A)\)
+    holds in \(\Nset^2\) and therefore \(\num\Prov(\Gnum P, \Gnum A)\)
     is provable in \PA. We then have the following proof:
     \begin{equation*}
         \begin{prooftree}
             \hypo{}
             \ellipsis{}{}
-            \infer1{\Prov(\num{\G P},\num{\G A})}
-            \infer1[\eqref{eq:exists:right}]{\seq\exists x\Prov(x,\num{\G A})}
+            \infer1{\Prov(\num{\Gnum P},\num{\Gnum A})}
+            \infer1[\eqref{eq:exists:right}]{\seq\exists x\Prov(x,\num{\Gnum A})}
         \end{prooftree}
     \end{equation*}
 \end{proof}
@@ -3525,18 +3525,18 @@ In particular, we are justified in making the following claim.
 Note that in the above application of \eqref{eq:exists:right},
 the term in the formula the inference is applied to can be any term,
 and \emph{numerals are terms}. The statement of proposition~\ref{prop:10.9.1},
-\(A\seq\exists x\Prov(x,\num{\G A})\),
+\(A\seq\exists x\Prov(x,\num{\Gnum A})\),
 can be written more succinctly as follows:
 \begin{equation*}
     \begin{prooftree}
         \hypo{\seq A}
-        \hypo{A\seq\exists x\Prov(x,\num{\G A})}
-        \infer2[\eqref{eq:cut}]{\seq\exists x\Prov(x,\num{\G A})}
+        \hypo{A\seq\exists x\Prov(x,\num{\Gnum A})}
+        \infer2[\eqref{eq:cut}]{\seq\exists x\Prov(x,\num{\Gnum A})}
     \end{prooftree}
 \end{equation*}
 
 \begin{proposition}[10.9.2]\label{prop:10.9.2}
-    If \(A\equiv B\), then \(\exists x\Prov(x,\num{\G A})\equiv\exists x\Prov(x,\num{\G B})\)
+    If \(A\equiv B\), then \(\exists x\Prov(x,\num{\Gnum A})\equiv\exists x\Prov(x,\num{\Gnum B})\)
 \end{proposition}
 
 \begin{proof}
@@ -3558,19 +3558,19 @@ can be written more succinctly as follows:
             \infer2[\eqref{eq:cut}]{\seq B}
         \end{prooftree}
     \end{equation*}
-    Therefore \(\Prov(\G T, \G B)\) holds in \(\Nset^2\),
+    Therefore \(\Prov(\Gnum T, \Gnum B)\) holds in \(\Nset^2\),
     and
     \begin{equation*}
         \begin{prooftree}
-            \hypo{\seq\Prov(\num{\G T}, \num{\G B})}
-            \infer1[\eqref{eq:exists:right}]{\seq\exists x\Prov(x, \num{\G B})}
-            \infer1[\eqref{eq:weakening:left}]{\exists x\Prov(x, \num{\G A})\seq\exists x\Prov(x, \num{\G B})}
-            \infer1[\eqref{eq:limplies:right}]{\seq\exists x\Prov(x, \num{\G A})\limplies\exists x\Prov(x, \num{\G B})}
+            \hypo{\seq\Prov(\num{\Gnum T}, \num{\Gnum B})}
+            \infer1[\eqref{eq:exists:right}]{\seq\exists x\Prov(x, \num{\Gnum B})}
+            \infer1[\eqref{eq:weakening:left}]{\exists x\Prov(x, \num{\Gnum A})\seq\exists x\Prov(x, \num{\Gnum B})}
+            \infer1[\eqref{eq:limplies:right}]{\seq\exists x\Prov(x, \num{\Gnum A})\limplies\exists x\Prov(x, \num{\Gnum B})}
         \end{prooftree}
     \end{equation*}
     In a very similar manner, the claim
     \begin{equation*}
-        \seq\exists x\Prov(x, \num{\G B})\limplies\exists x\Prov(x, \num{\G A})\,.
+        \seq\exists x\Prov(x, \num{\Gnum B})\limplies\exists x\Prov(x, \num{\Gnum A})\,.
     \end{equation*}
     can be shown to hold in \PA{}. The wanted result then directly follows.
 \end{proof}
@@ -3578,52 +3578,52 @@ can be written more succinctly as follows:
 We now make the following notational agreement,
 in order to make our lives easier:
 \begin{equation}\tag{vdash}\label{eq:vdash}
-    \vdash\num{\G{A}}
+    \vdash\num{\Gnum{A}}
     \quad\text{expands to}\quad
-    \exists x\Prov(x, \num{\G A}) \,.
+    \exists x\Prov(x, \num{\Gnum A}) \,.
 \end{equation}
 With this agreement in place, we can proceed to make the following proposition.
 
 \begin{proposition}[10.9.3]\label{prop:10.9.3}
     If \(\seq A\) is provable in \PA{,}
-    then so is \(\vdash\num{\G A}\seq\arcs{\vdash\num{\G{\vdash\num{\G{A}}}}}\).
+    then so is \(\vdash\num{\Gnum A}\seq\arcs{\vdash\num{\Gnum{\vdash\num{\Gnum{A}}}}}\).
 \end{proposition}
 
 \begin{proof}
     We reason as in the proof of proposition~\ref{prop:10.9.1}.
-    In the sequent \(B\seq\exists x\num\Prov(x,\num{\G B})\),
-    suppose \(B\) is \(\exists x\num\Prov(x,\num{\G A})\).
+    In the sequent \(B\seq\exists x\num\Prov(x,\num{\Gnum B})\),
+    suppose \(B\) is \(\exists x\num\Prov(x,\num{\Gnum A})\).
     More precisely:
     \begin{enumerate}
         \item
             If \(\seq A\) is provable via proof \(P\) in \PA,
-            then \(\Prov(x,\G A)\) holds in \(\Nset^2\).
+            then \(\Prov(x,\Gnum A)\) holds in \(\Nset^2\).
         \item
-            If \(\Prov(x,\num{\G A})\) holds in \(\Nset^2\),
+            If \(\Prov(x,\num{\Gnum A})\) holds in \(\Nset^2\),
             then the following proof \(Q\) can be made in \PA:
             \begin{equation*}
                 \begin{prooftree}
-                    \hypo{\seq\num\Prov(\num{\G P},\num{\G A})}
-                    \infer1[\eqref{eq:exists:right}]{\seq\exists x\Prov(x, \num{\G A})}
+                    \hypo{\seq\num\Prov(\num{\Gnum P},\num{\Gnum A})}
+                    \infer1[\eqref{eq:exists:right}]{\seq\exists x\Prov(x, \num{\Gnum A})}
                 \end{prooftree}\,,
             \end{equation*}
             where the lower sequent is the same thing as
-            \(\vdash\num{\G{A}}\), as per \eqref{eq:vdash}.
+            \(\vdash\num{\Gnum{A}}\), as per \eqref{eq:vdash}.
         \item
             Because the above proof can be made,
-            then \(\Prov(\G Q, \G*{\vdash\num{\G{A}}})\)
+            then \(\Prov(\Gnum Q, \Gnum*{\vdash\num{\Gnum{A}}})\)
             holds in \(\Nset^2\), where \(Q\) is the proof above.
         \item
-            If \(\Prov(\G Q, \G*{\vdash\num{\G{A}}})\) holds in \(\Nset^2\),
+            If \(\Prov(\Gnum Q, \Gnum*{\vdash\num{\Gnum{A}}})\) holds in \(\Nset^2\),
             then the following proof can be made in \PA:
             \begin{equation*}
                 \begin{prooftree}
-                    \hypo{\seq\Prov\arcs*{\G Q, \G*{\vdash\num{\G{A}}}}}
-                    \infer1[\eqref{eq:exists:right}]{\seq\exists y\Prov\arcs*{y, \G*{\vdash\num{\G{A}}}})}
+                    \hypo{\seq\Prov\arcs*{\Gnum Q, \Gnum*{\vdash\num{\Gnum{A}}}}}
+                    \infer1[\eqref{eq:exists:right}]{\seq\exists y\Prov\arcs*{y, \Gnum*{\vdash\num{\Gnum{A}}}})}
                 \end{prooftree}\,,
             \end{equation*}
             where again the lower sequent is the same thing as
-            \(\G*{\vdash\num{\G{A}}}\), again as per \eqref{eq:vdash}.
+            \(\Gnum*{\vdash\num{\Gnum{A}}}\), again as per \eqref{eq:vdash}.
     \end{enumerate}
     This concludes the proof, as we have been able to construct the sequent we wanted,
     by jumping between the spaces \PA{} and \(\Nset^2\).
@@ -3638,33 +3638,33 @@ thus far, but the proof is omitted.
 
 \subsection{Tarski's theorem}
 
-Recall that the function \(\nu(m) = \G{\num m}\) is a \PRF{} in \(\Nset\),
+Recall that the function \(\nu(m) = \Gnum{\num m}\) is a \PRF{} in \(\Nset\),
 and that a corresponding function constant \(\num\nu\) exists in \PA{},
-such that \(\seq\num\nu(m) = \num{\G{\num m}}\). We can also show that
+such that \(\seq\num\nu(m) = \num{\Gnum{\num m}}\). We can also show that
 \eqref{eq:substitution} is arithmetizable: there exists a binary function
 \(\sub:\Nset^2\to\Nset\), such that
-\(\sub(\G{\num y},\G{\num x(a_0)})=\G{\num x(\num y)}\),
+\(\sub(\Gnum{\num y},\Gnum{\num x(a_0)})=\Gnum{\num x(\num y)}\),
 and the corresponding function symbol \(\num\sub\) in \PA,
-such that \(\sub(m,\G{\nu(m)})=\G{\num m}\) and
-\(\seq\num\sub(\num m,\G{\num\nu(m)})=\num{\G{\num m}}\)
+such that \(\sub(m,\Gnum{\nu(m)})=\Gnum{\num m}\) and
+\(\seq\num\sub(\num m,\Gnum{\num\nu(m)})=\num{\Gnum{\num m}}\)
 is provable in \PA{}.
 
 Now assume that \PA{} contains the unary formula \(T(a_0)\),
 with \(a_0\) as the only free variable, such that
 \begin{equation}\tag{truth}\label{eq:truth}
-   T(\G{\num A})\equiv A
+   T(\Gnum{\num A})\equiv A
 \end{equation}
 for all sentences \(A\).
 In particular, consider the formula  \(\lnot T(\num\sub(\num a_0, \num\nu(\num a_0)))\).
 It is a valid string in \PA{} and therefore it must have a Gödel number \(p\in\Nset\):
 \begin{equation*}
-    \G*{\lnot T\arcs*{\num\sub\arcs*{\num a_0, \num\nu(\num a_0)}}} = p\in\Nset\,.
+    \Gnum*{\lnot T\arcs*{\num\sub\arcs*{\num a_0, \num\nu(\num a_0)}}} = p\in\Nset\,.
 \end{equation*}
 
-Now let \(A_T =\G*{\lnot T\arcs*{\num\sub\arcs*{\num p, \num\nu(\num p)}}} = \lnot T(\num{\G*{\num p}})\).
+Now let \(A_T =\Gnum*{\lnot T\arcs*{\num\sub\arcs*{\num p, \num\nu(\num p)}}} = \lnot T(\num{\Gnum*{\num p}})\).
 Since \(A_T\) is obtained via \eqref{eq:substitution}, we have
-\(\G{A_T} = \G*{\num p}\). But now we know that \(A_T = \lnot T\arcs{\num{\G{A}}}\),
-and therefore \(\lnot A_T\equiv\lnot T\arcs{\num{\G{A}}}\equiv A_T\).
+\(\Gnum{A_T} = \Gnum*{\num p}\). But now we know that \(A_T = \lnot T\arcs{\num{\Gnum{A}}}\),
+and therefore \(\lnot A_T\equiv\lnot T\arcs{\num{\Gnum{A}}}\equiv A_T\).
 This is impossible, as \PA{} is consistent.
 We have then proved the following theorem.
 
@@ -3679,7 +3679,7 @@ Tarski's theorem has the following \(3\) implications:
         The notion of \emph{arithmetical truth} is not arithmetical.
         If we assert that the axioms of \PA{} are true,
         then by Tarski's theorem we obtain that there is no formula
-        \(T(a_0)\) that would make \(A\) true, if and only if \(T(\num{\G A})\)
+        \(T(a_0)\) that would make \(A\) true, if and only if \(T(\num{\Gnum A})\)
         true for all formulae \(A\in\LN\).
     \item
         \eqref{eq:truth} cannot be proved inside \PA{}.
@@ -3716,7 +3716,7 @@ we introduce the \emph{Gödel trick} and \emph{Gödel sentences}.
             Now \(F(\vdash\num\sub(a_0,\num\nu(a_0)))\in\LN\),
             so it must have a Gödel number, call it
             \begin{equation*}
-                \G*{F(\vdash\num\sub(a_0,\num\nu(a_0)))} = p\in\Nset\,.
+                \Gnum*{F(\vdash\num\sub(a_0,\num\nu(a_0)))} = p\in\Nset\,.
             \end{equation*}
         \item
             Now define a sentence \(A_F\in\LN\) by
@@ -3724,16 +3724,16 @@ we introduce the \emph{Gödel trick} and \emph{Gödel sentences}.
             A_F = \vdash\num\sub(\num p,\num\nu(\num p))) \,.
             \end{equation*}
             This has a Gödel number, and since \(A_F\) is again obtained
-            by substitution, \(\G{A_F} = \sub(p,\nu(p))\).
-            But then \(\num{\G{A_F}} = \num\sub(\num p,\num\nu(\num p))\),
-            and \(A_F\) must be \(F(\vdash\num{\G{A}})\).
+            by substitution, \(\Gnum{A_F} = \sub(p,\nu(p))\).
+            But then \(\num{\Gnum{A_F}} = \num\sub(\num p,\num\nu(\num p))\),
+            and \(A_F\) must be \(F(\vdash\num{\Gnum{A}})\).
     \end{enumerate}
 \end{definition}
 
 By applying Gödel's trick, we have obtained the following lemma.
 
 \begin{lemma}[10.14]\label{lem:10.14}
-    \(A_F = F(\vdash\num{\G{A}})\).
+    \(A_F = F(\vdash\num{\Gnum{A}})\).
 \end{lemma}
 
 \begin{definition}[\(\omega\)-consistency]\label{def:omega consistency}
@@ -3750,7 +3750,7 @@ the implied sequent in the definition \ref{def:omega consistency}:
 \begin{equation*}
     \vdash A
     \quad\text{expands into}\quad
-    \vdash\G*{\num A}\,.
+    \vdash\Gnum*{\num A}\,.
 \end{equation*}
 Armed with this new notation, we can proceed to prove
 Gödel's incompleteness theorems.
@@ -3777,12 +3777,12 @@ Gödel's incompleteness theorems.
         \item
             Then suppose that \(\seq\lnot A_G\) is not provable in our system.
             This means that for all \(n\in\Nset\) and by extension the corresponding
-            numerals \(\num n\in\LN\), that \(\seq\lnot\num\Prov(\num n, \num{\G{A_G}})\)
-            or \(\seq\vdash\num{\G{A_G}}\) is provable in the system.
+            numerals \(\num n\in\LN\), that \(\seq\lnot\num\Prov(\num n, \num{\Gnum{A_G}})\)
+            or \(\seq\vdash\num{\Gnum{A_G}}\) is provable in the system.
 
             Now by \(\omega\)-consistency,
-            \(\seq\lnot\num\Prov(\num n, \num{\G{A_G}})\)
-            or \(\seq\vdash\num{\G{A_G}}\) is \emph{not} provable in the system.
+            \(\seq\lnot\num\Prov(\num n, \num{\Gnum{A_G}})\)
+            or \(\seq\vdash\num{\Gnum{A_G}}\) is \emph{not} provable in the system.
             Therefore \(\seq\vdash A_G\) is also \emph{not} provable.
 
             Since \(A_\equiv\lnot\vdash A_G\),
@@ -3805,13 +3805,13 @@ that contains \PA{}.
 
 \begin{definition}[Symbol for consistency]\label{def:symbol for consistency}
     Let the symbol \(\consis\) denote the closed formula
-    \(\lnot\vdash\num0=\num1\), or \(\exists x\num\Prov(x,\num{\G{\num0=\num1}})\).
+    \(\lnot\vdash\num0=\num1\), or \(\exists x\num\Prov(x,\num{\Gnum{\num0=\num1}})\).
     In other words, the symbol maps to the statement ''\(S\supseteq\PA\) is consistent.''.
 \end{definition}
 
 \begin{theorem}[Gödel's second incompeteness theorem]\label{the:Gödel's second incompleteness theorem}
     If the axiom system \(S\) is consistent, then the sequent
-    \(\seq\exists x\num\Prov(x,\num{\G{\num0=\num1}})\) is \emph{not}
+    \(\seq\exists x\num\Prov(x,\num{\Gnum{\num0=\num1}})\) is \emph{not}
     provable in \(S\). In particular, the consistency of \PA{}
     cannot be proved in \PA.
 \end{theorem}
