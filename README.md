@@ -16,8 +16,8 @@ that relies on `lualatex` to function.
 
 ## License
 
-See the file `LINCENSE.md`, located in the same directory as this file.
-If this `LICENSE.md` file is missing, all rights are reserved.
+See the file `LICENSE.txt`, located in the same directory as this file.
+If this `LICENSE.txt` file is missing, all rights are reserved.
 
 ## Contributing
 

@@ -4,6 +4,7 @@
 # Allow specific files and folders
 !.gitignore
 !README.md
+!LICENSE.txt
 !tau-logo
 !tau-logo/LICENSE.md
 !tau-logo/README.md
