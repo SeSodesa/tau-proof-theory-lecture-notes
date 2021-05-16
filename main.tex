@@ -196,10 +196,10 @@ This set is know as the \emph{alphabet}.
             Their outermost logical symbols are \(\lnot\), \(\land\),
             \(\lor\) and \(\limplies\), respectively.
         \item\label{it:formula 3}
-            If \(A\) is a formula, \(a\) is a free variable and \(x\)
-            a bound variable not occurring in \(A\),
-            then \(\forall x A'\) and \(\exists x A'\) are formulae.
-            Here \(A'\) refers to the expression obtained from \(A\),
+            If \(A(a)\) is a formula, where \(a\) is a free variable and
+            a bound variable \(x\notin A\),
+            then \(\forall x A(x)\) and \(\exists x A(x)\) are formulae.
+            Here \(A(x)\) refers to the expression obtained from \(A(a)\),
             by replacing every occurrence of \(a\) with \(x\), wherever \(a\)
             occurs in \(A\).
             The outermost logical symbols of these formulae are \(\forall\) and \(\exists\), respectively.
