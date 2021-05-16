@@ -1973,8 +1973,9 @@ are now mostly in place. In essence, the completeness of \LK{}
 means that a formula \(A\) is provable,
 if and only if it is valid.
 
-\begin{theorem}[Provability implies validity]\label{the:provability implies validity}
-    If a formula \(A\) is provable, the it is valid.
+\begin{theorem}[Soundness of \LK: provability implies validity]\label{the:provability implies validity}
+    If a formula \(A\) is provable in \LK, then it is valid in \LK.
+    In other words \LK{} is a \emph{sound} logical system.
 \end{theorem}
 
 \begin{proof}
@@ -2337,8 +2338,9 @@ Therefore the contradiction at the root of the tree cannot be proven.
 
 Equipped with this new tool, we may now show that validity implies provability.
 
-\begin{theorem}[Validity implies provability]\label{the:validity implies provability}
-    If a formula \(A\) is valid, then it is provable.
+\begin{theorem}[Completeness of \LK{}: validity implies provability]\label{the:validity implies provability}
+    If a formula \(A\) is valid in \LK, then it is provable in \LK.
+    In other words, \LK{} is a \emph{complete} logical system.
 \end{theorem}
 
 \begin{proof}
@@ -3761,7 +3763,7 @@ By applying Gödel's trick, we have obtained the following lemma.
 \end{definition}
 
 Notice that \(\omega\)-consistency implies consistency.
-If a system is \(\omega\)-consistent, the it is also consistent.
+If a system is \(\omega\)-consistent, then it is also consistent.
 We now make the following notational convention related to
 the implied sequent in the definition \ref{def:omega consistency}:
 \begin{equation*}
