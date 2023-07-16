@@ -1,0 +1,624 @@
+\section{\texorpdfstring{Completeness of \LK}{Completeness of LK}}%
+\label{sec:completeness-of-lk}
+
+We would like to show the following in \LK: for any formula \(A\), if \(\seq
+A\) is provable, then A is a \emph{valid} formula. This leads to the
+\emph{soundness} and eventually \emph{completeness} of \LK. To establish what
+these concepts mean, we give the following (rather long) sequence of
+definitions.
+
+\begin{definition}[Structure of language]\label{def:structure of language}
+    Let \(L\) be a language as described in table~\ref{tab:language hierarchy}.
+    The \emph{structure} of such a language is an ordered pair \(\tuple{D,\phi}\),
+    where \(D\) is a non-empty set and \(\phi\) a map from the constants of \(L\)
+    such that
+    \begin{enumerate}
+        \item
+            if \(k\) is an individual constant, then \(\phi(k)\in D\),
+        \item
+            if \(f\) is a function constant of \(n\) arguments,
+            then \(\phi(f): D^n\to D\) and
+        \item
+            if \(R\) is a predicate constant of \(n\) arguments,
+            then \(\phi(R)\subseteq D^n\).
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}[Interpretation of language]\label{def:interpretation of language}
+    An \emph{interpretation} \(\interp\) of a language \(L\) is an ordered pair \(\tuple{S,\phi_0}\),
+    where \(S\) is a structure \(\tuple{D,\phi}\) and \(\phi_0\)
+    is a mapping from the variables of \(L\) to \(D\).
+    The map \(\phi_0\) is called an \emph{assignment} from \(D\)
+    and is defined as follows:
+    \begin{enumerate}
+        \item
+            \(\phi_0\arcs{a}\in D\) for all free variables \(a\) and
+        \item
+            \(\phi_0\arcs{x}\in D\) for all bound variables \(x\).
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}[Extension of \(\phi\)]\label{def:extension of structure map}
+    We define \(\phi\arcs{t}\) in a structure \(S = \tuple{D,\phi}\)
+    for every \emph{semi-term} \(t\) inductively
+    as follows:
+    \begin{enumerate}
+    \item
+        \(\phi\arcs{a} = \phi_0\arcs{a}\) and \(\phi\arcs{x} = \phi_0\arcs{x}\)
+        for all free variables \(a\) and bound variables \(x\).
+    \item
+        In addition,
+        if \(f\) is a function constant and \(t\) is a semi-term for which \(\phi\)
+        is already defined, then \(\phi\arcs{f\arcs{t}} = \arcs{\phi f}\arcs{\phi t}\).
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}[Formula-satisfying interpretation]\label{def:formula satisfying interpretation}
+    An interpretation \(\interp = \tuple{S,\phi_0} = \tuple{\tuple{D,\phi},\phi_0}\)
+    \emph{satisfies} a formula \(A\), if the following are true:
+    \begin{enumerate}
+        \item
+            If \(R\) is a predicate constant of \(n\) arguments
+            and \(t_1,\ldots,t_n\) are semi-terms, then \(\interp\)
+            satisfies \(R\arcs{t_1,\ldots,t_n}\), if and only if
+            \(\tuple{\phi t_1,\ldots,\phi t_n}\in\phi R \subseteq D^n\).
+        \item
+            The interpretation \(\interp\) satisfies \(\lnot A\),
+            if and only if it does \emph{not} satisfy \(A\).
+        \item
+            \(\interp\) satisfies \(A\land B\), if and only if it satisfies
+            both \(A\) and \(B\).
+        \item
+            The formula \(A\lor B\)
+            is satisfied by \(\interp\), if and only if it
+            satisfies either \(A\) or \(B\).
+        \item
+            The implication \(A\limplies B\) is satisfied by \(\interp\),
+            if and only if \(A\) is not satisfied,
+            or \(B\) is satisfied.
+        \item
+            The interpretation \(\interp = \tuple{\tuple{D,\phi},\phi_0}\)
+            satisfies \(\forall xB\arcs{x}\), if and only if for \emph{every} \(\phi_0'\)
+            such that \(\phi_0'(x) = \phi_0(x)\) almost everywhere,
+            the interpretation \(\interp'=\tuple{\tuple{D,\phi},\phi_0'}\) satisfies \(B\).
+        \item
+            The interpretation \(\interp = \tuple{\tuple{D,\phi},\phi_0}\)
+            satisfies \(\exists xB\arcs{x}\), if and only if for \emph{some} \(\phi_0'\)
+            such that \(\phi_0'(x) = \phi_0(x)\) almost everywhere,
+            the interpretation \(\interp'=\tuple{\tuple{D,\phi},\phi_0'}\) satisfies \(B\).
+    \end{enumerate}
+    If \(\interp = \tuple{\tuple{D,\phi},\phi_0}\) satisfies a formula \(A\),
+    \(A\) is said to be satisfied in \(\tuple{D,\phi}\) by the assignment \(\phi_0\).
+\end{definition}
+
+Note that in the above definition, \emph{almost everywhere} means that there might
+exist some \(a\) for which \(\phi_0'(a)\neq\phi_0(a)\).
+
+\begin{definition}[Valid formula]\label{def:valid formula}
+    A formula \(A\) is said to be \emph{valid in} the structure \(\tuple{D,\phi}\),
+    if and only if for every \(\phi_0\),
+    the interpretation \(\tuple{\tuple{D,\phi},\phi_0}\)
+    satisfies \(A\). The formula \(A\) is simply \emph{valid}, if
+    it is valid in every structure.
+\end{definition}
+
+\begin{definition}[Satisfied and valid sequents]%
+\label{def:satisfied and valid sequents}
+A sequent \(\Gamma\seq\Delta\) is \emph{satisfied in} the structure
+\(\tuple{D,\phi}\) \emph{by} an interpretation \(\interp\),
+if and only if either some formula in \(\Gamma\) is \emph{not}
+satisfied by \(\interp\), or some formula in \(\Delta\) \emph{is}
+satisfied by \(\interp\). A sequent is \emph{valid}, if and only if
+it is satisfied in every interpretation.
+\end{definition}
+
+\begin{definition}[Model and Counter-Model]%
+\label{def:model and counter-model}
+A structure \(S\) is called a \emph{model} of an axiom system
+\(\Gamma\), if every sentence of \(\Gamma\) is valid in \(S\).
+On the other hand, \(S\) is a \emph{counter-model} of \(\Gamma\),
+if there is a sentence of \(\Gamma\) that is not valid in \(S\).
+\end{definition}
+
+The definitions needed in proving the completeness of \LK{},
+namely theorems~\ref{the:provability implies validity}
+and \ref{the:validity implies provability},
+are now mostly in place. In essence, the completeness of \LK{}
+means that a formula \(A\) is provable,
+if and only if it is valid.
+
+\begin{theorem}[Soundness of \LK: provability implies validity]\label{the:provability implies validity}
+    If a formula \(A\) is provable in \LK, then it is valid in \LK.
+    In other words \LK{} is a \emph{sound} logical system.
+\end{theorem}
+
+\begin{proof}
+    The proof is by structural induction on the number inferences
+    in the proof of \(\Gamma\seq\Delta\), denoted by \(n\).
+    If \(n=0\) a proof only consists of axioms of the form \(A\seq A\),
+    where the antecedent \(A\) is never satisfied in the interpretation
+    \(\interp\), whereas the succedent \(A\) always is. Therefore the
+    sequent \(A\seq A\) is always satisfied in all \(\interp\) and is then valid.
+
+    We now make the induction hypothesis \IH, that if the number of inferences
+    \(n\leq k\) in the proofs of the sequents \(\Gamma\seq\Delta\) and \(\Pi\seq\Lambda\),
+    then both of them are valid. In the inductive step, we add each of the inference
+    rules in definition \ref{def:inference rules in LK} to the proof one at a time
+    (except \eqref{eq:cut}), and check that validity is preserved.
+
+    \paragraph{Structural rules.}
+    These follow directly from the definition of validity.
+    In the inferences
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{\Gamma\seq\Delta}
+            \infer1[\eqref{eq:weakening:left}]{A, \Gamma\seq\Delta}
+        \end{prooftree}
+        \quad\text{and}\quad
+        \begin{prooftree}
+            \hypo{\Gamma\seq\Delta}
+            \infer1[\eqref{eq:weakening:right}]{\Gamma\seq\Delta, A}
+        \end{prooftree}\,,
+    \end{equation*}
+    the sequence \(\Gamma\) contains at least one \emph{invalid} formula \(B\),
+    whereas \(\Delta\) contains at least one \emph{valid} formula \(B\) by the inductive hypothesis.
+    The other two types of non-\eqref{eq:cut} structural inferences
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{A,A,\Gamma\seq\Delta}
+            \infer1[\eqref{eq:contraction:left}]{A, \Gamma\seq\Delta}
+        \end{prooftree}
+        \quad\text{and}\quad
+        \begin{prooftree}
+            \hypo{\Gamma\seq\Delta,A,A}
+            \infer1[\eqref{eq:contraction:right}]{\Gamma\seq\Delta, A}
+        \end{prooftree}\,,
+    \end{equation*}
+    and
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{C,D,\Gamma\seq\Delta}
+            \infer1[\eqref{eq:exchange:left}]{D,C,\Gamma\seq\Delta}
+        \end{prooftree}
+        \quad\text{and}\quad
+        \begin{prooftree}
+            \hypo{\Gamma\seq\Delta,C,D}
+            \infer1[\eqref{eq:exchange:right}]{\Gamma\seq\Delta, D,C}
+        \end{prooftree}\,,
+    \end{equation*}
+    also preserve validity by the same logic.
+
+    \paragraph{Logical rules.}
+    We start with the rules
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{\Gamma\seq\Delta,A}
+            \infer1[\eqref{eq:lnot:left}]{\lnot A, \Gamma\seq\Delta}
+        \end{prooftree}
+        \quad\text{and}\quad
+        \begin{prooftree}
+            \hypo{A, \Gamma\seq\Delta}
+            \infer1[\eqref{eq:lnot:right}]{\Gamma\seq\Delta, \lnot A}
+        \end{prooftree}\,.
+    \end{equation*}
+    Given an interpretation \(\interp\),
+    if the satisfied formula is in \(\Delta\) or the unsatisfied
+    one in \(\Gamma\), then there is nothing to prove.
+    Otherwise, if \(A\) is the satisfied formula,
+    then \(\lnot A\) is not satisfied by definition,
+    meaning \(\lnot A\) must contain a formula \(C\) that is not satisfied.
+    This implies that the sequent \(\lnot A,\Gamma\seq\Delta\) is satisfied by definition.
+    The proof of the sequent \(\Gamma\seq\Delta,\lnot A\) being satisfied
+    in the inference \eqref{eq:lnot:right} is entirely symmetrical to this.
+
+    \begin{exercise}[Exercise 8.2.1]\label{exe:8.2.1}
+        Prove the inductive step in the inferences~\eqref{eq:land:left},
+        \eqref{eq:land:right}, \eqref{eq:lor:left}, \eqref{eq:lor:right},
+        \eqref{eq:limplies:left} and \eqref{eq:limplies:right}.
+    \end{exercise}
+
+    \begin{exercise}[Exercise 8.2.2]\label{exe:8.2.2}
+        Prove the inductive step in the inferences~\eqref{eq:forall:left},
+        \eqref{eq:forall:right}, \eqref{eq:exists:left} and \eqref{eq:exists:right}.
+    \end{exercise}
+
+    With all of the inference rules covered,
+    the induction is closed and the proof is now complete.
+\end{proof}
+
+To prove the converse, that the validity of the sequent \(\seq A\)
+implies the provability of \(\seq A\), we will need on moredefinition:
+the concept of \emph{reduction trees}.
+
+\begin{definition}[Reduction tree]\label{def:reduction tree}
+    Let \(\Gamma\seq\Delta\) be a sequent.
+    The \emph{reduction tree} \(T\arcs{\Gamma\seq\Delta}\)
+    for this sequent is constructed
+    programmatically as follows:
+    \begin{enumerate}
+        \item\label{it:reduction tree init}
+            Place the sequent \(\Gamma\seq\Delta\) at the root of the tree.
+        \item\label{it:reduction tree loop}
+            The branches of the tree are defined by looping over the current
+            leaves:
+            \begin{enumerate}
+                \item\label{it:reduction tree finished}
+                    If every topmost sequent contains a same formula
+                    in both its antecedent and succedent,
+                    then halt the program.
+                \item\label{it:reduction tree unfinished}
+                    Else iterate over the leaves of the current branches
+                    and perform one of the following \emph{reductions} or additions,
+                    depending on which logical symbols are the outermost symbols in \(\Pi\) or \(\Lambda\),
+                    when \(\Pi\seq\Lambda\) is the sequent in each leaf during each iteration:
+                    \begin{enumerate}
+                        \item\label{it:reduction tree lnot left}
+                            Let \(\lnot A_1,\ldots,\lnot A_n\in\Pi\) with
+                            \(\lnot\) as the outermost logical symbol.
+                            Then the following push operation can be performed:
+                            \begin{equation}
+                                \begin{prooftree}
+                                    \tag{reduction:\(\lnot\):left}
+                                    \label{eq:reduction:lnot:left}
+                                    \hypo{\Pi\seq\Lambda, A_1,\ldots,A_n}
+                                    \infer1{\Pi\seq\Lambda}
+                                \end{prooftree}
+                            \end{equation}
+                        \item\label{it:reduction tree lnot right}
+                            Let \(\lnot A_1,\ldots,\lnot A_n\in\Lambda\) with
+                            \(\lnot\) as the outermost logical symbol.
+                            Then the following push operation can be performed:
+                            \begin{equation}
+                                \begin{prooftree}
+                                    \tag{reduction:\(\lnot\):right}
+                                    \label{eq:reduction:lnot:right}
+                                    \hypo{A_1,\ldots,A_n,\Pi\seq\Lambda}
+                                    \infer1{\Pi\seq\Lambda}
+                                \end{prooftree}
+                            \end{equation}
+                        \item\label{it:reduction tree land left}
+                            Let \(A_1\land B_1,\ldots,A_n\land B_n\in\Pi\) with
+                            \(\land\) as the outermost logical symbol.
+                            Then the following push operation can be performed:
+                            \begin{equation}
+                                \begin{prooftree}
+                                    \tag{reduction:\(\land\):left}
+                                    \label{eq:reduction:land:left}
+                                    \hypo{A_1, B_1,\ldots,A_n, B_n,\Pi\seq\Lambda}
+                                    \infer1{\Pi\seq\Lambda}
+                                \end{prooftree}
+                            \end{equation}
+                        \item\label{it:reduction tree land right}
+                            Let \(A_1\land B_1,\ldots,A_n\land B_n\in\Lambda\) with
+                            \(\land\) as the outermost logical symbol.
+                            Then the following push operation can be performed:
+                            \begin{equation}
+                                \begin{prooftree}
+                                    \tag{reduction:\(\land\):right}
+                                    \label{eq:reduction:land:right}
+                                    \hypo{\Pi\seq\Lambda,C_1}
+                                    \hypo{\ldots}
+                                    \hypo{\Pi\seq\Lambda,C_n}
+                                    \infer3{\Pi\seq\Lambda}
+                                \end{prooftree}
+                            \end{equation}
+                            where each \(C_i\in\set{A_i, B_i}\).
+                        \item\label{it:reduction tree lor left}
+                            Let \(A_1\lor B_1,\ldots,A_n\lor B_n\in\Pi\) with
+                            \(\lor\) as the outermost logical symbol.
+                            Then the following push operation can be performed:
+                            \begin{equation}
+                                \begin{prooftree}
+                                    \tag{reduction:\(\lor\):left}
+                                    \label{eq:reduction:lor:left}
+                                    \hypo{C_1,\Pi\seq\Lambda}
+                                    \hypo{\ldots}
+                                    \hypo{C_n,\Pi\seq\Lambda}
+                                    \infer3{\Pi\seq\Lambda}
+                                \end{prooftree}
+                            \end{equation}
+                            where each \(C_i\in\set{A_i, B_i}\).
+                        \item\label{it:reduction tree lor right}
+                            Let \(A_1\lor B_1,\ldots,A_n\lor B_n\in\Lambda\) with \(\lor\) as the outermost logical symbol.
+                            Then the following push operation can be performed:
+                            \begin{equation}
+                                \begin{prooftree}
+                                    \tag{reduction:\(\lor\):right}
+                                    \label{eq:reduction:lor:right}
+                                    \hypo{\Pi\seq\Lambda,A_1, B_1,\ldots,A_n, B_n}
+                                    \infer1{\Pi\seq\Lambda}
+                                \end{prooftree}
+                            \end{equation}
+                        \item\label{it:reduction tree limplies left}
+                            Let \(A_1\limplies B_1,\ldots,A_n\limplies B_n\in\Pi\) with
+                            \(\limplies\) as the outermost logical symbol.
+                            Then the following push operation can be performed:
+                            \begin{equation}
+                                \begin{prooftree}
+                                    \tag{reduction:\(\limplies\):left}
+                                    \label{eq:reduction:limplies:left}
+                                    \hypo{B_1,\Pi\seq\Lambda,A_1}
+                                    \hypo{\ldots}
+                                    \hypo{B_n,\Pi\seq\Lambda, A_n}
+                                    \infer3{\Pi\seq\Lambda}
+                                \end{prooftree}
+                            \end{equation}
+                        \item\label{it:reduction tree limplies right}
+                            Let \(A_1\limplies B_1,\ldots,A_n\limplies B_n\in\Lambda\) with
+                            \(\limplies\) as the outermost logical symbol.
+                            Then the following push operation can be performed:
+                            \begin{equation}
+                                \begin{prooftree}
+                                    \tag{reduction:\(\limplies\):right}
+                                    \label{eq:reduction:limplies:right}
+                                    \hypo{A_1,\ldots,A_n,\Pi\seq\Lambda, B_1, \ldots, B_n}
+                                    \infer1{\Pi\seq\Lambda}
+                                \end{prooftree}
+                            \end{equation}
+                        \item\label{it:reduction tree forall left}
+                            Let \(\forall x_1A_1(x_1),\ldots,\forall x_nA_n(x_n)\in\Pi\)
+                            with \(\forall\) as the outermost logical symbol,
+                            and let \(a_i\) be an independent variable that has not been used in
+                            reductions of \(\forall x_iA_i(x_i) : i \in\set{1,\ldots,n}\)
+                            at this branch height.
+                            \begin{equation}
+                                \begin{prooftree}
+                                    \tag{reduction:\(\forall\):left}
+                                    \label{eq:reduction:forall:left}
+                                    \hypo{A_1(a_1),\ldots,A_n(a_n),\Pi\seq\Lambda}
+                                    \infer1{\Pi\seq\Lambda}
+                                \end{prooftree}
+                            \end{equation}
+                        \item\label{it:reduction tree forall right}
+                            Let \(\forall x_1A_1(x_1),\ldots,\forall x_nA_n(x_n)\in\Lambda\)
+                            with \(\forall\) as the outermost logical symbol,
+                            and let \(a_1,\ldots,a_n\) be the first \(n\) independent
+                            variables not available at this branch height.
+                            \begin{equation}
+                                \begin{prooftree}
+                                    \tag{reduction:\(\forall\):right}
+                                    \label{eq:reduction:forall:right}
+                                    \hypo{\Pi\seq\Lambda,A_1(a_1),\ldots,A_n(a_n)}
+                                    \infer1{\Pi\seq\Lambda}
+                                \end{prooftree}
+                            \end{equation}
+                        \item\label{it:reduction tree exists left}
+                            Let \(\exists x_1A_1(x_1),\ldots,\exists x_nA_n(x_n)\in\Pi\)
+                            with \(\exists\) as the outermost logical symbol,
+                            and let \(a_1,\ldots,a_n\) be the first \(n\) independent
+                            variables not available at this branch height.
+                            \begin{equation}
+                                \begin{prooftree}
+                                    \tag{reduction:\(\exists\):left}
+                                    \label{eq:reduction:exists:left}
+                                    \hypo{A_1(a_1),\ldots,A_n(a_n),\Pi\seq\Lambda}
+                                    \infer1{\Pi\seq\Lambda}
+                                \end{prooftree}
+                            \end{equation}
+                        \item\label{it:reduction tree exists right}
+                            Let \(\exists x_1A_1(x_1),\ldots,\exists x_nA_n(x_n)\in\Lambda\)
+                            with \(\exists\) as the outermost logical symbol,
+                            and let \(a_i\) be the first independent variable that has not
+                            been used in reductions of
+                            \(\exists x_iA_i(x_i) : i \in\set{1,\ldots,n}\)
+                            at this branch height.
+                            \begin{equation}
+                                \begin{prooftree}
+                                    \tag{reduction:\(\exists\):right}
+                                    \label{eq:reduction:exists:right}
+                                    \hypo{\Pi\seq\Lambda,A_1(a_1),\ldots,A_n(a_n)}
+                                    \infer1{\Pi\seq\Lambda}
+                                \end{prooftree}
+                            \end{equation}
+                        \item\label{it:reduction tree else}
+                            If \(\Pi\) and \(\Lambda\) have \emph{any} formulae in common,
+                            push the \emph{halting symbol} \halt{} onto the branch:
+                            \begin{equation}
+                                \begin{prooftree}
+                                    \tag{reduction:halt}
+                                    \label{eq:reduction:halt}
+                                    \hypo{\halt}
+                                    \infer1{\Pi\seq\Lambda}
+                                \end{prooftree}
+                            \end{equation}
+                            If the sequences \(\Pi\) and \(\Lambda\) have \emph{nothing}
+                            in common, perform the following push operation:
+                            \begin{equation}
+                                \begin{prooftree}
+                                    \tag{reduction:else}
+                                    \label{eq:reduction:else}
+                                    \hypo{\Pi\seq\Lambda}
+                                    \infer1{\Pi\seq\Lambda}
+                                \end{prooftree}
+                            \end{equation}
+                    \end{enumerate}
+            \end{enumerate}
+            If there are unhandled leaves still left in this iteration loop,
+            continue iterating over the unhandled leaves, else jump
+            to~\ref{it:reduction tree loop}.
+    \end{enumerate}
+\end{definition}
+
+Note that in the construction of a reduction tree,
+the case~\eqref{eq:reduction:else} provides a possibility
+for the formation of an infinite loop. If this happens and
+some branch simply keeps growing indefinitely,
+as new sequents \(\Pi\seq\Lambda\) keep getting pushed on top of it,
+the sequent \(\Gamma\seq\Delta\) at the root of the tree
+is not provable.
+
+\begin{example}\label{exa:reduction tree}
+    We construct a reduction tree for the sequent
+    \(A\limplies B\seq\lnot A\lor B\).
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{\halt}
+            \infer1{B, A\limplies B\seq\lnot A\lor B, \lnot A, B}
+            \hypo{\halt}
+            \infer1{A, A\limplies B\seq\lnot A\lor B, \lnot A, B, A}
+            \infer1[\eqref{eq:reduction:lnot:right}]{A\limplies B\seq\lnot A\lor B, \lnot A, B, A}
+            \infer2[\eqref{eq:reduction:limplies:left}]{A\limplies B\seq\lnot A\lor B, \lnot A, B}
+            \infer1[\eqref{eq:reduction:lor:right}]{A\limplies B\seq\lnot A\lor B}
+        \end{prooftree}
+    \end{equation*}
+    As both of the branches of the tree halt,
+    the sequent is provable.
+\end{example}
+
+\begin{exercise}[8.3.1]\label{exe:8.3.1}
+    Construct a reduction tree for the sequent
+    \(\lnot\exists xF(x)\seq \forall y\lnot F(y)\) in \LK{}.
+\end{exercise}
+
+\begin{exercise}[8.3.2]\label{exe:8.3.2}
+    Construct a reduction tree for the sequent
+    \(\exists x\arcs{A(x)\limplies B(x)}\seq \forall xA(x)\limplies\exists xB(x)\) in \LK{}.
+\end{exercise}
+
+\begin{example}[Infinite reduction tree]\label{exa:infinite reduction tree}
+    Let us observe the sequent \(\forall x\exists yA(x,y)\seq\) and its reduction tree:
+\begin{equation*}
+    \begin{prooftree}
+        \hypo{\infty}
+        \ellipsis{\eqref{eq:reduction:else}}{A(a,b),\exists yA(a,y),\forall x\exists yA(x,y)\seq}
+        \infer1[\eqref{eq:reduction:else}]{A(a,b),\exists yA(a,y),\forall x\exists yA(x,y)\seq}
+        \infer1[\eqref{eq:reduction:else}]{A(a,b),\exists yA(a,y),\forall x\exists yA(x,y)\seq}
+        \infer1[\eqref{eq:reduction:exists:left}]{\exists yA(a,y), \forall x\exists yA(x,y)\seq}
+        \infer1[\eqref{eq:reduction:forall:left}]{\forall x\exists yA(x,y)\seq}
+    \end{prooftree}
+\end{equation*}
+Therefore the contradiction at the root of the tree cannot be proven.
+\end{example}
+
+Equipped with this new tool, we may now show that validity implies provability.
+
+\begin{theorem}[Completeness of \LK{}: validity implies provability]\label{the:validity implies provability}
+    If a formula \(A\) is valid in \LK, then it is provable in \LK.
+    In other words, \LK{} is a \emph{complete} logical system.
+\end{theorem}
+
+\begin{proof}
+    Let \(\Gamma\seq\Delta\) be an \emph{unprovable} sequent in \LK{}.
+    We construct an interpretation \(\interp=\tuple{\tuple{D,\phi},\phi_0}\),
+    which does \emph{not} satisfy \(\Gamma\seq\Delta\).
+
+    By the first assumption, there is an infinite branch in
+    the reduction tree \(T\arcs{\Gamma\seq\Delta}\).
+    If \(\Gamma_i,\Delta_i\in T\arcs{\Gamma\seq\Delta}\) and we define
+    \begin{equation*}
+        \cup\Gamma = \set{A \mid A\in\Gamma_i}
+        \quad\text{and}\quad
+        \cup\Delta = \set{B \mid B\in\Delta_i}
+        \,,
+    \end{equation*}
+    then there can be no predicate constants \(R\arcs{\ldots}\) nor
+    free independent variables \(a_i\), so that
+    \begin{equation*}
+        R\arcs{a_1,\ldots,a_n}\in \cup\Gamma\cap\cup\Delta,
+    \end{equation*}
+    as the sets \(\cup\Gamma\) and \(\cup\Delta\) are separate.
+
+    For simplicity, we assume that there are no individual
+    function constants \(f\) in our language \(L\), so the only
+    free individual variables \(a\) are the only terms of \(L\).
+    We can then define our interpretation
+    \(\interp=\tuple{\tuple{D,\phi},\phi_0}\) as follows:
+    we let \(D = \set{a_0,a_1,\ldots}\) and define the relation
+    \begin{equation*}
+        \phi = \left\{
+            \begin{aligned}
+                &\arcs{a_1,\ldots,a_n}\in\phi(R) \iff R(a_1,\ldots,a_n)\in\cup\Gamma, \\
+                &\phi(a) = \phi_0(a) = a \\
+                &\phi(x) = \phi_0(x) = x \\
+            \end{aligned}
+        \right.\,.
+    \end{equation*}
+    Notice that if \(\arcs{a_1,\ldots,a_n}\in\phi(R)\),
+    then \( R(a_1,\ldots,a_n)\notin\cup\Delta\).
+    Also, if \(R(a_1,\ldots,a_n)\in\cup\Delta\),
+    then \( R(a_1,\ldots,a_n)\notin\cup\Gamma\) and
+    \(\arcs{a_1,\ldots,a_n}\notin\phi(R)\).
+
+    We now induce on the number of logical symbols \(n\) in a formula \(A\),
+    and show that the intrepretation \(\interp\) defined above
+    satisfies all formulae in \(\cup\Gamma\),
+    but none in \(\cup\Delta\). In the base case \(n=0\),
+    so \(A\) is a predicate constant \(R\). By definition,
+    any predicate constant \(R\arcs{a_1,\ldots,a_n}\) is
+    in \(\cup\Gamma\) and satisfied by \(\interp\),
+    whereas any \(R\arcs{a_1,\ldots,a_n}\in\cup\Delta\)
+    is not satisfied. The claim then holds for \(n=0\).
+
+    We then make the inductive hypothesis \IH{} that the interpretation
+    \(\interp\) satisfies all logical formulae \(A\in\cup\Gamma\) with \(n\leq k\)
+    logical symbols, whereas it does not satisfy any formulae \(B\in\cup\Delta\)
+    with the same constraint on \(n\). In the inductive step,
+    we once again add one logical symbol at a time, and show
+    that satisfiability is preserved.
+
+    If \(A = \lnot C\in\cup\Gamma\), then it appears in \(\Gamma_i\)
+    during some build step \(i\), and will remain there from then on.
+    However, it will never appear on the right in \(\cup\lambda\),
+    because by definition, the reduction tree would then \halt{},
+    which contradicts our assumptions.
+    We now produce the formula \(C\in\cup\Delta\)
+    by applying \eqref{eq:reduction:lnot:left}.
+    According to \IH{}, \(\interp\) does not satisfy \(C\in\cup\Delta\),
+    meaning \(\lnot C\in\cup\Gamma\) is satisfied.
+    The case where \(A = \lnot C\in\cup\Delta\)
+    is entirely symmetric to this proof, so induction is closed
+    on the symbol \(\lnot\).
+
+    Now let \(A = C\land D\in\cup\Gamma\). This again means that
+    after some build step \(i\) the formula \(C\land D\) appears
+    in the reduction tree, and we can apply \eqref{eq:reduction:land:left}
+    to produce the sequence \(C,D\).
+    Now according to the \IH{}, the individual formulae \(C\)
+    and \(D\) are satisfied by \(\interp\), meaning that
+    \(C\land D\) is satisfied by definition.
+
+    If \(A = C\land D\in\cup\Delta\), it will appear on the right
+    side of the reduction tree after some build step \(i\),
+    and we can use \eqref{eq:reduction:land:right} to produce \(C\) and \(D\).
+    According to \IH{}, \(\interp\) satisfies neither \(C\) nor \(D\).
+    Again, this leads to \(C\land D\in\cup\Delta\) \emph{not} being satisfied
+    by definition, closing the induction on the symbol \(\land\).
+
+    \begin{exercise}[8.3.3]\label{exe:8.3.3}
+        Show that the inductive step maintains
+        the satisfiability in  the interpretation \(\interp\)
+        for the symbol \(\lor\).
+    \end{exercise}
+
+    If \(A = C\limplies D\in\cup\Delta\), then by the inductive hypothesis
+    \(\interp\) does not satisfy \(D\), but satisfies \(C\).
+    Therefore \(C\limplies D\) is not satisfied in \(\interp\).
+    A more complex case is when \(A = C\limplies D\in\cup\Gamma\),
+    as \eqref{eq:reduction:limplies:left} causes a split in the reduction tree:
+    \begin{enumerate}
+        \item
+            If the tree does not \halt{} on the right,
+            then \(C\in\cup\Delta\) is not satisfied in \(\interp\),
+            and \(C\limplies D\in\cup\Gamma\) must be satisfied.
+        \item
+            If the tree does not \halt{} on the left,
+            then \(D\in\cup\Gamma\) is satisfied and \(C\limplies D\in\cup\Gamma\)
+            must be satisfied by definition.
+    \end{enumerate}
+    This closes the induction on the symbol \(\limplies\).
+
+    Assuming that \(A = \forall xC(x)\in\cup\Gamma\),
+    at some point we may apply \eqref{eq:reduction:forall:left}
+    to produce \(C(a)\in\cup\Gamma\). By the inductive hypothesis,
+    \(C(a)\) is satisfied by \(\interp\) for any assignment \(\phi_0\),
+    and therefore \(\forall xC(x)\in\cup\Gamma\) is satisfied in
+    \(\interp\) by definition.
+
+    To save page space, the rest of the cases are omitted,
+    as they are \emph{very} similar and based
+    entirely on the definitions. This closes the induction.
+\end{proof}
+
+Together with theorem~\ref{the:provability implies validity},
+theorem~\ref{the:validity implies provability}
+shows that \LK{} is complete.

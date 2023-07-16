@@ -1,0 +1,349 @@
+\section{\texorpdfstring{The Cut-elimination theorem in \LK}{The Cut-elimination theorem in LK}}
+
+This theorem is also known as \emph{Gentzen's Haubtsatz}.
+In short, the theorem goes as follows: If a theorem is provable,
+then it is provable without~\eqref{eq:cut}.
+We need multiple assisting results,
+before this can be proven,
+and some of the details will be omitted for brevity.
+
+\begin{lemma}[The mix rule, Lemma 5.2]\label{lem:mix rule}
+    Let \(\Gamma\), \(\Delta\), \(\Delta^\ast\), \(\Pi\), \(\Pi^\ast\) and \(\Lambda\) be sequence formulae
+    and \(A\) a single formula, such that \(A\in\Delta\), \(A\in\Pi\),
+    \(A\notin\Delta^\ast\) and \(A\notin\Pi^\ast\). Then the rule~\eqref{eq:cut}
+    can be replaced by the rule
+    \begin{equation}\label{eq:mix}\tag{mix}
+        \begin{prooftree}
+            \hypo{\Gamma\seq\Delta}
+            \hypo{\Pi\seq\Lambda}
+            \infer2[\(\eqref{eq:mix}:A\)]{\Gamma,\Pi^\ast\seq\Delta^\ast\Lambda}
+        \end{prooftree}\,.
+    \end{equation}
+\end{lemma}
+
+\begin{proof}
+    Let the number of instances of \(A\) in the sequence
+    formulae \(\Delta\) and \(\Pi\) be \(k\) and \(l\),
+    respectively. Also assume that the rule~\eqref{eq:cut}
+    is usable in the following manner:
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{\Gamma\seq\Delta, A}
+            \hypo{A, \Pi\seq\Lambda}
+            \infer2[\eqref{eq:cut}]{\Gamma,\Pi\seq\Delta,\Lambda}
+        \end{prooftree}\,.
+    \end{equation*}
+    The same result can be obtained by applying the \eqref{eq:mix} rule with respect to \(A\):
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{\Gamma\seq\Delta, A}
+            \hypo{A, \Pi\seq\Lambda}
+            \infer2[\(\eqref{eq:mix}:A\)]{\Gamma,\Pi^\ast\seq\Delta^\ast,\Lambda}
+            \infer[rule style=double]1[\(l\times\eqref{eq:weakening:left}\) and \eqref{eq:exchange:left}]{
+                \Gamma,\Pi\seq\Delta^\ast,\Lambda
+            }
+            \infer[rule style=double]1[\(k\times\eqref{eq:weakening:right}\) and \eqref{eq:exchange:right}]{
+                \Gamma,\Pi\seq\Delta,\Lambda
+            }
+        \end{prooftree}
+    \end{equation*}
+
+    Then assume that the \eqref{eq:mix} rule with respect to \(A\) can be used in the proof
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{\Gamma\seq\Delta}
+            \hypo{\Pi\seq\Lambda}
+            \infer2[\(\eqref{eq:mix}:A\)]{\Gamma,\Pi^\ast\seq\Delta^\ast,\Lambda}
+        \end{prooftree} \,.
+    \end{equation*}
+    If we now assume that \(l\geq k\), the \eqref{eq:cut} rule can be used to prove the same theorem:
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{\Gamma\seq\Delta}
+            \infer[rule style=double]1[\eqref{eq:exchange:right}]{\Gamma\seq\Delta^\ast, A,\ldots, A}
+            \infer[rule style=double]1[\eqref{eq:contraction:right}]{\Gamma\seq\Delta^\ast, A}
+            \hypo{\Pi\seq\Lambda}
+            \infer[rule style=double,left label=\eqref{eq:exchange:left}]1{A,\ldots,A,\Pi^\ast\seq\Lambda}
+            \infer[rule style=double,left label=\eqref{eq:contraction:left}]1{A,\Pi^\ast\seq\Lambda}
+            \infer2[\eqref{eq:cut}]{\Gamma,\Pi^\ast\seq\Delta^\ast,\Lambda}
+        \end{prooftree}\,.
+    \end{equation*}
+    Therefore the rules \eqref{eq:cut} and \eqref{eq:mix} are equivalent in \LK.
+\end{proof}
+
+\begin{definition}[Rank of a proof]\label{def:rank of a proof}
+    The \emph{rank} of a proof \(P\) is the supremum of the lengths
+    of \eqref{eq:cut} formulae in \(P\), the longest formula
+    removed from the proof by applying the~\eqref{eq:cut} rule
+    in some inference.
+\end{definition}
+
+\begin{minipage}{0.7\textwidth}
+The rank of a proof can also be formulated in another manner
+using the \eqref{eq:mix} rule. But first let us consider the \emph{linear}
+proof seen to the right of this paragraph. The \emph{left rank}
+of this proof with respect to the formula \(A\),
+\(\rank_{l,A}(P)\), is defined as the number of sequents
+\(\Gamma_i\seq\Delta_i\) with the formula \(A\in\Gamma_i\).
+Similarly, the \emph{right rank} with respect to the formula \(B\),
+\(\rank_{r,B}(P)\), is the number of sequents \(\Gamma_j\seq\Delta_j\)
+with \(B\in\Delta_j\). Here \(\rank_{l,A}(P) = \rank_{r,B}(P) = 3\).
+\end{minipage}
+\hfill
+\begin{minipage}{0.3\textwidth}
+\begin{equation*}
+    \begin{prooftree}
+        \hypo{\Gamma_1(A)\seq\Delta_1(B)}
+        \infer1{\Gamma_2\seq\Delta_2(B)}
+        \infer1{\Gamma_3(A)\seq\Delta_3}
+        \infer1{\Gamma_4\seq\Delta_4(B)}
+        \infer1{\Gamma_5(A)\seq\Delta_5}
+    \end{prooftree}
+\end{equation*}
+\end{minipage}
+
+Now let us look at a branching tree.
+We will define the left and right \emph{maximum ranks}
+of the tree with respect to the formula \(A\) as follows:
+\begin{equation*}
+    \maxrank_{l,A}(P) = \max(\rank_{l,A}(P_i))
+    \qquad\text{and}\qquad
+    \maxrank_{l,A}(P) = \max(\rank_{l,A}(P_i)),
+\end{equation*}
+where each \(P_i\) is a linear path from the root
+to each leaf of the tree.
+
+Now let \(P\) be a proof of the sequent
+\(\Gamma,\Pi^*\seq\Delta^*,\Lambda\), whose last inference consists of
+using the~\eqref{eq:mix} rule to remove the formula \(A\), so that \(P\)
+has a left and a right branch \(P_l\) and \(P_r\) growing off the root,
+as is seen in the below proof sketch.
+
+\small
+\begin{equation*}
+    \begin{prooftree}
+        % Left branch
+        \hypo{\Gamma_1\seq\Delta_1(A)}
+        \infer1{}
+        \ellipsis{}{}
+        \hypo{\Gamma_2\seq\Delta_2(A)}
+        \hypo{\Gamma_4\seq\Delta_4(A)}
+        \ellipsis{}{}
+        \infer1{\Gamma_3\seq\Delta_3(A)}
+        \infer2{}
+        \ellipsis{}{}
+        \infer2{\Gamma\seq\Delta(A)}
+        \delims{P_l\left\{}{\right.}
+        % Right branch
+        \hypo{\Pi_4(A)\seq\Lambda_4}
+        \infer1{}
+        \ellipsis{}{}
+        \hypo{\Pi_3(A)\seq\Lambda_3}
+        \ellipsis{}{}
+        \infer1{\Pi_2(A)\seq\Lambda_2}
+        \hypo{\Pi_1(A)\seq\Lambda_1}
+        \infer2{}
+        \ellipsis{}{}
+        \infer2{\Pi(A)\seq\Lambda}
+        \delims{\left.}{\right\}P_r}
+        \infer2[\(\eqref{eq:mix}:A\)]{\Gamma,\Pi^*\seq\Delta^*,\Lambda}
+    \end{prooftree}
+\end{equation*}
+\normalsize
+
+The rank of the above proof tree with respect to the~\eqref{eq:mix} formula \(A\)
+is now defined as follows:
+\begin{equation*}
+    \rank_A(P) = \maxrank_{r,A}(P_l) + \maxrank_{l,A}(P_r) \geq 2 \,.
+\end{equation*}
+Here the lower limit \(2\) stems from the fact that
+an application of the mix rule requires that there
+be at least \(1\) instance of \(A\) in both \(P_l\) and \(P_r\).
+
+\begin{definition}[The grade of a proof]\label{def:grade of a proof}
+    The \emph{grade} of a proof \(P\) with an application of the \eqref{eq:mix}
+    rule is the number of logical symbols in the \eqref{eq:mix} formula \(A\).
+    In other words, we can set \(\grade(P) = \grade(A)\).
+\end{definition}
+
+With these definitions in place, we can now prove the following lemma.
+It is the second central result in proving the \eqref{eq:cut}-elimination theorem,
+and claims that proofs with \eqref{eq:mix} rules also work without them.
+
+\begin{lemma}[Lemma 5.4]\label{lem:5.4}
+Assume that the set of proofs \(\LK^\ast\) is obtained from
+the set \LK{} by replacing the \eqref{eq:cut} rule by
+the \eqref{eq:mix} rule. Assume that \(S\) is a sequent,
+whose proof~\(P\in\LK^\ast\), such that the last inference rule of \(P\)
+is the only instance of \eqref{eq:mix} in \(P\).
+Then \(P\in\LK\).
+\end{lemma}
+
+\begin{proof}[Sketch of the proof]
+    By double induction on the rank of the proof \(P\),
+    denoted with \(n\). There are two cases:
+    either \(\rank_A(P) = 2\), or \(\rank_A(P) > 2\).
+
+    In the base case, let \(n=2\). Then by the above definitions,
+    we know that
+    \begin{equation*}
+    \maxrank_{r,A}(P_l) = 1 = \maxrank_{l,A}(P_r)\,.
+    \end{equation*}
+    But for this to be true, the last inference must go as follows:
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{A\seq A}
+            \hypo{\Pi(A)\seq\Lambda}
+            \infer2[\(\eqref{eq:mix}:A\)]{A,\Pi^*\seq,\Lambda}
+        \end{prooftree}
+        \quad\text{or}\quad
+        \begin{prooftree}
+            \hypo{\Gamma\seq\Delta(A)}
+            \hypo{A\seq A}
+            \infer2[\(\eqref{eq:mix}:A\)]{A,\Pi^*\seq,\Lambda}\,.
+        \end{prooftree}
+    \end{equation*}
+    The left inference can be replaced with the following \eqref{eq:mix}-free proof:
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{\Pi\seq\Lambda}
+            \infer[double]1[\eqref{eq:exchange:left}]{A,\ldots,A,\Pi^*\seq\Lambda}
+            \infer[double]1[\eqref{eq:contraction:left}]{A,\Pi^*\seq\Lambda}
+        \end{prooftree}
+    \end{equation*}
+    The case where the right upper sequent is the axiom
+    is entirely symmetrical.
+
+    Now what if the upper sequents \(\Gamma\seq\Delta\) and
+    \(\Pi\seq\Lambda\) in the \eqref{eq:mix} inference are not axioms?
+    Then they have to be obtained by at least one inference rule.
+    The only possible structural rule that can be applied to obtain
+    \(\Gamma\seq\Delta\) is \eqref{eq:weakening:right}
+    (assuming \(A\notin\Delta\)), because by assumption
+    \(\maxrank_{r,A}(P_l) \geq 2\). Then the last inference is
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{\Gamma\seq\Delta}
+            \infer1[\eqref{eq:weakening:right}, \(A\notin\Delta\)]{\Gamma\seq\Delta,A}
+            \hypo{\Pi\seq\Lambda}
+            \infer2{\Gamma,\Pi^*\seq\Delta,\Lambda}
+        \end{prooftree}\,.
+    \end{equation*}
+    This can be replaced with the \eqref{eq:mix} free proof
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{\Gamma\seq\Delta}
+            \infer[double]1[\eqref{eq:weakening:left}]{\Pi^*,\Gamma\seq\Delta}
+            \infer[double]1[\eqref{eq:weakening:right}]{\Pi^*,\Gamma\seq\Delta,\Lambda}
+            \infer[double]1[\eqref{eq:exchange:left}]{\Gamma,\Pi^*\seq\Delta,\Lambda}
+        \end{prooftree}\,.
+    \end{equation*}
+    In the case where \(\Pi\seq\Lambda\) is obtained by structural rules,
+    the arguments are done similarly.
+
+    For the case where both \(\Gamma\seq\Delta\) and \(\Pi\seq\Lambda\),
+    are obtained by logical inferences, we change our startegy.
+    We now induce on the \emph{grade} of the proof, the number
+    of logical symbols in the \eqref{eq:mix} formula \(A\).
+
+    In the base case, \(\grade(P) = 0\), so there is nothing to prove.
+    For the inductive hypothesis, we assume the claim holds for
+    \(\grade(P) = k\), and in the inductive step we add logical symbols
+    one at a time and show that we can still come up with a \eqref{eq:mix}
+    free version of the proof, closing the induction.
+
+    We start with \(\lnot\). In this case \(\Gamma\seq\Delta\) and \(\Pi\seq\Lambda\)
+    can be obtained as follows:
+    \begin{equation*}
+        P:
+        \begin{prooftree}
+            \hypo{A,\Gamma\seq\Delta}
+            \infer1[\eqref{eq:lnot:right}]{\Gamma\seq\Delta,\lnot A}
+            \hypo{\Pi\seq\Lambda,A}
+            \infer1[\eqref{eq:lnot:left}]{\lnot A,\Pi\seq\Lambda}
+            \infer2[\eqref{eq:mix}\(:\lnot A\)]{\Gamma,\Pi^*\seq\Delta^*,\Lambda}
+        \end{prooftree}\,.
+    \end{equation*}
+    Because there is no \(\lnot A\) in \(\Pi\) or \(\Delta\),
+    \(\Pi^* = \Pi\) and \(\Delta^*=\Delta\).
+    The above proof can then be replaced by the following proof
+    with the mix formula being \(A\) and not \(\lnot A\):
+    \begin{equation*}
+        P':
+        \begin{prooftree}
+            \hypo{\Pi\seq\Lambda,A}
+            \hypo{A,\Gamma\seq\Delta}
+            \infer2[\eqref{eq:mix}\(:A\)]{\Pi,\Gamma^*\seq\Lambda^*,\Delta}
+        \end{prooftree}\,.
+    \end{equation*}
+    By the inductive hypothesis \IH{}, this can be replaced by a \eqref{eq:mix} free proof \(P''\),
+    as \(\grade(A) < \grade(\lnot A)\) and \(P'\) contains only one use of \eqref{eq:mix}.
+    The missing formulae \(A\) can be obtained with \eqref{eq:weakening:left}
+    and \eqref{eq:weakening:right}, so
+    \begin{equation*}
+        P'':
+        \begin{prooftree}
+            \hypo{\IH}
+            \infer1{\Pi,\Gamma^*\seq\Lambda^*,\Delta}
+            \infer[double,left label=\eqref{eq:exchange:left}]1[\eqref{eq:exchange:right}]{\Gamma,\Pi^*\seq\Delta^*,\Lambda}
+        \end{prooftree}\,.
+    \end{equation*}
+    This closes induction on the symbol \(\lnot\).
+
+    If the \eqref{eq:mix} formula is \(C\limplies D\),
+    the proof \(P\) could end in the following manner:
+    \begin{equation*}
+        P:
+        \begin{prooftree}
+            \hypo{C,\Gamma\seq\Delta,D}
+            \infer1[\eqref{eq:limplies:right}]{\Gamma\seq\Delta,C\limplies D}
+            \hypo{\Pi\seq\Lambda}
+            \infer1[\eqref{eq:weakening:left}, \(C\limplies D\notin\Pi\)]{C\limplies D,\Pi\seq\Lambda}
+            \infer2[\eqref{eq:mix}\(:A\)]{\Pi,\Gamma^*\seq\Lambda^*,\Delta}
+        \end{prooftree}\,.
+    \end{equation*}
+    This can be replaced with the \eqref{eq:mix} free proof
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{\Pi\seq\Lambda}
+            \infer[double, left label={\eqref{eq:weakening:left}, \eqref{eq:exchange:left}}]1[\eqref{eq:weakening:right}, \eqref{eq:exchange:right}]{\Pi,\Gamma^*\seq\Lambda^*,\Delta}
+        \end{prooftree}\,.
+    \end{equation*}
+    There are also other ways that the sequents \(\Gamma\seq\Delta\) and
+    \(\Pi\seq\Lambda\) could be constructed via \(C\limplies D\),
+    but these are omitted. The rest of the logical connectives are also
+    omitted, as the manner in which the reader should proceed in
+    closing the induction in their case should be clear by now.
+
+    \paragraph{The case \(\bm{\rank_A(P) > 2}\).}
+    We use induction as follows:
+    for any proof \(Q\) where \eqref{eq:mix} is used only once,
+    it is the last inference, \(\grade(Q) < \grade(P)\) or
+    \(\grade(Q) = \grade(P)\), \eqref{eq:mix} can be removed.
+    It is then shown that \eqref{eq:mix} can also be replaced in \(P\).
+    We also omit the details here, for brevity.
+\end{proof}
+
+\begin{theorem}[Theorem 5.3]\label{the:5.3}
+    If a sequent \(S\) is provable by using the \eqref{eq:mix} rule,
+    then it is also provable without it.
+\end{theorem}
+
+\begin{proof}[An idea of the proof]
+    Let \(P\) be a proof of \(S\).
+    Now investigate some branch of \(P\),
+    where and instance of the \eqref{eq:mix} rule appears.
+    By lemma~\ref{lem:5.4}, this branch can be replaced by
+    a \eqref{eq:mix}-free proof \(Q\), ending in \(S\).
+    We continue applying this procedure to all
+    \eqref{eq:mix}-containing branches of \(P\),
+    until no branches with instances of the \eqref{eq:mix} rule
+    exist in \(P\). This concludes the proof.
+\end{proof}
+
+Together with Lemmas~\ref{lem:mix rule} and \ref{lem:5.4},
+Theorem~\ref{the:5.3} proves Gentzen's Haubsatz.
+
+\begin{theorem}[Theorem 5.5]\label{the:5.5}
+    The cut-elimination theorem also holds in \LJ.
+\end{theorem}

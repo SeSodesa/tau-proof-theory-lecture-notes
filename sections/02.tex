@@ -1,0 +1,704 @@
+\section{\texorpdfstring{The language of classical logic \LK}{The language of classical logic LK}}%
+\label{sec:lang-of-classical-logic}
+
+To be able to talk about any language, we must first define the set of symbols we are allowed to use.
+This set is know as the \emph{alphabet}.
+
+\begin{definition}[The alphabet of classical logic]%
+    \label{def:classical alphabet}
+    In the (formal) language of logic, valid strings consist of the following symbols:
+    \begin{enumerate}
+        \item\label{it:classical constants} Constants:
+            \begin{enumerate}
+                \item\label{it:classical constants individual}
+                    Individual constants: \(k_j, j\in\Nset\cup\set 0\).
+                \item\label{it:classical constants function}
+                    Function constants with \(i\) argument places: \(f_j^i : i\in\Nset,j\in\Nset\cup\set0\).
+                \item\label{it:classical constants predicates}
+                    Predicate constants with \(i\) argument places: \(R_j^i : i, j\in\Nset\)
+            \end{enumerate}
+        \item\label{it:classical variables} Variables:
+            \begin{enumerate}
+                \item\label{it:classical variables free} Free variables \(a_j, j\in\Nset\cup\set0\),
+                \item\label{it:classical variables bound} Bound variables \(x_j, j\in\Nset\cup\set0\)
+            \end{enumerate}
+        \item\label{it:classical logical symbols} The logical symbols \(\lnot\) (not), \(\land\) (and), \(\lor\) (or), \(\limplies\) (implies),
+            \(\forall\) (for all) and \(\exists\). The first four are called \emph{propositional connectives}
+            and the last two are so-called \emph{quantifiers}.
+        \item\label{it:classical auciliary symbols} Auxiliary symbols: parentheses \((\) and \()\), and the comma \(,\).
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}[Term]%
+    \label{def:classical term}
+    The \emph{terms} or \emph{words} of the language of classical logic are defined recursively or inductively as follows:
+    \begin{enumerate}
+        \item\label{it:classical term 1}
+            Every individual constant \(k_j\) is a term.
+        \item\label{it:classical term 2}
+            Every free variable \(a_j\) is a term.
+        \item\label{it:classical term 3}
+            If \(f^i\) is a function constant with \(i\) argument places and \(t_1,\ldots,t_i\) are terms,
+            then \(f\arcs{t_1,\ldots,t_i}\) is a term.
+        \item\label{it:classical term4}
+            Terms are defined only by the items~\ref{it:classical term 1}--\ref{it:classical term 3} of this definition.
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}[Formulae and their outermost logical symbols]%
+    \label{def:formulae and outermost logical symbols}
+    If \(R^i\) is a predicate constant with \(i\) argument places and \(t_1,\ldots,t_i\) are terms,
+    then \(R\arcs{t_1,\ldots,t_i}\) is an \emph{atomic formula}.
+    \emph{Formulae} and their \emph{outermost logical symbols} are defined recursively as follows:
+    \begin{enumerate}
+        \item\label{it:formula 1}
+            Every atomic formula is a formula. It has no outermost logical symbol.
+        \item\label{it:formula 2}
+            If \(A\) and \(B\) are formulae, then \(\arcs{\lnot A}\), \(\arcs{A\land B}\),
+            \(\arcs{A\lor B}\) and \(\arcs{A\limplies B}\) are formulae.
+            Their outermost logical symbols are \(\lnot\), \(\land\),
+            \(\lor\) and \(\limplies\), respectively.
+        \item\label{it:formula 3}
+            If \(A(a)\) is a formula, where \(a\) is a free variable and
+            a bound variable \(x\notin A\),
+            then \(\forall x A(x)\) and \(\exists x A(x)\) are formulae.
+            Here \(A(x)\) refers to the expression obtained from \(A(a)\),
+            by replacing every occurrence of \(a\) with \(x\), wherever \(a\)
+            occurs in \(A\).
+            The outermost logical symbols of these formulae are \(\forall\) and \(\exists\), respectively.
+        \item\label{it:formula 4}
+            Formulae are only those expressions obtained by applying
+            the items~\ref{it:formula 1}--\ref{it:formula 3}
+            of this definition.
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}[The alphabet of formulae]\label{def:alphabet of formulae}
+    The capital letters \(A_j, B_j, C_j, \ldots\) with or without the subindices
+    \(j \in \Nset\cup\set0\) denote formulae. The Greek capital letters
+    \(\Gamma_j, \Delta_j, \Pi_j,\ldots\) with or without the subindices
+    \(j\in\Nset\cup\set0\) denote (finite) \emph{sequences} of formulae.
+\end{definition}
+
+For example, \(\Gamma: A_1, A_2(a), \exists x A_3(x), \forall y A_4(y)\) is a finite sequence,
+as is \(\Delta: B_1, \exists x B_2(x)\).
+
+
+\subsection{\texorpdfstring{Sequents, inferences and proofs in \LK}{Sequents, inferences and proofs in LK}}
+
+\begin{definition}[Sequents, antecedents and succedents]%
+    \label{def:sequent}
+    If \(\Gamma\) and \(\Delta\) are sequences of formulae,
+    then the expression \(\Gamma\seq\Delta\) is the \emph{sequent} of the two sequences.
+    Here \(\Gamma\) is the \emph{antecedent} and \(\Delta\) the \emph{succedent}
+    of the sequent.
+\end{definition}
+
+The natural meaning of \(A_1, \ldots,A_m\seq B_1,\ldots,B_n\) is that
+\begin{center}
+''If \(A_1\) and \(\cdots\) and \(A_m\), then \(B_1\) or \(\cdots\) or \(B_n\)''.
+\end{center}
+Note that the symbol \(\seq\) does not correspond to \(\limplies\).
+
+\begin{definition}[Axioms]%
+    \label{def:axiom}
+    Sequents of the form \(A\seq A\) are called \emph{initial sequents} or \emph{axioms}.
+\end{definition}
+
+\begin{definition}[Contradiction and provability]%
+    \label{def:contradiction and provability}
+    A sequent without a succedent such as \(A_1, \ldots,A_m\seq\)
+    is used to denote that \(A_1, \ldots,A_m\) yields a \emph{contradiction}.
+    A sequent without an antecedent such as \(\seq B_1,\ldots,B_m\) means that
+    \(B_1,\ldots,B_m\) is a \emph{provable}, or that \(B_1,\ldots,B_m\) \emph{holds}.
+    A sequent with neither an antecedent or a succedent, as in \(\seq\),
+    means that \emph{There is a contradiction}.
+\end{definition}
+
+\begin{definition}[Inferences, lower and upper sequents]%
+    \label{def:inference}
+    An \emph{inference} is an expression
+    \begin{center}
+    \begin{prooftree}
+        \hypo{S_1}\infer1{S}
+    \end{prooftree}
+    \quad
+    or
+    \quad
+    \begin{prooftree}
+        \hypo{S_1}\hypo{S_2}\infer2{S}
+    \end{prooftree}
+    \end{center}
+    where \(S_1\) and \(S_2\) are \emph{upper sequents} or \emph{predecessors} and \(S\)
+    is a \emph{lower sequent} or \emph{successor}.
+\end{definition}
+
+The meaning of this notation is that if \(S_1\) and \(S_2\) are given,
+\(S\) can be inferred from them. This inference could consist of multiple
+individual inferences in sequence.
+
+\begin{definition}[Proofs in \LK]\label{def:proof in LK}
+    In classical logic \LK, a \emph{proof} \(P\)
+    is a \emph{tree} of sequents, where
+    \begin{enumerate}
+        \item
+            the leaves or \emph{premises} are axioms \(A\seq A\),
+        \item
+            the root or \emph{conclusion} of \(P\) has no lower sequents (or successors) and
+        \item
+            for every other sequent \(\Gamma_i\seq\Delta_i\in P\)
+            there exists a sequent \(\Gamma_j\seq\Delta_j\in P\), so that
+            \begin{equation*}
+            \begin{prooftree}
+                \hypo{\Gamma_i\seq\Delta_i}
+                \infer1{\Gamma_j\seq\Delta_j}
+            \end{prooftree}\,.
+            \end{equation*}
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}[Inference rules in \LK]%
+\label{def:inference rules in LK}
+The following \emph{left} and \emph{right inference rules} are allowed in classical logic.
+\begin{enumerate}
+    \item\label{it:structural rules} Structural rules:
+        \begin{enumerate}
+            \item\label{it:weakening} Weakening:
+                \begin{equation}
+                    \tag{weakening:left}
+                    \label{eq:weakening:left}
+                    \begin{prooftree}
+                        \hypo{\Gamma\seq\Delta}
+                        \infer1{D, \Gamma\seq\Delta}
+                    \end{prooftree}
+                \end{equation}
+                \begin{equation}
+                    \tag{weakening:right}
+                    \label{eq:weakening:right}
+                    \begin{prooftree}
+                        \hypo{\Gamma\seq\Delta}
+                        \infer1{\Gamma\seq\Delta, D}
+                    \end{prooftree}
+                \end{equation}
+                Here \(D\) is called the \emph{weakening formula}.
+            \item\label{it:contraction} Contraction:
+                \begin{equation}
+                    \tag{contraction:left}
+                    \label{eq:contraction:left}
+                    \begin{prooftree}
+                        \hypo{D, D, \Gamma\seq\Delta}
+                        \infer1{D, \Gamma\seq\Delta}
+                    \end{prooftree}
+                \end{equation}
+                \begin{equation}
+                    \tag{contraction:right}
+                    \label{eq:contraction:right}
+                    \begin{prooftree}
+                        \hypo{\Gamma\seq\Delta, D, D}
+                        \infer1{\Gamma\seq\Delta, D}
+                    \end{prooftree}
+                \end{equation}
+            \item\label{it:exchange} Exchange:
+                \begin{equation}
+                    \tag{exchange:left}
+                    \label{eq:exchange:left}
+                    \begin{prooftree}
+                        \hypo{\Gamma,C, D, \Pi\seq\Delta}
+                        \infer1{\Gamma, D, C, \Pi\seq\Delta}
+                    \end{prooftree}
+                \end{equation}
+                \begin{equation}
+                    \tag{exchange:right}%
+                    \label{eq:exchange:right}
+                    \begin{prooftree}
+                        \hypo{\Gamma\seq\Delta, C, D, \Lambda}
+                        \infer1{\Gamma\seq\Delta, D, C, \Lambda}
+                    \end{prooftree}
+                \end{equation}
+            \item\label{it:cut} Cut:
+                \begin{equation}
+                    \tag{cut}
+                    \label{eq:cut}
+                    \begin{prooftree}
+                        \hypo{\Gamma\seq\Delta, D}
+                        \hypo{D, \Pi\seq\Lambda}
+                        \infer2{\Gamma, \Pi\seq\Delta, \Lambda}
+                    \end{prooftree}
+                \end{equation}
+        \end{enumerate}
+    \item\label{it:logical rules} Logical rules:
+        \begin{enumerate}
+            \item\label{it:negation} Negation:
+                \begin{equation}
+                    \tag{\(\lnot\):left}
+                    \label{eq:lnot:left}
+                    \begin{prooftree}
+                        \hypo{\Gamma\seq\Delta, D}
+                        \infer1{\lnot D, \Gamma\seq\Delta}
+                    \end{prooftree}
+                \end{equation}
+                \begin{equation}
+                    \tag{\(\lnot\):right}
+                    \label{eq:lnot:right}
+                    \begin{prooftree}
+                        \hypo{D, \Gamma\seq\Delta}
+                        \infer1{\Gamma\seq\Delta, \lnot D}
+                    \end{prooftree}
+                \end{equation}
+                Here \(D\) and \(\lnot D\) are the \emph{auxiliary} and \emph{principal} formulae
+                of this inference, respectively.
+            \item\label{it:conjugation} Conjugation:
+                \begin{equation}
+                    \tag{\(\land\):left}
+                    \label{eq:land:left}
+                    \begin{prooftree}
+                        \hypo{C, \Gamma\seq\Delta}
+                        \infer1{C\land D, \Gamma\seq\Delta}
+                    \end{prooftree}
+                    \quad\text{and}\quad
+                    \begin{prooftree}
+                        \hypo{D,\Gamma\seq\Delta}
+                        \infer1{C\land D, \Gamma\seq\Delta}
+                    \end{prooftree}
+                \end{equation}
+                \begin{equation}
+                    \tag{\(\land\):right}
+                    \label{eq:land:right}
+                    \begin{prooftree}
+                        \hypo{\Gamma\seq\Delta, C}
+                        \hypo{\Gamma\seq\Delta, D}
+                        \infer2{\Gamma\seq\Delta, C\land D}
+                    \end{prooftree}
+                \end{equation}
+                Here \(C\) and \(D\) are the \emph{auxiliary} formulae and \(C\land D\) the \emph{principal} formula
+                of this inference.
+            \item\label{it:disjunction} Disjunction:
+                \begin{equation}
+                    \tag{\(\lor\):left}
+                    \label{eq:lor:left}
+                    \begin{prooftree}
+                        \hypo{C, \Gamma\seq\Delta}
+                        \hypo{D, \Gamma\seq\Delta}
+                        \infer2{C\lor D, \Gamma\seq\Delta}
+                    \end{prooftree}
+                \end{equation}
+                \begin{equation}
+                    \tag{\(\lor\):right}
+                    \label{eq:lor:right}
+                    \begin{prooftree}
+                        \hypo{\Gamma\seq\Delta, C}
+                        \infer1{\Gamma\seq\Delta, C\lor D}
+                    \end{prooftree}
+                    \quad\text{and}\quad
+                    \begin{prooftree}
+                        \hypo{\Gamma\seq\Delta, D}
+                        \infer1{\Gamma\seq\Delta, C\lor D}
+                    \end{prooftree}
+                \end{equation}
+                Here \(C\) and \(D\) are the \emph{auxiliary} formulae and \(C\lor D\) the \emph{principal} formula
+                of this inference.
+            \item\label{implication} Implication:
+                \begin{equation}
+                    \tag{\(\limplies\):left}
+                    \label{eq:limplies:left}
+                    \begin{prooftree}
+                        \hypo{\Gamma\seq\Delta, C}
+                        \hypo{D, \Pi\seq\Lambda}
+                        \infer2{C\limplies D, \Gamma, \Pi\seq\Delta, \Lambda}
+                    \end{prooftree}
+                \end{equation}
+                \begin{equation}
+                    \tag{\(\limplies\):right}
+                    \label{eq:limplies:right}
+                    \begin{prooftree}
+                        \hypo{C, \Gamma\seq\Delta, D}
+                        \infer1{\Gamma\seq\Delta, C\limplies D}
+                    \end{prooftree}
+                \end{equation}
+                Here \(C\) and \(D\) are the \emph{auxiliary} formulae and \(C\limplies D\) the \emph{principal} formula
+                of this inference.
+            \item\label{it:universality} Universality:
+                \begin{equation}
+                    \tag{\(\forall\):left}
+                    \label{eq:forall:left}
+                    \begin{prooftree}
+                        \hypo{F(t), \Gamma\seq\Delta}
+                        \infer1{\forall x F(x), \Gamma\seq\Delta}
+                    \end{prooftree}
+                \end{equation}
+                \begin{equation}
+                    \tag{\(\forall\):right}
+                    \label{eq:forall:right}
+                    \begin{prooftree}
+                        \hypo{\Gamma\seq\Delta, F(a)}
+                        \infer1{\Gamma\seq\Delta, \forall xF(x)}
+                    \end{prooftree}
+                \end{equation}
+                Here \(t\) is an arbitrary term and \(a\) does not occur in the lower sequent.
+                \(F(t)\) and \(F(a)\) are the \emph{auxiliary formulae}, whereas \(\forall xF(x)\)
+                is the \emph{principal formula} of this inference.
+            \item\label{it:existence} Existence:
+                \begin{equation}
+                    \tag{\(\exists\):left}
+                    \label{eq:exists:left}
+                    \begin{prooftree}
+                        \hypo{F(a), \Gamma\seq\Delta}
+                        \infer1{\exists{}x F(x), \Gamma\seq\Delta}
+                    \end{prooftree}
+                \end{equation}
+                \begin{equation}
+                    \tag{\(\exists\):right}
+                    \label{eq:exists:right}
+                    \begin{prooftree}
+                        \hypo{\Gamma\seq\Delta, F(t)}
+                        \infer1{\Gamma\seq\Delta, \exists{}xF(x)}
+                    \end{prooftree}
+                \end{equation}
+                Again, here \(a\) does not occur in the lower sequent and \(t\) is an arbitrary term.
+                \(F(t)\) and \(F(a)\) are the \emph{auxiliary formulae}, whereas \(\forall xF(x)\)
+                is the \emph{principal formula} of this inference.
+        \end{enumerate}
+\end{enumerate}
+\end{definition}
+
+\paragraph{Note:}
+Proof manipulation using inference rules always happens ''at the ends'' of sequents:
+the first formula on the left of \(\seq\) and the last formula on the right of \(\seq\).
+
+\begin{theorem}[Uniqueness of the axiom]%
+    \label{the:uniqueness of the axiom}
+    The sequent \(A\seq A\) is the only axiom.
+\end{theorem}
+
+\begin{proof}
+    For any sequent \(\Gamma\seq\Lambda\), there exists a finite proof tree
+    \begin{center}
+    \begin{prooftree}
+        \hypo{A\seq A}
+        \infer1{\vdots}
+        \hypo{B\seq B}
+        \infer1{\vdots}
+        \infer2{\Gamma_1\seq\Lambda_1}
+        \hypo{C\seq C}
+        \infer1{\vdots}
+        \infer2{\vdots}
+        \infer1{\Gamma\seq\Lambda}
+    \end{prooftree}
+    \end{center}
+\end{proof}
+
+If there is a tree whose root is \(\seq A\), then \(A\) is \LK-provable.
+If a proof does not use the cut rule of definition~\ref{def:inference rules in LK}.\ref{it:cut},
+then a proof is deemed \emph{cut free}.
+
+\begin{definition}[Equivalence]\label{def:equivalence}
+Two formulae \(A\) and \(B\) are \emph{equivalent},
+if and only if
+\begin{equation*}
+\begin{prooftree}
+    \hypo{\seq A\limplies B}
+    \hypo{\seq B\limplies A}
+    \infer2[\eqref{eq:land:right}]{\seq\arcs{A\limplies B}\land\arcs{B\limplies A}}
+\end{prooftree}\,.
+\end{equation*}
+This is denoted with \(A\equiv B\).
+\end{definition}
+
+\subsection{Metalanguage versus object language}
+
+In order to be able to discuss mathematics (or any other set of objects), we need to separate the ideas of
+\emph{object language} and \emph{metalanguage}. Metalanguage is the natural language
+that we use every day, whereas an object language consists of certain strings formed from
+a certain alphabet, with a specific goal of describing a certain set of objects.
+In this course, the object language is used to describe mathematical logic and
+is formed from the definitions~\ref{def:classical alphabet}--\ref{def:inference}.
+A hierarchical description of it is given in table~\ref{tab:language hierarchy}.
+
+\begin{tabenv}{Object language hierarchy from highest to lowest. Objects higher in the hierarchy are constructed from objects that are lower in the hierarchy.}%
+\label{tab:language hierarchy}
+\small
+\begin{tabular}{c|l|p{0.6\textwidth}}
+    \toprule
+    Object level& Object name & Examples\\
+    \midrule
+    6.  & Proofs    & {%
+        \begin{prooftree}
+            \hypo{A\seq{}A}
+            \infer1{\vdots}
+            \hypo{B\seq{}B}
+            \infer1{\vdots}
+            \infer2{\Gamma\seq\Delta}
+        \end{prooftree}
+        \qquad\qquad
+        \begin{prooftree}
+            \hypo{S_1}
+            \ellipsis{}{}
+            \hypo{S_2}
+            \ellipsis{}{}
+            \infer2{S_4}
+            \hypo{S_3}
+            \ellipsis{}{}
+            \infer2{S}
+        \end{prooftree}
+    }\\
+    \midrule
+    5.  & Inferences & {
+        \begin{prooftree}
+            \hypo{S_1}
+            \infer1{S}
+        \end{prooftree}
+        \qquad
+        \begin{prooftree}
+            \hypo{S_1}
+            \hypo{S_2}
+            \infer2{S}
+        \end{prooftree}
+    }\\
+    \midrule
+    4.  & Sequents  &   \(A_1,\ldots, A_m\seq B_1,\ldots,B_n\), \(\Gamma\seq\Delta\), \(\Pi\seq\Gamma\)\\
+    \midrule
+    3.  & Formulae  &   \(A, B, C,\ldots\), \(R\arcs{t_1,\ldots,t_n}\), \(a = b\), \(a + b = c\), \(0\mult a  = b \mult c\), \(a' = 0\),
+                        \(\forall x\arcs{x + b = c}\), \(\exists x\arcs{x = a} \lor \lnot\exists z\arcs{z = b}\)\\
+    \midrule
+    2.  & Terms     &   \(0, \ldots\), \(a, b, c, \ldots\), \(0 + a\), \(a\mult b\), \(0'\),
+i                       \(\arcs{a + b} \mult c\), \(t\), \(t_i\) \\
+    \midrule
+    1.  & Alphabet  &   \(0, \ldots\), \(a, b, c, \ldots\), \(x, y, z, \ldots\), \(+, \mult, ', \ldots\),
+    \(\lnot, \land,\lor, \limplies, \forall, \exists, = \), \(R\arcs{,\ldots,}\), \((\), \()\)\\
+    \bottomrule
+\end{tabular}
+\end{tabenv}
+
+\subsection{\texorpdfstring{Examples of proofs in \LK}{Examples of proofs in LK}}
+
+\begin{example}
+    To prove \(\seq A \lor\lnot A\), we reason as follows:
+\begin{equation*}
+    \begin{prooftree}
+        \hypo{A\seq A}
+        \infer1[\eqref{eq:lnot:right}]{\seq A, \lnot A}
+        \infer1[\eqref{eq:lor:right}]{\seq A, A\lor\lnot A}
+        \infer1[\eqref{eq:exchange:right}]{\seq A\lor\lnot A, A}
+        \infer1[\eqref{eq:lor:right}]{\seq A\lor\lnot A, A\lor\lnot A}
+        \infer1[\eqref{eq:contraction:right}]{\seq A \lor\lnot A}
+    \end{prooftree}
+\end{equation*}
+\end{example}
+
+\begin{example}[Fully indicated axiom]\label{exa:fully indicated axiom}
+    Fully indicated \(F(a)\) simply means that we may apply quantifier rules.
+    To prove \(\seq\lnot\forall y\lnot F(y)\limplies\exists x F(x)\),
+    we reason as follows:
+\begin{equation*}
+    \begin{prooftree}
+        \hypo{F(a)\seq F(a)}
+        \infer1[\eqref{eq:exists:right}]{F(a)\seq\exists x F(x)}
+        \infer1[\eqref{eq:lnot:right}]{\seq\exists x F(x), \lnot F(a)}
+        \infer1[\eqref{eq:forall:right}]{\seq\exists x F(x), \forall y \lnot F(y)}
+        \infer1[\eqref{eq:lnot:left}]{\lnot\forall y\lnot F(y)\seq\exists x F(x)}
+        \infer1[]{\seq\lnot\forall y\lnot F(y)\limplies\exists x F(x)}
+    \end{prooftree}
+\end{equation*}
+\end{example}
+
+
+
+\begin{example}[Exercise 2.5.1]\label{exa:2.5.1}
+    To prove \(A\lor B\equiv \lnot\arcs{\lnot A\land\lnot B}\) we need to prove two things,
+    according to the above note. First we show that
+    \(\seq A\lor B\limplies\lnot\arcs{\lnot A\land\lnot B}\):
+
+\begin{equation}\label{eq:equivalence example part 1}
+    \begin{prooftree}
+        % left branch
+        \hypo{A\seq A}
+        \infer1[\eqref{eq:lnot:left}]{\lnot A, A\seq}
+        \infer1[\eqref{eq:land:left}]{\lnot A\land\lnot B, A\seq}
+        \infer1[\eqref{eq:exchange:left}]{A, \lnot A\land\lnot B}
+        % right branch
+        \hypo{B\seq B}
+        \infer1[\eqref{eq:lnot:left}]{\lnot B, B\seq}
+        \infer1[\eqref{eq:land:left}]{\lnot A\land\lnot B, B\seq}
+        \infer1[\eqref{eq:exchange:left}]{B, \lnot A\land\lnot B}
+        % Trunk
+        \infer2[\eqref{eq:lor:left}]{A\lor B, \lnot A \land\lnot B\seq}
+        \infer1[\eqref{eq:exchange:left}]{\lnot A \land\lnot B, A\lor B\seq}
+        \infer1[\eqref{eq:lnot:right}]{A\lor B \seq\lnot\arcs{\lnot A \land\lnot B}}
+        \infer1[\eqref{eq:limplies:right}]{\seq A\lor B\limplies\lnot\arcs{\lnot A\land\lnot B}}
+    \end{prooftree}
+\end{equation}
+
+Then we prove the statement \(\seq\lnot\arcs{\lnot A \land\lnot B} \limplies A\lor B\):
+
+\begin{equation}\label{eq:equivalence example part 2}
+    \begin{prooftree}
+        \hypo{A\seq A}
+        \infer1[\eqref{eq:lor:right}]{A\seq A\lor B}
+        \infer1[\eqref{eq:lnot:right}]{\seq A\lor B, \lnot A}
+        \hypo{B\seq B}
+        \infer1[\eqref{eq:lor:right}]{B\seq A\lor B}
+        \infer1[\eqref{eq:lnot:right}]{\seq A\lor B, \lnot B}
+        \infer2[\eqref{eq:land:right}]{\seq A\lor B, \lnot A\land\lnot B}
+        \infer1[\eqref{eq:lnot:left}]{\lnot\arcs{\lnot A \land\lnot B}\seq A\lor B}
+        \infer1[\eqref{eq:limplies:right}]{\seq\lnot\arcs{\lnot A \land\lnot B}\limplies A\lor B}
+    \end{prooftree}
+\end{equation}
+
+As the valid proofs~\ref{eq:equivalence example part 1} and \ref{eq:equivalence example part 2}
+could be constructed, the claim holds. \qed
+\end{example}
+
+\begin{example}[Exercise 2.5.4]\label{exa:2.5.4}
+    We wish to show that \(\lnot\forall y F(y)\equiv\exists x\lnot F(x)\).
+    As per usual with equivalences, we need to do the proof in two parts.
+    First we show that \(\seq\lnot\forall y F(y)\limplies\exists x\lnot F(x)\):
+
+\begin{proof}
+    \begin{equation}\label{exe:2.5.4:eq:1}
+        \begin{prooftree}
+            \hypo{F(a)\seq F(a)}
+            \infer1[\eqref{eq:lnot:right}]{\seq F(a), \lnot F(a)}
+            \infer1[\eqref{eq:exists:right}]{\seq F(a), \exists x\lnot F(x)}
+            \infer1[\eqref{eq:exchange:right}]{\seq \exists x\lnot F(x), F(a)}
+            \infer1[\eqref{eq:forall:right}]{\seq \exists x\lnot F(x), \forall y F(y)}
+            \infer1[\eqref{eq:lnot:left}]{\lnot\forall y F(y)\seq \exists x\lnot F(x)}
+            \infer1[\eqref{eq:limplies:right}]{\seq\lnot\forall y F(y)\limplies\exists x\lnot F(x)}
+        \end{prooftree}
+    \end{equation}
+\end{proof}
+
+    Then we prove the statement in the opposite direction,
+    as in \(\seq\exists x\lnot F(x)\limplies\lnot\forall y F(y)\):
+
+    \begin{proof}
+        \begin{equation}\label{exe:2.5.4:eq:2}
+            \begin{prooftree}
+                \hypo{F(a)\seq F(a)}
+                \infer1[\eqref{eq:forall:left}]{\forall y F(y)\seq F(a)}
+                \infer1[\eqref{eq:lnot:right}]{\seq F(a), \lnot\forall y F(y)}
+                \infer1[\eqref{eq:exchange:right}]{\seq\lnot\forall y F(y), F(a)}
+                \infer1[\eqref{eq:lnot:left}]{\lnot F(a)\seq\lnot\forall yF(y)}
+                \infer1[\eqref{eq:exists:left}]{\exists x\lnot F(x)\seq\lnot\forall yF(y)}
+                \infer1[\eqref{eq:limplies:right}]{\seq\exists x\lnot F(x)\limplies\lnot\forall y F(y)}
+            \end{prooftree}
+        \end{equation}
+    \end{proof}
+
+    In light of proofs~\eqref{exe:2.5.4:eq:1} and \eqref{exe:2.5.4:eq:2}, the claim holds.
+\end{example}
+
+\begin{example}[Double negation in \LK]\label{exa:double negation in LK}
+    We prove the law of double negation in \LK{} as follows:
+\begin{equation*}
+    \begin{prooftree}
+        \hypo{A\seq A}
+        \infer1[\eqref{eq:lnot:left}]{\lnot A, A\seq}
+        \infer1[\eqref{eq:lnot:right}]{A\seq\lnot\lnot A}
+        \infer1[\eqref{eq:limplies:right}]{\seq A\limplies\lnot\lnot A}
+        \hypo{A\seq A}
+        \infer1[\eqref{eq:lnot:right}]{\seq A, \lnot A}
+        \infer1[\eqref{eq:lnot:left}]{\lnot\lnot A\seq A}
+        \infer1[\eqref{eq:limplies:right}]{\seq\lnot\lnot A\limplies A}
+        \infer2[\eqref{eq:land:right}]{\seq\arcs{A\limplies\lnot\lnot A}\land\arcs{\lnot\lnot A\limplies A}}
+    \end{prooftree}
+\end{equation*}
+    Note that this also means that \(A\equiv A\).
+    Note also that this proof is not possible in \LJ.
+\end{example}
+
+\begin{exercise}[2.7, A cut free proof]\label{exa:cut free proof}
+    A cut free proof of \(\forall x A(x)\limplies B \seq \exists x \arcs{A(x)\limplies B}\),
+    where \(A(a)\) and \(B\) are atomic and disjoint goes as follows:
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{A(a)\seq A(a)}
+            \infer1[\eqref{eq:weakening:right}]{A(a)\seq A(a), \forall x A(x)}
+            \hypo{B\seq B}
+            \infer2[\eqref{eq:limplies:left}]{A(a), \forall xA(x)\limplies B\seq A(a), B}
+            \infer1[\eqref{eq:exchange:left}]{\forall xA(x)\limplies B, A(a)\seq, A(a), B}
+            \infer1[\eqref{eq:limplies:right}]{\forall xA(x)\limplies B\seq A(a), A(a)\limplies B}
+            \infer1[\eqref{eq:exists:right}]{\forall xA(x)\limplies B\seq A(a), \exists x\arcs{A(x)\limplies B}}
+            \infer1[\eqref{eq:exchange:right}]{\forall xA(x)\limplies B\seq\exists x\arcs{A(x)\limplies B}, A(a)}
+            \infer1[\eqref{eq:forall:right}]{\forall xA(x)\limplies B\seq\exists x\arcs{A(x)\limplies B}, \forall x A(x)}
+            \hypo{B\seq B}
+            \infer1[\eqref{eq:weakening:left}]{A(a), B\seq B}
+            \infer1[\eqref{eq:limplies:right}]{B\seq A(a)\limplies B}
+            \infer1[\eqref{eq:exists:right}]{B\seq\exists x\arcs{A(x)\limplies B}}
+            \infer2[\eqref{eq:limplies:left}]{\forall x A(x)\limplies B, \forall x A(x)\limplies B \seq \exists x \arcs{A(x)\limplies B}, \exists x \arcs{A(x)\limplies B}}
+            \infer1[\eqref{eq:contraction:left}]{\forall x A(x)\limplies B \seq \exists x \arcs{A(x)\limplies B}, \exists x \arcs{A(x)\limplies B}}
+            \infer1[\eqref{eq:contraction:right}]{\forall x A(x)\limplies B \seq \exists x \arcs{A(x)\limplies B}}
+            \infer1[\eqref{eq:limplies:right}]{\seq\arcs{\forall x A(x)\limplies B}\limplies\arcs{\exists x \arcs{A(x)\limplies B}}}
+        \end{prooftree}
+    \end{equation*}
+\end{exercise}
+
+\paragraph{Note:}
+We also accept the inferences
+\begin{equation*}
+    \begin{prooftree}
+        \hypo{\Gamma\seq\Delta}
+        \infer1[\(\set{\eqref{eq:land:left},\eqref{eq:lor:left},\eqref{eq:limplies:left}}\)]{A\set{\land,\lor,\limplies } B, \Gamma\seq \Delta}
+    \end{prooftree}
+    \quad\text{and}\quad
+    \begin{prooftree}
+        \hypo{\Gamma\seq\Delta, A}
+        \infer1[\eqref{eq:lor:right}]{\Gamma\seq\Delta, \arcs{B\land C}\lor A}
+    \end{prooftree}
+\end{equation*}
+
+\begin{proposition}\label{prop:if provable, then atomic}
+    If \(\Gamma\seq\Delta\) is provable without~\eqref{eq:cut},
+    then we may assume that all of the related axioms are atomic,
+    and that the proof is without cut.
+\end{proposition}
+
+\begin{proof}
+    Omitted. See Takeuti's book~\cite[14-17]{Takeuti-1987} for the details.
+\end{proof}
+
+\begin{definition}[Alphabetical variants]\label{def:alphabetical variants}
+    The formulae \(A\) and \(B\) are \emph{alphabetical variants}
+    if they differ only in the names of their bound variables.
+    This is denoted with \(A\varof{B}\). This is an equivalence relation.
+\end{definition}
+
+For example, it should be easily seen that
+\begin{equation*}
+    \exists x\arcs{f(x) = g(x)} \varof\exists y\arcs{f(y) = g(y)}\,.
+\end{equation*}
+It can be shown that if \(A\sim B\), then \(\seq\arcs{A\limplies B}\land\arcs{B\limplies A}\).
+In other words, if \(A\varof B\) then \(A\equiv B\).
+
+
+
+\subsection{Exercises}
+
+\begin{exercise}[Exercise 2.5.2]\label{exe:2.5.2}
+    Prove \(A\limplies B \equiv \lnot A\lor B\).
+\end{exercise}
+
+\begin{exercise}[Exercise 2.5.3]\label{exe:2.5.3}
+    Prove \(\exists x F(x) \equiv\lnot\forall y\lnot F(y)\).
+\end{exercise}
+\begin{exercise}[Exercise 2.5.4]\label{exe:2.5.4}
+    Prove \(\lnot\forall yF(y) \equiv\exists x\lnot F(x)\).
+\end{exercise}
+\begin{exercise}[Exercise 2.5.5]\label{exe:2.5.5}
+    Prove \(\lnot\arcs{A\land B} \equiv \lnot A\lor\lnot B\).
+\end{exercise}
+\begin{exercise}[Exercise 2.6.1]\label{exe:2.6.1}
+    Prove \(\exists x\arcs{A\limplies B(x)}\equiv A\limplies\exists xB(x)\).
+\end{exercise}
+\begin{exercise}[Exercise 2.6.2]\label{exe:2.6.2}
+    Prove \(\exists x\arcs{A(x)\limplies B}\equiv\forall xA(x)\limplies B\),
+    where \(B\) does not contain \(x\).
+\end{exercise}
+\begin{exercise}[Exercise 2.6.3]\label{exe:2.6.3}
+    Prove \(\exists x\arcs{A(x)\limplies B(x)}\equiv\forall xA(x)\limplies\exists xB(x)\).
+\end{exercise}
+\begin{exercise}[Exercise 2.6.4]\label{exe:2.6.4}
+    Prove \(\lnot A\limplies B\seq\lnot B\limplies A\)
+\end{exercise}
+\begin{exercise}[Exercise 2.6.5]\label{exe:2.6.5}
+    Prove \(\lnot A\limplies\lnot B\seq B\limplies A\)
+\end{exercise}

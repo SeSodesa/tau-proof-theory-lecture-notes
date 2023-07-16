@@ -1,0 +1,79 @@
+\section{\texorpdfstring{Consequences of Cut-elimination -- Consistency of \LK{} and \LJ}{Consequences of Cut-elimination -- Consistency of LK{} and LJ}}%
+\label{sec:consequences-of-cut-elimination}
+
+To begin discussion on this topic, we need to have an idea
+of what the word \emph{subformula} means. Thankfully,
+the idea is not very difficult and is illustrated by
+the following examples:
+\begin{itemize}
+    \item
+        The subformulae of \(\exists xF(x)\) are the formula itself,
+        \(F(a)\), and the subformulae of \(F(a)\).
+    \item
+        The subformulae of \(C\land D\) are \(C\land D\), \(C\) and \(D\),
+        and the subformulae of \(C\) and \(D\).
+\end{itemize}
+In other words, subformulae of a formula \(A\) are the formulae that are used
+to construct \(A\), including \(A\) itself.
+
+If we think of the inferences
+\begin{equation*}
+    \begin{prooftree}
+        \hypo{T'\seq\Delta'}
+        \hypo{T''\seq\Delta''}
+        \infer2{\Gamma\seq\Delta}
+    \end{prooftree}
+    \quad\text{and}\quad
+    \begin{prooftree}
+        \hypo{T'\seq\Delta'}
+        \infer1{\Gamma\seq\Delta}
+    \end{prooftree}\,,
+\end{equation*}
+we notice that the upper sequents are always composed of subformulae
+of the lower sequents, but not conversely. We then have the following result.
+
+\begin{theorem}[Subformula property]\label{the:subformula property}
+    If \(P\) is a proof of the sequent \(\Gamma\seq\Delta\),
+    then \(P\) contains only formulae that are subformulae of
+    the sequence formulae \(\Gamma\) and \(\Delta\), but not conversely.
+\end{theorem}
+
+\begin{proof}
+    Omitted.
+\end{proof}
+
+Now we can establish the following central result.
+
+\begin{theorem}\label{eq:consistency of LK and LJ}
+    The sets \LK{} and \LJ{} are consistent,
+    as per definition~\ref{def:consistency}.
+\end{theorem}
+
+\begin{proof}
+    We proceed by the contrapositive principle and
+    assume to the contrary, so that the empty sequent \(\seq\)
+    is provable in \LK{} or \LJ{}. Then by the previous results
+    it can be proven without the \eqref{eq:cut} rule,
+    and therefore the supposed proof can only contain empty sequents
+    because of theorem~\ref{the:subformula property}.
+    But for a proof to be a proof, it has to start with an
+    axiom, which is of the form \(A\seq A\),
+    which is not an empty sequent. This is a contradiction,
+    so the claim must be true.
+\end{proof}
+
+\begin{theorem}\label{the:6.3}
+    In a \eqref{eq:cut}-free proof \(P\) of \(\Gamma\seq\Delta\),
+    all formulae are subformulae of \(\Gamma\) and \(\Delta\).
+\end{theorem}
+
+\begin{proof}[A sketch of a proof]
+    By induction on the number of inferences in \(P\),
+    denoted by \(n\). In the base case, \(n=0\)
+    and we only have axioms \(A\seq A\) and the claim holds.
+
+    As the inductive hypothesis, we assume that the claim holds
+    for \(n=k\) inferences. In the inductive step, we simply
+    add the known inference rules one at a time and check that
+    the claim still holds.
+\end{proof}

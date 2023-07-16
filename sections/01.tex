@@ -1,0 +1,101 @@
+\section{What is mathematics about?}%
+\label{sec:what-is-math-about}
+
+To answer the question set in the title of this chapter, \emph{proofs}.
+
+\begin{example}[Proof by contradiction]
+The infinite set of natural numbers \(\Nset = \set{1, 2, 3, \ldots}\) should already be familiar to you.
+It is closed under addition \(+\) and multiplication \(\mult\).
+In other words, if \(a, b\in\Nset\), then \(a + b \in\Nset\) and \(a\mult b\in\Nset\).
+But what about division \(\div\)? We know that \(6 \div 2 = 3 \in\Nset\),
+but \(3\div 6 = 1 / 2 \notin\Nset\).
+
+It is known that some natural numbers are products of two \emph{other} natural numbers,
+while others are not. For example, \(6 = 2 \mult 3\) and \(20 = 4 \mult 5\),
+but
+\[
+2 = 2\mult 1,
+\quad
+3 = 3\mult 1,
+\quad
+5 = 5 \mult 1,
+\quad
+7 = 7 \mult 1,
+\ldots\,.
+\]
+\end{example}
+These numbers whose factors only consist of themselves and the number \(1\) are called \emph{prime numbers}
+and denoted with \(\Pset\). How many prime numbers are there? We show that there are infinitely many via
+\emph{proof by contradiction}.
+
+Before we begin, let us analyze the products of prime numbers a bit more closely:
+\begin{align*}
+    2 \mult 3                   &= 6,   & 6 + 1     &= 7 \in\Pset \\
+    2\mult 3 \mult 5            &= 30   & 30 + 1    &= 31 \in\Pset \\
+    2 \mult 3 \mult 5 \mult 7   &= 210  & 210 + 1   &= 211\in\Pset\\
+                                &\vdots &           &\vdots
+\end{align*}
+It seems like when the number \(1\) is added to any product of primes, the resulting number is prime.
+We might also ask ourselves, whether the product of primes
+\begin{equation*}\tag{hypothesis}
+    \prod = 2 \mult 3 \mult 5 \mult\cdots\mult p_n + 1 \in\Pset \,.
+\end{equation*}
+for all \(n\in\Nset\).
+
+To prove this hypothesis, a natural seeming approach is to then make the \emph{contrapositive assumption},
+that if \(p_i, p_n\in\Pset\), then
+\begin{equation}
+    \prod = 2\mult 3 \mult 5 \mult \cdots \mult p_i\mult\cdots\mult p_n + 1 = p_i\mult c\notin\Pset
+\end{equation}
+for some \(c\in\Nset\). But if this were the case, then
+\begin{equation*}
+    \frac\prod {p_i} = c = \frac{2 \mult 3 \mult 5 \mult \cdots \mult p_n + 1}{p_i} \notin\Nset\,.
+\end{equation*}
+This is in contradiction with our assumptions, which proves that there are infinitely many primes
+(as the hypothessis provides us with a way of constructing them indefinitely).
+
+\begin{example}[The derivative of a quadratic polynomial]
+    See \url{https://www.youtube.com/watch?v=OhmexZXPVkE}.
+\end{example}
+
+\begin{example}[There exist non-rational real numbers]
+    A rational number \(q\in\Qset\) is a real number,
+    such that \(q = m\div n\) for some \(m,n\in\Zset\), where \(n\neq 0\).
+    Real numbers \(r\in\Rset\) that are not rational are irrational,
+    which can be stated bluntly as
+    \begin{equation*}
+        \nexists m, n \in \Zset, n\neq 0 : r = \frac m n : r \in \Rset - \Qset\,.
+    \end{equation*}
+    For example \(\sqrt 2\notin\Qset\).
+\end{example}
+
+\begin{theorem}\label{the:a to b in Q}
+    There are \(a,b\notin\Qset\), so that \(a^b\in\Qset\).
+\end{theorem}
+
+\begin{proof}
+    Let \(a, b = \sqrt 2\). If \(\sqrt 2 ^{\sqrt 2} \in\Qset\), then we are done.
+    If this is not the case, let \(a = \sqrt2^{\sqrt 2}\) and \(b = \sqrt 2\).
+    Then
+    \begin{equation*}
+        a^b = \arcs*{\sqrt2^{\sqrt 2}}^{\sqrt 2} = \sqrt 2 ^ 2 = 2 \in\Qset\,.
+    \end{equation*}
+    This concludes the proof.
+\end{proof}
+
+The proof of Theorem~\ref{the:a to b in Q} is an example of a \emph{non-constructive proof},
+which are not allowed in \emph{non-intuitionistic} or \emph{constructive logic} \LJ.
+
+Classical logic \LK{} only concerns itself with the notions of ''true'' and ''false''.
+In other words, classical logic functions based on the following principle:
+\begin{quote}
+    ''Any well-formed mathematical object \(A\) is either true or false;
+    if \(A\) is false, then not-\(A\) is true.''
+\end{quote}
+\emph{Tertium non datur}, ''\(A\) or not \(A\)'' is always true.
+In intuitionistic logic \LJ, this is not the case.
+It imposes the additional constraint that for an object \(A\)
+to exist in the first place, one has to be able to \emph{construct}
+such an \(A\).
+
+All of logic is based on an abstract language, that we now study.

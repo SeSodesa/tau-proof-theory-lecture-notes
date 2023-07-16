@@ -1,0 +1,316 @@
+\section{Peano arithmetic or PA}%
+\label{sec:peano-arithmetic}
+
+This is also called ''The Theory of natural numbers''.
+This is a special case of the general language of \LK{},
+where we restrict our alphabet and terms according to the following
+definitions. We use the notation \LN{} to refer to this language.
+
+\begin{definition}[Alphabet of \PA{}]\label{def:alphabet of peano arithmetic}
+    We have the following symbols at our disposal,
+    when talking in the language of Peano Arithmetic \PA:
+    \begin{itemize}
+        \item
+            There is only one individual constant \(\bar0\),
+            known in our meta language as ''zero''.
+        \item
+            The only three function constants are the unary left-associative
+            \emph{successor} \('\), and the binary operations
+            \emph{addition} \(+\) and \emph{product} \(\times\).
+        \item
+            The only binary predicate symbol is \(=\),
+            the equality defined in the previous chapter.
+    \end{itemize}
+\end{definition}
+
+\begin{definition}[Numerals]\label{def:numerals}
+    In order to simplify our notations,
+    we make the following bijective notational agreement:
+    \begin{equation*}
+        \bar0\mapsto\bar0,\quad
+        \bar1\mapsto\bar0',\quad
+        \bar2\mapsto\bar0'',\quad
+        \bar3\mapsto\bar0''',\quad
+        \ldots\quad,\quad
+        \bar{n}\mapsto\bar0^{\overbrace{\prime\cdots\prime}^{n\text{ times}}}\,.
+    \end{equation*}
+    In other words, \(\bar{n}\) refers to the natural number \(n\in\Nset\),
+    familiar to us from our meta language.
+\end{definition}
+
+\begin{definition}[Terms of \PA{}]\label{def:terms of peano arithmetic}
+    We define the words or \emph{terms} of \PA{} recursively as follows:
+    \begin{enumerate}
+        \item
+            Free variables and \(\bar0\) are terms.
+        \item
+            If \(s\) and \(t\) are terms, then so are \(s'\),
+            \(s+t\) and \(s\times t\).
+    \end{enumerate}
+\end{definition}
+\begin{definition}[Closed terms of \PA{}]\label{def:closed terms of peano arithmetic}
+    \emph{Closed terms} are composed of the numerals of definition~\ref{def:numerals}
+    and the function constants and equality of definition~\ref{def:alphabet of peano arithmetic}:
+    \begin{enumerate}
+        \item
+            Individual numerals are closed terms.
+        \item
+            If \(\bar m\) and \(\bar n\) are closed terms,
+            then \(\bar m '\), \(\bar m +\bar n\), \(\bar m\times\bar n\)
+            and \(\bar m = \bar n\) are closed terms as well.
+    \end{enumerate}
+\end{definition}
+
+Note that a statement like \(\bar2+\bar3=\bar5\) is something that needs to be
+proven in this language. We may not take it for granted. To be able to prove
+things in \PA{}, we must first agree on our axioms, which are listed below.
+
+\begin{axiom}[Logical axioms of \PA{}]\label{axi:logical axioms of PA}
+    There is only a single logical axiom: if \(A\) is a formula,
+    then \(A\seq A\) is this axiom.
+\end{axiom}
+\begin{axiom}[Equality axioms of \PA{}]\label{axi:equality axioms of PA}
+    The equality axioms of \PA{} are special instances of the axioms
+    of \LK=. These are
+    \begin{align}
+        \tag{\LN:eq:ax:1}\label{LN:eq:ax:1}
+        &\seq s=s \\
+        \tag{\LN:eq:ax:2}\label{LN:eq:ax:2}
+        s = t &\seq s'=t', \\
+        \tag{\LN:eq:ax:3}\label{LN:eq:ax:3}
+        s_1=t_1, s_2=t_2 &\seq s_1+s_2 =t_1+t_2,
+        \quad\text{and} \\
+        \tag{\LN:eq:ax:4}\label{LN:eq:ax:4}
+        s_1=t_1, s_2=t_2 &\seq s_1\times s_2 =t_1\times t_2,
+    \end{align}
+\end{axiom}
+\begin{axiom}[Mathematical axioms of \PA{}]\label{axi:mathematical axioms of PA}
+    \begin{align}
+        \tag{\LN:m:ax:1}\label{LN:m:ax:1}
+        s'=t'&\seq s=t, \\
+        \tag{\LN:m:ax:2}\label{LN:m:ax:2}
+        s' = 0 &\seq, \\
+        \tag{\LN:m:ax:3}\label{LN:m:ax:3}
+        &\seq s + \bar0 = s, \\
+        \tag{\LN:m:ax:4}\label{LN:m:ax:4}
+        &\seq s + t' = (s+t)', \\
+        \tag{\LN:m:ax:5}\label{LN:m:ax:5}
+        &\seq s\times\bar0 = \bar0,
+        \quad\text{and} \\
+        \tag{\LN:m:ax:6}\label{LN:m:ax:6}
+        &\seq s\times t' = s \times t + s\,.
+    \end{align}
+\end{axiom}
+
+Finally, the inductive principle can also be formalized.
+We will not be needing the formalization in this course,
+but it is shown here for completeness.
+
+\begin{axiom}[Inductive axiom]\label{axi:inductive axiom}
+    Induction is formalized as follows:
+    let \(\bar k\) and \(\bar n\) be closed terms. Then
+    \begin{equation}\tag{induction}\label{induction}
+        P(\bar0), P(\bar k)\limplies P(\bar k') \seq \forall\bar nP(\bar n)\,.
+    \end{equation}
+\end{axiom}
+
+\paragraph{Note:}
+Before we dive in further and start proving things,
+please remember that \(n\in\Nset\) is a natural number
+in our meta language, whereas the \emph{numerals} or
+\emph{closed terms} \(\bar n\) are the representations of
+these numbers in our \emph{object language}.
+
+\paragraph{Note 2:}
+The allowed inference rules are the ones given in
+definition~\ref{def:inference rules in LK}.
+
+\begin{exercise}[PA.1]\label{exe_PA.1}
+    Prove that \(\bar2 + \bar1 = \bar3\).
+\end{exercise}
+
+It can be shown more generally, that if \(\bar m\) and \(\bar n\)
+are numerals, then
+\begin{equation*}
+    \seq\bar m + \bar n = \overline{m + n}
+    \quad\text{and}\quad
+    \seq\bar m \times \bar n = \overline{m \times n}\,.
+\end{equation*}
+
+\begin{proposition}[9.4]\label{prop:9.4}
+    \PA{} is consistent, as in the empty sequent \(\seq\)
+    is not provable in it.
+\end{proposition}
+
+\begin{proof}
+    Omitted. This is taken for granted.
+\end{proof}
+
+\begin{proposition}[9.6.1]\label{prop:9.6.1}
+    For any closed term \(s\), there is a unique numeral \(\bar n\),
+    so that the sequent \(\seq s = \bar n\) is provable.
+\end{proposition}
+
+\begin{proof}.
+    Let \(k\) be the number of instances of the functions
+    \('\), \(+\) and \(\times\) in \(s\). We induce on this \(k\).
+
+    In the base case \(k=0\), we only have the single numeral \(\bar m\),
+    for which the claim holds: axiomatically \(\seq s=s\), so \(\seq\bar m=\bar m\).
+    For the inductive hypothesis, we assume that the claims \(\seq s=\bar m\)
+    and \(\seq t=\bar n\) hold, each with \(k\leq p\) instances of the functions are provable.
+    In the inductive step we add one more instance of the functions to the proofs
+    and show that the cclaim still holds to close the induction.
+
+    In the case of the successor \(\prime\),
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{\seq s=\bar n}
+            \hypo{s=\bar n \seq s'=\bar n'}
+            \infer2[\eqref{eq:cut}]{\seq s'=\bar n'}
+        \end{prooftree} \,.
+    \end{equation*}
+    Notice that \(\bar n'\) is \(\overline{n+1}\),
+    means that \(\seq s'=\overline{n+1}\), which closes the induction on
+    the successor \(\prime\).
+
+    For the sum \(+\), we introduce axioms as needed:
+    \scriptsize
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{\seq \bar m+\bar n = \overline{m + n}}
+            % --------------------------------
+            \hypo{\seq t = \bar m}
+            % --------------------------------
+            \hypo{\seq s = \bar n}
+            % --------------------------------
+            \hypo{s = \bar n, t = \bar m \seq s + t = \bar m + \bar n}
+            \infer2[\eqref{eq:cut}]{t = \bar m \seq s + t = \bar m + \bar n}
+            \infer2[\eqref{eq:cut}]{\seq s+t = \bar m + \bar n}
+            \hypo{s+t = \bar m + \bar n, \bar n + \bar m = \overline{n + m}\seq s+t = \overline{m + n}}
+            % --------------------------------
+            \infer2[\eqref{eq:cut}]{\bar m+\bar n = \overline{m + n}\seq s+t = \overline{m + n}}
+            % --------------------------------
+            \infer2[\eqref{eq:cut}]{\seq s+t=\overline{m + n}}
+        \end{prooftree}
+    \end{equation*}
+    \normalsize
+    The induction is then closed on the sum \(+\).
+    To prove the case of the product \(\times\), simply replace \(+\)
+    with \(\times\) in the above inductive step. This is left as an optional exercise,
+    which closes the induction when completed.
+
+    To prove the uniqueness of the numeral \(\bar n\),
+    make the contrapositive assumption, so that
+    there are differing numerals \(\bar p\) and \(\bar q\),
+    so that by proposition~\ref{prop:7.2}
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{\seq s = \bar p}
+            % ------------------------
+            \hypo{\seq s = \bar q}
+            % ------------------------
+            \hypo{s = \bar q\seq \bar q = s}
+            % ------------------------
+            \hypo{\bar q = s, s = \bar p\seq \bar q = \bar p}
+            \infer2[\eqref{eq:cut}]{s = \bar q, s = \bar p\seq \bar q = \bar p}
+            \infer2[\eqref{eq:cut}]{s = \bar p\seq \bar q = \bar p}
+            \infer2{\seq \bar q = \bar p}
+        \end{prooftree} \,.
+    \end{equation*}
+    Thus supposing that the numerals differ in the given manner
+    leads to them being the same numeral. We are then done with
+    the proof.
+\end{proof}
+
+\begin{proposition}[9.6.2]\label{prop:9.6.2}
+    In \PA{}, if \(s\) and \(t\) are closed terms, then either
+    the sequent \(\seq s=t\) or \(s=t\seq\) holds. The terms
+    are either equal, or they are not.
+\end{proposition}
+
+\begin{proof}
+    As we have already proved proposition \ref{prop:9.6.1},
+    it is enough to show that if \(\bar m\) and \(\bar n\) are
+    numerals, then either \(\seq \bar m = \bar n\) or \(\bar m = \bar n\seq\) holds.
+    In other words, either the two numerals are equal, or they are not.
+    We induce on the number \(k\) of successors \(\prime\) in the numerals.
+
+    In the base case \(k=0\), so the numerals are both zeroes,
+    and \(\seq\bar0=\bar0\) holds according to the axioms of \PA{}.
+    The claim then holds for \(k=0\).
+
+    In the inductive hypothesis, we assume that the claim \(\seq\bar m=\bar n\)
+    holds for \(k = p\) successors in the numerals \(\bar m\) and \(n\).
+    We then add one more successor to either \(\bar m\) or \(\bar n\)
+    and demonstrate that the claim still holds after the mattter.
+
+    By the axioms of \PA{} and inductive hypotheses,
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{\seq\bar m=\bar n}
+            \hypo{m = n\seq\bar m'=\bar n'}
+            \infer2[\eqref{eq:cut}]{\seq\bar m'=\bar n'}
+        \end{prooftree}\,,
+    \end{equation*}
+    so if \(m\) and \(n\) are the same natural numbers,
+    then \(\seq\bar m=\bar n\).
+
+    Now, as by the axioms of \PA{}, zero cannot be the successor
+    of any numeral, as in
+    \begin{equation*}
+        \bar1'=0\seq,\quad
+        \bar2'=0\seq,\quad
+        \bar3'=0\seq,\quad
+        \ldots\,,
+    \end{equation*}
+    and the axioms also allow us to make the proof
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{\bar n''=\bar 0'\seq \bar n' = \bar0}
+            \hypo{\bar n'=0\seq}
+            \infer2{\bar n''=\bar 0'\seq}
+        \end{prooftree}\,,
+    \end{equation*}
+    we know that
+    \begin{equation*}
+        \bar2'=\bar1\seq,\quad
+        \bar3'=\bar1\seq,\quad
+        \bar4'=\bar1\seq,\quad
+        \ldots\,.
+    \end{equation*}
+    Similarly, but in a more concrete and examplary manner,
+    we can argue that
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{3 = 2 \seq 2 = 1}
+            \hypo{2 = 1 \seq}
+            \infer2{3\seq 2\seq}
+        \end{prooftree}\,,
+    \end{equation*}
+    where the numeral \(\bar3\) may be replaced with any numeral \(\bar n\), so
+    \begin{equation*}
+        \bar3'=\bar2\seq,\quad
+        \bar4'=\bar2\seq,\quad
+        \bar5'=\bar2\seq,\quad
+        \ldots\,.
+    \end{equation*}
+
+    Proceeding in the above manner ad infinitum,
+    we can produce all sequences \(\bar m=\bar n\seq\),
+    for the natural numbers \(m\) and \(n\), for which \(m > n\) holds.
+    To handle the case where \(m < n\), simply exchange the roles
+    of \(m\) and \(n\) in the proofs, which produces \(\bar n=\bar m\seq\).
+
+    We have now shown that, speaking in metalanguage,
+    either \(m=n\), \(m>n\) or \(m < n\) holds,
+    but none at the same time. Therefore
+    \begin{equation*}
+        \bar m = \bar n\seq,\quad
+        \seq\bar m=\bar n,
+        \quad\text{or}\quad
+        \bar n=\bar m\,.
+    \end{equation*}
+    It now remains to show that \(\bar m=\bar n\seq\),
+    if and only if \(\bar n=\bar m\seq\), which we omit.
+\end{proof}

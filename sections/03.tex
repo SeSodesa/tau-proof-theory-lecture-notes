@@ -1,0 +1,513 @@
+\section{\texorpdfstring{Intuitionistic predicate calculus \LJ}{Intuitionistic predicate calculus LJ}}%
+\label{sec:intuitionistic-predicate-calculus}
+
+Intuitionistic logic \LJ{} is very similar to classical logic \LK,
+except that in its inference rules, the succedents \(\Delta\) of upper sequents \(\Gamma\seq\Delta\)
+may only contain \emph{at most} a single formula. For example, the inferences
+\begin{equation*}
+    \begin{prooftree}
+        \hypo{\Gamma\seq D, D}
+        \infer1[\eqref{eq:contraction:right}]{\Gamma\seq D}
+    \end{prooftree}
+    \quad\text{and}\quad
+    \begin{prooftree}
+        \hypo{\Gamma\seq C, D}
+        \infer1[\eqref{eq:exchange:right}]{\Gamma\seq D, C}
+    \end{prooftree}
+\end{equation*}
+are \emph{not} allowed in \LJ{}. This of course means, that \LJ{} is a true subset of \LK:
+some proofs~\(P\) that are in \LK{} are not in \LJ{}.
+
+\subsection{Examples}
+
+\begin{example}[A proof in \LJ]\label{exa:a proof in LJ}
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{A\seq A}
+            \infer1[\eqref{eq:land:left}]{A\land\lnot A&\seq A}
+            \infer1[\eqref{eq:lnot:left}]{\lnot A, A\land\lnot A&\seq}
+            \infer1[\eqref{eq:land:left}]{A\land\lnot A, A\land\lnot A&\seq}
+            \infer1[\eqref{eq:contraction:left}]{A\land\lnot A&\seq}
+            \infer1[\eqref{eq:lnot:right}]{&\seq \lnot\arcs{A\land\lnot A}}
+        \end{prooftree}
+    \end{equation*}
+\end{example}
+
+\begin{example}[Another proof in \LJ]\label{exa:another proof in LJ}
+    Prove that \(\lnot\exists xF(x)\seq\forall yF(y)\).
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{F(a)&\seq F(a)}
+            \infer1[\eqref{eq:exists:right}]{F(a)&\seq\exists xF(x)}
+            \infer1[\eqref{eq:lnot:left}]{\lnot\exists xF(x), F(a)&\seq}
+            \infer1[\eqref{eq:exchange:left}]{F(a), \lnot\exists xF(x)&\seq}
+            \infer1[\eqref{eq:lnot:right}]{\lnot\exists xF(x)&\seq \lnot F(a)}
+            \infer1[\eqref{eq:forall:right}]{\lnot\exists xF(x)&\seq \forall x\lnot F(x)}
+            \infer1[\eqref{eq:limplies:right}]{&\seq \lnot\exists xF(x)\limplies\forall x\lnot F(x)}
+        \end{prooftree}
+    \end{equation*}
+\end{example}
+
+\subsection{Exercises}
+
+\begin{exercise}[3.9.1]\label{exe:3.9.1}
+    Prove in \LJ{:} \(\lnot A\lor B\seq A\limplies B\).
+\end{exercise}
+\begin{exercise}[3.9.2]\label{exe:3.9.2}
+    Prove in \LJ{:} \(\exists xF(x)\seq\lnot\forall y\lnot F(y)\).
+\end{exercise}
+\begin{exercise}[3.9.3]\label{exe:3.9.3}
+    Prove in \LJ{:} \(A\land B\seq A\).
+\end{exercise}
+\begin{exercise}[3.9.4]\label{exe:3.9.4}
+    Prove in \LJ{:} \(A\seq A\lor B\).
+\end{exercise}
+\begin{exercise}[3.9.5]\label{exe:3.9.5}
+    Prove in \LJ{:} \(\lnot A\lor\lnot B\seq \lnot\arcs{A\land B}\).
+\end{exercise}
+\begin{exercise}[3.9.6]\label{exe:3.9.6}
+    Prove in \LJ{:} \(\lnot\arcs{A\lor B}\equiv\lnot A\land\lnot B\).
+\end{exercise}
+\begin{exercise}[3.9.7]\label{exe:3.9.7}
+    Prove in \LJ{:} \(\arcs{A\lor C}\land\arcs{B\lor C} \equiv \arcs{A\land B}\lor C\).
+\end{exercise}
+\begin{exercise}[3.9.8]\label{exe:3.9.8}
+    Prove in \LJ{:} \(\exists x\lnot F(x)\seq\lnot\forall xF(x)\).
+\end{exercise}
+\begin{exercise}[3.9.9]\label{exe:3.9.9}
+    Prove in \LJ{:} \(\forall x\arcs{F(x)\land G(x)}\equiv\forall xF(x)\land\forall xG(x)\).
+\end{exercise}
+\begin{exercise}[3.9.10]\label{exe:3.9.10}
+    Prove in \LJ{:} \(A\limplies\lnot B\seq B\limplies\lnot A\).
+\end{exercise}
+\begin{exercise}[3.9.11]\label{exe:3.9.11}
+    Prove in \LJ{:} \(\exists x\arcs{A\limplies B(x)}\seq A\limplies\exists xB(x)\).
+\end{exercise}
+\begin{exercise}[3.9.12]\label{exe:3.9.12}
+    Prove in \LJ{:} \(\exists x\arcs{A(x)\limplies B}\seq\forall xA(x)\limplies B\).
+\end{exercise}
+\begin{exercise}[3.9.13]\label{exe:3.9.13}
+    Prove in \LJ{:} \(\exists x\arcs{A(x)\limplies B(x)}\seq\forall xA(x)\limplies\exists xB(x)\).
+\end{exercise}
+\begin{exercise}[3.10.1]\label{exe:3.10.1}
+    Prove in \LJ{:} \(\lnot\lnot\arcs{A\limplies B}, A\seq\lnot\lnot B\).
+\end{exercise}
+\begin{exercise}[3.10.2]\label{exe:3.10.2}
+    Prove in \LJ{:} \(\lnot\lnot B\limplies B, \lnot\lnot\arcs{A\limplies B}\seq A\limplies B\).
+\end{exercise}
+\begin{exercise}[3.10.3]\label{exe:3.10.3}
+    Prove in \LJ{:} \(\lnot\lnot\lnot A\equiv\lnot A\).
+\end{exercise}
+
+
+\begin{example}[3.11]\label{exa:3.11}
+    Let \(R\) be an atomic formula, and let \(J'\) be obtained from \LJ{} by adding the sequent~\(\lnot\lnot R\seq R\) as an axiom.
+    Also let \(A\) be a formula which does not contain the symbols \(\lor\) or \(\exists\).
+    Then \(\lnot\lnot A\seq A\) is \(J'\)-provable.
+
+    \begin{proof}
+        Let \(n\) be the number of logical symbols in \(A\).
+        We prove the claim by structurally inducing on \(n\):
+        \begin{enumerate}
+            \item
+                If \(n = 0\), then \(A = R\), as \(R\) is an atomic formula.
+                By assumption \(\lnot\lnot R \seq R\), so the claim holds for the base case.
+            \item
+                Now assume that the inductive hypothesis \(\lnot\lnot A\seq A, \lnot\lnot B\seq B \in J''\) holds for the formulae \(A\) and \(B\),
+                with at most \(n = k\) logical symbols. We add one additional allowed symbol to these formulae one at at time to close the induction:
+                \begin{description}
+                    \item[\(\lnot\)]
+                        By exercise~\ref{exe:3.10.3}, \(\lnot\lnot\arcs{\lnot A}\seq\lnot A\) can be proven.
+                    \item[\(\limplies\)]
+                        We show that the claim \(\lnot\lnot\arcs{A\limplies B} \seq A\limplies B\) can be proven.
+                        In the proof, IH refers to the inductive hypothesis:
+                        \begin{equation*}
+                            \begin{prooftree}
+                                \hypo{B\seq B}
+                                \ellipsis{\IH}{\lnot\lnot B\seq B}
+                                \infer1[\eqref{eq:limplies:right}]{\seq\lnot\lnot B\limplies B}
+                                \hypo{A\seq A}
+                                \hypo{B\seq B}
+                                \infer2{}
+                                \ellipsis{(Exercise~\ref{exe:3.10.2})}{\lnot\lnot\arcs{A\limplies B} \seq A\limplies B}
+                                \infer2[\eqref{eq:cut}]{\lnot\lnot\arcs{A\limplies B} \seq A\limplies B}
+                            \end{prooftree}
+                        \end{equation*}
+                    \item[\(\land\)]
+                        Again, we show that the claim \(\lnot\lnot\arcs{A\land B} \seq A\land B\) can be proven.
+                        Also again, IH refers to the inductive hypothesis:
+                        \tiny
+                        \begin{equation*}
+                            \begin{prooftree}
+                                \hypo{A&\seq A}
+                                \infer1[\eqref{eq:land:left}]{A\land B&\seq A}
+                                \infer1[\eqref{eq:lnot:left}]{\lnot A, A\land B&\seq}
+                                \infer1[\eqref{eq:exchange:left}]{A\land B,\lnot A&\seq}
+                                \infer1[\eqref{eq:lnot:right}]{\lnot A&\seq\lnot\arcs{ A\land B}}
+                                \infer1[\eqref{eq:lnot:left}]{\lnot\lnot\arcs{A\land B}, \lnot A&\seq}
+                                \infer1[\eqref{eq:exchange:left}]{\lnot A, \lnot\lnot\arcs{A\land B}&\seq}
+                                \infer1[\eqref{eq:lnot:right}]{\lnot\lnot\arcs{A\land B}&\seq\lnot\lnot A}
+                                \hypo{A\seq A}
+                                \ellipsis{\IH}{\lnot\lnot A\seq A}
+                                \infer2[\eqref{eq:cut}]{\lnot\lnot\arcs{A\land B}\seq A}
+                                \hypo{B&\seq B}
+                                \infer1[\eqref{eq:land:left}]{A\land B&\seq B}
+                                \infer1[\eqref{eq:lnot:left}]{\lnot B, A\land B&\seq}
+                                \infer1[\eqref{eq:exchange:left}]{A\land B,\lnot B&\seq}
+                                \infer1[\eqref{eq:lnot:right}]{\lnot B&\seq\lnot\arcs{ A\land B}}
+                                \infer1[\eqref{eq:lnot:left}]{\lnot\lnot\arcs{A\land B}, \lnot B&\seq}
+                                \infer1[\eqref{eq:exchange:left}]{\lnot B, \lnot\lnot\arcs{A\land B}&\seq}
+                                \infer1[\eqref{eq:lnot:right}]{\lnot\lnot\arcs{A\land B}&\seq\lnot\lnot B}
+                                \hypo{B\seq B}
+                                \ellipsis{\IH}{\lnot\lnot B\seq B}
+                                \infer2[\eqref{eq:cut}]{\lnot\lnot\arcs{A\land B}\seq B}
+                                \infer2[\eqref{eq:land:right}]{\lnot\lnot\arcs{A\land B} \seq A\land B}
+                            \end{prooftree}
+                        \end{equation*}
+                        \normalsize
+                    \item[\(\forall\)]
+                        Lastly, we show that the claim \(\lnot\lnot\forall xA(x) \seq \forall xA(x)\) is a theorem:
+                        \footnotesize
+                        \begin{equation*}
+                            \begin{prooftree}
+                                \hypo{A(a)\seq A(a)}
+                                \infer1[\eqref{eq:forall:left}]{\forall xA(x)&\seq A(a)}
+                                \infer1[\eqref{eq:lnot:left}]{\lnot A(a),\forall xA(x)&\seq}
+                                \infer1[\eqref{eq:exchange:left}]{\forall xA(x),\lnot A(a)&\seq}
+                                \infer1[\eqref{eq:lnot:right}]{\lnot A(a)&\seq\lnot\forall xA(x)}
+                                \infer1[\eqref{eq:lnot:left}]{\lnot\lnot\forall xA(x), \lnot A(a)&\seq}
+                                \infer1[\eqref{eq:exchange:left}]{\lnot A(a), \lnot\lnot\forall xA(x)&\seq}
+                                \infer1[\eqref{eq:lnot:right}]{\lnot\lnot\forall xA(x)&\seq \lnot\lnot A(a)}
+                                \hypo{A(a)\seq A(a)}
+                                \ellipsis{\IH}{\lnot\lnot A(a)\seq A(a)}
+                                \infer2[\eqref{eq:cut}]{\lnot\lnot\forall xA(x) \seq A(a)}
+                                \infer1[\eqref{eq:forall:right}]{\lnot\lnot\forall xA(x) \seq \forall xA(x)}
+                            \end{prooftree}
+                        \end{equation*}
+                        \normalsize
+                \end{description}
+        \end{enumerate}
+        By the inductive principle, we are then done.
+    \end{proof}
+\end{example}
+
+\subsection{\texorpdfstring{The relation between \LK{} and \LJ}{The relation between LK and LJ}}
+
+Our last goal in discussing what the specific connection between \LK{} and \LJ{} is.
+For this purpose we declare the notational definitions in definition~\ref{def:starred formulae in LK}.
+
+\begin{definition}[Starred formula variants in \LK]\label{def:starred formulae in LK}
+    Table~\ref{tab:starred variants in LK} defines a recursive mapping,
+    between formulae \(A\) and their starred variants \(A^\ast\).
+
+    \begin{tabenv}{Mapping between formulae \(A\) and their transformations \(A^\ast\).}%
+        \label{tab:starred variants in LK}
+        \begin{tabular}{C|C}
+            \toprule
+            \text{Formula } A & \text{Transformation } A^\ast \\
+            \midrule
+            \text{atomic } A & \lnot\lnot A \\
+            \lnot B & \lnot\arcs{B^\ast} \\
+            B\land C & B^\ast\land C^\ast \\
+            B\lor C & \lnot\arcs{\lnot B^\ast\land\lnot C^\ast} \\
+            \forall xB(x) & \forall xB^\ast(x) \\
+            \exists xB(x) & \lnot\forall x\lnot B^\ast(x) \\
+            B\limplies C & B^\ast\limplies C^\ast \\
+            \bottomrule
+        \end{tabular}
+    \end{tabenv}
+\end{definition}
+
+With definition~\ref{def:starred formulae in LK} in place, we can proceed to make the propositions that follow.
+
+\begin{proposition}[Claim 1]\label{prop:claim 1 in LK vs LJ}
+    \(A\equiv A^\ast\) for all \(A\) in \LK.
+\end{proposition}
+
+\begin{proof}
+    Just like with example~\ref{exa:3.11}, the proof can be achieved via induction over the number of logical symbols in \(A\).
+    \begin{enumerate}
+        \item
+            For the base case, we observe that by the double negation law proved in example~\ref{exa:double negation in LK},
+            \(A\equiv\lnot\lnot A = A^\ast\).
+        \item
+            For the induction hypothesis \IH, we assume that for the formulae \(B\) and \(C\),
+            \(B\equiv B^\ast\) and \(C\equiv C^\ast\). To close the hypothesis,
+            we add one allowed logical symbol at a time to \(A\) formed from \(B\) and/or \(C\),
+            as necessary:
+            \begin{description}
+                \item[\lnot]
+                    If \(A = \lnot B\), then \(A^\ast = \lnot\lnot\lnot B\),
+                    and \(A\equiv A^\ast\) by exercise~\ref{exe:3.10.3}.
+                \item[\land]
+                    If \(A = B\land C\), then \(A^\ast = B^\ast\land C^\ast\) and we argue as follows:
+                    \begin{equation*}
+                        \begin{prooftree}
+                            \hypo{B\seq B}
+                            \ellipsis{\IH}{B\seq B^\ast}
+                            \infer1{B\land C\seq B^\ast}
+                            \hypo{C\seq C}
+                            \ellipsis{\IH}{C\seq C^\ast}
+                            \infer1{B\land C\seq C^\ast}
+                            \infer2{B\land C \seq B^\ast\land C^\ast}
+                            \hypo{B\seq B}
+                            \ellipsis{\IH}{B^\ast\seq B}
+                            \infer1{B^\ast\land C^\ast\seq B}
+                            \hypo{C\seq C}
+                            \ellipsis{\IH}{C^\ast\seq C}
+                            \infer1{B^\ast\land C^\ast\seq C}
+                            \infer2{B^\ast\land C^\ast \seq B\land C}
+                            \infer2{B\land C \equiv B^\ast\land C^\ast}
+                        \end{prooftree}
+                    \end{equation*}
+                \pagebreak
+                \item[\lor]
+                    \begin{exercise}[3.12.1 part iii]\label{exe:3.12.1.iii}
+                        This is left as an exercise. Show that \(A \equiv A^\ast\), when \(A=B\lor C\).
+                    \end{exercise}
+                \item[\forall]
+                    If \(A = \forall xB(x)\), then \(A^\ast = \forall xB^\ast(x)\).
+                    Now we can argue as follows:
+                    \begin{equation*}
+                        \begin{prooftree}
+                            \hypo{B(a\seq B(a))}
+                            \ellipsis{\IH}{B(a)\seq B^\ast(a)}
+                            \infer1[\eqref{eq:forall:left}]{\forall xB(x)\seq B^\ast(a)}
+                            \infer1[\eqref{eq:forall:right}]{\forall xB(x)\seq\forall xB^\ast(x)}
+                            \hypo{B(a\seq B(a))}
+                            \ellipsis{identical to left branch}{\forall xB^\ast(x)\seq\forall xB(x)}
+                            \infer2{\forall xB^\ast(x)\equiv\forall xB(x)}
+                        \end{prooftree}
+                    \end{equation*}
+                \item[\limplies]
+                    If \(A = B\limplies C\), then \(A^\ast = B^\ast\limplies C^\ast\).
+                    The argument is then
+                    \begin{equation*}
+                        \begin{prooftree}
+                            \hypo{B\seq B}
+                            \ellipsis{\IH}{B^\ast\seq B}
+                            \hypo{C\seq C}
+                            \ellipsis{\IH}{C\seq C^\ast}
+                            \infer[left label=\eqref{eq:limplies:left}]2{B\limplies C, B^\ast\seq C^\ast}
+                            \infer[left label=\eqref{eq:exchange:left}]1{B^\ast, B\limplies C\seq C^\ast}
+                            \infer[left label=\eqref{eq:limplies:right}]1{B\limplies C\seq B^\ast\limplies C^\ast}
+                            \hypo{B\seq B}
+                            \ellipsis{\IH}{B\seq B^\ast}
+                            \hypo{C\seq C}
+                            \ellipsis{\IH}{C^\ast\seq C}
+                            \infer[left label=\eqref{eq:limplies:left}]2{B^\ast\limplies C^\ast, B\seq C}
+                            \infer[left label=\eqref{eq:exchange:left}]1{B, B^\ast\limplies C^\ast\seq C}
+                            \infer[left label=\eqref{eq:limplies:right}]1{B^\ast\limplies C^\ast\seq B\limplies C}
+                            \infer2{B^\ast\limplies C^\ast\equiv B\limplies C}
+                        \end{prooftree}
+                    \end{equation*}
+                \item[\exists]
+                    \begin{exercise}[3.12.1 part vi]\label{exe:3.12.1.vi}
+                        This is left as an exercise. Show that if \(A = \exists xB(x)\), then \(A\equiv A^\ast\).
+                    \end{exercise}
+            \end{description}
+    \end{enumerate}
+    By the inductive principle, we are then done.
+\end{proof}
+
+\begin{proposition}[Claim 2]\label{prop:claim 2 in LK vs LJ}
+    If \(S\) is the sequent \(A_1,\ldots,A_m\seq B_1,\ldots,B_n\),
+    then we may define the sequent
+    \(S'\coloneqq A_1^\ast,\ldots,A_m^\ast,\lnot B_1^\ast,\ldots,\lnot B^\ast_n\seq\).
+    Now \(S\) is \LK-provable, if and only if \(S'\) is \LK-provable.
+\end{proposition}
+
+\begin{proof}[Sketch of proof]
+    We start by proving that if \(S\) is provable (meaning we can use it as a premise of a proof),
+    then \(S'\) is also provable:
+    \tiny
+
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{A_2^\ast\seq\lnot\lnot A_2^\ast}
+            \hypo{A_1^\ast\seq\lnot\lnot A_1^\ast}
+            % Tallest branch
+            \hypo{\overbrace{A_1,\ldots,A_m\seq B_1,\ldots,B_n}^{S}}
+            \hypo{B_n\seq B_n^\ast}
+            \infer2[\eqref{eq:cut}]{A_1,\ldots,A_m\seq B_1,\ldots,B_{n-1}, B_n^\ast}
+            \infer1[\eqref{eq:exchange:right}]{A_1,\ldots,A_m\seq B_1,\ldots,B_n^\ast, B_{n-1}}
+            \hypo{B_{n-1}\seq B_{n-1}^\ast}
+            \infer2[\eqref{eq:cut}]{A_1,\ldots,A_m\seq B_1,\ldots,B_n^\ast, B_{n-1}^\ast}
+            \infer[double]1[\eqref{eq:exchange:right}s and \eqref{eq:cut}s]{A_1,\ldots,A_m\seq B_n^\ast,\ldots,B_1^\ast}
+            \infer[double]1[\eqref{eq:lnot:left}s and \eqref{eq:exchange:left}s]{A_1,\ldots,A_m, \lnot B_n^\ast,\ldots,\lnot B_1^\ast\seq}
+            \infer[double]1[\eqref{eq:lnot:right}s and \eqref{eq:exchange:right}s]{\lnot B_n^\ast,\ldots,\lnot B_1^\ast\seq\lnot A_m,\ldots,\lnot A_1}
+            \hypo{\lnot A_1\seq \lnot A^\ast_1}
+            \infer[left label=\eqref{eq:cut} and \eqref{eq:exchange:right}]2{\lnot B_n^\ast,\ldots,\lnot B_1^\ast\seq\lnot A_m,\ldots,\lnot A_1^\ast,\lnot A_2}
+            \hypo{\lnot A_2\seq\lnot A_2^\ast}
+            \infer[double,left label=\eqref{eq:cut}s and \eqref{eq:exchange:right}s]2{\lnot B_n^\ast,\ldots,\lnot B_1^\ast\seq\lnot A_1^\ast,\ldots,\lnot A_m^\ast}
+            \infer[double,left label=\eqref{eq:lnot:right}s and \eqref{eq:exchange:left}s]1{\lnot\lnot A_1^\ast,\ldots,\lnot\lnot A_m^\ast, \lnot B_n^\ast,\ldots,\lnot B_1^\ast\seq}
+            \infer2[\eqref{eq:cut}]{\lnot\lnot A_2^\ast,\ldots,\lnot\lnot A_m^\ast, \lnot B_n^\ast,\ldots,\lnot B_1^\ast\seq}
+            \infer[double]2[multiple \eqref{eq:cut}s]{A_1^\ast,\ldots,A_m^\ast, \lnot B_n^\ast,\ldots,\lnot B_1^\ast\seq}
+        \end{prooftree}
+    \end{equation*}
+    \normalsize
+    On the last line, \(A_1^\ast,\ldots,A_m^\ast, \lnot B_n^\ast,\ldots,\lnot B_1^\ast\seq = S'\).
+    The proof in the other direction is performed in a similar manner.
+\end{proof}
+
+\begin{proposition}[Claim 3]\label{prop:claim 3 in LK vs LJ}
+    \(A^\ast\equiv\lnot\lnot A^\ast\) in \LJ.
+\end{proposition}
+
+\begin{proof}
+    In \LJ{}, the proof
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{A\seq A}
+            \infer1{\lnot A, A\seq}
+            \infer1{A\seq\lnot\lnot A}
+        \end{prooftree}
+    \end{equation*}
+    is valid for all formulae \(A\). This means it must also be true for \(A^\ast\seq\lnot\lnot A^\ast\) as well.
+
+    By example~\ref{exa:3.11}, \(\lnot\lnot A\seq A\) in \LJ{'}.
+    Also, by exercise~\ref{exe:3.10.3} we have \(\lnot\lnot\lnot\arcs{\lnot R}\equiv\lnot\lnot R\) in \LJ{},
+    for all atomic formula \(R\).
+    As the formula \(A^\ast\) does not contain the symbols \(\lor\) or \(\exists\) by assumption,
+    we can conclude that \(\lnot\lnot A^\ast\seq A\).
+    Therefore \(A^\ast\equiv \lnot\lnot A^\ast\) for all \(A\) in \LJ{}.
+\end{proof}
+
+\begin{proposition}[Claim 4]\label{prop:claim 4 in LK vs LJ}
+    If the sequent \(S\) of proposition~\ref{prop:claim 2 in LK vs LJ} is provable in \LK,
+    then the sequent \(S'\) defined in the same proposition is provable in \LJ.
+\end{proposition}
+
+\begin{proof}[A sketch of a proof]
+    Let \(n\) refer to the length of a proof, as in the number of inferences of a proof in \LK{}.
+    We induce on this \(n\):
+    \begin{enumerate}
+        \item
+            For the base case \(n=0\), all proofs \(P = A\seq A\) in \LK{}.
+            Then in \LJ{} we have \(A^\ast\seq A^\ast\) and
+            \begin{equation*}
+                \begin{prooftree}
+                    \hypo{A^\ast\seq A^\ast}
+                    \infer1[\eqref{eq:lnot:left}]{\lnot A^\ast, A^\ast\seq}
+                    \infer1[\eqref{eq:exchange:left}]{A^\ast, \lnot A^\ast\seq}
+                \end{prooftree}
+            \end{equation*}
+        \item
+            For the inductive hypothesis \IH, let the claim in \LK{} hold for a proof of length \(n \leq p\).
+            Note that based on the number of inference rules in definition~\ref{def:inference rules in LK},
+            the number of \emph{subcases} of \(n = p+1\) is \(21\). Let us cover some of them:
+            \begin{enumerate}
+                \item
+                    In \LK{} we have
+                    \begin{equation*}
+                        \begin{prooftree}
+                            \hypo{A_1,\ldots,A_k\seq B_1,\ldots,B_l}
+                            \infer1[\eqref{eq:weakening:left}]{A, A_1,\ldots,A_k\seq B_1,\ldots B_1,\ldots,B_l}
+                        \end{prooftree}
+                    \end{equation*}
+                    whereas in \LJ{} this means that
+                    \begin{equation*}
+                        \begin{prooftree}
+                            \hypo{A_1^\ast,\ldots, A_k^\ast, \lnot B_1^\ast,\ldots,\lnot B_l^\ast\seq}
+                            \infer1[\eqref{eq:weakening:left}]{A^\ast, A_1,\ldots,A_k, \lnot B_1^\ast,\ldots,\lnot B_l^\ast\seq}
+                        \end{prooftree}
+                    \end{equation*}
+                    by the inductive hypothesis.
+                \item
+                    In \LK{} we have
+                    \begin{equation*}
+                        \begin{prooftree}
+                            \hypo{A_1,\ldots, A_i,A_j,\ldots,A_k\seq B_1,\ldots,B_l}
+                            \infer1[\eqref{eq:exchange:left}]{A_1,\ldots, A_j,A_i,\ldots,A_k\seq B_1,\ldots,B_l}
+                        \end{prooftree}
+                    \end{equation*}
+                    whereas in \LJ{} this means that
+                    \begin{equation*}
+                        \begin{prooftree}
+                            \hypo{A_1^\ast,\ldots, A_i^\ast,A_j^\ast,\ldots,A_k^\ast, \lnot B_1^\ast,\ldots,\lnot B_l^\ast\seq}
+                            \infer1[\eqref{eq:exchange:left}]{A_1^\ast,\ldots, A_j^\ast,A_i^\ast,\ldots,A_k^\ast, \lnot B_1^\ast,\ldots,\lnot B_l^\ast\seq},
+                        \end{prooftree}\,,
+                    \end{equation*}
+                    again by the inductive hypothesis.
+                \item
+                    In \LK{}, by the rule~\eqref{eq:cut} (the \(p+1\)st inference):
+                    \begin{equation*}
+                        \begin{prooftree}
+                            \hypo{A_1,\ldots,A_i\seq B_1,\ldots,B_j, D}
+                            \hypo{D, A_{i+1},\ldots,A_k\seq B_{j+1},\ldots,B_l, D}
+                            \infer2{A_1,\ldots,A_k\seq B_1,\ldots,B_l}
+                        \end{prooftree}
+                    \end{equation*}
+                    Then by the inductive hypothesis the inference
+                    \scriptsize
+                    \begin{equation*}
+                        \begin{prooftree}
+                            \hypo{A_1^\ast,\ldots,A_i^\ast, \lnot B_1^\ast,\ldots,\lnot B_j^\ast,\lnot D^\ast\seq}
+                            \infer[double]1[\eqref{eq:exchange:left}]{\lnot D^\ast, A_1^\ast,\ldots,A_i^\ast, \lnot B_1^\ast,\ldots,\lnot B_j^\ast\seq}
+                            \infer1[\eqref{eq:lnot:right}]{A_1^\ast,\ldots,A_i^\ast, \lnot B_1^\ast,\ldots,\lnot B_j^\ast\seq\lnot\lnot D^\ast}
+                            \hypo{\text{proposition}~\ref{prop:claim 3 in LK vs LJ}}
+                            \ellipsis{}{\lnot\lnot D^\ast\seq D^\ast}
+                            \infer2[\eqref{eq:cut}]{A_1^\ast,\ldots,A_i^\ast, \lnot B_1^\ast,\ldots,\lnot B_j^\ast\seq D^\ast}
+                            \hypo{\IH}
+                            \ellipsis{}{D^\ast, A_{i+1}^\ast,\ldots,A_k^\ast, \lnot B_{j+1}^\ast,\ldots,\lnot B_l^\ast\seq}
+                            \infer[left label=\eqref{eq:cut}]2{A_1^\ast,\ldots,A_i^\ast, \lnot B_1^\ast,\ldots,\lnot B_j^\ast,A_{i+1}^\ast,\ldots,A_k^\ast, \lnot B_{j+1}^\ast,\ldots,\lnot B_l^\ast\seq}
+                            \infer[rule style=double]1[\eqref{eq:exchange:left}]{A_1^\ast,\ldots,A_k^\ast, \lnot B_1^\ast,\ldots,\lnot B_l^\ast\seq}
+                        \end{prooftree}
+                    \end{equation*}
+                    \normalsize
+                \pagebreak
+                \item
+                    \begin{exercise}[3.12.4 part vii]\label{exe:3.12.4.vii}
+                    This is left as an exercise.
+                    If \(S\) is the sequent \(A_1,\ldots,A_k\seq B_1,\ldots,B_l\),
+                    then we may define the sequent
+                    \(S'\coloneqq A_1^\ast, \ldots, A_k^\ast,\linebreak
+                    \lnot B_1^\ast, \ldots, \lnot B^\ast_l\seq\).
+                    Show that if the sequent \(S\) is provable in \LK,
+                    then the sequent \(S'\) is provable in \LJ{}
+                    for the case, where the \(\arcs{p+1}\)st inference is
+                    by~\eqref{eq:lnot:right} in \LK{}.
+                    \end{exercise}
+            \end{enumerate}
+    \end{enumerate}
+
+    The rest of the applications of inference rules needed in the inductive step
+    are omitted in these notes, but may be done as an exercise.
+    By the inductive principle, we can now conclude that if the sequent
+    \(A_1,\ldots,A_k\seq B_1,\ldots,B_l\) is in \LK{},
+    then the sequent \(A_1^\ast,\ldots,A_k^\ast, \lnot B_1^\ast,\ldots,\lnot B_l^\ast\seq\) is in \LJ{}.
+\end{proof}
+
+The converse of proposition~\ref{prop:claim 4 in LK vs LJ} also holds,
+but the proof is just as long and will therefore be omitted.
+Lastly, we cover the most important fact related to this section.
+
+\begin{theorem}[Connection between \LK{} and \LJ]\label{the:connection between LK and LJ}
+    For all formulae \(A\), \(\seq A\) in \LK{}, if and only if \(\seq A^\ast\) in \LJ{}.
+\end{theorem}
+
+\begin{proof}
+    A particular instance of exercise~\ref{exe:3.12.4.vii} is the following:
+    if \(\seq A\) in \LJ{}, then \(\lnot A^\ast\seq\) in LJ{}.
+    Therefore
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{\lnot A^\ast\seq}
+            \infer1[\eqref{eq:lnot:right}]{\seq\lnot\lnot A^\ast}
+            \hypo{A\seq A}
+            \ellipsis{Proposition~\ref{prop:claim 3 in LK vs LJ}}{A^\ast\seq A}
+            \infer2[\eqref{eq:cut}]{\seq A^\ast}
+        \end{prooftree}
+    \end{equation*}
+
+    Conversely, if \(\seq A^\ast\) in \LJ{} and by proposition~\ref{prop:claim 1 in LK vs LJ} we know that \(A\equiv A^\ast\) in \LK{},
+    we also have \(A^\ast\seq A\) in \LK{}. Thus
+    \begin{equation*}
+        \begin{prooftree}
+            \hypo{\seq A^\ast}
+            \hypo{A^\ast\seq A}
+            \infer2[\eqref{eq:cut}]{\seq A}
+        \end{prooftree}\,.
+        \qedhere
+    \end{equation*}
+\end{proof}
