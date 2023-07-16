@@ -18,13 +18,6 @@
 % Fonttiasetuksia
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-% Document metadata
-\begin{filecontents}[overwrite]{\jobname.xmpdata}
-\Title{\mycourse, \mytitle, \implementation}
-\Author{\myauthor}
-\Publisher{\myschool}
-\Subject{A lecture diary for the Tampere Universiry course ''Proof Theory''.}
-\end{filecontents}
 % Tavutuksia
 \usepackage[finnish, main=english]{babel}
 % Parnneltu matikkapaketti
@@ -74,10 +67,6 @@
 \usepackage[backend=biber, sorting=none]{biblatex}
 \addbibresource{sources.bib}
 \usepackage{csquotes}
-% Arkistomuotoinen PDF
-\usepackage[a-2b,mathxmp]{pdfx}
-  \hypersetup{hidelinks}
-\usepackage{url}
 
 % ----- Komentoja -----
 
@@ -169,3 +158,16 @@
 \numberwithin{equation}{section}
 \numberwithin{figure}{section}
 \numberwithin{table}{section}
+
+% PDF/A
+
+\begin{filecontents}[overwrite]{\jobname.xmpdata}
+\Title{\mycourse, \mytitle, \implementation}
+\Author{\myauthor}
+\Publisher{\myschool}
+\Subject{A lecture diary for the Tampere Universiry course ''Proof Theory''.}
+\end{filecontents}
+
+\usepackage[a-3b,mathxmp]{pdfx}
+\hypersetup{hidelinks}
+\usepackage{url}
