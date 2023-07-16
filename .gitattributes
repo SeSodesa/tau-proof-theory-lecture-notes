@@ -1,0 +1,13 @@
+### .gitattributes
+#
+# Defines which files or file types are to be interpreted as plain text by Git,
+# and therefore possibly normalized.
+#
+
+*.cls           text
+*.md            text
+*.tex           text
+*.txt           text
+.gitattributes  text
+.gitignore      text
+LICENSE         text

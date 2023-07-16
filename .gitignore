@@ -3,6 +3,7 @@
 
 # Allow specific files and folders
 !.gitignore
+!.gitattributes
 !README.md
 !LICENSE.txt
 !tau-logo
