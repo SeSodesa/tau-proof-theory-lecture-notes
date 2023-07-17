@@ -16,22 +16,34 @@
 % This work consists of the files main.tex, titlepage.tex and preamble.tex.
 
 \begin{titlepage}
+
+\color{taupurple}
+
 \begin{tikzpicture}[remember picture, overlay]
 \node[anchor=north west]
     at ($(current page.north west) + (1.25cm, -1.23cm)$)
     {\includegraphics[height=2.5cm]{tau-logo/tau-logo.pdf}};
 \end{tikzpicture}
+
 \raggedleft
+
 \vspace*{0.1\textheight}
 
-{\color{taupurple}
-\Huge\textsc{\mycourse}
+\begingroup
 
-\vspace{0.3cm}
+	\begingroup\huge\code\mycoursecode\endgroup
 
-\huge\textsc{\mytitle}%
-}
-\vspace{0.4\pageheight}
+	\vspace{0.3cm}
 
-\Large\myauthor\\\myschool\\\implementation{}
+	\begingroup\Huge\textsc\mycourse\endgroup
+
+	\vspace{0.6cm}
+
+	\begingroup\huge\textsc\mytitle\endgroup
+
+\endgroup
+
+\vfill%\vspace{0.4\pageheight}
+
+\Large\myauthor\\\myschool\\\implementation
 \end{titlepage}
