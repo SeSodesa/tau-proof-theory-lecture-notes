@@ -51,6 +51,22 @@
 
 % -----  Main matter -----
 
+% Setting the page background for the actual contents.
+
+\backgroundsetup{
+	scale=1,
+	angle=0,
+	opacity=1,
+	color=black,
+	contents={
+		\begin{tikzpicture}[remember picture, overlay]
+		\node at ([xshift=2cm,yshift=-1cm] current page.north west)
+			{\includegraphics[width = 3cm]{tau-logo/tau-logo.pdf}}; %<- change the name of image
+		\end{tikzpicture}
+	}
+}
+
+
 \input{sections/01.tex}
 \input{sections/02.tex}
 \input{sections/03.tex}
