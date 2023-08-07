@@ -5,9 +5,8 @@ We now get to the actual meat of the course. We wish to show that Peano
 arithmetic \PA{} fulfills the following definition.
 
 \begin{definition}[Incompleteness of a logical system]\label{def:incompleteness}
-    An axiom system \(S\) is \emph{incomplete},
-    if it does not contain proofs for
-    \(\seq A\) nor \(\seq\lnot A\) for some sentence \(A\).
+    An axiom system \(S\) is \emph{incomplete}, if it does not contain proofs
+    for \(\seq A\) nor \(\seq\lnot A\) for some sentence \(A\).
 \end{definition}
 
 In fact, we wish to show that any system \(S\) that contains Peano arithmetic
@@ -746,9 +745,13 @@ Tarski's theorem has the following \(3\) implications:
 
 \subsection{Gödel's incompleteness theorems}
 
-\begin{definition}[Incompleteness]\label{def:incompleteness}
+At this point, we should remind ourselves of the point of this chapter. To this
+end we present the following more precise, but equivalent version of
+Definition~\ref{def:incompleteness}.
+
+\begin{definition}[Incompleteness]\label{def:incompleteness-alternative}
     An axiom system \(S\) is \emph{incomplete}, if an only if there is a closed
-    formula \(A\), such that \emph{neither} \(\seq A\) or \(\seq\lnot A\) can
+    formula~\(A\), such that \emph{neither} \(\seq A\) or \(\seq\lnot A\) can
     be proved in \(S\).
 \end{definition}
 
